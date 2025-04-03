@@ -1,5 +1,5 @@
 # ![Project Header Image](docs/images/cyberThreat-Insight-header.png)  
-               <center>Detecting Anomalous Behavior in Cybersecurity Analytics with Generative AI</center>  
+<div style="text-align: center;">Detecting Anomalous Behavior in Cybersecurity Analytics with Generative AI</div>
 
 **Project Name**  
 *Tagline or short description of the project*
