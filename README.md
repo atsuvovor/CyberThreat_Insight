@@ -1,7 +1,5 @@
  ![Project Header Image](docs/images/cyberThreat-Insight-header.png)  
-<div style="text-align: center;">Detecting Anomalous Behavior in Cybersecurity Analytics with Generative AI</div>
-###**Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI**
-
+ 
 **Toronto, November 01 2024**  
 **Autor : Atsu Vovor**
 >Master of Management in Artificial Intelligence    
