@@ -1,4 +1,4 @@
-# ![Project Header Image](https://path_to_your_image.png)  
+# ![Project Header Image](docs/images/cyberThreat-Insight-header.png)  
 # CyberThreat-Insight
 AI-driven cybersecurity anomaly detection using Generative AI  
 
