@@ -1,6 +1,5 @@
 # ![Project Header Image](docs/images/cyberThreat-Insight-header.png)  
-# CyberThreat-Insight
-AI-driven cybersecurity anomaly detection using Generative AI  
+<center>**Detecting Anomalous Behavior in Cybersecurity Analytics with Generative AI</center>  
 
 **Project Name**  
 *Tagline or short description of the project*
