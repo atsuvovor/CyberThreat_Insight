@@ -1,8 +1,12 @@
-# ![Project Header Image](docs/images/cyberThreat-Insight-header.png)  
+ ![Project Header Image](docs/images/cyberThreat-Insight-header.png)  
 <div style="text-align: center;">Detecting Anomalous Behavior in Cybersecurity Analytics with Generative AI</div>
+#**Detecting Anomalous Behavior in Cybersecurity Analytics with Generative AI**
 
-**Project Name**  
-*Tagline or short description of the project*
+**Toronto, November 01 2024**  
+**Autor : Atsu Vovor**
+>Master of Management in Artificial Intelligence    
+>Consultant Data Analytics Specialist | Machine Learning |  
+Data science | Quantitative Analysis |French & English Bilingual  
 
 ---
 
