@@ -1,5 +1,6 @@
  ![Project Header Image](docs/images/cyberThreat-Insight-header.png)  
  <div align="center">
+  
 **Detecting Anomalous Behavior in Cybersecurity Analytics with Generative AI**
 </div>
 
