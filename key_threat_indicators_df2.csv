@@ -1,0 +1,12 @@
+KIT,Condition,Score
+Severity,"Critical = 10, High = 8, Medium = 5, Low = 2",2 - 10
+Impact Score,1 to 10 (already a score),1 - 10
+Risk Level,"High = 8, Medium = 5, Low = 2",2 - 8
+Response Time,">7 days = 5, 3-7 days = 3, <3 days = 1",1 - 5
+Category,"Unauthorized Access = 8, Phishing = 6, etc.",1 - 8
+Activity Type,"High-risk types (e.g., login, data_transfer)",1 - 5
+Login Attempts,">5 = 5, 3-5 = 3, <3 = 1",1 - 5
+Num Files Accessed,">10 = 5, 5-10 = 3, <5 = 1",1 - 5
+Data Transfer MB,">100 MB = 5, 50-100 MB = 3, <50 MB = 1",1 - 5
+CPU Usage %,">80% = 5, 60-80% = 3, <60% = 1",1 - 5
+Memory Usage MB,">8000 MB = 5, 4000-8000 MB = 3, <4000 MB = 1",1 - 5
