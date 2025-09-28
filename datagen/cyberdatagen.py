@@ -623,9 +623,6 @@ class DataGenerator:
 
         df = pd.DataFrame(anomalous_issues_data, columns=self.config.columns)
         return df
- filter_kpi_and_kri, random_date, calculate_threat_level,
-    # adaptive_defense_mechanism, generate_normal_issues_df,
-    # generate_anomalous_issues_df
 
     def data_generation_pipeline(self):
         normal_df = self.generate_normal_issues_df(self.config.issue_ids, self.config.issue_keys)
@@ -732,3 +729,4 @@ def cybersecurity_data_pipeline():
 
 if __name__ == "__main__":
     cybersecurity_data_pipeline()
+
