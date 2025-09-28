@@ -3,23 +3,29 @@
 CyberDataGen
 Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI
 -------------------------------------------------------------------------------
-Updated: Works in Google Colab with direct GitHub + local download support
-- Generates 5 CSVs
-- Always zips them into cybersecurity_data.zip
-- Always downloads ZIP
-- Prints summary table of generated files
+Portable version:
+- Works in Colab, JupyterLab, or local Python
+- Saves to CyberThreat_Insight/cybersecurity_data/
+- Displays datasets (optional)
+- Saves 5 CSVs + prints summary
+- Prompts user for optional local ZIP download
 Author: Atsu Vovor
 """
 
-import pandas as pd
-import numpy as np
-from datetime import datetime, timedelta
-import random
 import os
+import shutil
 import zipfile
-from google.colab import files
-import warnings
-warnings.filterwarnings("ignore")
+import pandas as pd
+from datetime import datetime
+from IPython.display import display
+import argparse
+
+# Try to import Colab-specific files.download (ignored if not available)
+try:
+    from google.colab import files
+    COLAB = True
+except ImportError:
+    COLAB = False
 
 
 # =====================================================================
@@ -716,8 +722,45 @@ class DataProcessor:
 
 
 # =====================================================================
+# Data Display
+# =====================================================================
+class DataDisplay:
+    """Handles displaying dataframes."""
+    def display_the_data_frames(self, p_normal_issues_df, p_anomalous_issues_df, p_normal_and_anomalous_df,
+                                p_ktis_key_threat_indicators_df, p_scenarios_with_colors_df):
+        """Displays info, description, and head for multiple DataFrames."""
+
+        print('Normal_issues_df Data structure\n')
+        display(p_normal_issues_df.info())
+        print('\nData statistics summary\n')
+        display(p_normal_issues_df.describe().transpose())
+        print('\nNormal_issues_df\n')
+        display(p_normal_issues_df.head())
+
+        print('\nAnomalous_issues_df Data structure\n')
+        display(p_anomalous_issues_df.info())
+        print('\nAnomalous_issues_df statistics summary\n')
+        display(p_anomalous_issues_df.describe().transpose())
+        print('\nAnomalous_issues_df\n')
+        display(p_anomalous_issues_df.head())
+
+        print('\nNormal & anomalous combined Data structure\n')
+        display(p_normal_and_anomalous_df.info())
+        print('\nCombined statistics summary\n')
+        display(p_normal_and_anomalous_df.describe().transpose())
+        print('\nNormal & anomalous combined Data\n')
+        display(p_normal_and_anomalous_df.head())
+
+        print('\nKey Threat Indicators\n')
+        display(p_ktis_key_threat_indicators_df)
+
+        print('\nScenarios with Colors\n')
+        display(p_scenarios_with_colors_df)
+        print('\n')
+# =====================================================================
 # Saver
 # =====================================================================
+
 class DataSaver:
     def save_dataframe(self, df, save_path):
         os.makedirs(os.path.dirname(save_path), exist_ok=True)
@@ -734,30 +777,75 @@ class DataSaver:
         print("\n📊 Dataset Summary")
         print(pd.DataFrame(summary, columns=["File", "Rows", "Columns", "Size"]).to_string(index=False))
 
-    def zip_and_download(self, folder_path, zip_path):
-        with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
-            for root, _, files in os.walk(folder_path):
-                for file in files:
-                    file_path = os.path.join(root, file)
-                    arcname = os.path.relpath(file_path, folder_path)
-                    zipf.write(file_path, arcname)
-        print(f"\n📦 Created ZIP: {zip_path}")
-        files.download(zip_path)
+    def save_data_option(self, config, no_prompt=False, auto_download=False):
+        """Optionally download a ZIP of the datasets."""
+        temp_dir = "/tmp/cybersecurity_data"
+        zip_path = "/tmp/cybersecurity_data.zip"
+
+        def make_zip():
+            os.makedirs(temp_dir, exist_ok=True)
+            shutil.copy(config.normal_data_file, temp_dir)
+            shutil.copy(config.anomalous_data_file, temp_dir)
+            shutil.copy(config.combined_data_file, temp_dir)
+            shutil.copy(config.key_threat_indicators_file, temp_dir)
+            shutil.copy(config.scenarios_with_colors_file, temp_dir)
+            shutil.make_archive("/tmp/cybersecurity_data", 'zip', temp_dir)
+
+        # Auto mode (no user interaction)
+        if no_prompt:
+            print("Skipping local download (no-prompt mode).")
+            return
+        if auto_download:
+            print("Preparing files for automatic download...")
+            make_zip()
+            if COLAB:
+                files.download(zip_path)
+                print("Files downloaded locally as cybersecurity_data.zip")
+            else:
+                print(f"ZIP created at {zip_path} (please download manually).")
+            return
+
+        # Interactive prompt
+        while True:
+            choice = input("Would you like to download the data files locally as well? (yes/no): ").strip().lower()
+            if choice == 'yes':
+                print("Preparing files for download...")
+                make_zip()
+                if COLAB:
+                    files.download(zip_path)
+                    print("Files downloaded locally as cybersecurity_data.zip")
+                else:
+                    print(f"ZIP created at {zip_path} (please download manually).")
+                break
+            elif choice == 'no':
+                print("Files saved to repository only. No local download.")
+                break
+            else:
+                print("Invalid choice. Please enter 'yes' or 'no'.")
 
 
 # =====================================================================
 # Main pipeline
 # =====================================================================
-def cybersecurity_data_pipeline():
+def cybersecurity_data_pipeline(show_data=True, no_prompt=False, auto_download=False):
     config = DataConfig()
     generator = DataGenerator(config)
     processor = DataProcessor()
     saver = DataSaver()
+    display_handler = DataDisplay()
 
     normal_df, anomaly_df, combined_df = generator.data_generation_pipeline()
     combined_df = processor.map_threat_severity_to_color(combined_df)
 
-    # Save 5 datasets
+    # Display if requested
+    if show_data:
+        display_handler.display_the_data_frames(
+            normal_df, anomaly_df, combined_df,
+            config.ktis_key_threat_indicators_df,
+            config.scenarios_with_colors_df
+        )
+
+    # Save all datasets
     saver.save_dataframe(normal_df, config.normal_data_file)
     saver.save_dataframe(anomaly_df, config.anomalous_data_file)
     saver.save_dataframe(combined_df, config.combined_data_file)
@@ -773,12 +861,20 @@ def cybersecurity_data_pipeline():
         config.scenarios_with_colors_file
     ])
 
-    # Zip and download all
-    saver.zip_and_download(config.github_repo_folder, config.zip_file)
-
-    print("\nAll 5 datasets generated, zipped, saved under cybersecurity_data/, and downloaded locally.")
+    # Prompt or auto ZIP download
+    saver.save_data_option(config, no_prompt=no_prompt, auto_download=auto_download)
 
 
 if __name__ == "__main__":
-    cybersecurity_data_pipeline()
+    parser = argparse.ArgumentParser(description="Cybersecurity Data Generator")
+    parser.add_argument("--no-prompt", action="store_true", help="Skip download prompt")
+    parser.add_argument("--auto-download", action="store_true", help="Auto-download ZIP without prompt")
+    parser.add_argument("--no-display", action="store_true", help="Skip DataFrame display")
 
+    args = parser.parse_args()
+
+    cybersecurity_data_pipeline(
+        show_data=not args.no_display,
+        no_prompt=args.no_prompt,
+        auto_download=args.auto_download
+    )
