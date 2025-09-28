@@ -19,7 +19,9 @@ import pandas as pd
 from datetime import datetime
 from IPython.display import display
 import argparse
-
+import random
+import warnings
+warnings.filterwarnings("ignore")
 # Try to import Colab-specific files.download (ignored if not available)
 try:
     from google.colab import files
