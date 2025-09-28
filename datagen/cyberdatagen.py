@@ -374,7 +374,7 @@ class DataGenerator:
         return action
 
 
-        def generate_normal_issues_df(self, p_issue_ids, p_issue_keys):
+    def generate_normal_issues_df(self, p_issue_ids, p_issue_keys):
         """Generates a DataFrame of synthetic normal cybersecurity issue data with enhanced logic."""
         normal_issues_data = []
         time_difference_days = (self.config.end_date - self.config.start_date).days
