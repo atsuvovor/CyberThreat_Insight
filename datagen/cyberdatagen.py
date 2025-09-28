@@ -136,6 +136,60 @@ class DataConfig:
         }
         self.scenarios_with_colors_df = pd.DataFrame(self.scenario_data)
 
+        #---------------------------------------------Define columns---------------------------------------------------
+        self.numerical_columns = [
+            "Timestamps", "Issue Response Time Days", "Impact Score", "Cost",
+            "Session Duration in Second", "Num Files Accessed", "Login Attempts",
+            "Data Transfer MB", "CPU Usage %", "Memory Usage MB", "Threat Score"
+            ]
+
+
+        self.explanatory_data_analysis_columns = [
+            "Date Reported", "Issue Response Time Days", "Impact Score", "Cost",
+            "Session Duration in Second", "Num Files Accessed", "Login Attempts",
+            "Data Transfer MB", "CPU Usage %", "Memory Usage MB", "Threat Score"
+            ]
+
+        self.user_activity_features = [
+            "Risk Level", "Issue Response Time Days", "Impact Score", "Cost",
+            "Session Duration in Second", "Num Files Accessed", "Login Attempts",
+            "Data Transfer MB", "CPU Usage %", "Memory Usage MB", "Threat Score"
+            ]
+
+
+        self.initial_dates_columns = ["Date Reported", "Date Resolved", "Timestamps"]
+
+        self.categorical_columns = ["Issue ID", "Issue Key", "Issue Name", "Category", "Severity", "Status", "Reporters",
+                               "Assignees", "Risk Level", "Department Affected", "Remediation Steps", "KPI/KRI",
+                               "User ID", "Activity Type", "User Location", "IP Location", "Threat Level",      "Defense Action", "Color"
+                               ]
+        self.features_engineering_columns = [
+            "Issue Response Time Days", "Impact Score", "Cost",
+            "Session Duration in Second", "Num Files Accessed", "Login Attempts",
+            "Data Transfer MB", "CPU Usage %", "Memory Usage MB", "Threat Score", "Threat Level"
+            ]
+        self.numerical_behavioral_features = [
+            "Login Attempts", "Data Transfer MB", "CPU Usage %", "Memory Usage MB",
+            "Session Duration in Second", "Num Files Accessed", "Threat Score"
+            ]
+
+        #IP addresses, port numbers, packet sizes, and time intervals
+        # ---------------------Generate user activity metadata------------------------
+        self.activity_types = ["login", "file_access", "data_modification"]
+
+    def get_column_dic(self):
+        """
+        Returns a dictionary containing lists of column names categorized by type.
+        """
+        columns_dic = {
+            "numerical_columns": self.numerical_columns,
+            "explanatory_data_analysis_columns": self.explanatory_data_analysis_columns,
+            "user_activity_features": self.user_activity_features,
+            "initial_dates_columns": self.initial_dates_columns,
+            "categorical_columns": self.categorical_columns,
+            "features_engineering_columns": self.features_engineering_columns
+        }
+        return columns_dic
 
 # =====================================================================
 # Data Generator (keep your original generation logic here)
@@ -149,9 +203,6 @@ class DataGenerator:
                                          'activity_multiplier': random.uniform(0.8, 1.2)} for dept in self.config.departments}
         self.anomalous_issue_ids = [f"ISSUE-{i:04d}" for i in range(self.config.num_normal_issues +1, self.config.total_issues + 1)]
         self.anomalous_issue_keys = [f"KEY-{i:04d}" for i in range(self.config.num_normal_issues +1, self.config.total_issues + 1)]
-
-    # ⚡ Include all your original functions here unchanged:
-    # generate_normal_issues_name, generate_anomalous_issue_name,
     
 
     #                   -----------------------------------------------------------------------
@@ -624,6 +675,7 @@ class DataGenerator:
         df = pd.DataFrame(anomalous_issues_data, columns=self.config.columns)
         return df
 
+
     def data_generation_pipeline(self):
         normal_df = self.generate_normal_issues_df(self.config.issue_ids, self.config.issue_keys)
         normal_df["Is Anomaly"] = 0
@@ -729,4 +781,3 @@ def cybersecurity_data_pipeline():
 
 if __name__ == "__main__":
     cybersecurity_data_pipeline()
-
