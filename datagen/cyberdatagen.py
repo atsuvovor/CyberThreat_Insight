@@ -84,7 +84,7 @@ class DataConfig:
             "Timestamps", "Activity Type","User Location", "IP Location",
             "Session Duration in Second", "Num Files Accessed", "Login Attempts",
             "Data Transfer MB", "CPU Usage %", "Memory Usage MB", "Threat Score",
-            "Threat Level", "Defense Action", "Color"
+            "Threat Level", "Defense Action"
         ]
 
         # ------------------ Extra DataFrames ------------------
@@ -781,3 +781,4 @@ def cybersecurity_data_pipeline():
 
 if __name__ == "__main__":
     cybersecurity_data_pipeline()
+
