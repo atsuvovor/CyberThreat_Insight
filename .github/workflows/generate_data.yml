@@ -1,0 +1,53 @@
+name: Generate Cyber Data
+
+on:
+  # Run the workflow automatically every day at midnight UTC
+  schedule:
+    - cron: '0 0 * * *'
+  # Allow manual trigger from the GitHub Actions UI
+  workflow_dispatch:
+
+jobs:
+  generate_and_commit:
+    runs-on: ubuntu-latest
+
+    # GitHub provides a temporary token for authentication.
+    # This allows the workflow to commit/push without a personal token.
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      # 1. Checkout the repository so the workflow can access files
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. Set up Python environment
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      # 3. Install dependencies from requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # 4. Run the Cyber Data Generator script
+      #    Flags:
+      #    --no-prompt   → skip interactive ZIP download prompt
+      #    --no-display  → avoid verbose DataFrame display in logs
+      - name: Run Cyber Data Generator
+        run: python cyberdatagen.py --no-prompt --no-display
+
+      # 5. Commit and push generated datasets back to the repo
+      #    - Uses bot identity
+      #    - Adds all files in `cybersecurity_data/`
+      #    - Commit message includes a UTC timestamp
+      #    - [skip ci] prevents infinite workflow loops
+      - name: Commit and push datasets
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          git add cybersecurity_data/
+          git commit -m "Auto-generate datasets on $TIMESTAMP [skip ci]" || echo "No changes to commit"
+          git push
