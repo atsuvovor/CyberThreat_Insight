@@ -80,6 +80,7 @@ Run directly from GitHub without cloning:
 ```python
 %run https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/main/datagen/cyberdatagen.py
 ```
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/atsuvovor/CyberThreat_Insight/blob/main/CyberInsightDataGenerator.ipynb)
 
 👉 At the end, you’ll be prompted:
 
