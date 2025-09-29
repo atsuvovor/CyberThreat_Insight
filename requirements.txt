@@ -1,0 +1,17 @@
+faiss-cpu              # Vector similarity search engine (for RAG embeddings and retrieval)
+huggingface-hub        # Access and download models/datasets from Hugging Face Hub
+joblib                 # Save/load Python objects and ML models efficiently
+matplotlib             # General-purpose plotting library for data visualization
+numpy                  # Core numerical computation library (arrays, math operations)
+openai                 # OpenAI API client (chat, completions, embeddings, etc.)
+pandas                 # Data manipulation and analysis with DataFrames
+rapidfuzz              # Fast string matching and fuzzy text comparison
+scikit-learn           # ML utilities: preprocessing, scaling, evaluation, simple models
+seaborn                # High-level statistical visualization (built on matplotlib)
+sentence-transformers  # Pre-trained transformer embeddings (semantic search, RAG)
+streamlit              # Build interactive dashboards and shareable web apps
+transformers           # Hugging Face Transformers library (large NLP models and pipelines)
+numpy		       # Numerical computing
+ipython 	       # For IPython.display (used to display DataFrames nicely)
+google-colab 	       # Optional: provides google.colab.files for ZIP download when running in Colab
+		       # (Safe to include; GitHub Actions won't use it since COLAB=False)
