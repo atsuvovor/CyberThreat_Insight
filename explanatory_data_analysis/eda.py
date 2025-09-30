@@ -44,6 +44,14 @@ import re
 from rapidfuzz import fuzz
 import warnings
 
+# ---- Safe FAISS import ----
+try:
+    import faiss
+except ImportError:
+    print("⚠️ faiss not found. Installing faiss-cpu...")
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "faiss-cpu"])
+    import faiss
+    
 # Ignore specific warnings from libraries
 warnings.filterwarnings('ignore')
 
