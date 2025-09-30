@@ -25,38 +25,60 @@ Features:
 - FAISS-based vector search + EDA utilities
 - Portable: no manual Hugging Face clone required
 """
-
-import os
-import sys
-import subprocess
-from pathlib import Path
-import requests
-
-# -------------------------------
-# Utility: install missing packages
-# -------------------------------
-def install_if_missing(pkg_name, import_name=None):
-    import_name = import_name or pkg_name
+def safe_import(pkg, import_name=None, pip_name=None):
+    import importlib
+    if import_name is None:
+        import_name = pkg
+    if pip_name is None:
+        pip_name = pkg
     try:
-        __import__(import_name)
+        return importlib.import_module(import_name)
     except ImportError:
-        print(f"Installing {pkg_name}...")
-        subprocess.check_call([sys.executable, "-m", "pip", "install", pkg_name])
+        print(f"⚠️ {import_name} not found. Installing {pip_name}...")
+        subprocess.check_call([sys.executable, "-m", "pip", "install", pip_name])
+        return importlib.import_module(import_name)
 
-# Core dependencies
-install_if_missing("faiss-cpu", "faiss")
-install_if_missing("rapidfuzz")
-install_if_missing("transformers")
-install_if_missing("torch")
-install_if_missing("sentence-transformers")
+# Core scientific stack
+np = safe_import("numpy")
+pd = safe_import("pandas")
 
-# -------------------------------
-# Imports after ensured installation
-# -------------------------------
-import faiss
-from rapidfuzz import fuzz
-import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
+# EDA helpers
+faiss = safe_import("faiss", pip_name="faiss-cpu")
+rapidfuzz = safe_import("rapidfuzz")
+warnings = safe_import("warnings")
+json = safe_import("json")
+re = safe_import("re")
+
+from datetime import datetime, timedelta
+from IPython.display import display
+from typing import List, Dict, Optional, Tuple, Any
+
+# Hugging Face
+transformers = safe_import("transformers")
+pipeline = transformers.pipeline
+InferenceClient = None
+try:
+    from huggingface_hub import InferenceClient
+except ImportError:
+    pass
+
+# Colab-specific (optional)
+try:
+    from google.colab import userdata
+    IN_COLAB = True
+    try:
+        from google.colab.userdata import SecretNotFoundError
+    except ImportError:
+        class SecretNotFoundError(Exception):
+            """Fallback SecretNotFoundError if not provided by Colab."""
+            pass
+except ImportError:
+    userdata = None
+    IN_COLAB = False
+    class SecretNotFoundError(Exception):
+        """Fallback SecretNotFoundError for non-Colab."""
+        pass
+
 
 # Ignore specific warnings from libraries
 warnings.filterwarnings('ignore')
