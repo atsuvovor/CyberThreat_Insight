@@ -23,9 +23,7 @@ Original file is located at
 # --------------------------
 #   Necessary Imports
 # --------------------------
-import os
-import sys
-import subprocess
+
 
 # ---- Helper: Safe import with auto-install ----
 def safe_import(pkg, import_name=None, pip_name=None):
@@ -61,6 +59,9 @@ from datetime import datetime, timedelta
 from IPython.display import display
 from typing import List, Dict, Optional, Tuple, Any
 
+
+import sys
+import subprocess
 
 import os
 import io
