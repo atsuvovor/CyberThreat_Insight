@@ -718,6 +718,7 @@ def remove_repetitive_sentences(text: str, threshold: int = 85) -> str:
 # -------------------------------
 # LLM Setup (local + HF Hub fallback)
 # -------------------------------
+import os 
 LLM_LOCAL_PATH = os.path.join(os.path.dirname(__file__), "..", "llms_models")
 
 LLM_CONFIGS = {
