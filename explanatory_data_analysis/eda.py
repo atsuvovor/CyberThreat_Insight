@@ -23,6 +23,34 @@ Original file is located at
 # --------------------------
 #   Necessary Imports
 # --------------------------
+
+import importlib
+    if import_name is None:
+        import_name = pkg
+    if pip_name is None:
+        pip_name = pkg
+
+    try:
+        return importlib.import_module(import_name)
+    except ImportError:
+        print(f"⚠️ {import_name} not found. Installing {pip_name}...")
+        subprocess.check_call([sys.executable, "-m", "pip", "install", pip_name])
+        return importlib.import_module(import_name
+
+                                       
+np = safe_import("numpy")
+pd = safe_import("pandas")
+faiss = safe_import("faiss", pip_name="faiss-cpu")
+fuzz = safe_import("rapidfuzz")
+warnings = safe_import("warnings")
+json = safe_import("json")
+re = safe_import("re")
+
+from datetime import datetime, timedelta
+from IPython.display import display
+from typing import List, Dict, Optional, Tuple, Any
+
+
 import os
 import io
 import re
