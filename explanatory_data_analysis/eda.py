@@ -23,8 +23,15 @@ Original file is located at
 # --------------------------
 #   Necessary Imports
 # --------------------------
-
-import importlib
+# ---- Helper: Safe import with auto-install ----
+def safe_import(pkg, import_name=None, pip_name=None):
+    """
+    Try to import a package, install it if missing, and then re-import.
+    :param pkg: module name for import
+    :param import_name: optional alias if import name differs from pip package
+    :param pip_name: package name for pip install (defaults to pkg)
+    """
+    import importlib
     if import_name is None:
         import_name = pkg
     if pip_name is None:
@@ -35,7 +42,7 @@ import importlib
     except ImportError:
         print(f"⚠️ {import_name} not found. Installing {pip_name}...")
         subprocess.check_call([sys.executable, "-m", "pip", "install", pip_name])
-        return importlib.import_module(import_name
+        return importlib.import_module(import_name)
 
                                        
 np = safe_import("numpy")
