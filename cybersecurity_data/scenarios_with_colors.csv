@@ -1,0 +1,17 @@
+Scenario,Threat Level,Severity,Suggested Color
+1,Critical,Critical,Dark Red
+2,Critical,High,Red
+3,Critical,Medium,Orange-Red
+4,Critical,Low,Orange
+5,High,Critical,Red
+6,High,High,Orange-Red
+7,High,Medium,Orange
+8,High,Low,Yellow-Orange
+9,Medium,Critical,Orange
+10,Medium,High,Yellow-Orange
+11,Medium,Medium,Yellow
+12,Medium,Low,Light Yellow
+13,Low,Critical,Yellow
+14,Low,High,Light Yellow
+15,Low,Medium,Green-Yellow
+16,Low,Low,Green
