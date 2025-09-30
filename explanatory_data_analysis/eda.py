@@ -18,28 +18,22 @@
 CyberThreat Insight - Explanatory Data Analysis (EDA)
 Portable version (Colab, Jupyter, Local)
 
-This script auto-installs missing Python packages (faiss, rapidfuzz, etc.)
-to make it portable across environments.
+- Auto-installs missing dependencies (faiss, rapidfuzz, transformers, etc.)
+- Integrates robust Hugging Face LLM clients with fallbacks
+- Includes utilities for cybersecurity EDA
 """
 
-import os
-import sys
-import subprocess
+import os, sys, subprocess
 
-# ---- Helper: Safe import with auto-install ----
+# =================================================
+# Helper: safe import with auto-install
+# =================================================
 def safe_import(pkg, import_name=None, pip_name=None):
-    """
-    Try to import a package, install it if missing, and then re-import.
-    :param pkg: module name for import
-    :param import_name: optional alias if import name differs from pip package
-    :param pip_name: package name for pip install (defaults to pkg)
-    """
     import importlib
     if import_name is None:
         import_name = pkg
     if pip_name is None:
         pip_name = pkg
-
     try:
         return importlib.import_module(import_name)
     except ImportError:
@@ -47,9 +41,11 @@ def safe_import(pkg, import_name=None, pip_name=None):
         subprocess.check_call([sys.executable, "-m", "pip", "install", pip_name])
         return importlib.import_module(import_name)
 
-# ---- Core dependencies ----
+# Core scientific stack
 np = safe_import("numpy")
 pd = safe_import("pandas")
+
+# EDA helpers
 faiss = safe_import("faiss", pip_name="faiss-cpu")
 rapidfuzz = safe_import("rapidfuzz")
 warnings = safe_import("warnings")
@@ -60,21 +56,36 @@ from datetime import datetime, timedelta
 from IPython.display import display
 from typing import List, Dict, Optional, Tuple, Any
 
-# ---- Colab-specific (optional) ----
+# Hugging Face
+transformers = safe_import("transformers")
+pipeline = transformers.pipeline
+InferenceClient = None
+try:
+    from huggingface_hub import InferenceClient
+except ImportError:
+    pass
+
+# Colab-specific (optional)
 try:
     from google.colab import userdata
     IN_COLAB = True
+    try:
+        from google.colab.userdata import SecretNotFoundError
+    except ImportError:
+        class SecretNotFoundError(Exception):
+            """Fallback SecretNotFoundError if not provided by Colab."""
+            pass
 except ImportError:
     userdata = None
     IN_COLAB = False
-
-
-#-----
-
+    class SecretNotFoundError(Exception):
+        """Fallback SecretNotFoundError for non-Colab."""
+        pass
 
 # Ignore specific warnings from libraries
 warnings.filterwarnings('ignore')
 
+#----------------------------------------------------------------
 
 # Function to normalize numerical features using Min-Max Scaling
 def normalize_numerical_features(p_df):
@@ -703,40 +714,17 @@ def remove_repetitive_sentences(text: str, threshold: int = 85) -> str:
         out.append(s)
     return " ".join(out)
 
-# -------------------------------------------------
+# =================================================
 # Utility: build a flexible LLM client
-# -------------------------------------------------
-
+# =================================================
 def build_llm_client():
-    # 1. OpenAI (priority if available)
-    api_key = os.environ.get("OPENAI_API_KEY") or os.environ.get("data_analytics_Key")
-    if api_key:
-        if NEW_OPENAI_API:
-            print("Attempting to use OpenAI API...")
-            try:
-                client = OpenAI(api_key=api_key)
-                # Quick check if the client is valid
-                client.models.list()
-                print("✅ OpenAI API client initialized.")
-                return client, "openai-new"
-            except Exception as e:
-                print(f"⚠️ OpenAI API client init failed: {e}")
-                print("Falling back to other options...")
-
-        elif openai is not None:
-            print("Attempting to use legacy OpenAI API...")
-            try:
-                openai.api_key = api_key
-                # Quick check if the client is valid
-                openai.Model.list()
-                print("✅ Legacy OpenAI API client initialized.")
-                return openai, "openai-old"
-            except Exception as e:
-                print(f"⚠️ Legacy OpenAI API client init failed: {e}")
-                print("Falling back to other options...")
-
-
-    # 2. Hugging Face Inference API
+    """
+    Build an LLM client with robust fallbacks:
+      1. Mistral-7B-Instruct
+      2. LLaMA-3-8B-Instruct
+      3. gpt-oss-20b
+      4. CPU-friendly GPT-Neo 350M
+    """
     hf_key = None
     if IN_COLAB:
         try:
@@ -750,31 +738,31 @@ def build_llm_client():
         if hf_key:
             print("Attempting to retrieve Hugging Face API key from environment variable...")
 
-    if hf_key and InferenceClient:
-        print("Attempting to use Hugging Face Inference API...")
+    model_candidates = [
+        ("mistralai/Mistral-7B-Instruct-v0.2", "mistral-7b-instruct"),
+        ("meta-llama/Meta-Llama-3-8B-Instruct", "llama-3-8b-instruct"),
+        ("gpt-oss/gpt-oss-20b", "gpt-oss-20b"),
+        ("EleutherAI/gpt-neo-350M", "gpt-neo-350m"),  # CPU-friendly fallback
+    ]
+
+    for model_name, tag in model_candidates:
         try:
-            client = InferenceClient(token=hf_key)
-            # Quick check if the client is valid (e.g., list models or a simple inference)
-            # This might be model-dependent and tricky without a specific model endpoint
-            # A simpler check might be to just return the client and handle errors on first call
-            print("✅ Hugging Face Inference API client initialized.")
-            return client, "huggingface-api"
+            if hf_key:
+                print(f"⚡ Attempting to load {tag} with Hugging Face token...")
+                client = pipeline("text-generation", model=model_name, token=hf_key)
+            else:
+                print(f"⚡ Attempting to load {tag} without token...")
+                client = pipeline("text-generation", model=model_name)
+
+            # quick test inference
+            _ = client("Hello", max_new_tokens=5)
+            print(f"✅ LLM client initialized with {tag}.")
+            return client, tag
         except Exception as e:
-            print(f"⚠️ Hugging Face Inference API client init failed: {e}")
-            print("Falling back to local pipeline...")
+            print(f"⚠️ Failed to load {tag}: {e}. Trying next option...")
 
-    # 3. Local offline Hugging Face pipeline
-    print("Using local offline Hugging Face pipeline (distilgpt2)...")
-    print("⚠️ Note: The local 'distilgpt2' model has a small context window and may struggle with long inputs.")
-    try:
-        local_pipe = pipeline("text-generation", model="distilgpt2")
-        print("✅ Local Hugging Face pipeline initialized.")
-        return local_pipe, "huggingface-local"
-    except Exception as e:
-        print(f"❌ Failed to initialize local Hugging Face pipeline: {e}")
-        print("LLM client could not be built.")
-        return None, None
-
+    print("❌ No LLM could be initialized.")
+    return None, None
 
 # --------------------------
 #     AI Agent
