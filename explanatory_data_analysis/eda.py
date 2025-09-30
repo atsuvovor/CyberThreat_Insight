@@ -890,7 +890,7 @@ class AIValidatorAgent:
         folder = "CyberThreat_Insight/cybersecurity_data"
         #file_name = "normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb2.csv"
         file_name = "cybersecurity_dataset_combined.csv"
-        path = resolve_repo_data_path(folder, file_name)
+        path = self.resolve_repo_data_path(folder, file_name)
         if not path.exists():
             raise FileNotFoundError(f"❌ File not found in: {path}")
         df = pd.read_csv(path)
