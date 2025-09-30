@@ -47,7 +47,7 @@ sys = safe_import("sys")
 subprocess = safe_import("subprocess")
 # EDA helpers
 faiss = safe_import("faiss", pip_name="faiss-cpu")
-rapidfuzz = safe_import("rapidfuzz")
+fuzz = safe_import("rapidfuzz")
 warnings = safe_import("warnings")
 json = safe_import("json")
 re = safe_import("re")
