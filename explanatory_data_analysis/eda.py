@@ -862,7 +862,7 @@ class AIValidatorAgent:
         #from google.colab import drive
         #drive.mount('/content/drive')
         #folder = "/content/drive/My Drive/Cybersecurity Data"
-        folder = "cybersecurity_data"
+        folder = "/CyberThreat_Insight/cybersecurity_data"
         #file_name = "normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb2.csv"
         file_name = "cybersecurity_dataset_combined.csv"
         path = os.path.join(folder, file_name)
