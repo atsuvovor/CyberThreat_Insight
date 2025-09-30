@@ -14,25 +14,53 @@
 # --------------------------
 #   Necessary Imports
 # --------------------------
+"""
+CyberThreat Insight - Explanatory Data Analysis (EDA)
+Portable version (Colab, Jupyter, Local)
+
+This script auto-installs missing Python packages (faiss, rapidfuzz, etc.)
+to make it portable across environments.
+"""
+
 import os
 import sys
 import subprocess
-import numpy as np
-import pandas as pd
+
+# ---- Helper: Safe import with auto-install ----
+def safe_import(pkg, import_name=None, pip_name=None):
+    """
+    Try to import a package, install it if missing, and then re-import.
+    :param pkg: module name for import
+    :param import_name: optional alias if import name differs from pip package
+    :param pip_name: package name for pip install (defaults to pkg)
+    """
+    import importlib
+    if import_name is None:
+        import_name = pkg
+    if pip_name is None:
+        pip_name = pkg
+
+    try:
+        return importlib.import_module(import_name)
+    except ImportError:
+        print(f"⚠️ {import_name} not found. Installing {pip_name}...")
+        subprocess.check_call([sys.executable, "-m", "pip", "install", pip_name])
+        return importlib.import_module(import_name)
+
+# ---- Core dependencies ----
+np = safe_import("numpy")
+pd = safe_import("pandas")
+faiss = safe_import("faiss", pip_name="faiss-cpu")
+rapidfuzz = safe_import("rapidfuzz")
+warnings = safe_import("warnings")
+json = safe_import("json")
+re = safe_import("re")
+
 from datetime import datetime, timedelta
 from IPython.display import display
-import json
 from typing import List, Dict, Optional, Tuple, Any
 
-# ---- Safe FAISS import ----
-try:
-    import faiss
-except ImportError:
-    print("⚠️ faiss not found. Installing faiss-cpu...")
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "faiss-cpu"])
-    import faiss
-
-# ---- Handle Colab-specific imports ----
+# ---- Colab-specific (optional) ----
 try:
     from google.colab import userdata
     IN_COLAB = True
@@ -40,10 +68,9 @@ except ImportError:
     userdata = None
     IN_COLAB = False
 
+
 #-----
-import re
-from rapidfuzz import fuzz
-import warnings
+
 
 # Ignore specific warnings from libraries
 warnings.filterwarnings('ignore')
