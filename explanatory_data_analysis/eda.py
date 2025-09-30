@@ -15,69 +15,47 @@
 #   Necessary Imports
 # --------------------------
 """
-CyberThreat Insight - Explanatory Data Analysis (EDA)
-Portable version for Colab, Jupyter, or Local
+eda.py - Explanatory Data Analysis + LLM Utilities
+Portable and fully self-contained for Colab, Jupyter, Windows, Linux, macOS
 
 Features:
-- Auto-installs missing dependencies
-- Robust LLM integration with local + HF Hub fallback
-- FAISS utilities for vectorized search
+- Automatic dependency installation
+- GPT-Neo-350M auto-download and offline support
+- Optional fallback LLMs: Mistral-7B-Instruct, LLaMA-3-8B-Instruct, GPT-OSS-20B
+- FAISS-based vector search + EDA utilities
+- Portable: no manual Hugging Face clone required
 """
 
-import os, sys, subprocess
+import os
+import sys
+import subprocess
+from pathlib import Path
 
-# =================================================
-# Helper: safe import with auto-install
-# =================================================
-def safe_import(pkg, import_name=None, pip_name=None):
-    import importlib
-    if import_name is None:
-        import_name = pkg
-    if pip_name is None:
-        pip_name = pkg
+# -------------------------------
+# Utility: install missing packages
+# -------------------------------
+def install_if_missing(pkg_name, import_name=None):
+    import_name = import_name or pkg_name
     try:
-        return importlib.import_module(import_name)
+        __import__(import_name)
     except ImportError:
-        print(f"⚠️ {import_name} not found. Installing {pip_name}...")
-        subprocess.check_call([sys.executable, "-m", "pip", "install", pip_name])
-        return importlib.import_module(import_name)
+        print(f"Installing {pkg_name}...")
+        subprocess.check_call([sys.executable, "-m", "pip", "install", pkg_name])
 
-# Core scientific stack
-np = safe_import("numpy")
-pd = safe_import("pandas")
-faiss = safe_import("faiss", pip_name="faiss-cpu")
-rapidfuzz = safe_import("rapidfuzz")
-warnings = safe_import("warnings")
-json = safe_import("json")
-re = safe_import("re")
+# Core dependencies
+install_if_missing("faiss-cpu", "faiss")
+install_if_missing("rapidfuzz")
+install_if_missing("transformers")
+install_if_missing("torch")
+install_if_missing("sentence-transformers")
 
-from datetime import datetime, timedelta
-from IPython.display import display
-from typing import List, Dict, Optional, Tuple, Any
-
-# Hugging Face
-transformers = safe_import("transformers")
-pipeline = transformers.pipeline
-try:
-    from huggingface_hub import InferenceClient
-except ImportError:
-    InferenceClient = None
-
-# Colab secrets
-try:
-    from google.colab import userdata
-    IN_COLAB = True
-    try:
-        from google.colab.userdata import SecretNotFoundError
-    except ImportError:
-        class SecretNotFoundError(Exception):
-            pass
-except ImportError:
-    userdata = None
-    IN_COLAB = False
-    class SecretNotFoundError(Exception):
-        pass
-
+# -------------------------------
+# Imports after ensured installation
+# -------------------------------
+import faiss
+from rapidfuzz import fuzz
+import torch
+from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 
 # Ignore specific warnings from libraries
 warnings.filterwarnings('ignore')
@@ -711,11 +689,9 @@ def remove_repetitive_sentences(text: str, threshold: int = 85) -> str:
         out.append(s)
     return " ".join(out)
 
-# =================================================
+# -------------------------------
 # LLM Setup (local + HF Hub fallback)
-# =================================================
-from transformers import AutoTokenizer, AutoModelForCausalLM
-
+# -------------------------------
 LLM_LOCAL_PATH = os.path.join(os.path.dirname(__file__), "..", "llms_models")
 
 LLM_CONFIGS = {
@@ -747,6 +723,7 @@ def build_llm_client(preferred_model: str = "gpt-neo-350m"):
     1. Local folder (llms_models/)
     2. Hugging Face Hub
     3. Fallback to GPT-Neo-350M
+    Returns: pipeline object, model name
     """
     model_cfg = LLM_CONFIGS.get(preferred_model, LLM_CONFIGS["gpt-neo-350m"])
 
@@ -785,7 +762,6 @@ def build_llm_client(preferred_model: str = "gpt-neo-350m"):
     except Exception as e:
         print(f"❌ Complete failure: {e}")
         return None, None
-
 
 # --------------------------
 #     AI Agent
