@@ -714,55 +714,83 @@ def remove_repetitive_sentences(text: str, threshold: int = 85) -> str:
         out.append(s)
     return " ".join(out)
 
-# =================================================
-# Utility: build a flexible LLM client
-# =================================================
-def build_llm_client():
+# -------------------------------------------------
+# Utility: build a flexible LLM client (portable)
+# -------------------------------------------------
+from transformers import pipeline, AutoTokenizer, AutoModelForCausalLM
+import os
+
+LLM_LOCAL_PATH = os.path.join(os.path.dirname(__file__), "..", "llms_models")
+
+LLM_CONFIGS = {
+    "gpt-neo-350m": {
+        "hf_id": "EleutherAI/gpt-neo-350M",
+        "local_folder": os.path.join(LLM_LOCAL_PATH, "gpt-neo-350m"),
+        "cpu_ok": True,
+    },
+    "mistral-7b-instruct": {
+        "hf_id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "local_folder": os.path.join(LLM_LOCAL_PATH, "mistral-7b-instruct"),
+        "cpu_ok": False,
+    },
+    "llama-3-8b-instruct": {
+        "hf_id": "meta-llama/Meta-Llama-3-8B-Instruct",
+        "local_folder": os.path.join(LLM_LOCAL_PATH, "llama-3-8b-instruct"),
+        "cpu_ok": False,
+    },
+    "gpt-oss-20b": {
+        "hf_id": "EleutherAI/gpt-neox-20b",  # example id
+        "local_folder": os.path.join(LLM_LOCAL_PATH, "gpt-oss-20b"),
+        "cpu_ok": False,
+    }
+}
+
+
+def build_llm_client(preferred_model: str = "gpt-neo-350m"):
     """
-    Build an LLM client with robust fallbacks:
-      1. Mistral-7B-Instruct
-      2. LLaMA-3-8B-Instruct
-      3. gpt-oss-20b
-      4. CPU-friendly GPT-Neo 350M
+    Build a flexible LLM client with fallback order:
+    1. Local folder (llms_models/)
+    2. Hugging Face Hub (requires internet/API key if gated)
+    3. Fallback to GPT-Neo-350M
     """
-    hf_key = None
-    if IN_COLAB:
+    model_cfg = LLM_CONFIGS.get(preferred_model, LLM_CONFIGS["gpt-neo-350m"])
+
+    # 1. Try local model
+    if os.path.isdir(model_cfg["local_folder"]):
         try:
-            hf_key = userdata.get("data_analytics_hg_key")
-            print("Attempting to retrieve Hugging Face API key from Colab secrets...")
-        except SecretNotFoundError:
-            hf_key = None
-
-    if not hf_key:
-        hf_key = os.environ.get("data_analytics_hg_key")
-        if hf_key:
-            print("Attempting to retrieve Hugging Face API key from environment variable...")
-
-    model_candidates = [
-        ("mistralai/Mistral-7B-Instruct-v0.2", "mistral-7b-instruct"),
-        ("meta-llama/Meta-Llama-3-8B-Instruct", "llama-3-8b-instruct"),
-        ("gpt-oss/gpt-oss-20b", "gpt-oss-20b"),
-        ("EleutherAI/gpt-neo-350M", "gpt-neo-350m"),  # CPU-friendly fallback
-    ]
-
-    for model_name, tag in model_candidates:
-        try:
-            if hf_key:
-                print(f"⚡ Attempting to load {tag} with Hugging Face token...")
-                client = pipeline("text-generation", model=model_name, token=hf_key)
-            else:
-                print(f"⚡ Attempting to load {tag} without token...")
-                client = pipeline("text-generation", model=model_name)
-
-            # quick test inference
-            _ = client("Hello", max_new_tokens=5)
-            print(f"✅ LLM client initialized with {tag}.")
-            return client, tag
+            print(f"🔍 Loading {preferred_model} from local folder...")
+            tokenizer = AutoTokenizer.from_pretrained(model_cfg["local_folder"])
+            model = AutoModelForCausalLM.from_pretrained(model_cfg["local_folder"])
+            pipe = pipeline("text-generation", model=model, tokenizer=tokenizer, device=-1)
+            print(f"✅ Loaded {preferred_model} locally.")
+            return pipe, preferred_model
         except Exception as e:
-            print(f"⚠️ Failed to load {tag}: {e}. Trying next option...")
+            print(f"⚠️ Failed to load {preferred_model} locally: {e}")
 
-    print("❌ No LLM could be initialized.")
-    return None, None
+    # 2. Try Hugging Face Hub
+    try:
+        print(f"🌐 Attempting to load {preferred_model} from Hugging Face Hub...")
+        tokenizer = AutoTokenizer.from_pretrained(model_cfg["hf_id"])
+        model = AutoModelForCausalLM.from_pretrained(model_cfg["hf_id"])
+        pipe = pipeline("text-generation", model=model, tokenizer=tokenizer, device=-1)
+        print(f"✅ Loaded {preferred_model} from Hugging Face Hub.")
+        return pipe, preferred_model
+    except Exception as e:
+        print(f"⚠️ Hugging Face load failed for {preferred_model}: {e}")
+
+    # 3. Fallback to GPT-Neo-350M
+    try:
+        print("⬇️ Falling back to GPT-Neo-350M (local/offline).")
+        fallback_cfg = LLM_CONFIGS["gpt-neo-350m"]
+        tokenizer = AutoTokenizer.from_pretrained(fallback_cfg["hf_id"])
+        model = AutoModelForCausalLM.from_pretrained(fallback_cfg["hf_id"])
+        pipe = pipeline("text-generation", model=model, tokenizer=tokenizer, device=-1)
+        print("✅ GPT-Neo-350M fallback initialized.")
+        return pipe, "gpt-neo-350m"
+    except Exception as e:
+        print(f"❌ Complete failure: {e}")
+        return None, None
+
 
 # --------------------------
 #     AI Agent
