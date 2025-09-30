@@ -1,3 +1,9 @@
+# Optional large models not tracked
 llms_models/mistral-7b-instruct/
 llms_models/llama-3-8b-instruct/
 llms_models/gpt-oss-20b/
+
+# Python cache & env
+*.pyc
+__pycache__/
+.env
