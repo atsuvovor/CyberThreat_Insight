@@ -60,12 +60,11 @@ re = safe_import("re")
 from datetime import datetime, timedelta
 from IPython.display import display
 from typing import List, Dict, Optional, Tuple, Any
+from pathlib import Path
 
 
-import sys
-import subprocess
 
-import os
+
 import io
 import re
 import pandas as pd
@@ -73,10 +72,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import matplotlib.dates as mdates
-import os # Import the os module for path manipulation
 from sklearn.preprocessing import MinMaxScaler
 from IPython.display import display
-import json
+#import json
 #import faiss
 from typing import List, Dict, Optional, Tuple, Any
 from google.colab import userdata
