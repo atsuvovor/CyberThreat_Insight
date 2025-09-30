@@ -16,11 +16,12 @@
 # --------------------------
 """
 CyberThreat Insight - Explanatory Data Analysis (EDA)
-Portable version (Colab, Jupyter, Local)
+Portable version for Colab, Jupyter, or Local
 
-- Auto-installs missing dependencies (faiss, rapidfuzz, transformers, etc.)
-- Integrates robust Hugging Face LLM clients with fallbacks
-- Includes utilities for cybersecurity EDA
+Features:
+- Auto-installs missing dependencies
+- Robust LLM integration with local + HF Hub fallback
+- FAISS utilities for vectorized search
 """
 
 import os, sys, subprocess
@@ -44,8 +45,6 @@ def safe_import(pkg, import_name=None, pip_name=None):
 # Core scientific stack
 np = safe_import("numpy")
 pd = safe_import("pandas")
-
-# EDA helpers
 faiss = safe_import("faiss", pip_name="faiss-cpu")
 rapidfuzz = safe_import("rapidfuzz")
 warnings = safe_import("warnings")
@@ -59,13 +58,12 @@ from typing import List, Dict, Optional, Tuple, Any
 # Hugging Face
 transformers = safe_import("transformers")
 pipeline = transformers.pipeline
-InferenceClient = None
 try:
     from huggingface_hub import InferenceClient
 except ImportError:
-    pass
+    InferenceClient = None
 
-# Colab-specific (optional)
+# Colab secrets
 try:
     from google.colab import userdata
     IN_COLAB = True
@@ -73,14 +71,13 @@ try:
         from google.colab.userdata import SecretNotFoundError
     except ImportError:
         class SecretNotFoundError(Exception):
-            """Fallback SecretNotFoundError if not provided by Colab."""
             pass
 except ImportError:
     userdata = None
     IN_COLAB = False
     class SecretNotFoundError(Exception):
-        """Fallback SecretNotFoundError for non-Colab."""
         pass
+
 
 # Ignore specific warnings from libraries
 warnings.filterwarnings('ignore')
@@ -714,11 +711,10 @@ def remove_repetitive_sentences(text: str, threshold: int = 85) -> str:
         out.append(s)
     return " ".join(out)
 
-# -------------------------------------------------
-# Utility: build a flexible LLM client (portable)
-# -------------------------------------------------
-from transformers import pipeline, AutoTokenizer, AutoModelForCausalLM
-import os
+# =================================================
+# LLM Setup (local + HF Hub fallback)
+# =================================================
+from transformers import AutoTokenizer, AutoModelForCausalLM
 
 LLM_LOCAL_PATH = os.path.join(os.path.dirname(__file__), "..", "llms_models")
 
@@ -739,35 +735,34 @@ LLM_CONFIGS = {
         "cpu_ok": False,
     },
     "gpt-oss-20b": {
-        "hf_id": "EleutherAI/gpt-neox-20b",  # example id
+        "hf_id": "EleutherAI/gpt-neox-20b",
         "local_folder": os.path.join(LLM_LOCAL_PATH, "gpt-oss-20b"),
         "cpu_ok": False,
     }
 }
 
-
 def build_llm_client(preferred_model: str = "gpt-neo-350m"):
     """
-    Build a flexible LLM client with fallback order:
+    Build an LLM client:
     1. Local folder (llms_models/)
-    2. Hugging Face Hub (requires internet/API key if gated)
+    2. Hugging Face Hub
     3. Fallback to GPT-Neo-350M
     """
     model_cfg = LLM_CONFIGS.get(preferred_model, LLM_CONFIGS["gpt-neo-350m"])
 
-    # 1. Try local model
+    # 1️⃣ Try local folder
     if os.path.isdir(model_cfg["local_folder"]):
         try:
             print(f"🔍 Loading {preferred_model} from local folder...")
             tokenizer = AutoTokenizer.from_pretrained(model_cfg["local_folder"])
             model = AutoModelForCausalLM.from_pretrained(model_cfg["local_folder"])
             pipe = pipeline("text-generation", model=model, tokenizer=tokenizer, device=-1)
-            print(f"✅ Loaded {preferred_model} locally.")
+            print(f"✅ Loaded {preferred_model} locally from llms_models/")
             return pipe, preferred_model
         except Exception as e:
             print(f"⚠️ Failed to load {preferred_model} locally: {e}")
 
-    # 2. Try Hugging Face Hub
+    # 2️⃣ Try Hugging Face Hub
     try:
         print(f"🌐 Attempting to load {preferred_model} from Hugging Face Hub...")
         tokenizer = AutoTokenizer.from_pretrained(model_cfg["hf_id"])
@@ -778,7 +773,7 @@ def build_llm_client(preferred_model: str = "gpt-neo-350m"):
     except Exception as e:
         print(f"⚠️ Hugging Face load failed for {preferred_model}: {e}")
 
-    # 3. Fallback to GPT-Neo-350M
+    # 3️⃣ Fallback to GPT-Neo-350M
     try:
         print("⬇️ Falling back to GPT-Neo-350M (local/offline).")
         fallback_cfg = LLM_CONFIGS["gpt-neo-350m"]
