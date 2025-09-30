@@ -30,6 +30,7 @@ import os
 import sys
 import subprocess
 from pathlib import Path
+import requests
 
 # -------------------------------
 # Utility: install missing packages
@@ -717,51 +718,59 @@ LLM_CONFIGS = {
     }
 }
 
+def download_model(model_id, local_dir):
+    url = f"https://huggingface.co/{model_id}/resolve/main/pytorch_model.bin"
+    try:
+        response = requests.get(url, stream=True)
+        response.raise_for_status()
+        os.makedirs(local_dir, exist_ok=True)
+        model_path = os.path.join(local_dir, "pytorch_model.bin")
+        with open(model_path, "wb") as f:
+            for chunk in response.iter_content(chunk_size=8192):
+                f.write(chunk)
+        print(f"Model downloaded to {model_path}")
+    except requests.exceptions.RequestException as e:
+        print(f"Failed to download model: {e}")
+
 def build_llm_client(preferred_model: str = "gpt-neo-350m"):
-    """
-    Build an LLM client:
-    1. Local folder (llms_models/)
-    2. Hugging Face Hub
-    3. Fallback to GPT-Neo-350M
-    Returns: pipeline object, model name
-    """
     model_cfg = LLM_CONFIGS.get(preferred_model, LLM_CONFIGS["gpt-neo-350m"])
 
-    # 1️⃣ Try local folder
+    # Try loading from local folder
     if os.path.isdir(model_cfg["local_folder"]):
         try:
-            print(f"🔍 Loading {preferred_model} from local folder...")
+            print(f"Loading {preferred_model} from local folder...")
             tokenizer = AutoTokenizer.from_pretrained(model_cfg["local_folder"])
             model = AutoModelForCausalLM.from_pretrained(model_cfg["local_folder"])
             pipe = pipeline("text-generation", model=model, tokenizer=tokenizer, device=-1)
-            print(f"✅ Loaded {preferred_model} locally from llms_models/")
+            print(f"Loaded {preferred_model} locally.")
             return pipe, preferred_model
         except Exception as e:
-            print(f"⚠️ Failed to load {preferred_model} locally: {e}")
+            print(f"Failed to load from local folder: {e}")
 
-    # 2️⃣ Try Hugging Face Hub
+    # Try loading from Hugging Face Hub
     try:
-        print(f"🌐 Attempting to load {preferred_model} from Hugging Face Hub...")
+        print(f"Loading {preferred_model} from Hugging Face Hub...")
         tokenizer = AutoTokenizer.from_pretrained(model_cfg["hf_id"])
         model = AutoModelForCausalLM.from_pretrained(model_cfg["hf_id"])
         pipe = pipeline("text-generation", model=model, tokenizer=tokenizer, device=-1)
-        print(f"✅ Loaded {preferred_model} from Hugging Face Hub.")
+        print(f"Loaded {preferred_model} from Hugging Face Hub.")
         return pipe, preferred_model
     except Exception as e:
-        print(f"⚠️ Hugging Face load failed for {preferred_model}: {e}")
+        print(f"Failed to load from Hugging Face Hub: {e}")
 
-    # 3️⃣ Fallback to GPT-Neo-350M
+    # Manual download fallback
+    print(f"Attempting to download {preferred_model} manually...")
+    download_model("xhyi/PT_GPTNEO350_ATG", model_cfg["local_folder"])
     try:
-        print("⬇️ Falling back to GPT-Neo-350M (local/offline).")
-        fallback_cfg = LLM_CONFIGS["gpt-neo-350m"]
-        tokenizer = AutoTokenizer.from_pretrained(fallback_cfg["hf_id"])
-        model = AutoModelForCausalLM.from_pretrained(fallback_cfg["hf_id"])
+        tokenizer = AutoTokenizer.from_pretrained(model_cfg["local_folder"])
+        model = AutoModelForCausalLM.from_pretrained(model_cfg["local_folder"])
         pipe = pipeline("text-generation", model=model, tokenizer=tokenizer, device=-1)
-        print("✅ GPT-Neo-350M fallback initialized.")
-        return pipe, "gpt-neo-350m"
+        print(f"Loaded {preferred_model} from manual download.")
+        return pipe, preferred_model
     except Exception as e:
-        print(f"❌ Complete failure: {e}")
+        print(f"Failed to load from manual download: {e}")
         return None, None
+
 
 # --------------------------
 #     AI Agent
