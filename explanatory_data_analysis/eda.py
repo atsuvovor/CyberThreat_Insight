@@ -35,7 +35,7 @@ import os # Import the os module for path manipulation
 from sklearn.preprocessing import MinMaxScaler
 from IPython.display import display
 import json
-import faiss
+#import faiss
 from typing import List, Dict, Optional, Tuple, Any
 from google.colab import userdata
 from google.colab.userdata import SecretNotFoundError
