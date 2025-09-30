@@ -856,6 +856,33 @@ class AIValidatorAgent:
     # Source-specific loaders
     # --------------------------
 
+    from pathlib import Path
+
+def resolve_repo_data_path(self, folder: str, file_name: str) -> Path:
+    """
+    Resolve a data file path robustly:
+      - If 'folder' is absolute, use it.
+      - If 'folder' is relative, interpret it relative to the repo root
+        (assumes this file lives in repo/.../explanatory_data_analysis/eda.py).
+      - If 'folder' starts with the repo name (e.g. "CyberThreat_Insight/..."),
+        strip the leading repo name to avoid duplication.
+    Returns an absolute Path.
+    """
+    repo_root = Path(__file__).resolve().parents[1]  # parent of explanatory_data_analysis
+    folder_path = Path(folder)
+
+    if folder_path.is_absolute():
+        final_folder = folder_path
+    else:
+        parts = list(folder_path.parts)
+        # strip leading repo folder if present (avoid duplication)
+        if parts and parts[0] == repo_root.name:
+            parts = parts[1:]
+        final_folder = repo_root.joinpath(*parts) if parts else repo_root
+
+    return (final_folder / file_name).resolve()
+
+    
     def load_from_drive(self) -> pd.DataFrame:
         if not IN_COLAB:
             raise RuntimeError("Google Drive option requires Google Colab.")
@@ -865,10 +892,14 @@ class AIValidatorAgent:
         folder = "CyberThreat_Insight/cybersecurity_data"
         #file_name = "normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb2.csv"
         file_name = "cybersecurity_dataset_combined.csv"
-        path = os.path.join(folder, file_name)
-        if not os.path.exists(path):
+        path = resolve_repo_data_path(folder, file_name)
+        if not path.exists():
             raise FileNotFoundError(f"❌ File not found in: {path}")
         df = pd.read_csv(path)
+        #path = os.path.join(folder, file_name)
+        #if not os.path.exists(path):
+        #    raise FileNotFoundError(f"❌ File not found in: {path}")
+        #df = pd.read_csv(path)
         return self._postprocess(df)
 
     def load_from_upload(self, file_path: str = None) -> pd.DataFrame:
