@@ -859,9 +859,10 @@ class AIValidatorAgent:
     def load_from_drive(self) -> pd.DataFrame:
         if not IN_COLAB:
             raise RuntimeError("Google Drive option requires Google Colab.")
-        from google.colab import drive
-        drive.mount('/content/drive')
-        folder = "/content/drive/My Drive/Cybersecurity Data"
+        #from google.colab import drive
+        #drive.mount('/content/drive')
+        #folder = "/content/drive/My Drive/Cybersecurity Data"
+        folder = "/content/cybersecurity_data"
         file_name = "normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb2.csv"
         path = os.path.join(folder, file_name)
         if not os.path.exists(path):
