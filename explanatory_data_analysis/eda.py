@@ -42,6 +42,9 @@ def safe_import(pkg, import_name=None, pip_name=None):
 np = safe_import("numpy")
 pd = safe_import("pandas")
 
+os = safe_import("os")
+sys = safe_import("sys")
+subprocess = safe_import("subprocess")
 # EDA helpers
 faiss = safe_import("faiss", pip_name="faiss-cpu")
 rapidfuzz = safe_import("rapidfuzz")
