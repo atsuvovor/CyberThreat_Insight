@@ -1,0 +1,27 @@
+# Core Data Science Libraries
+pandas                # DataFrame handling, SQL-like operations
+numpy                 # Numerical computing backend for pandas & ML
+scikit-learn          # Preprocessing, basic ML utilities, clustering, metrics
+
+# Visualization
+matplotlib            # Base plotting library for EDA charts
+seaborn               # Statistical visualizations (heatmaps, distplots, etc.)
+
+# LLM + Embeddings + RAG
+sentence-transformers # Embedding models for RAG vector stores
+faiss-cpu             # Fast vector search, similarity matching
+transformers          # Hugging Face models (LLMs, tokenizers, pipelines)
+huggingface_hub       # Automatic model download + caching
+rapidfuzz             # Fuzzy matching for text cleaning / mapping
+openai                # Optional: LLM inference (OpenAI API client)
+
+# Streamlit (optional UI)
+streamlit             # Interactive dashboards and AI-driven EDA web app
+
+# Notebook / Interactive Environment
+ipython               # Enhanced Python REPL support
+ipywidgets            # Interactive widgets (sliders, dropdowns) for notebooks
+
+# Utility Helpers
+requests              # Downloading datasets from URLs
+python-dateutil       # Robust date parsing for datetime-based EDA
