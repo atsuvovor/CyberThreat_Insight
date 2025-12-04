@@ -10,6 +10,7 @@ seaborn               # Statistical visualizations (heatmaps, distplots, etc.)
 # LLM + Embeddings + RAG
 sentence-transformers # Embedding models for RAG vector stores
 faiss-cpu             # Fast vector search, similarity matching
+faiss                 # Fast vector search, similarity matching
 transformers          # Hugging Face models (LLMs, tokenizers, pipelines)
 huggingface_hub       # Automatic model download + caching
 rapidfuzz             # Fuzzy matching for text cleaning / mapping
