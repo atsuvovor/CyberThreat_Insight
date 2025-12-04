@@ -399,9 +399,9 @@ As part of the next phase of the project, we will extend the platform to simulat
 * **Distributed Denial-of-Service (DDoS) Attacks:** Emulate volumetric and application-layer attacks aimed at overwhelming network resources, disrupting services, and testing resilience under stress.
 * **Data Leak Attacks:** Mimic unauthorized data exfiltration scenarios, both accidental and malicious, to evaluate monitoring, detection, and containment protocols.
 * **Insider Threats:** Simulate misuse of access privileges by employees or contractors, focusing on the detection of anomalous behaviors within internal systems.
-* **Ransomware Attacks:** Recreate file encryption and ransom demand scenarios to test system backups, alerting systems, and recovery processes.
+* **Ransomware Attacks:** Recreate file encryption and ransom demand scenarios to test system backups, alerting systems, and recovery processes.  
 
-Each simulation will be integrated into the platform’s AI analytics engine and risk dashboards, providing real-time threat scoring, response playbooks, and post-event analysis to support training, governance, and resilience planning.
+####  Each simulation will be integrated into the platform’s AI analytics engine and risk dashboards, providing real-time threat scoring, response playbooks, and post-event analysis to support training, governance, and resilience planning.
 ---
 
 ## **Project Files**
