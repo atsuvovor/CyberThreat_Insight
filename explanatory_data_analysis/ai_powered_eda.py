@@ -128,6 +128,10 @@ import matplotlib.dates as mdates
 import os # Import the os module for path manipulation
 from sklearn.preprocessing import MinMaxScaler
 from IPython.display import display
+import os
+if os.getenv("INSTALL_DEPS", "false").lower() == "true":
+    os.system("pip install -r requirements.txt")
+
 
 # Function to normalize numerical features using Min-Max Scaling
 def normalize_numerical_features(p_df):
