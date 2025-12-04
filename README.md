@@ -234,7 +234,7 @@ This color based scenarios approach aligns urgency with the dual factors of **th
 
 
 
-####**2. Explanatory Data Analysis(EDA)**
+#### **2. Explanatory Data Analysis(EDA)**
 
 The following steps were implemented in the exploratory data analysis (EDA) pipeline to analyze the dataset's key features and distribution patterns:
 
@@ -265,7 +265,7 @@ This pipeline provides a detailed understanding of numerical and categorical fea
 
 
   
-####**3. Features Engineering Pipeline**
+#### **3. Features Engineering Pipeline**
 
 The feature engineering pipeline was designed to simulate realistic cybersecurity scenarios, enhance anomaly detection, and prepare the dataset for effective model training. It involved the following key steps:
 
@@ -282,7 +282,7 @@ This workflow produced a clean, balanced, and interpretable feature set optimize
 
 
 
-####**4. Train-Test Split**
+#### **4. Train-Test Split**
 A function is defined to split the augmented feature matrix and target vector
 Assign the results to variables representing the training and testing data```
 Define a function for splitting the dataset into training and testing subsets
@@ -290,22 +290,22 @@ Use train_test_split from sklearn to randomly split the data
 `test_size=0.2` specifies that 20% of the data will be allocated to the testing set.    
 
 
-####**5. Anomaly Detection Models Developement**
+#### **5. Anomaly Detection Models Developement**
 We implemented two supervised machine learning algorithms(Random Forest
 Gradient Boosting), six unsupervised machine learning algorithms(Isolation Forest
 One-Class SVM, DBSCAN, Autoencoder, K-means Clustering, Local Outlier Factor (LOF)) and one mixed superviced and unsupervised machine learning algorithm(LSTM (Long Short-Term Memory))  
   
 
-####**6. Best model Selection**  
+#### **6. Best model Selection**  
 We chosed the most performing algorithm based on each model 'Overall Model Accuracy'.  
 
 
-####**7. Best Model Deployment**  
+#### **7. Best Model Deployment**  
 We deployed the winning medel to myGoogle drive.
 
 Through this systematic approach, CyberThreat Insight will contribute to a deeper understanding of behavioral anomalies, equipping organizations with the tools needed to anticipate and mitigate cybersecurity risks effectively.
 
-####**8. Best Model Testing**
+#### **8. Best Model Testing**
 As testing strategy, we will uploard the best model and run it with the inital synthetic data that serve as real time production data. The main reason of using the initial synthetic data is that the model was developed using augmented data. The purpuse of our testing strategy is to capture the model performance on the real data.   
 We will run the model performance visualization charts like:  
 - Squater Plot on y = Data Transfer, X = Session Duration  
@@ -315,7 +315,7 @@ We will run the model performance visualization charts like:
 
 As part of our testing strategy, we will evaluate the best-performing model using the **initial synthetic dataset**. This dataset simulates real-time production environments and is independent of the augmented data used during training. This approach allows us to evaluate **how well the model generalizes to operational-like conditions** and to identify any overfitting to the augmented training data.
 
-#####**Evaluation Metrics**
+##### **Evaluation Metrics**
 
 We will generate the following performance outputs and charts to interpret model behavior across all threat levels:
 
