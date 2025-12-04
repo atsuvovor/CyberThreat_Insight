@@ -113,8 +113,6 @@ This code performs Exploratory Data Analysis (EDA) on a cybersecurity dataset to
 - Calls the main EDA pipeline function and stores the returned frequency-based DataFrame in the `real_world_normal_and_anomalous_df` variable.
 """
 
-#!pip install faiss-cpu sentence-transformers openai rapidfuzz
-#!pip install streamlit
 
 #Exploratory Data Analysis (EDA) Code
 # --------------------------
