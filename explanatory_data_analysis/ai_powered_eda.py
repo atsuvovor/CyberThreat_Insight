@@ -113,8 +113,8 @@ This code performs Exploratory Data Analysis (EDA) on a cybersecurity dataset to
 - Calls the main EDA pipeline function and stores the returned frequency-based DataFrame in the `real_world_normal_and_anomalous_df` variable.
 """
 
-!pip install faiss-cpu sentence-transformers openai rapidfuzz
-!pip install streamlit
+#!pip install faiss-cpu sentence-transformers openai rapidfuzz
+#!pip install streamlit
 
 #Exploratory Data Analysis (EDA) Code
 # --------------------------
@@ -893,11 +893,17 @@ class AIValidatorAgent:
         from google.colab import drive
         drive.mount('/content/drive')
         folder = "/content/drive/My Drive/Cybersecurity Data"
+        #from utils import load_dataset
         file_name = "normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb2.csv"
+        
+        #df = load_dataset(folder+ file_name)
+
+       
         path = os.path.join(folder, file_name)
         if not os.path.exists(path):
             raise FileNotFoundError(f"❌ File not found in Google Drive: {path}")
         df = pd.read_csv(path)
+        #df = load_dataset(folder+ file_name)
         return self._postprocess(df)
 
     def load_from_upload(self, file_path: str = None) -> pd.DataFrame:
