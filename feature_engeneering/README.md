@@ -674,15 +674,15 @@ if __name__ == "__main__":
 
 ```
 <p align="center">
-  <img src="SMOT-GAN performance plots.png" 
+  <img src="feature plots.png" 
        alt="Centered Image" 
-       style="width: 250px; height: auto;">
+       style="width: 500px; height: auto;">
 </p>
 
 <p align="center">
-  <img src="SMOT - GAN performance plots 3D.png" 
+  <img src="Shap.png" 
        alt="Centered Image" 
-       style="width: 250px; height: auto;">
+       style="width: 500px; height: auto;">
 </p>
 
 
@@ -1412,6 +1412,27 @@ if __name__ == "__main__":
     SMOTE_GANs_evaluation_pipeline()
 
 ```
+
+<p align="center">
+  <img src="SMOT-GAN performance plots.png" 
+       alt="Centered Image" 
+       style="width: 500px; height: auto;">
+</p>
+
+<p align="center">
+  <img src="SMOT - GAN performance plots 3D.png" 
+       alt="Centered Image" 
+       style="width: 500px; height: auto;">
+</p>
+
+
+<p align="center">
+  <img src="SMOT - GAN performance plots 3D.png" 
+       alt="Centered Image" 
+       style="width: 500px; height: auto;">
+</p>
+
+
 
 ---
 
