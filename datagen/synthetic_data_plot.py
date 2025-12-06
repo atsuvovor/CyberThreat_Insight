@@ -1,3 +1,19 @@
+#Author: Atsu Vovor
+# =======================
+# Required Libraries
+# =======================
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+import seaborn as sns
+
+from sklearn.preprocessing import MinMaxScaler
+
+# For notebook environments; if using a .py file, you can remove display()
+from IPython.display import display
+
+
 def normalize_numerical_features(p_df):
     scaler = MinMaxScaler()
     p_df_daily = p_df.copy()
@@ -262,6 +278,8 @@ def explaratory_data_analysis_pipeline(df=None):
     if df is None:
         file_path_to_normal_and_anomalous_google_drive = \
                         "/content/drive/My Drive/Cybersecurity Data/normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb.csv"
+        #load real_world_simulated_normal_and_anomalous_df
+        df = pd.read_csv(file_path_to_normal_and_anomalous_google_drive)
 
     eda_features =  [
     "Date Reported", "Issue Response Time Days", "Impact Score", "Cost",
@@ -274,8 +292,7 @@ def explaratory_data_analysis_pipeline(df=None):
     "Session Duration in Second", "Num Files Accessed", "Login Attempts",
     "Data Transfer MB", "CPU Usage %", "Memory Usage MB", "Threat Score"
     ]
-    #load real_world_simulated_normal_and_anomalous_df
-    df = pd.read_csv(file_path_to_normal_and_anomalous_google_drive)
+ 
 
     reporting_frequency = 'Quarter'
     frequency = reporting_frequency[0].upper()
