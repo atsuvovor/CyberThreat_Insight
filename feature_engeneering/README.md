@@ -98,6 +98,9 @@ To address the significant class imbalance between benign and malicious sessions
 
 Through this comprehensive workflow, we generated a clean, balanced, and interpretable feature set optimized for training machine learning models. This feature engineering pipeline enabled the system to detect nuanced threat patterns while maintaining explainability and performance across diverse threat levels.
 
+<details>
+
+<summary>Click to view the code</summary>
 
 ```python
 # ==============================
@@ -673,6 +676,10 @@ if __name__ == "__main__":
     fe_processed_df, cat_cols_label_encoders, num_fe_scaler = features_engineering_pipeline()
 
 ```
+
+</details>
+
+
 <p align="center">
   <img src="feature plots.png" 
        alt="Centered Image" 
@@ -824,6 +831,9 @@ By combining **SMOTE** and **GANs**, we created a rich, well-balanced dataset th
 
 This hybrid augmentation pipeline significantly improves the reliability and robustness of our cyber threat insight models
 
+<details>
+
+<summary>Click to view the code</summary>
 
 ```python
 import numpy as np
@@ -1045,6 +1055,8 @@ def data_augmentation_pipeline(file_path="", lead_save_true_false = True):
     augmented_df, d_loss_real_list, d_loss_fake_list, g_loss_list = data_augmentation_pipeline()
 ```
 
+</details>
+
 ### **SMOTE and GAN augmentation models performance Analysis**
 
 
@@ -1121,6 +1133,9 @@ By integrating SMOTE and GANs in the final feature engineering phase, and valida
 
 This augmentation pipeline plays a **critical role** in enabling our models to detect both known and previously unseen cyber threats with high reliability.
 
+<details>
+
+<summary>Click to view the code</summary>
 
 ```python
 import numpy as np
@@ -1412,7 +1427,7 @@ if __name__ == "__main__":
     SMOTE_GANs_evaluation_pipeline()
 
 ```
-
+</details>
 <p align="center">
   <img src="SMOT-GAN performance plots.png" 
        alt="Centered Image" 
