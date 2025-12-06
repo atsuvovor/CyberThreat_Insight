@@ -52,7 +52,7 @@ print("Flowchart generated successfully!")
 <p align="center">
   <img src="feature_engineering_flowwwchart.png" 
        alt="Centered Image" 
-       style="width: 150px; height: auto;">
+       style="width: 200px; height: auto;">
 </p>
 
 ## **Feature Analyis**  .
