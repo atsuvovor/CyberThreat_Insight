@@ -14,6 +14,9 @@ The feature engineering process in our *Cyber Threat Insight* project was strate
 
 #### **Feature Engineering Flowchart**
 
+<details>
+
+<summary>Click to view the code</summary>
 
 ```python
 from graphviz import Digraph
@@ -49,6 +52,9 @@ features_engineering_flowchart = dot.render("features_engineering_flowchart", fo
 display(Image(filename="features_engineering_flowchart.png"))
 print("Flowchart generated successfully!")
 ```
+
+</details>
+
 <p align="center">
   <img src="feature_engineering_flowwwchart.png" 
        alt="Centered Image" 
