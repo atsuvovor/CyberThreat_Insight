@@ -673,6 +673,18 @@ if __name__ == "__main__":
     fe_processed_df, cat_cols_label_encoders, num_fe_scaler = features_engineering_pipeline()
 
 ```
+<p align="center">
+  <img src="SMOT-GAN performance plots.png" 
+       alt="Centered Image" 
+       style="width: 250px; height: auto;">
+</p>
+
+<p align="center">
+  <img src="SMOT - GAN performance plots 3D.png" 
+       alt="Centered Image" 
+       style="width: 250px; height: auto;">
+</p>
+
 
  #### **Feature Engineering – Advanced Data Augmentation using SMOTE and GANs**
 
