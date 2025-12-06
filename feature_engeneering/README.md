@@ -676,13 +676,13 @@ if __name__ == "__main__":
 <p align="center">
   <img src="feature plots.png" 
        alt="Centered Image" 
-       style="width: 500px; height: auto;">
+       style="width: 700px; height: auto;">
 </p>
 
 <p align="center">
   <img src="Shap.png" 
        alt="Centered Image" 
-       style="width: 500px; height: auto;">
+       style="width: 700px; height: auto;">
 </p>
 
 
@@ -1416,20 +1416,20 @@ if __name__ == "__main__":
 <p align="center">
   <img src="SMOT-GAN performance plots.png" 
        alt="Centered Image" 
-       style="width: 500px; height: auto;">
+       style="width: 700px; height: auto;">
 </p>
 
 <p align="center">
   <img src="SMOT - GAN performance plots 3D.png" 
        alt="Centered Image" 
-       style="width: 500px; height: auto;">
+       style="width: 700px; height: auto;">
 </p>
 
 
 <p align="center">
-  <img src="SMOT - GAN performance plots 3D.png" 
+  <img src="GANs_performance.png.png" 
        alt="Centered Image" 
-       style="width: 500px; height: auto;">
+       style="width: 700px; height: auto;">
 </p>
 
 
