@@ -1434,8 +1434,6 @@ if __name__ == "__main__":
 
 
 
----
-
 ## 🤝 Connect With Me
 I am always open to collaboration and discussion about new projects or technical roles.
 
