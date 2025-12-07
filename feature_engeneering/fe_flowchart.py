@@ -73,7 +73,7 @@ def generate_feature_engineering_flowchart(output_name="features_engineering_flo
     # Render to PNG
     # ---------------------------
     filepath = dot.render(output_name, format="png", cleanup=False)
-    #display(Image(filename=filepath))
+    display(Image(filename=filepath))
     return filepath
 
 
@@ -87,7 +87,7 @@ if __name__ == "__main__":
     
     abs_path = os.path.abspath(output_file)
 
-    display(Image(filename=abs_path))
+    #display(Image(filename=abs_path))
             
     print("\nFlowchart generated successfully!")
     print(f"Saved to: {abs_path}")
