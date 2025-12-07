@@ -2,7 +2,7 @@
 <p align="center">
   <img src="feature_engineering2.png" 
        alt="Centered Image" 
-       style="width: 700px; height: 40%;">
+       style="width: 40%; height: 40%;">
 </p>
 
 
