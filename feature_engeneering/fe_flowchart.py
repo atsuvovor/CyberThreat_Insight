@@ -6,6 +6,7 @@
 # --------------------------------------------------------------
 
 from graphviz import Digraph
+from IPython.display import Image
 import os
 
 def generate_feature_engineering_flowchart(output_name="features_engineering_flowchart"):
