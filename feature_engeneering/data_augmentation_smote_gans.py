@@ -219,6 +219,6 @@ def data_augmentation_pipeline(file_path="", lead_save_true_false = True):
     return augmented_df, d_loss_real_list, d_loss_fake_list, g_loss_list
 
 # -------------------------- Run the pipeline --------------------------
-#if __name__ == "__main__":
+if __name__ == "__main__":
     # Execute the full augmentation pipeline if the script is run directly
     augmented_df, d_loss_real_list, d_loss_fake_list, g_loss_list = data_augmentation_pipeline()
