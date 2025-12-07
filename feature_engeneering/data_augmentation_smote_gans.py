@@ -16,6 +16,8 @@ import os
 
 from IPython.display import display
 from feature_creation import load_objects_from_drive
+from smote_gan_models_performance import plot_combined_analysis_2d_3d
+
 
 # ------------------------- SMOTE: Handle class imbalance -------------------------
 def balance_data_with_smote(df, target_column="Threat Level"):
@@ -215,6 +217,10 @@ def data_augmentation_pipeline(file_path="", lead_save_true_false = True):
         print("Saving data to Google Drive...")
         save_dataframe_to_google_drive(augmented_df, x_y_augmented_data_google_drive)
 
+    print("plotting combined analysis 2D and 3D")
+    features_engineering_columns = X_augmented.columns
+    plot_combined_analysis_2d_3d(fe_processed_df, X_augmented, y_augmented, features_engineering_columns)
+    
     print("Data augmentation process complete.")
 
     return augmented_df, d_loss_real_list, d_loss_fake_list, g_loss_list
