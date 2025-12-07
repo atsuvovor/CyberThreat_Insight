@@ -1,6 +1,9 @@
 ## **CyberThreat-Insight Feature Engineering**  
+
 <p align="center">
-  <img src="feature_engineering2.png" alt="Centered Image">
+  <img src="feature_engineering2.png" 
+       alt="Centered Image" 
+       style="width: 1500px; height: auto;">
 </p>
 **Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI**
 
