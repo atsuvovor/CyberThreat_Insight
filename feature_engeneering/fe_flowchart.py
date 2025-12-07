@@ -86,7 +86,7 @@ if __name__ == "__main__":
     
     abs_path = os.path.abspath(output_file)
 
-    display(Image(filename=abs_path)
+    display(Image(filename=abs_path))
             
     print("\nFlowchart generated successfully!")
     print(f"Saved to: {abs_path}")
