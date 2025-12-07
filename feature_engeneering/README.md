@@ -15,8 +15,7 @@ The feature engineering process in our *Cyber Threat Insight* project was strate
 🔗 Live Dashboard:
 <a 
   href="https://colab.research.google.com/github/atsuvovor/CyberThreat_Insight/blob/main/feature_engeneering/fe_flowchart_github_v2.ipynb"
-  target="_parent"
->
+  target="_parent">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
