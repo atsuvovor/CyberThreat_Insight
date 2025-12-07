@@ -2,10 +2,6 @@
 **Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI**
 
 **Toronto, Septeber 08 2025**  
-**Autor : Atsu Vovor**
->Master of Management in Artificial Intelligence    
->Consultant Data Analytics Specialist | Machine Learning |  
-Data science | Quantitative Analysis |French & English Bilingual   
 
 ###  **Feature Engineering**   
 The feature engineering process in our *Cyber Threat Insight* project was strategically designed to simulate realistic cyber activity, enhance anomaly visibility, and prepare a high-quality dataset for training robust threat classification models. Given the natural rarity and imbalance of cybersecurity anomalies, we adopted a multi-step workflow combining statistical simulation, normalization, feature selection, explainability, and data augmentation.
