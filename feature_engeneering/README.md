@@ -3,7 +3,7 @@
 <p align="center">
   <img src="feature_engineering2.png" 
        alt="Centered Image" 
-       style="width: 700px; height: 400px;">
+       style="width: 700px; height: 70%;">
 </p>
 **Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI**
 
