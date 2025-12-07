@@ -6,7 +6,7 @@
 </p>
 
 
-###  **Feature Engineering**   
+## **Overview**   
 The feature engineering process in our *Cyber Threat Insight* project was strategically designed to simulate realistic cyber activity, enhance anomaly visibility, and prepare a high-quality dataset for training robust threat classification models. Given the natural rarity and imbalance of cybersecurity anomalies, we adopted a multi-step workflow combining statistical simulation, normalization, feature selection, explainability, and data augmentation.
 
 
