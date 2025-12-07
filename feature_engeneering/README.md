@@ -11,7 +11,7 @@ The feature engineering process in our *Cyber Threat Insight* project was strate
 
 
 
-#### **Feature Engineering Flowchart**🔗 Live Dashboard:
+#### **Feature Engineering Flowchart**  🔗 Run The code:
 <a 
   href="https://colab.research.google.com/github/atsuvovor/CyberThreat_Insight/blob/main/feature_engeneering/fe_flowchart_github_v2.ipynb"
   target="_parent">
