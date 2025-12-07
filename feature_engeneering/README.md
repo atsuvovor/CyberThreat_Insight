@@ -104,8 +104,9 @@ To address the significant class imbalance between benign and malicious sessions
 Through this comprehensive workflow, we generated a clean, balanced, and interpretable feature set optimized for training machine learning models. This feature engineering pipeline enabled the system to detect nuanced threat patterns while maintaining explainability and performance across diverse threat levels.
 
 <details>
-
-<summary>Click to view the code</summary>
+<summary style="background-color: #D9E6F2; padding: 5px 10px; border-radius: 5px; display: inline-block; cursor: pointer;">
+    Click to view the code
+</summary>
 
 ```python
 # ==============================
