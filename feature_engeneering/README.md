@@ -3,7 +3,7 @@
   <img src="feature_engineering2.png" 
        alt="Centered Image" 
        style="width: 600px; height: 40%;">
-</p>
+</p>  
 
 
 ## **Overview**   
