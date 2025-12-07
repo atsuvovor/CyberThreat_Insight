@@ -73,7 +73,7 @@ def generate_feature_engineering_flowchart(output_name="features_engineering_flo
     # Render to PNG
     # ---------------------------
     filepath = dot.render(output_name, format="png", cleanup=False)
-    display(Image(filename=filepath))
+    #display(Image(filename=filepath))
     return filepath
 
 
