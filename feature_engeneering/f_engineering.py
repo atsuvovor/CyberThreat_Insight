@@ -1081,8 +1081,8 @@ def plot_combined_analysis_2d_3d(fe_processed_df, X_augmented, y_augmented, feat
 def SMOTE_GANs_evaluation_pipeline():
     data_augmentation_pipeline()
 
-    loss_df = load_dataset("/content/drive/My Drive/Cybersecurity Data/gan_loss_log.csv")
-    augmented_df = load_dataset("/content/drive/My Drive/Cybersecurity Data/x_y_augmented_data_google_drive.csv")
+    loss_df = load_dataset("CyberThreat_Insight/cybersecurity_data/gan_loss_log.csv")
+    augmented_df = load_dataset("CyberThreat_Insight/cybersecurity_data/x_y_augmented_data_google_drive.csv")
     fe_processed_df, loaded_label_encoders, num_fe_scaler = load_objects_from_drive()
 
     X_augmented = augmented_df.drop(columns=["Threat Level"])
