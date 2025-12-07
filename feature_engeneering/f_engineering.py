@@ -24,8 +24,8 @@ Original file is located at
 #======================
 from graphviz import Digraph
 from IPython.display import Image
-from google.colab import drive
-drive.mount('/content/drive')
+#from google.colab import drive
+#drive.mount('/content/drive')
 import os
 import pickle
 import numpy as np
@@ -126,9 +126,9 @@ def get_column_dic():
 def save_objects_to_drive(df_fe,
                           cat_cols_label_encoders,
                           num_fe_scaler,
-                          filepath_df="/content/drive/My Drive/Cybersecurity Data/df_fe.pkl",
-                          filepath_cat_cols_label_encoders="/content/drive/My Drive/Model deployment/cat_cols_label_encoders.pkl",
-                          filepath_num_fe_scaler="/content/drive/My Drive/Model deployment/ num_fe_scaler.pkl"):
+                          filepath_df="CyberThreat_Insight/cybersecurity_data/df_fe.pkl",
+                          filepath_cat_cols_label_encoders="CyberThreat_Insight/model_deployment/cat_cols_label_encoders.pkl",
+                          filepath_num_fe_scaler="CyberThreat_Insight/model_deployment/num_fe_scaler.pkl"):
     try:
         # Ensure the directory exists for df_fe
         df_directory = os.path.dirname(filepath_df)
@@ -160,9 +160,9 @@ def save_objects_to_drive(df_fe,
 
 
 # ----------------Load df_fe and label_encoders from your Google Drive----------------------------------
-def load_objects_from_drive(filepath_df="/content/drive/My Drive/Cybersecurity Data/df_fe.pkl",
-                            filepath_cat_cols_label_encoders="/content/drive/My Drive/Model deployment/cat_cols_label_encoders.pkl",
-                            filepath_num_fe_scaler="/content/drive/My Drive/Model deployment/ num_fe_scaler.pkl"):
+def load_objects_from_drive(filepath_df="CyberThreat_Insight/cybersecurity_data/df_fe.pkl",
+                            filepath_cat_cols_label_encoders="CyberThreat_Insight/model_deployment/cat_cols_label_encoders.pkl",
+                            filepath_num_fe_scaler="CyberThreat_Insight/model_deployment/num_fe_scaler.pkl"):
     try:
         with open(filepath_df, 'rb') as f:
             df_fe = pickle.load(f)
@@ -186,8 +186,8 @@ def load_objects_from_drive(filepath_df="/content/drive/My Drive/Cybersecurity D
 #-------------Generate Synthetic Anomalies Using Cholesky-Based Perturbation-------------------
 
 def get_files_path(
-        normal_operations_file_path = "/content/drive/My Drive/Cybersecurity Data/normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb.csv",
-        combined_normal_and_anomaly_file_path = "/content/combined_normal_and_anomaly_output_file_for_google_drive_kb.csv"):
+        normal_operations_file_path = "CyberThreat_Insight/cybersecurity_data/cybersecurity_dataset_combined.csv",
+        combined_normal_and_anomaly_file_path = "/content/cybersecurity_dataset_combined_output.csv"):
 
     return {
         "normal_operations_file_path": normal_operations_file_path,
@@ -666,7 +666,7 @@ def build_gan(latent_dim, n_outputs):
 
 # -------------------------- Train GAN with Logging --------------------------
 def train_gan(generator, discriminator, X_real, latent_dim, epochs=1000, batch_size=64,
-              plot_loss=False, early_stop_patience=50, output_dir="/content/drive/My Drive/Cybersecurity Data/"):
+              plot_loss=False, early_stop_patience=50, output_dir="CyberThreat_Insight/cybersecurity_data/"):
     """
     Train GAN using real synthetic data with optional logging, early stopping, and visualization.
     Tracks generator and discriminator losses and saves logs and plots to output_dir.
@@ -776,8 +776,8 @@ def data_augmentation_pipeline(file_path="", lead_save_true_false = True):
     5. Combine with real samples
     6. Save final augmented dataset and loss logs
     """
-    x_y_augmented_data_google_drive = "/content/drive/My Drive/Cybersecurity Data/x_y_augmented_data_google_drive.csv"
-    loss_data_google_drive = "/content/drive/My Drive/Cybersecurity Data/loss_data_google_drive.csv"
+    x_y_augmented_data_google_drive = "CyberThreat_Insight/cybersecurity_data/x_y_augmented_data_google_drive.csv"
+    loss_data_google_drive = "CyberThreat_Insight/cybersecurity_data/loss_data_google_drive.csv"
 
     # Load preprocessed data from Google Drive
     if lead_save_true_false:
