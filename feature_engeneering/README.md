@@ -705,7 +705,7 @@ if __name__ == "__main__":
 </p>
 
 
- #### **Feature Engineering – Advanced Data Augmentation using SMOTE and GANs**
+ ## **Feature Engineering – Advanced Data Augmentation using SMOTE and GANs**
 
 To address severe class imbalance and enhance the quality of the synthetic training data in our cyber threat insight model, we implemented a hybrid augmentation strategy. This stage of feature engineering combines **SMOTE** (Synthetic Minority Over-sampling Technique) and **GANs** (Generative Adversarial Networks) to increase representation of rare threat levels and capture complex behavioral patterns often found in high-dimensional cybersecurity data.
 
