@@ -5,8 +5,8 @@
        alt="Centered Image" 
        style="width: 700px; height: 50%;">
 </p>
-<p>
-**Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI**  
+<p align="center">
+    nomalous Behavior Detection in Cybersecurity Analytics using Generative AI 
 </p>
 
 ###  **Feature Engineering**   
