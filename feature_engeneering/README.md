@@ -1,4 +1,7 @@
 ## **CyberThreat-Insight Feature Engineering**  
+<p align="center">
+  <img src="feature_engineering2.png" alt="Centered Image">
+</p>
 **Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI**
 
 
