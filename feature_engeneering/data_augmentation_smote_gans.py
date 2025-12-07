@@ -15,6 +15,7 @@ import matplotlib.pyplot as plt
 import os
 
 from IPython.display import display
+from feature_creation import load_objects_from_drive
 
 # ------------------------- SMOTE: Handle class imbalance -------------------------
 def balance_data_with_smote(df, target_column="Threat Level"):
