@@ -1,10 +1,14 @@
+#!/usr/bin/env python3
+# --------------------------------------------------------------
+# CyberThreat Insight – Data Augmentation (SMOTE + GAN)
+# Fully Executable Script with Comments
+# Author: Atsu Vovor
+# --------------------------------------------------------------
+
 # ==============================
 # Feature Creation
 # ==============================
 
-# --- Google Drive Mount ---
-#from google.colab import drive
-#drive.mount('/content/drive')
 
 # --- Imports ---
 import os
