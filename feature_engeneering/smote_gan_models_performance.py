@@ -1,3 +1,10 @@
+#!/usr/bin/env python3
+# --------------------------------------------------------------
+# CyberThreat Insight – smote_gan_models_performance.
+# Fully Executable Script with Comments
+# Author: Atsu Vovor
+# --------------------------------------------------------------
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
