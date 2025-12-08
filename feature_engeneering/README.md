@@ -1080,6 +1080,19 @@ def data_augmentation_pipeline(file_path="", lead_save_true_false = True):
 
 </details>
 
+<p align="center">
+  <img src="SMOT-GAN performance plots.png" 
+       alt="Centered Image" 
+       style="width: 1500px; height: auto;">
+</p>
+
+<p align="center">
+  <img src="SMOT - GAN performance plots 3D.png" 
+       alt="Centered Image" 
+       style="width: 1500px; height: auto;">
+</p>
+
+
 ### **SMOTE and GAN augmentation models performance Analysis**  
 🔗 Run the code:
 <a 
@@ -1457,18 +1470,6 @@ if __name__ == "__main__":
 
 ```
 </details>
-<p align="center">
-  <img src="SMOT-GAN performance plots.png" 
-       alt="Centered Image" 
-       style="width: 1500px; height: auto;">
-</p>
-
-<p align="center">
-  <img src="SMOT - GAN performance plots 3D.png" 
-       alt="Centered Image" 
-       style="width: 1500px; height: auto;">
-</p>
-
 
 <p align="center">
   <img src="GANs_performance.png" 
