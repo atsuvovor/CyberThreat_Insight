@@ -65,7 +65,7 @@ print("Flowchart generated successfully!")
        alt="Centered Image" 
        style="width: 250px; height: auto;">
 </p>
-
+---
 ## **Feature Creation and Analysis**  
 🔗 Run the code:
 <a 
@@ -709,7 +709,7 @@ if __name__ == "__main__":
        alt="Centered Image" 
        style="width: 500px; height: auto;">
 </p>
-
+---
 
 ## **Feature Engineering – Advanced Data Augmentation using SMOTE and GANs**  
 🔗 Run the code:
@@ -1091,7 +1091,7 @@ def data_augmentation_pipeline(file_path="", lead_save_true_false = True):
        alt="Centered Image" 
        style="width: 1500px; height: auto;">
 </p>
-
+---
 
 ### **SMOTE and GAN augmentation models performance Analysis**  
 🔗 Run the code:
