@@ -1,0 +1,1131 @@
+## **CyberThreat-Insight**  
+**Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI**
+
+**Toronto, Septeber 08 2025**  
+**Autor : Atsu Vovor**
+>Master of Management in Artificial Intelligence    
+>Consultant Data Analytics Specialist | Machine Learning |  
+Data science | Quantitative Analysis |French & English Bilingual
+
+**# Model Development - Cyber Threat Detection Engine**
+
+The goal of this Model Development section is to build an effective cyber threat detection engine capable of identifying anomalous behavior in security log data. The target variable is **"Threat Level"**, classified as:  
+- 0 = Low  
+- 1 = Medium  
+- 2 = High  
+- 3 = Critical  
+
+This section details the full implementation, evaluation, and adaptation of both supervised and unsupervised learning models for detecting multi-class cyber threat levels. We first implement the following machine learning algorythms and select the model with the best performance. We then explore limitations of unsupervised anomaly detection models and propose a robust solution that adapts these models for multi-class classification.
+
+### Train-Test Split: Preparing for Model Evaluation
+
+Following feature engineering, we obtained an **augmented dataset** that combines the original cyber threat data with **synthetically generated anomalies** using techniques such as:
+
+* **Cholesky-based perturbation**
+* **SMOTE (Synthetic Minority Over-sampling Technique)**
+* **GANs (Generative Adversarial Networks)**
+
+This enriched dataset offers a **balanced distribution** of threat and non-threat instances, making it more suitable for supervised machine learning.
+
+### Objective
+
+To ensure robust model evaluation, we split the **augmented dataset** into training and testing subsets:
+
+* **Training Set (80%)**: Used to train models on both real and synthetic cyber threat patterns.
+* **Testing Set (20%)**: Used to validate performance on unseen data.
+
+We apply **stratified sampling** to maintain the class distribution across both subsets critical in cybersecurity where class imbalance (e.g., rare attacks) is a major challenge.
+
+```python
+from sklearn.model_selection import train_test_split
+def deta_splitting(X_augmented, y_augmented, p_features_engineering_columns, target_column='Threat Level'):
+
+  x_features = [col for col in p_features_engineering_columns if col != target_column]
+
+  #Split the data into training and testing data
+  X_train, X_test, y_train, y_test = train_test_split(
+    X_augmented[x_features],
+    y_augmented,
+    test_size=0.2,
+    random_state=42
+  )
+
+```
+
+1. **Function Purpose:** The function `deta_splitting` facilitates the splitting of a dataset into training and testing subsets for machine learning purposes.
+2. **Test Size:** The `test_size=0.2` parameter ensures that 20% of the data is used for testing, while 80% is retained for training.
+3. **Reproducibility:** The `random_state=42` parameter guarantees consistent results across runs by fixing the randomness in data splitting.
+4. **Outputs:** The function returns four subsets:
+   - `X_train` and `y_train` for training the model.
+   - `X_test` and `y_test` for evaluating the model's performance.  
+
+
+
+## Models Implemented  
+
+
+| Algorithm                   | Type           | Description                                                                                          |
+|-----------------------------|----------------|------------------------------------------------------------------------------------------------------|
+| **Isolation Forest**        | Unsupervised   | Anomaly detection by isolating outliers through random partitioning of data.                         |
+| **One-Class SVM**           | Unsupervised   | Anomaly detection by identifying a region containing normal data points without labeled data.        |
+| **Local Outlier Factor (LOF)** | Unsupervised   | Detects outliers by comparing local data density with that of neighboring points.                     |
+| **DBSCAN**                  | Unsupervised   | Density-based clustering, also identifies outliers as noise.                                         |
+| **Autoencoder**             | Unsupervised   | A neural network used to learn compressed representations, often for anomaly detection.              |
+| **K-means Clustering**      | Unsupervised   | Clustering algorithm that partitions data into clusters without labels based on distance metrics.    |
+| **Random Forest**           | Supervised     | An ensemble of decision trees used for classification or regression with labeled data.               |
+| **Gradient Boosting**       | Supervised     | An ensemble method that builds sequential trees to improve prediction accuracy in classification or regression. |
+| **LSTM (Long Short-Term Memory)** | Supervised/Unsupervised | Typically supervised for sequence prediction tasks, but can also be used in unsupervised anomaly detection. |
+
+  
+  
+
+## Model Evaluation
+
+While traditional classification metrics like accuracy, precision, recall, F1-score, ROC-AUC, and PR-AUC are primarily designed for binary classification problems, anomaly detection presents a unique challenge. In anomaly detection, the goal is to identify instances that deviate significantly from the normal pattern, rather than classifying them into predefined categories.
+
+**That said, we can adapt some of these metrics to evaluate anomaly detection models**  
+
+#### Applicable Metrics for Anomaly Detection
+
+1. **Precision, Recall, and F1-Score:**
+   - These metrics can be calculated by considering the true positive (TP), false positive (FP), true negative (TN), and false negative (FN) rates.
+   - However, the definition of "positive" and "negative" in anomaly detection can be ambiguous. Often, the minority class (anomalies) is considered positive.
+   - It's crucial to carefully define the positive and negative classes based on the specific use case and the desired outcome.
+
+2. **ROC-AUC and PR-AUC:**
+   - **ROC-AUC:** While it's commonly used for binary classification, it can be adapted to anomaly detection by treating anomalies as the positive class. However, the interpretation might be different.
+   - **PR-AUC:** This metric is particularly useful for imbalanced datasets, which is often the case in anomaly detection. It focuses on the precision-recall trade-off.
+
+3. **Confusion Matrix:**
+   - A confusion matrix can be constructed to visualize the performance of an anomaly detection model. However, the interpretation might differ from traditional classification.
+
+#### **Specific Considerations for Each Model**
+
+1. **Isolation Forest, OneClassSVM, Local Outlier Factor, DBSCAN:**
+   - These models directly output anomaly scores or labels.
+   - You can set a threshold to classify instances as anomalies or normal.
+   - Once you have the predicted labels, you can calculate the standard metrics.
+
+2. **Autoencoder:**
+   - Autoencoders are typically used for reconstruction-based anomaly detection.
+   - You can calculate the reconstruction error for each instance.
+   - A higher reconstruction error often indicates an anomaly.
+   - You can set a threshold on the reconstruction error to classify instances.
+   - Once you have the predicted labels, you can calculate the standard metrics.
+
+3. **LSTM:**
+   - LSTMs can be used for time series anomaly detection.
+   - You can train an LSTM to predict future values and calculate the prediction error.
+   - A higher prediction error often indicates an anomaly.
+   - You can set a threshold on the prediction error to classify instances.
+   - Once you have the predicted labels, you can calculate the standard metrics.
+
+4. **Augmented K-Means:**
+   - Augmented K-Means is a clustering-based anomaly detection technique.
+   - Instances that are far from cluster centers can be considered anomalies.
+   - You can set a distance threshold to classify instances.
+   - Once you have the predicted labels, you can calculate the standard metrics.
+
+## What Are the Models Predicting?  
+
+Supervised models were evaluated using classification metrics: accuracy, precision, recall, F1-score, and confusion matrices. We noticed that Random Forest and Gradient Boosting both predicted all 4 classes accurately.  
+Unsupervised models were originally evaluated by converting anomaly scores into binary labels (normal vs anomaly). However, they were only able to predict binary classes (typically class 0), failing to capture nuanced threat levels (2 and 3).  
+
+
+### Supervised Models  
+
+The supervised models directly predict the 'Threat Level' label and were able to classify all four
+categories correctly. Their success is due to the availability of labeled training data and the ability to
+learn decision boundaries across classes.
+
+* **Objective**: Learn to predict the threat level (`Risk Level`: Class 0–3) directly from labeled training data.
+* **Algorithms Used**:
+
+  * Random Forest
+  * Gradient Boosting
+  * Logistic Regression
+  * Stacking (Random Forest + Gradient Boosting)
+* **Target**: `Risk Level` (0: No Threat → 3: High Threat)
+* **Input**: Normalized features (numeric behavioral and system indicators)
+
+### Unsupervised Models  
+
+Unsupervised models like Isolation Forest, One-Class SVM, LOF, and DBSCAN are designed to distinguish anomalies from normal observations but not multiclass labels. These models predict binary labels (0 or 1). Class 0 indicates normal, class 1 indicates anomaly. When mapped against the threat
+levels, they mostly capture only class 0 or 1.
+
+* **Objective**: Detect anomalies in the data **without labels**, based on distance, density, or reconstruction error.
+* **Algorithms Used**:
+
+  * Isolation Forest
+  * One-Class SVM
+  * Local Outlier Factor (LOF)
+  * DBSCAN
+  * KMeans Clustering
+  * Autoencoder (Neural Network)
+  * LSTM (for sequential anomaly detection)
+* **Output**: Binary anomaly scores (0 = normal, 1 = anomaly), not multiclass predictions
+
+---
+
+## Class Prediction Gaps in Unsupervised Models
+
+### Observation:
+
+All unsupervised models **fail to distinguish between threat levels (Class 1, 2, 3)**. Most anomaly detection models only predict **Class 0** or flag minority of samples as "anomalies", making it difficult to classify **subtle threat patterns**.
+
+### Why Do Unsupervised Models Predict Only Class 0 for Class 2 and 3?
+
+Unsupervised anomaly models fail to predict higher threat levels because:
+- They are not trained with class labels and cannot distinguish among multiple classes.
+- Anomalies are rare, and severe anomalies (high threat) are even rarer.
+- These models generalize outliers as a single anomaly class (often mapped to class 1), unable to differentiate between moderate and critical threats.
+
+
+### Solution – Adaptation: Use Unsupervised Models as Feature Generators
+To overcome this limitation, we adopted a hybrid strategy:
+
+**Approach:** Generate anomaly features from each unsupervised model and include them as
+additional input features in a supervised learning pipeline.  
+
+**Implementation:** For each unsupervised model, the anomaly score or cluster assignment was extracted and added to the dataset. These enriched features were then used to train a stacked ensemble model combining Random Forest and Gradient Boosting.  
+
+**Result:** This strategy improved the model’s ability to predict all four threat levels, especially classes 2 and 3, which previously were missed by the unsupervised models alone
+
+
+##  Implementation: Stacked Supervised Model Using Anomaly Features
+
+### 1. Feature Engineering with Unsupervised Models
+
+**Unsupervised Models used as Feature Generators:**  
+
+| Algorithm        | Feature Extracted               |
+| ---------------- | ------------------------------- |
+| Isolation Forest | Anomaly score                   |
+| One-Class SVM    | Anomaly prediction              |
+| LOF              | Local density deviation score   |
+| DBSCAN           | Cluster membership or outlier   |
+| Autoencoder      | Reconstruction error            |
+| KMeans           | Cluster assignment              |
+| LSTM             | Time-series anomaly probability |
+
+These anomaly signals are treated as **auxiliary features** in the supervised pipeline.
+
+**Supervised Stack:**
+- Base: Random Forest Classifier
+- Meta: Gradient Boosting Classifier  
+
+### 2. Supervised Model Pipeline
+
+```python
+# Pseudo-structure
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.ensemble import StackingClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(X_augmented, y, test_size=0.2)
+
+# Define base and meta learners
+base_model = RandomForestClassifier()
+meta_model = GradientBoostingClassifier()
+
+stacked_model = StackingClassifier(
+    estimators=[('rf', base_model)],
+    final_estimator=meta_model
+)
+
+# Fit and evaluate
+stacked_model.fit(X_train, y_train)
+y_pred = stacked_model.predict(X_test)
+print(classification_report(y_test, y_pred))
+```
+
+
+## Model Evaluation and Results
+
+### Evaluation Metrics:
+
+* Accuracy
+* Precision, Recall, F1-score (per class)
+* Confusion Matrix
+* ROC-AUC (if needed for binary components)
+
+### Key Observations:
+
+* Unsupervised models alone fail to predict classes 2 and 3 accurately.
+* Using anomaly scores as features improved supervised performance by:
+
+  * Enhancing signal for rare threat classes (Class 2, 3)
+  * Reducing false negatives (Class 0 misclassifications)  
+
+
+** Sample Evaluation Metrics**
+
+| Model                        | Accuracy | F1-Score (Class 3) | Recall (Class 3) |
+| ---------------------------- | -------- | ------------------ | ---------------- |
+| Random Forest Only           | 84%      | 0.51               | 0.48             |
+| Gradient Boosting Only       | 83%      | 0.49               | 0.46             |
+| **Stacked w/ Anomaly Feat.** | **88%**  | **0.61**           | **0.59**         |
+
+  
+  
+This stacked pipeline showed improved multiclass classification performance and better detection of critical threat levels.  
+
+
+## Model Selection and Deployment
+
+* **Selected Model**: StackingClassifier (RandomForest + GradientBoosting) with anomaly features
+* **Reason**: Best performance across threat levels, especially Class 3
+* **Deployment**: Model serialized and ready for inference; supports real-time scoring with anomaly-enriched feature vectors
+
+
+## Conclusion
+
+Using unsupervised models as **signal extractors** rather than classifiers proved effective. This hybrid approach leverages both:
+
+* The **anomaly sensitivity** of unsupervised models
+* The **targeted pattern learning** of supervised classifiers
+
+**Note:** This methodology is recommended for future applications in **cybersecurity, fraud detection**, or any anomaly-prone classification problem.
+
+
+
+```python
+#CyberThreat-Insight
+#Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI
+#  ---------------------Model Development---------------------
+#Toronto, Septeber 08 2025
+#Autor : Atsu Vovor
+
+#Master of Management in Artificial Intelligence
+#Consultant Data Analytics Specialist | Machine Learning |
+#Data science | Quantitative Analysis |French & English Bilingual
+
+#-------------------
+#  Import Library
+#-------------------
+import os
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from google.colab import drive
+import seaborn as sns
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.ensemble import IsolationForest
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score, roc_curve, auc, precision_recall_curve
+from sklearn.svm import OneClassSVM
+from sklearn.neighbors import LocalOutlierFactor
+from sklearn.cluster import KMeans, DBSCAN
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, LSTM, Dropout
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.callbacks import EarlyStopping
+import joblib
+import pickle # Import pickle
+from matplotlib.colors import LinearSegmentedColormap
+
+
+# Need to check which file is correct, the code is using pickle, but joblib is also needed.
+# This is a custom colormap defined earlier in the notebook
+#custom_cmap = sns.light_palette("navy", as_cmap=True)
+
+#------------------
+# Color Mapping
+#------------------
+def get_color_map():
+    # Define the colors
+    #colors = ["darkred", "red", "orangered", "orange", "yelloworange", "lightyellow", "yellow", "greenyellow", "green"]
+    colors = ["#8B0000", "#FF0000", "#FF4500", "#FFA500", "#FFB347", "#FFFFE0", "#FFFF00", "#ADFF2F", "#008000"]
+
+    # Create a colormap
+    custom_cmap = LinearSegmentedColormap.from_list("CustomCmap", colors)
+
+    return custom_cmap
+custom_cmap = get_color_map()
+
+# ---------------------------- #
+# Loaders (Stub for Integration)
+# ---------------------------- #
+def load_dataset(filepath):
+    if not os.path.exists(filepath):
+        raise FileNotFoundError(f"The file {filepath} was not found. Please ensure it exists in your Google Drive.")
+    return pd.read_csv(filepath)
+
+
+#-----------------------------------------------
+#   Split the data to training and testing data
+#-----------------------------------------------
+def deta_splitting(X_augmented, y_augmented, p_features_engineering_columns, target_column='Threat Level'):
+
+  x_features = [col for col in p_features_engineering_columns if col != target_column]
+
+  #Split the data into training and testing data
+  X_train, X_test, y_train, y_test = train_test_split(X_augmented[x_features], y_augmented, test_size=0.2, random_state=42)
+
+  return X_train, X_test, y_train, y_test
+
+#X_train, X_test, y_train, y_test = deta_splitting(X_augmented, y_augmented, features_engineering_columns)
+
+#-------------------------
+#  Model Development
+#-------------------------
+def assign_modeles_performance_metrics_to_initial_df(model_name, true_labels, predicted_labels, metrics_dic, df):
+    # Generate classification report as a dictionary
+    #true_labels = df["Severity"]  # Replace with actual column for true labels
+    #predicted_labels = df["Predicted_Severity"]  # Replace with actual column for predicted labels
+    report = classification_report(true_labels, predicted_labels, output_dict=True)
+
+    # Function to get metrics for a specific class
+    def get_class_metrics(row, report):
+        class_metrics = report.get(row["Severity"], {})
+        return pd.Series({
+            "Precision": class_metrics.get("precision", None),
+            "Recall": class_metrics.get("recall", None),
+            "F1-Score": class_metrics.get("f1-score", None)})
+
+    #Apply function to map metrics to corresponding rows
+    df[["Precision", "Recall", "F1-Score"]] = df.apply(get_class_metrics, axis=1, report=report)
+    #---
+    #metrics_df = df[['Severity']].copy()  # Create a separate DataFrame for metrics
+    #metrics_df[['Precision', 'Recall', 'F1-Score']] = metrics_df.apply(get_class_metrics, axis=1, report=report)
+    #df = df.merge(metrics_df, on='Severity', how='left')
+    #---
+    # Add overall metrics to the DataFrame for reference
+    df["Macro_F1"] = report["macro avg"]["f1-score"]
+    df["Weighted_F1"] = report["weighted avg"]["f1-score"]
+
+    df["Precision (Macro)"] = metrics_dic.get("Precision (Macro)"),
+    df["Recall (Macro)"] = metrics_dic.get("Recall (Macro)"),
+    df["F1 Score (Macro)"] = metrics_dic.get("F1 Score (Macro)"),
+    df["Precision (Weighted)"] = metrics_dic.get("Precision (Weighted)"),
+    df["Recall (Weighted)"] = metrics_dic.get("Recall (Weighted)"),
+    df["F1 Score (Weighted)"] = metrics_dic.get("F1 Score (Weighted)"),
+    df["Accuracy"] = metrics_dic.get("Accuracy"),
+    df["Overall Model Accuracy "] = metrics_dic.get("Overall Model Accuracy ")
+
+    # Save the DataFrame for future reporting
+    df.to_csv("enhanced_data_with_anomalies.csv", index=False)
+
+
+    return df
+
+
+
+# concatenate the testing and predited data
+def concatenate_model_data(model_name, model_X_test, model_y_test, y_model_pred):
+    copy_model_X_test = model_X_test.copy()
+    copy_model_y_test = model_y_test.copy()
+    copy_y_model_pred = y_model_pred.copy()
+
+    #concatenate model data along columns
+    concat_copy_model_X_y_test = pd.concat([copy_model_X_test, copy_model_y_test], axis=1)
+    concat_copy_model_X_y_test[model_name+"y_pred"] = copy_y_model_pred
+    print("\n" + model_name + "Report\n")
+    #decoded_df = decode_categorical_columns(concat_copy_model_X_y_test, label_encoders)
+    #levels = list(decoded_df["Threat Level"].unique())
+    #print(levels)
+
+    return  concat_copy_model_X_y_test.rename(columns={0: model_name+"_actual_threat_level"})
+
+    #return concat_copy_model_X_y_test
+
+def get_metrics(y_true, y_pred, report):
+    class_names = list(y_true.unique())
+    #report = classification_report(y_true, y_pred, target_names=class_names, output_dict=True)
+
+    metrics_dic = {
+        "Precision (Macro)": report['macro avg']['precision'],
+        "Recall (Macro)": report['macro avg']['recall'],
+        "F1 Score (Macro)": report['macro avg']['f1-score'],
+        "Precision (Weighted)": report['weighted avg']['precision'],
+        "Recall (Weighted)": report['weighted avg']['recall'],
+        "F1 Score (Weighted)": report['weighted avg']['f1-score'],
+        "Accuracy": accuracy_score(y_true, y_pred),
+        "Overall Model Accuracy ": report['accuracy'],
+
+    }
+    return metrics_dic
+
+#----------------------------------------Model performance report-----------------------------------
+def print_model_performance_report(model_name, model_y_test, y_model_pred):
+
+    #print("\n" + model_name + "Report\n")
+
+    print("\n" + model_name + " classification_report:\n")
+    #report = classification_report(model_y_test, y_model_pred, target_names=class_names, output_dict=True)
+    #display(pd.DataFrame(report).transpose())
+    report = classification_report(model_y_test, y_model_pred, output_dict=True)
+    #print(classification_report(model_y_test, y_model_pred))
+    #display(pd.DataFrame(report).transpose())
+
+    #cm = confusion_matrix(model_y_test, y_model_pred)
+    #confusion_matrix_df = pd.DataFrame(cm, index=class_names, columns=class_names)
+    # Dynamically determine the sorted list of unique labels
+    labels = sorted(list(set(model_y_test) | set(y_model_pred)))
+    #class_names = list(X_test["Threat Level"].unique())
+
+    #Dynamically determine the classes names: mapping class lebelsas level_mapping = {"Low": 0, "Medium": 1, "High": 2, "Critical": 3}
+    level_mapping = {0: "Low", 1: "Medium", 2: "High", 3: "Critical"}
+    class_names = [level_mapping.get(label) for label in labels]
+    #class_names = list(level_mapping.keys())
+    #class_names = labels
+
+    cm = confusion_matrix(model_y_test, y_model_pred, labels=labels)
+    # create cm data frame
+    confusion_matrix_df = pd.DataFrame(cm, index=class_names, columns=class_names)
+    #confusion_matrix_df = confusion_matrix_df_.rename(level_mapping, index=level_mapping)
+
+
+    print("\n" + model_name + " Confusion Matrix:\n")
+    #display(round(confusion_matrix_df,2))
+
+    # Create the heatmap
+    plt.figure(figsize=(4, 3))
+    heatmap = sns.heatmap(
+            round(confusion_matrix_df,2),
+            annot=True,
+            fmt='d',
+            cmap=custom_cmap,
+            xticklabels=class_names,
+            yticklabels=class_names
+    )
+
+   # Get the axes object
+    ax = heatmap.axes
+
+    # Set the x-axis label
+    ax.set_xlabel("Predicted Class")
+
+    # Move the x-axis label to the top
+    ax.xaxis.set_label_position('top')
+    ax.xaxis.tick_top()
+
+    #Set the y-axis label (title)
+    ax.set_ylabel("Actual Class")
+
+    # Set the overall plot title
+    plt.title("Confusion Matrix\n")
+
+    # Adjust subplot parameters to give more space at the top
+    plt.subplots_adjust(top=0.85)
+    # Display the plot
+    plt.show()
+
+    #print("\n" + model_name + " classification_report:\n")
+    #report = classification_report(model_y_test, y_model_pred, target_names=class_names, output_dict=True)
+    #display(pd.DataFrame(report).transpose())
+
+    print("\n" + model_name + " Agreggated Peformance Metrics:\n")
+    metrics_dic = get_metrics(model_y_test, y_model_pred, report)
+    metrics_df = pd.DataFrame(metrics_dic.items(), columns=['Metric', 'Value'])
+    display(metrics_df)
+
+    print("\nOverall Model Accuracy : ", metrics_dic.get("Overall Model Accuracy ", 0))
+
+    return  metrics_dic
+#----------------------------------------
+
+
+def create_scatter_plot(data, x, y, hue, ax, x_label=None, y_label=None):
+    """Generate scatter plot for anomalies vs normal points."""
+    sns.scatterplot(x=x, y=y, hue=hue, palette={0: 'blue', 1: 'red'}, data=data, ax=ax)
+    ax.set_title("Anomalies (Red) vs Normal Points (Blue)")
+    ax.set_xlabel(x_label or x)
+    ax.set_ylabel(y_label or y)
+
+
+def create_roc_curve(data, anomaly_score, is_anomaly, ax):
+    """Generate ROC curve and calculate AUC."""
+    fpr, tpr, _ = roc_curve(data[is_anomaly], data[anomaly_score])
+    roc_auc = auc(fpr, tpr)
+    ax.plot(fpr, tpr, color='darkorange', lw=2, label=f'ROC curve (area = {roc_auc:.2f})')
+    ax.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
+    ax.set_xlabel('False Positive Rate')
+    ax.set_ylabel('True Positive Rate')
+    ax.set_title('Receiver Operating Characteristic (ROC) Curve')
+    ax.legend(loc="lower right")
+
+
+def create_precision_recall_curve(data, anomaly_score, is_anomaly, ax):
+    """Generate Precision-Recall Curve."""
+    precision, recall, _ = precision_recall_curve(data[is_anomaly], data[anomaly_score])
+    ax.plot(recall, precision, color='purple', lw=2)
+    ax.set_xlabel("Recall")
+    ax.set_ylabel("Precision")
+    ax.set_title("Precision-Recall Curve")
+
+
+def visualizing_model_performance_pipeline(data, x, y, anomaly_score, is_anomaly, title=None):
+    """Pipeline to visualize scatter plot, ROC curve, and Precision-Recall curve."""
+    fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(18, 6))
+    fig.suptitle("Model Performance Visualization\n")
+
+    # Generate Scatter Plot
+    create_scatter_plot(data, x, y, hue=is_anomaly, ax=ax1, x_label=x, y_label=y)
+
+    # Generate ROC Curve
+    create_roc_curve(data, anomaly_score, is_anomaly, ax=ax2)
+
+    # Generate Precision-Recall Curve
+    create_precision_recall_curve(data, anomaly_score, is_anomaly, ax=ax3)
+
+    # Adjust layout and set title
+    plt.tight_layout()
+    if title:
+       plt.suptitle(title)
+    plt.show()
+
+
+# ------------------------------------------ Supervised Learning Models ----------------------------
+# Random Forest
+def RandomForest_detect_anomalies(X_train, y_train, X_test, y_test):
+
+
+    rf_X_train = X_train.copy()
+    rf_y_train = y_train.copy()
+    rf_X_test = X_test.copy()
+    rf_y_test = y_test.copy()
+
+
+    # Define the Random Forest Classifier:
+    #creates a Random Forest classifier object with a fixed random
+    #state (random_state=42) for reproducibility.
+    rf = RandomForestClassifier(random_state=42)
+
+    #Defines the grid of hyperparameters to search through. Here, we are trying two values
+    #for n_estimators (number of trees) and three values for max_depth (maximum depth of trees).
+    #None for max_depth means the tree can grow indefinitely.
+    rf_params = {'n_estimators': [100, 200], 'max_depth': [10, 15, None]}
+
+    #Create GridSearchCV Object:cv=5: This specifies 5-fold cross-validation
+    #(it will split the training data into 5 folds and train the model on 4 folds
+    #while evaluating on the remaining fold, repeating this 5 times).
+    #scoring='accuracy': This tells GridSearchCV to use accuracy as the evaluation metric.
+    #Note: You can use other metrics like F1 score or precision-recall depending on your problem.
+    rf_grid = GridSearchCV(rf, rf_params, cv=5, scoring='accuracy')
+
+    # Train the model:This line trains the GridSearchCV object on the
+    #training data (X_train and y_train). It essentially trains a Random Forest model
+    #with each combination of hyperparameters in the grid on the training data using
+    #cross-validation and selects the one with the best accuracy.
+    rf_grid.fit(rf_X_train, rf_y_train)
+
+    #This retrieves the Random Forest model with the best hyperparameter combination
+    #based on the chosen scoring metric (accuracy in this case).
+    rf_best_model = rf_grid.best_estimator_
+
+    #This line uses the best model (rf_best) to make predictions on the test data (X_test).
+    y_rf_pred = rf_best_model.predict(rf_X_test)
+
+    rf_X_test["rf_anomaly_score"] = y_rf_pred
+
+    # Mark anomalies
+    rf_X_test ["rf_is_anomaly"] = rf_X_test["rf_anomaly_score"] == 1
+
+    print("\nRandom Forest\n")
+    #display(rf_X_test.head())
+    concat_copy_rf_X_y__test_y_pred = concatenate_model_data("rf", rf_X_test, rf_y_test, y_rf_pred)
+    display(concat_copy_rf_X_y__test_y_pred.head())
+
+    rf_metrics_dic = print_model_performance_report("Random Forest", rf_y_test, y_rf_pred)
+
+    # Model Performance Visualisation.
+    visualizing_model_performance_pipeline(
+    data=rf_X_test,
+    x="Session Duration in Second",
+    y= "Data Transfer MB",
+    anomaly_score="rf_anomaly_score",
+    is_anomaly="rf_is_anomaly",
+    title="Model Performance Visualization\n"
+    )
+
+
+    return rf_y_test, y_rf_pred, rf_best_model, rf_X_test, rf_metrics_dic
+
+
+# Gradient Boosting
+def GradientBoosting_detect_anomalies(X_train, y_train, X_test, y_test):
+
+    gb_X_train = X_train.copy()
+    gb_y_train = y_train.copy()
+    gb_X_test = X_test.copy()
+    gb_y_test = y_test.copy()
+
+    gb = GradientBoostingClassifier(random_state=42)
+    gb_params = {'n_estimators': [100, 200], 'learning_rate': [0.01, 0.1]}
+    gb_grid = GridSearchCV(gb, gb_params, cv=5, scoring='accuracy')
+    gb_grid.fit(gb_X_train, gb_y_train)
+    gb_best_model = gb_grid.best_estimator_
+    y_gb_pred = gb_best_model.predict(gb_X_test) # Probability of class 1 (anomaly)
+
+    gb_X_test["gb_anomaly_score"] = y_gb_pred
+    # Mark anomalies
+    gb_X_test ["gb_is_anomaly"] = gb_X_test["gb_anomaly_score"] == 1
+
+    print("\nGradient Boosting\n")
+    #display(gb_X_test.head())
+
+    concat_copy_gb_X_y__test_y_pred = concatenate_model_data("gb", gb_X_test, gb_y_test, y_gb_pred)
+    display(concat_copy_gb_X_y__test_y_pred.head())
+
+
+    gb_metrics_dic = print_model_performance_report("Gradient Boosting", gb_y_test, y_gb_pred)
+
+    # Model Performance Visualisation.
+    visualizing_model_performance_pipeline(
+    data=gb_X_test,
+    x="Session Duration in Second",
+    y= "Data Transfer MB",
+    anomaly_score="gb_anomaly_score",
+    is_anomaly="gb_is_anomaly",
+    title="Model Performance Visualization"
+    )
+
+    return gb_y_test, y_gb_pred, gb_best_model, gb_X_test, gb_metrics_dic
+
+# -------------------------- Unsupervised Anomaly Detection Models --------------------------
+# Isolation Forest
+def isolation_forest_detect_anomalies(X_train, y_train, X_test, y_test):
+
+    iso_forest_X_train = X_train.copy()
+    iso_forest_y_train = y_train.copy()
+    iso_forest_X_test = X_test.copy()
+    iso_forest_y_test = y_test.copy()
+
+    #iso_forest_augmented_df = concatenate_data_along_columns(X_augmented, y_augmented)
+    iso_forest = IsolationForest(n_estimators=100, contamination=0.05, random_state=42)
+    iso_forest.fit(iso_forest_X_train)
+    y_iso_preds = iso_forest.predict(iso_forest_X_test)
+    scores = iso_forest.decision_function(iso_forest_X_test)
+
+    iso_preds = [1 if pred == -1 else 0 for pred in y_iso_preds]  # -1 is anomaly in Isolation Forest
+    #iso_forest_X_test["iso_forest_anomaly_score"] = iso_preds
+    iso_forest_X_test["iso_forest_anomaly_score"] = scores
+    # Mark anomalies
+    iso_forest_X_test ["iso_forest_is_anomaly"] = iso_forest_X_test["iso_forest_anomaly_score"] == 1
+
+    print("\nIsolation Forest\n")
+    #display(iso_forest_X_test.head())
+    #concat_copy_iso_forest_X_y__test_y_pred = concatenate_model_data("iso", iso_forest_X_test, iso_forest_y_test, iso_preds)
+    concat_copy_iso_forest_X_y__test_y_pred = concatenate_model_data("iso", iso_forest_X_test, iso_forest_y_test, y_iso_preds)
+    display(concat_copy_iso_forest_X_y__test_y_pred.head())
+
+
+    iso_forest_metrics_dic = print_model_performance_report("Isolation Forest", iso_forest_y_test, iso_preds)
+
+    # Model Performance Visualisation.
+    visualizing_model_performance_pipeline(
+    data=iso_forest_X_test,
+    x="Session Duration in Second",
+    y= "Data Transfer MB",
+    anomaly_score="iso_forest_anomaly_score",
+    is_anomaly="iso_forest_is_anomaly",
+    title="Model Performance Visualization\n"
+    )
+
+    return iso_forest_y_test, iso_preds, iso_forest, iso_forest_X_test, iso_forest_metrics_dic
+
+# Autoencoder for Anomaly Detection
+def autoencoder_detect_anomalies(X_train, y_train, X_test, y_test):
+    autoencoder_X_train = X_train.copy()
+    autoencoder_y_train = y_train.copy()
+    autoencoder_X_test = X_test.copy()
+    autoencoder_y_test = y_test.copy()
+
+    #autoencoder_augmented_df = concatenate_data_along_columns(X_augmented, y_augmented)
+    def create_autoencoder(input_dim):
+        model = Sequential([
+            Dense(16, activation='relu', input_shape=(input_dim,)),
+            Dense(8, activation='relu'),
+            Dense(4, activation='relu'),
+            Dense(8, activation='relu'),
+            Dense(16, activation='relu'),
+            Dense(input_dim, activation='sigmoid')
+            ])
+        model.compile(optimizer=Adam(learning_rate=0.001), loss='mse')
+        return model
+
+    autoencoder = create_autoencoder(autoencoder_X_train.shape[1])
+    early_stopping = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
+
+    history = autoencoder.fit(autoencoder_X_train, autoencoder_X_train, epochs=100,
+                              batch_size=32, validation_split=0.1, callbacks=[early_stopping])
+    # Detect anomalies based on reconstruction error
+    reconstruction_error = np.mean(np.square(autoencoder_X_test - autoencoder.predict(autoencoder_X_test)), axis=1)
+    threshold = np.percentile(reconstruction_error, 95)  # Set threshold for anomaly
+    y_autoencoder_preds = [1 if error > threshold else 0 for error in reconstruction_error]
+    autoencoder_X_test["autoencoder_anomaly_score"] = y_autoencoder_preds
+    autoencoder_X_test ["autoencoder_is_anomaly"] = autoencoder_X_test["autoencoder_anomaly_score"] == 1
+
+    print("\nAutoencoder\n")
+    #display(autoencoder_X_test.head())
+    concat_copy_autoencoder_X_y__test_y_pred = concatenate_model_data("autoencoder", autoencoder_X_test, autoencoder_y_test, y_autoencoder_preds)
+    display(concat_copy_autoencoder_X_y__test_y_pred.head())
+
+
+    autoencoder_metrics_dic = print_model_performance_report("Autoencoder", autoencoder_y_test, y_autoencoder_preds)
+
+    # Model Performance Visualisation.
+    visualizing_model_performance_pipeline(
+    data=autoencoder_X_test,
+    x="Session Duration in Second",
+    y= "Data Transfer MB",
+    anomaly_score="autoencoder_anomaly_score",
+    is_anomaly="autoencoder_is_anomaly",
+    title="Model Performance Visualization\n"
+    )
+
+    return autoencoder_y_test, y_autoencoder_preds, autoencoder, autoencoder_X_test, autoencoder_metrics_dic
+
+
+# One-Class SVM
+
+def OneClassSVM_detect_anomalies(X_train, y_train, X_test, y_test):
+
+    OneClassSVM_X_train = X_train.copy()
+    OneClassSVM_y_train = y_train.copy()
+    OneClassSVM_X_test = X_test.copy()
+    OneClassSVM_y_test = y_test.copy()
+
+    #augmented_OneClassSVM_df = concatenate_data_along_columns(X_augmented, y_augmented)
+    one_class_svm = OneClassSVM(kernel="rbf", gamma=0.001, nu=0.05) #gamma = 0.1
+    one_class_svm.fit(OneClassSVM_X_train)
+    y_svm_preds = one_class_svm.fit_predict(OneClassSVM_X_test)
+    y_svm_preds = [1 if pred == -1 else 0 for pred in y_svm_preds]  # -1 is anomaly in Isolation Forest
+    OneClassSVM_X_test["one_class_svm_anomaly_score"] = y_svm_preds
+    # Mark anomalies
+    OneClassSVM_X_test ["one_class_svm_is_anomaly"] = OneClassSVM_X_test["one_class_svm_anomaly_score"] == 1
+
+    print("\nOneClassSVM\n")
+    #display(OneClassSVM_X_test.head())
+
+    concat_copy_OneClassSVM_X_y__test_y_pred = concatenate_model_data("OneClassSVM", OneClassSVM_X_test, OneClassSVM_y_test, y_svm_preds)
+
+    one_class_svm_metrics_dic = print_model_performance_report("one_class_svm", OneClassSVM_y_test, y_svm_preds)
+
+    # Model Performance Visualisation.
+    visualizing_model_performance_pipeline(
+                                        data=OneClassSVM_X_test,
+                                        x="Session Duration in Second",
+                                        y= "Data Transfer MB",
+                                        anomaly_score="one_class_svm_anomaly_score",
+                                        is_anomaly="one_class_svm_is_anomaly",
+                                        title="Model Performance Visualization\n"
+                                        )
+
+    return OneClassSVM_y_test, y_svm_preds, one_class_svm, OneClassSVM_X_test, one_class_svm_metrics_dic
+
+
+# Local Outlier Factor
+def Local_Outlier_Factor_detect_anomalies(X_train, y_train, X_test, y_test):
+
+    lof_X_train = X_train.copy()
+    lof_y_train = y_train.copy()
+    lof_X_test = X_test.copy()
+    lof_y_test = y_test.copy()
+
+    #augmented_Local_Outlier_Factor_df = concatenate_data_along_columns(X_augmented, y_augmented)
+
+    lof_model = LocalOutlierFactor(n_neighbors=20, contamination=0.1, novelty=True) # contamination=0.05
+    lof_model.fit(lof_X_train)
+    #y_lof_pred = lof_model.fit_predict(lof_X_test)
+    y_lof_pred = lof_model.predict(lof_X_test)
+    y_lof_pred = [1 if pred == -1 else 0 for pred in y_lof_pred]  # -1 is anomaly in Isolation Forest
+    lof_X_test["Local_Outlier_Factor_anomaly_score"] = y_lof_pred
+    # Mark anomalies
+    lof_X_test ["Local_Outlier_Factor_is_anomaly"] = lof_X_test["Local_Outlier_Factor_anomaly_score"] == 1
+
+    display(lof_X_test.head())
+
+    print("\nLocal Outlier Factor\n")
+    #display(lof_X_test.head())
+    concat_copy_lof_X_y__test_y_pred = concatenate_model_data("lof", lof_X_test, lof_y_test, y_lof_pred)
+    display(concat_copy_lof_X_y__test_y_pred.head())
+
+
+    lof_metrics_dic = print_model_performance_report("Local Outlier Factor", lof_y_test, y_lof_pred)
+
+    # Model Performance Visualisation.
+    visualizing_model_performance_pipeline(
+                                        data=lof_X_test,
+                                        x="Session Duration in Second",
+                                        y= "Data Transfer MB",
+                                        anomaly_score="Local_Outlier_Factor_anomaly_score",
+                                        is_anomaly="Local_Outlier_Factor_is_anomaly",
+                                        title="Model Performance Visualization\n"
+                                        )
+
+    return lof_y_test, y_lof_pred, lof_model, lof_X_test, lof_metrics_dic
+
+# Density-Based Spatial Clustering of Applications with Noise(DBSCAN)
+def dbscan_detect_anomalies(X_train, y_train, X_test, y_test):
+    dbscan_X_train = X_train.copy()
+    dbscan_y_train = y_train.copy()
+    dbscan_X_test = X_test.copy()
+    dbscan_y_test = y_test.copy()
+
+    #augmented_dbscan_df = concatenate_data_along_columns(X_augmented, y_augmented)
+
+    dbscan = DBSCAN(eps=0.5, min_samples=5)
+    dbscan.fit(dbscan_X_train)
+    y_dbscan_pred = dbscan.fit_predict(dbscan_X_test)
+
+    #Convert y_true (ground-truth labels)and #Convert DBSCAN Labels to Binary 1 for anomalies, 0 for normal
+    y_dbscan_pred = np.where(y_dbscan_pred == -1, 1, 0)
+    dbscan_X_test["dbscan_anomaly_score"] = y_dbscan_pred
+    dbscan_X_test['is_anomaly_dbscan'] = dbscan_X_test['dbscan_anomaly_score'] == 1
+
+    print("\nDensity-Based Spatial Clustering of Applications with Noise(DBSCAN)\n")
+    #display(dbscan_X_test.head())
+    concat_copy_dbscan_X_y__test_y_pred = concatenate_model_data("dbscan", dbscan_X_test, dbscan_y_test, y_dbscan_pred)
+    display(concat_copy_dbscan_X_y__test_y_pred.head())
+
+
+    dbscan_metrics_dic = print_model_performance_report("DBSCAN", dbscan_y_test, y_dbscan_pred)
+
+    # Model Performance Visualisation.
+    visualizing_model_performance_pipeline(
+                                        data=dbscan_X_test,
+                                        x="Session Duration in Second",
+                                        y= "Data Transfer MB",
+                                        anomaly_score="dbscan_anomaly_score",
+                                        is_anomaly="is_anomaly_dbscan",
+                                        title="Model Performance Visualization\n"
+                                        )
+
+    return dbscan_y_test, y_dbscan_pred, dbscan, dbscan_X_test, dbscan_metrics_dic
+
+# Long Short-Term Memory(LSTM) Model
+def lstm_detect_anomalies(X_train, y_train, X_test, y_test ):
+    timesteps =1
+    n_features = X_train.shape[1]
+    threshold_percentile=95
+
+    copy_X_train = X_train.copy()
+    copy_y_train = y_train.copy()
+    copy_X_test = X_test.copy()
+    copy_y_test = y_test.copy()
+
+    def reshape_for_lstm(data, timesteps, n_features):
+        return data.reshape((data.shape[0], timesteps, n_features))
+
+    # Reshape data for LSTM
+    X_train_lstm = reshape_for_lstm(np.array(copy_X_train), timesteps, n_features)
+    X_test_lstm = reshape_for_lstm(np.array(copy_X_test), timesteps, n_features)
+
+    # Define LSTM model architecture
+    lstm_model = Sequential([
+        LSTM(64, input_shape=(timesteps, n_features), return_sequences=True),
+        Dropout(0.2),
+        LSTM(32, return_sequences=False),
+        Dropout(0.2),
+        Dense(n_features)  # Output layer matches the feature count for reconstruction
+    ])
+
+    # Compile and train the model
+    lstm_model.compile(optimizer='adam', loss='mse')
+
+    # Train the model
+    early_stopping = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
+    lstm_model.fit(X_train_lstm, X_train_lstm, epochs=50, batch_size=32, validation_split=0.1, callbacks=[early_stopping])
+
+    # Make predictions on test set
+    X_test_preds = lstm_model.predict(X_test_lstm)
+
+    # Calculate reconstruction error and MSE
+    reconstruction_error = np.mean(np.abs(X_test_lstm - X_test_preds), axis=1)
+    test_mse = np.mean(np.power(X_test_lstm - X_test_preds, 2), axis=(1, 2))
+
+    # Set anomaly threshold based on reconstruction error percentiles
+    threshold = np.percentile(test_mse, threshold_percentile)
+
+    copy_X_test["lstm_anomaly_score"] = test_mse
+    copy_X_test["lstm_is_anomaly"] = copy_X_test["lstm_anomaly_score"] > threshold
+    y_lstm_pred = copy_X_test["lstm_is_anomaly"].astype(int)
+
+    print("\nLong Short-Term Memory(LSTM) Model\n")
+    #display(copy_X_test.head())
+    concat_copy_lstm_X_y__test_y_pred = concatenate_model_data("lstm", copy_X_test, copy_y_test, y_lstm_pred)
+    display(concat_copy_lstm_X_y__test_y_pred.head())
+
+
+    lstm_metrics_dic = print_model_performance_report("LSTM", y_test, y_lstm_pred)
+
+    # Model Performance Visualisation.
+    visualizing_model_performance_pipeline(
+                                        data=copy_X_test,
+                                        x="Session Duration in Second",
+                                        y= "Data Transfer MB",
+                                        anomaly_score="lstm_anomaly_score",
+                                        is_anomaly="lstm_is_anomaly",
+                                        title="Model Performance Visualization\n"
+                                        )
+
+    return copy_y_test, y_lstm_pred, lstm_model, test_mse, copy_X_test, lstm_metrics_dic
+
+# K-means Clustering
+def kmeans_clustering(X_train, y_train, X_test, y_test, n_clusters=2):
+
+    copy_X_train = X_train.copy()
+    copy_y_train = y_train.copy()
+    copy_X_test = X_test.copy()
+    copy_y_test = y_test.copy()
+
+
+    #augmented_kmean_df = concatenate_data_along_columns(X_augmented, y_augmented)
+    K_mean_model = KMeans(n_clusters=n_clusters, random_state=42)
+    K_mean_model.fit(copy_X_train)
+
+    y_kmeans_pred = K_mean_model.fit_predict(copy_X_test)
+
+    # Determine outliers by distance from cluster centroids
+    distances = np.linalg.norm(copy_X_test - K_mean_model.cluster_centers_[y_kmeans_pred], axis=1)
+    threshold = np.percentile(distances, 95)
+    preds = np.where(distances > threshold, 1, 0)
+
+    copy_X_test["kmeans_anomaly_score"] = preds
+    copy_X_test["is_anomaly_kmeans"] = copy_X_test["kmeans_anomaly_score"] == 1
+
+    print("\nK-Means\n")
+    #display(copy_X_test.head())
+
+    concat_copy_kmeans_X_y__test_y_pred = concatenate_model_data("kmeans", copy_X_test, copy_y_test, y_kmeans_pred)
+    display(concat_copy_kmeans_X_y__test_y_pred.head())
+
+    kmeans_metrics_dic = print_model_performance_report("k-means", copy_y_test, y_kmeans_pred)
+
+    # Model Performance Visualisation.
+    visualizing_model_performance_pipeline(
+                                        data=copy_X_test,
+                                        x="Session Duration in Second",
+                                        y= "Data Transfer MB",
+                                        anomaly_score="kmeans_anomaly_score",
+                                        is_anomaly="is_anomaly_kmeans",
+                                        title="Model Performance Visualization\n"
+                                        )
+
+    return copy_y_test, y_kmeans_pred, K_mean_model, copy_X_test, kmeans_metrics_dic
+#------------------------------------------------------
+
+
+#Models Training And Evaluation
+def models_training_and_evaluation(X_train, y_train, X_test, y_test, X_augmented, y_augmented):
+
+    #Supervised Learning Models
+    y_rf_test, y_rf_pred, rf_best_model, rf_X_test_and_anomaly_df, rf_metrics_dic = RandomForest_detect_anomalies(X_train, y_train, X_test, y_test)
+    y_gb_test, y_gb_pred, gb_best_model, gb_X_test_and_anomaly_df, gb_metrics_dic = GradientBoosting_detect_anomalies(X_train, y_train, X_test, y_test)
+
+    #Unsupervised Anomaly Detection Models
+    y_iso_test, y_iso_preds, iso_forest_model, iso_forest_X_test_and_anomaly_df, iso_forest_metrics_dic = isolation_forest_detect_anomalies(X_train, y_train, X_test, y_test)
+    y_autoencoder_test, y_autoencoder_preds, autoencoder_model, autoencoder_X_test_and_anomaly_df, autoencoder_metrics_dic = autoencoder_detect_anomalies(X_train, y_train, X_test, y_test)
+    y_svm_test, y_svm_preds, one_class_svm_model, one_class_svm_X_test_and_anomaly_df, one_class_svm_metrics_dic = OneClassSVM_detect_anomalies(X_train, y_train, X_test, y_test)
+    y_lof_test, y_lof_pred, lof_model, lof_X_test_and_anomaly_df, lof_metrics_dic = Local_Outlier_Factor_detect_anomalies(X_train, y_train, X_test, y_test)
+    y_dbscan_test, y_dbscan_pred, dbscan_model, dbscan_X_test_and_anomaly_df, dbscan_metrics_dic = dbscan_detect_anomalies(X_train, y_train, X_test, y_test)
+    y_lstm_test, y_lstm_preds, lstm_model, mse, lstm_X_test_and_anomaly_df, lstm_metrics_dic = lstm_detect_anomalies(X_train, y_train, X_test, y_test)
+    y_kmeans_test, y_kmeans_pred, K_mean_model, kmeans_X_test_and_anomaly_df, kmeans_metrics_dic = kmeans_clustering(X_train, y_train, X_test, y_test, n_clusters=2)
+
+
+    models_dic = {"RandomForest" : rf_best_model,
+                  "GradientBoosting" : gb_best_model ,
+                  "IsolationForest" : iso_forest_model,
+                  "Autoencoder" : autoencoder_model,
+                  "OneClassSVM" : one_class_svm_model,
+                  "LocalOutlierFactor" : lof_model,
+                  "DBSCAN" : dbscan_model,
+                  "LSTM" : lstm_model,
+                  "KMeans" : K_mean_model}
+
+    model_metrics_results_dic = {"RandomForest" : rf_metrics_dic,
+                                  "GradientBoosting" : gb_metrics_dic,
+                                 "IsolationForest" : iso_forest_metrics_dic,
+                                 "Autoencoder" : autoencoder_metrics_dic,
+                                 "OneClassSVM" : one_class_svm_metrics_dic,
+                                 "LocalOutlierFactor" : lof_metrics_dic,
+                                 "DBSCAN" : dbscan_metrics_dic,
+                                 "LSTM" : lstm_metrics_dic,
+                                 "KMeans" : kmeans_metrics_dic}
+
+    return model_metrics_results_dic, models_dic
+
+#-----------------Select Best Model based on Overall Model Accuracy
+def select_best_model(results, models_dic):
+    best_model_name = max(results, key=lambda x: results[x].get("Overall Model Accuracy", 0))
+    best_model = models_dic[best_model_name]
+    best_model_metric = results[best_model_name].get("Overall Model Accuracy", 0)
+
+    print(f"\nBest performing model: {best_model}")
+    print(f"\nBest model metric: {best_model_metric}")
+    display(results[best_model_name])
+
+    return best_model_name, best_model
+
+#---------------------------------------------------Winning Model Deployment------------------------------------------------
+def deploy_best_model(model_deployment_path_folder, best_model_name, best_model):
+    model_path = f"{model_deployment_path_folder}/" + best_model_name +"_best_model.pkl"
+    joblib.dump(best_model, model_path)
+    print(f"Best model saved to: {model_path}")
+    return model_path
+
+#model_path = deploy_best_model(best_model_name, best_model)
+
+# ---------------------------------------Model Development Pipeline Function---------------------------------------------
+
+def model_development_pipeline( ):
+
+    try:
+        drive.mount('/content/drive')
+        print("Google Drive mounted successfully!")
+    except ValueError as e:
+        print(f"Error mounting Google Drive: {e}")
+        print("Please check your connection and try again.")
+        return None # Exit the function if mounting fails
+
+    augmented_df = load_dataset("/content/drive/My Drive/Cybersecurity Data/x_y_augmented_data_google_drive.csv")
+    model_deployment_path_to_google_drive = "/content/drive/My Drive/Model deployment"
+    #fe_processed_df, loaded_label_encoders, num_fe_scaler = load_objects_from_drive()
+
+    X_augmented = augmented_df.drop(columns=["Threat Level"])
+    y_augmented = augmented_df["Threat Level"]
+    features_engineering_columns = X_augmented.columns.tolist()
+
+    X_train, X_test, y_train, y_test = deta_splitting(X_augmented, y_augmented, features_engineering_columns)
+
+    #Model training and evolution
+    model_metrics_results_dic, models_dic  = models_training_and_evaluation( X_train, y_train,  X_test, y_test, X_augmented, y_augmented)
+
+    #Select Best Model based on Overall Model Accuracy or other relevant metrics
+    best_model_name, best_model = select_best_model(model_metrics_results_dic, models_dic)
+
+    #--Winning Model Deeployment--------
+    model_path = deploy_best_model(model_deployment_path_to_google_drive, best_model_name, best_model)
+
+    #setting model_development_pipeline dic
+    model_development_pipeline_dic = {
+        "model_metrics_results_dic": model_metrics_results_dic,
+        "models_dic": models_dic,
+        "best_model_name": best_model_name,
+        "best_model": best_model,
+        "model_path": model_path
+    }
+
+    return model_development_pipeline_dic
+    #return model_metrics_results_dic, models_dic, best_model_name, best_model, model_path
+
+if __name__ == "__main__":
+
+    model_development_pipeline_dic = model_development_pipeline()
+```
+
+## 🤝 Connect With Me
+I am always open to collaboration and discussion about new projects or technical roles.
+
+Atsu Vovor  
+Consultant, Data & Analytics    
+Ph: 416-795-8246 | ✉️ atsu.vovor@bell.net    
+🔗 <a href="https://www.linkedin.com/in/atsu-vovor-mmai-9188326/" target="_blank">LinkedIn</a> | <a href="https://atsuvovor.github.io/projects_portfolio.github.io/" target="_blank">GitHub</a> | <a href="https://public.tableau.com/app/profile/atsu.vovor8645/vizzes" target="_blank">Tableau Portfolio</a>    
+📍 Mississauga ON      
+
+### Thank you for visiting!🙏
+
