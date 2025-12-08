@@ -24,38 +24,98 @@ The feature engineering process in our *Cyber Threat Insight* project was strate
 <summary>Click to view the code</summary>
 
 ```python
+#!/usr/bin/env python3
+# --------------------------------------------------------------
+# Cyber Threat Insight - Feature Engineering Workflow Flowchart
+# Author: Atsu Vovor
+# --------------------------------------------------------------
+
 from graphviz import Digraph
 from IPython.display import Image
+import os
 
-# Create a directed graph
-#dot = Digraph(comment='Cyber Threat Insight - Feature Engineering Workflow', format='png')
-dot = Digraph("Cyber Threat Insight - Feature Engineering Workflow", format="png")
+def generate_feature_engineering_flowchart(output_name="features_engineering_flowchart"):
+    """
+    Generates the Cyber Threat Insight Feature Engineering flowchart as a PNG file.
+    Returns the full path to the generated file.
+    """
+
+    dot = Digraph(
+        "Cyber Threat Insight - Feature Engineering Workflow",
+        format="png"
+    )
+
+    # ---------------------------
+    # Feature Engineering Phases
+    # ---------------------------
+    dot.node('Start', 'Start')
+
+    dot.node('DataInj',
+             'Data Injection\n(Cholesky-Based Perturbation)',
+             shape='box', style='filled', fillcolor='lightblue')
+
+    dot.node('Scaling',
+             'Feature Normalization & Scaling\n(Min-Max, Z-score)',
+             shape='box', style='filled', fillcolor='lightgray')
+
+    dot.node('CorrHeat',
+             'Correlation Heatmap Analysis\n(Pearson/Spearman)',
+             shape='box', style='filled', fillcolor='orange')
+
+    dot.node('FeatImp',
+             'Feature Importance\n(Random Forest)',
+             shape='box', style='filled', fillcolor='gold')
+
+    dot.node('SHAP',
+             'Model Explainability\n(SHAP Values)',
+             shape='box', style='filled', fillcolor='lightgreen')
+
+    dot.node('PCA',
+             'PCA & Variance Explained\n(Scree Plot)',
+             shape='box', style='filled', fillcolor='plum')
+
+    dot.node('Augment',
+             'Data Augmentation\n(SMOTE, GAN)',
+             shape='box', style='filled', fillcolor='lightpink')
+
+    dot.node('End',
+             'Feature Set Ready for Modeling',
+             shape='ellipse', style='filled', fillcolor='lightyellow')
+
+    # ---------------------------
+    # Arrows (Workflow Steps)
+    # ---------------------------
+    dot.edge('Start', 'DataInj')
+    dot.edge('DataInj', 'Scaling')
+    dot.edge('Scaling', 'CorrHeat')
+    dot.edge('CorrHeat', 'FeatImp')
+    dot.edge('FeatImp', 'SHAP')
+    dot.edge('SHAP', 'PCA')
+    dot.edge('PCA', 'Augment')
+    dot.edge('Augment', 'End')
+
+    # ---------------------------
+    # Render to PNG
+    # ---------------------------
+    filepath = dot.render(output_name, format="png", cleanup=False)
+    #display(Image(filename=filepath))
+    return filepath
 
 
-# Feature Engineering Phases
-dot.node('Start', 'Start')
-dot.node('DataInj', 'Data Injection\n(Cholesky-Based Perturbation)', shape='box', style='filled', fillcolor='lightblue')
-dot.node('Scaling', 'Feature Normalization & Scaling\n(Min-Max, Z-score)', shape='box', style='filled', fillcolor='lightgray')
-dot.node('CorrHeat', 'Correlation Heatmap Analysis\n(Pearson/Spearman)', shape='box', style='filled', fillcolor='orange')
-dot.node('FeatImp', 'Feature Importance\n(Random Forest)', shape='box', style='filled', fillcolor='gold')
-dot.node('SHAP', 'Model Explainability\n(SHAP Values)', shape='box', style='filled', fillcolor='lightgreen')
-dot.node('PCA', 'PCA & Variance Explained\n(Scree Plot)', shape='box', style='filled', fillcolor='plum')
-dot.node('Augment', 'Data Augmentation\n(SMOTE, GAN)', shape='box', style='filled', fillcolor='lightpink')
-dot.node('End', 'Feature Set Ready for Modeling', shape='ellipse', style='filled', fillcolor='lightyellow')
+# --------------------------------------------------------------
+# Execute as standalone script
+# --------------------------------------------------------------
+if __name__ == "__main__":
+    print("Generating Feature Engineering Flowchart...")
 
-# Arrows to show workflow
-dot.edge('Start', 'DataInj')
-dot.edge('DataInj', 'Scaling')
-dot.edge('Scaling', 'CorrHeat')
-dot.edge('CorrHeat', 'FeatImp')
-dot.edge('FeatImp', 'SHAP')
-dot.edge('SHAP', 'PCA')
-dot.edge('PCA', 'Augment')
-dot.edge('Augment', 'End')
+    output_file = generate_feature_engineering_flowchart()
+    
+    abs_path = os.path.abspath(output_file)
 
-features_engineering_flowchart = dot.render("features_engineering_flowchart", format="png", cleanup=False)
-display(Image(filename="features_engineering_flowchart.png"))
-print("Flowchart generated successfully!")
+    display(Image(filename=abs_path))
+            
+    print("\nFlowchart generated successfully!")
+    print(f"Saved to: {abs_path}")
 ```
 
 </details>
@@ -123,13 +183,17 @@ Through this comprehensive workflow, we generated a clean, balanced, and interpr
 </summary>
 
 ```python
+#!/usr/bin/env python3
+# --------------------------------------------------------------
+# CyberThreat Insight – Cholesky-Based Perturbation
+# SHAP, PCA, Data Augmentation (SMOTE + GAN)
+# Author: Atsu Vovor
+# --------------------------------------------------------------
+
 # ==============================
-# Cyber Attack Simulation Pipeline
+# Feature Creation
 # ==============================
 
-# --- Google Drive Mount ---
-from google.colab import drive
-drive.mount('/content/drive')
 
 # --- Imports ---
 import os
@@ -189,9 +253,9 @@ def get_column_dic():
 def save_objects_to_drive(df_fe,
                           cat_cols_label_encoders,
                           num_fe_scaler,
-                          filepath_df="/content/drive/My Drive/Cybersecurity Data/df_fe.pkl",
-                          filepath_cat_cols_label_encoders="/content/drive/My Drive/Model deployment/cat_cols_label_encoders.pkl",
-                          filepath_num_fe_scaler="/content/drive/My Drive/Model deployment/ num_fe_scaler.pkl"):
+                          filepath_df="CyberThreat_Insight/cybersecurity_data/df_fe.pkl",
+                          filepath_cat_cols_label_encoders="CyberThreat_Insight/model_deployment/cat_cols_label_encoders.pkl",
+                          filepath_num_fe_scaler="CyberThreat_Insight/model_deployment/num_fe_scaler.pkl"):
     try:
         # Ensure the directory exists for df_fe
         df_directory = os.path.dirname(filepath_df)
@@ -223,9 +287,9 @@ def save_objects_to_drive(df_fe,
 
 
 # ----------------Load df_fe and label_encoders from your Google Drive----------------------------------
-def load_objects_from_drive(filepath_df="/content/drive/My Drive/Cybersecurity Data/df_fe.pkl",
-                            filepath_cat_cols_label_encoders="/content/drive/My Drive/Model deployment/cat_cols_label_encoders.pkl",
-                            filepath_num_fe_scaler="/content/drive/My Drive/Model deployment/ num_fe_scaler.pkl"):
+def load_objects_from_drive(filepath_df="CyberThreat_Insight/cybersecurity_data/df_fe.pkl",
+                            filepath_cat_cols_label_encoders="CyberThreat_Insight/model_deployment/cat_cols_label_encoders.pkl",
+                            filepath_num_fe_scaler="CyberThreat_Insight/model_deployment/num_fe_scaler.pkl"):
     try:
         with open(filepath_df, 'rb') as f:
             df_fe = pickle.load(f)
@@ -249,8 +313,8 @@ def load_objects_from_drive(filepath_df="/content/drive/My Drive/Cybersecurity D
 #-------------Generate Synthetic Anomalies Using Cholesky-Based Perturbation-------------------
 
 def get_files_path(
-        normal_operations_file_path = "/content/drive/My Drive/Cybersecurity Data/normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb.csv",
-        combined_normal_and_anomaly_file_path = "/content/combined_normal_and_anomaly_output_file_for_google_drive_kb.csv"):
+        normal_operations_file_path = "CyberThreat_Insight/cybersecurity_data/cybersecurity_dataset_combined.csv",
+        combined_normal_and_anomaly_file_path = "/content/cybersecurity_dataset_combined_output_file.csv"):
 
     return {
         "normal_operations_file_path": normal_operations_file_path,
@@ -864,6 +928,13 @@ This hybrid augmentation pipeline significantly improves the reliability and rob
 <summary>Click to view the code</summary>
 
 ```python
+#!/usr/bin/env python3
+# --------------------------------------------------------------
+# CyberThreat Insight – Data Augmentation (SMOTE + GAN)
+# 
+# Author: Atsu Vovor
+# --------------------------------------------------------------
+
 import numpy as np
 import pandas as pd
 import tensorflow as tf
@@ -874,6 +945,9 @@ import matplotlib.pyplot as plt
 import os
 
 from IPython.display import display
+from feature_creation import load_objects_from_drive
+from smote_gan_models_performance import plot_combined_analysis_2d_3d
+
 
 # ------------------------- SMOTE: Handle class imbalance -------------------------
 def balance_data_with_smote(df, target_column="Threat Level"):
@@ -1029,8 +1103,8 @@ def data_augmentation_pipeline(file_path="", lead_save_true_false = True):
     5. Combine with real samples
     6. Save final augmented dataset and loss logs
     """
-    x_y_augmented_data_google_drive = "/content/drive/My Drive/Cybersecurity Data/x_y_augmented_data_google_drive.csv"
-    loss_data_google_drive = "/content/drive/My Drive/Cybersecurity Data/loss_data_google_drive.csv"
+    x_y_augmented_data_google_drive = "CyberThreat_Insight/cybersecurity_data/x_y_augmented_data_google_drive.csv"
+    loss_data_google_drive = "CyberThreat_Insight/cybersecurity_data/loss_data_google_drive.csv"
 
     # Load preprocessed data from Google Drive
     if lead_save_true_false:
@@ -1073,12 +1147,16 @@ def data_augmentation_pipeline(file_path="", lead_save_true_false = True):
         print("Saving data to Google Drive...")
         save_dataframe_to_google_drive(augmented_df, x_y_augmented_data_google_drive)
 
+    print("plotting combined analysis 2D and 3D")
+    features_engineering_columns = X_augmented.columns
+    plot_combined_analysis_2d_3d(fe_processed_df, X_augmented, y_augmented, features_engineering_columns)
+    
     print("Data augmentation process complete.")
 
     return augmented_df, d_loss_real_list, d_loss_fake_list, g_loss_list
 
 # -------------------------- Run the pipeline --------------------------
-#if __name__ == "__main__":
+if __name__ == "__main__":
     # Execute the full augmentation pipeline if the script is run directly
     augmented_df, d_loss_real_list, d_loss_fake_list, g_loss_list = data_augmentation_pipeline()
 ```
@@ -1189,6 +1267,12 @@ This augmentation pipeline plays a **critical role** in enabling our models to d
 <summary>Click to view the code</summary>
 
 ```python
+#!/usr/bin/env python3
+# --------------------------------------------------------------
+# CyberThreat Insight – smote_gan_models_performance.
+# Author: Atsu Vovor
+# --------------------------------------------------------------
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -1199,6 +1283,7 @@ from sklearn.manifold import TSNE
 from sklearn.preprocessing import StandardScaler
 import umap
 import seaborn as sns
+from feature_creation import load_objects_from_drive
 
 # ---------------------------- #
 # Apply Custom Matplotlib Style
@@ -1445,10 +1530,10 @@ def plot_combined_analysis_2d_3d(fe_processed_df, X_augmented, y_augmented, feat
 # Main Pipeline
 # ---------------------------- #
 def SMOTE_GANs_evaluation_pipeline():
-    data_augmentation_pipeline()
+    #data_augmentation_pipeline()
 
-    loss_df = load_dataset("/content/drive/My Drive/Cybersecurity Data/gan_loss_log.csv")
-    augmented_df = load_dataset("/content/drive/My Drive/Cybersecurity Data/x_y_augmented_data_google_drive.csv")
+    loss_df = load_dataset("CyberThreat_Insight/cybersecurity_data/gan_loss_log.csv")
+    augmented_df = load_dataset("CyberThreat_Insight/cybersecurity_data/x_y_augmented_data_google_drive.csv")
     fe_processed_df, loaded_label_encoders, num_fe_scaler = load_objects_from_drive()
 
     X_augmented = augmented_df.drop(columns=["Threat Level"])
