@@ -711,13 +711,13 @@ if __name__ == "__main__":
 </p>
 
 
-## **Feature Engineering – Advanced Data Augmentation using SMOTE and GANs**
+## **Feature Engineering – Advanced Data Augmentation using SMOTE and GANs**  
 🔗 Run the code:
 <a 
   href="https://colab.research.google.com/github/atsuvovor/CyberThreat_Insight/blob/main/feature_engeneering/data_augmentation_smote_gans.ipynb"
   target="_parent">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
-</a>
+</a>   
 To address severe class imbalance and enhance the quality of the synthetic training data in our cyber threat insight model, we implemented a hybrid augmentation strategy. This stage of feature engineering combines **SMOTE** (Synthetic Minority Over-sampling Technique) and **GANs** (Generative Adversarial Networks) to increase representation of rare threat levels and capture complex behavioral patterns often found in high-dimensional cybersecurity data.
 
 
@@ -777,7 +777,7 @@ In cybersecurity, you might use **SMOTE** for imbalanced tabular data with relat
 ---  
      
 
-### **SMOTE + GANs Implementation in Cyber Threat Insight**
+### **SMOTE + GANs Implementation in Cyber Threat Insight**  
 
 To ensure our cyber threat insight model performs robustly across all threat levels including rare but critical cases, we implemented a two-fold data augmentation strategy using **SMOTE (Synthetic Minority Over-sampling Technique)** and **Generative Adversarial Networks (GANs)** as the final step in the feature engineering pipeline.
 
@@ -1080,13 +1080,13 @@ def data_augmentation_pipeline(file_path="", lead_save_true_false = True):
 
 </details>
 
-### **SMOTE and GAN augmentation models performance Analysis**
+### **SMOTE and GAN augmentation models performance Analysis**  
 🔗 Run the code:
 <a 
   href="https://colab.research.google.com/github/atsuvovor/CyberThreat_Insight/blob/main/feature_engeneering/smote_gan_models_performance.ipynb"
   target="_parent">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
-</a>
+</a>  
 
 
 ### Impact Visualization
