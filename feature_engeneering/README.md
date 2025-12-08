@@ -777,11 +777,11 @@ In cybersecurity, you might use **SMOTE** for imbalanced tabular data with relat
 ---  
      
 
-### **SMOTE + GANs Implementation in Cyber Threat Insight**  
+#### **SMOTE + GANs Implementation in Cyber Threat Insight**  
 
 To ensure our cyber threat insight model performs robustly across all threat levels including rare but critical cases, we implemented a two-fold data augmentation strategy using **SMOTE (Synthetic Minority Over-sampling Technique)** and **Generative Adversarial Networks (GANs)** as the final step in the feature engineering pipeline.
 
-### Step 1: Handling Imbalanced Classes with SMOTE
+#### Step 1: Handling Imbalanced Classes with SMOTE
 
 In real-world cybersecurity datasets, high-risk threat events are typically underrepresented. To mitigate this class imbalance, we first applied **SMOTE**, a statistical technique that synthesizes new samples by interpolating between existing ones in the feature space. SMOTE oversamples underrepresented threat levels (e.g., High, Critical). This ensures the classifier doesn’t overfit to the majority class, enabling better detection of rare threats.
 
@@ -801,7 +801,7 @@ This step ensured that our model would not be biased toward majority class label
   
 
 
-### Step 2: Enhancing Diversity: Learning Complex Patterns with GAN-Based Threat Simulation
+#### Step 2: Enhancing Diversity: Learning Complex Patterns with GAN-Based Threat Simulation
 
 To further enrich the dataset beyond SMOTE's linear interpolations, we trained a custom GAN to generate more diverse non-linear high-fidelity cyber threat behaviors data. Our GAN architecture consists of:
 
@@ -827,7 +827,7 @@ synthetic_data = generate_synthetic_data(generator, n_samples=1000, latent_dim=1
 
 
 
-### Step 3:  Final Dataset Augmentation - Data Fusion and Export
+#### Step 3:  Final Dataset Augmentation - Data Fusion and Export
 
 The synthetic GAN-generated samples were combined with the SMOTE-resampled dataset to form a robust, high-quality augmented dataset, maximizing both statistical and generative diversity.
 
@@ -844,7 +844,7 @@ save_dataframe_to_google_drive(augmented_df, "x_y_augmented_data_google_drive.cs
 
   
 
-### Outcomes and Benefits
+#### Outcomes and Benefits
 
 By combining **SMOTE** and **GANs**, we created a rich, well-balanced dataset that allows our models to:
 
@@ -1089,7 +1089,7 @@ def data_augmentation_pipeline(file_path="", lead_save_true_false = True):
 </a>  
 
 
-### Impact Visualization
+#### Impact Visualization
 
 #### 1. Class Distribution Before vs After Augmentation
 
@@ -1131,7 +1131,7 @@ The 3D visualizations show:
 
 ---
 
-###  GAN Training Progress Monitoring
+####  GAN Training Progress Monitoring
 
 To ensure high-quality synthetic sample generation, we tracked GAN training loss across epochs:
 
@@ -1152,7 +1152,7 @@ plot_gan_training_metrics(...)
 * Generator loss steadily decreased, indicating it learned to produce more convincing threats.
 * The validation accuracy increased alongside training, suggesting **generalization improved** rather than overfitting.
 
-###  Summary
+####  Summary
 
 By integrating SMOTE and GANs in the final feature engineering phase, and validating their effectiveness through rich visualizations, we ensured that our cyber threat insight model is:
 
