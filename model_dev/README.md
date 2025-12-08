@@ -294,9 +294,10 @@ Using unsupervised models as **signal extractors** rather than classifiers prove
 
 **Note:** This methodology is recommended for future applications in **cybersecurity, fraud detection**, or any anomaly-prone classification problem.
 
+
 <details>
 
-<summary>Click to view the code</summary>
+   <summary>Click to view the code</summary>
 
 ```python
 #CyberThreat-Insight
@@ -1125,6 +1126,8 @@ if __name__ == "__main__":
     model_development_pipeline_dic = model_development_pipeline()
 ```
 </details>
+
+
 ## 🤝 Connect With Me
 I am always open to collaboration and discussion about new projects or technical roles.
 
