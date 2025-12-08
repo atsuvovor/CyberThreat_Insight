@@ -4,10 +4,6 @@
        style="width: 600px; height: 40%;">
 </p>  
 
-<h3 align-"center">
-      CyberThreat Insight - Model Development - Cyber Threat Detection Engine
-</h3>
-
 <p align="center">
     Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI**
 </p> 
