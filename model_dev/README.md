@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="CyberThreat_Insight/images/cyber_threat_detection_engine4.png" 
+  <img src="images/cyber_threat_detection_engine4.png" 
        alt="Centered Image" 
        style="width: 600px; height: 40%;">
 </p>  
