@@ -1103,6 +1103,7 @@ def data_augmentation_pipeline(file_path="", lead_save_true_false = True):
     5. Combine with real samples
     6. Save final augmented dataset and loss logs
     """
+    print("Applying SMOTE ... Building and training GAN")
     x_y_augmented_data_google_drive = "CyberThreat_Insight/cybersecurity_data/x_y_augmented_data_google_drive.csv"
     loss_data_google_drive = "CyberThreat_Insight/cybersecurity_data/loss_data_google_drive.csv"
 
@@ -1532,6 +1533,7 @@ def plot_combined_analysis_2d_3d(fe_processed_df, X_augmented, y_augmented, feat
 def SMOTE_GANs_evaluation_pipeline():
     #data_augmentation_pipeline()
 
+    print("Starting SMOTE and GAN augmentation models performance Analysis...")
     loss_df = load_dataset("CyberThreat_Insight/cybersecurity_data/gan_loss_log.csv")
     augmented_df = load_dataset("CyberThreat_Insight/cybersecurity_data/x_y_augmented_data_google_drive.csv")
     fe_processed_df, loaded_label_encoders, num_fe_scaler = load_objects_from_drive()
