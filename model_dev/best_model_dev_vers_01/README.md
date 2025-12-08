@@ -127,3 +127,6 @@ Unsupervised anomaly models fail to predict higher threat levels because:
 - They are not trained with class labels and cannot distinguish among multiple classes.
 - Anomalies are rare, and severe anomalies (high threat) are even rarer.
 - These models generalize outliers as a single anomaly class (often mapped to class 1), unable to differentiate between moderate and critical threats.
+
+
+
