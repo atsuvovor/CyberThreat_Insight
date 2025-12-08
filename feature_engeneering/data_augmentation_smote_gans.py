@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # --------------------------------------------------------------
 # CyberThreat Insight – Data Augmentation (SMOTE + GAN)
-# Fully Executable Script with Comments
+# 
 # Author: Atsu Vovor
 # --------------------------------------------------------------
 
