@@ -23,8 +23,8 @@ Original file is located at
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from google.colab import drive
-drive.mount('/content/drive')
+#from google.colab import drive
+#drive.mount('/content/drive')
 import seaborn as sns
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
@@ -783,10 +783,9 @@ def deploy_best_model(model_deployment_path_folder, best_model_name, best_model)
 
 # ---------------------------------------Model Development Pipeline Function---------------------------------------------
 
-def model_development_pipeline( ):
-
-    augmented_df = load_dataset("/content/drive/My Drive/Cybersecurity Data/x_y_augmented_data_google_drive.csv")
-    model_deployment_path_to_google_drive = "/content/drive/My Drive/Model deployment"
+def model_development_pipeline(augmented_df = load_dataset("/content/drive/My Drive/Cybersecurity Data/x_y_augmented_data_google_drive.csv"),
+                               model_deployment_path_to_google_drive = "/content/drive/My Drive/Model deployment"):
+                                   
     #fe_processed_df, loaded_label_encoders, num_fe_scaler = load_objects_from_drive()
 
     X_augmented = augmented_df.drop(columns=["Threat Level"])
