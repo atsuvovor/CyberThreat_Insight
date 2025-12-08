@@ -173,6 +173,8 @@ def data_augmentation_pipeline(file_path="", lead_save_true_false = True):
     5. Combine with real samples
     6. Save final augmented dataset and loss logs
     """
+
+    print("Applying SMOTE ... Building and training GAN")
     x_y_augmented_data_google_drive = "CyberThreat_Insight/cybersecurity_data/x_y_augmented_data_google_drive.csv"
     loss_data_google_drive = "CyberThreat_Insight/cybersecurity_data/loss_data_google_drive.csv"
 
