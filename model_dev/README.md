@@ -4,9 +4,14 @@
        style="width: 600px; height: 40%;">
 </p>  
 
-<h3 align-"center">CyberThreat Insight - Model Development - Cyber Threat Detection Engine</h3>
+<h3 align-"center">
+      CyberThreat Insight - Model Development - Cyber Threat Detection Engine
+</h3>
 
-**Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI**
+<p align="center">
+    Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI**
+</p> 
+
 
 **Toronto, Septeber 08 2025**  
 **Autor : Atsu Vovor**
@@ -32,7 +37,7 @@ Following feature engineering, we obtained an **augmented dataset** that combine
 
 This enriched dataset offers a **balanced distribution** of threat and non-threat instances, making it more suitable for supervised machine learning.
 
-### Objective
+## Objective
 
 To ensure robust model evaluation, we split the **augmented dataset** into training and testing subsets:
 
