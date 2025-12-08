@@ -3,7 +3,6 @@
 #!/usr/bin/env python3
 # --------------------------------------------------------------
 # CyberThreat Insight – Feature Engineering
-# Fully Executable Script with Comments
 # Author: Atsu Vovor
 # --------------------------------------------------------------
 
