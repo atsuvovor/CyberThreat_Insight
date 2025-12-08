@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # --------------------------------------------------------------
 # Cyber Threat Insight - Feature Engineering Workflow Flowchart
-# Executable Python version
 # Author: Atsu Vovor
 # --------------------------------------------------------------
 
