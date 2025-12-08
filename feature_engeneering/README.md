@@ -66,7 +66,7 @@ print("Flowchart generated successfully!")
        style="width: 250px; height: auto;">
 </p>
 
-## **Feature Creation and Analyis**  
+## **Feature Creation and Analysis**  
 🔗 Run the code:
 <a 
   href="https://colab.research.google.com/github/atsuvovor/CyberThreat_Insight/blob/main/feature_engeneering/feature_creation_v2.ipynb"
