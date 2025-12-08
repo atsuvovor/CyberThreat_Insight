@@ -1,18 +1,17 @@
 ## **CyberThreat-Insight**  
-<h3 align-"center">CyberThreat Insight - Feature Engineering Using Cholesky-Based Perturbation, SHAP, PCA, SMOTE and GANs</h3>
+<h3 align-"center">CyberThreat Insight - Model Development - Cyber Threat Detection Engine</h3>
 <p align="center">
-  <img src="feature_engineering2.png" 
+  <img src="CyberThreat_Insight/images/cyber_threat_detection_engine4.png" 
        alt="Centered Image" 
        style="width: 600px; height: 40%;">
 </p>  
 
-**Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI**
+## **Model Development - Cyber Threat Detection Engine**
+** *Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI**
 
 **Toronto, Septeber 08 2025**  
 **Autor : Atsu Vovor**
->Master of Management in Artificial Intelligence    
->Consultant Data Analytics Specialist | Machine Learning |  
-Data science | Quantitative Analysis |French & English Bilingual
+
 
 **# Model Development - Cyber Threat Detection Engine**
 
