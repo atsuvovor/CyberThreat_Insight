@@ -1,12 +1,11 @@
-## **CyberThreat-Insight**  
-<h3 align-"center">CyberThreat Insight - Model Development - Cyber Threat Detection Engine</h3>
 <p align="center">
   <img src="CyberThreat_Insight/images/cyber_threat_detection_engine4.png" 
        alt="Centered Image" 
        style="width: 600px; height: 40%;">
 </p>  
 
-## **Model Development - Cyber Threat Detection Engine**
+<h3 align-"center">CyberThreat Insight - Model Development - Cyber Threat Detection Engine</h3>
+
 ** *Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI**
 
 **Toronto, Septeber 08 2025**  
