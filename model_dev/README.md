@@ -12,7 +12,7 @@
 **Autor : Atsu Vovor**
 
 
-**# Model Development - Cyber Threat Detection Engine**
+## Overview
 
 The goal of this Model Development section is to build an effective cyber threat detection engine capable of identifying anomalous behavior in security log data. The target variable is **"Threat Level"**, classified as:  
 - 0 = Low  
