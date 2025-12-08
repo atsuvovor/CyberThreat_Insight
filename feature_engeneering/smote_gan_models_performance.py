@@ -15,6 +15,7 @@ from sklearn.manifold import TSNE
 from sklearn.preprocessing import StandardScaler
 import umap
 import seaborn as sns
+from feature_creation import load_objects_from_drive
 
 # ---------------------------- #
 # Apply Custom Matplotlib Style
