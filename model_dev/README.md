@@ -6,7 +6,7 @@
 
 <h3 align-"center">CyberThreat Insight - Model Development - Cyber Threat Detection Engine</h3>
 
-** *Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI**
+**Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI**
 
 **Toronto, Septeber 08 2025**  
 **Autor : Atsu Vovor**
