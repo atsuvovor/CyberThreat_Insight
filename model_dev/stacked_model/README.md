@@ -1,6 +1,6 @@
 # **CyberThreat-Insight**  
 **Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI**
-## Stacked Supervised Model using Unsupervised Anomaly Features  
+## Cyber Threat Detection Engine - Stacked Supervised Model using Unsupervised Anomaly Features  
 
 **Toronto, Sept 17 202**  
 **Autor : Atsu Vovor**  
