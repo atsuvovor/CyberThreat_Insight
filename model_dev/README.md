@@ -179,6 +179,13 @@ levels, they mostly capture only class 0 or 1.
 
 All unsupervised models **fail to distinguish between threat levels (Class 1, 2, 3)**. Most anomaly detection models only predict **Class 0** or flag minority of samples as "anomalies", making it difficult to classify **subtle threat patterns**.
 
+<p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/models_confusion_matrix.png" 
+       alt="Centered Image" 
+       style="width: 100%; height: Auto;">
+</p>  
+
+
 ### Why Do Unsupervised Models Predict Only Class 0 for Class 2 and 3?
 
 Unsupervised anomaly models fail to predict higher threat levels because:
