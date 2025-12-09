@@ -1,5 +1,12 @@
 # **CyberThreat-Insight - Cyber Threat Detection Engine**  
 **Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI**
+
+<p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_anomaly_classifier_flowchart.png" 
+       alt="Centered Image" 
+       style="width: 100%; height: 150%;">
+</p>  
+
 ## Stacked Supervised Model using Unsupervised Anomaly Features  
 
 **Toronto, Sept 17 202**  
