@@ -41,6 +41,12 @@ Stacked Anomaly Detection Classifier Model flowchart
 <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_anomaly_classifier_flowchart.png"
      alt="Stacked Model Flowchart"
      width="100%"/>
+     
+<p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_anomaly_classifier_flowchart.png" 
+       alt="Centered Image" 
+       style="width: 100%; height: Auto;">
+</p>  
 
 
 The model employs a two-layer stacked architecture:
