@@ -4,7 +4,7 @@
 <p align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_model.png" 
        alt="Centered Image" 
-       style="width: 100%; height: 150%;">
+       style="width: 80%; height: Auto;">
 </p>  
 
 ## Stacked Supervised Model using Unsupervised Anomaly Features  
