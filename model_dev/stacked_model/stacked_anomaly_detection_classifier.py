@@ -238,9 +238,9 @@ DBSCAN_EPS = 0.5
 DBSCAN_MIN_SAMPLES = 5
 KMEANS_CLUSTERS = 4
 CONTAMINATION = 0.05
-DATA_PATH =  "CyberThreat_Insight/cybersecurity_data/"
+DATA_PATH =  "CyberThreat_Insight/cybersecurity_data"
 DATA_PATH = DATA_PATH + "/x_y_augmented_data_google_drive.csv"
-MODEL_OUTPUT_DIR = "/content/drive/My Drive/stacked_models_deployment"
+MODEL_OUTPUT_DIR = "CyberThreat_Insight/stacked_models_deployment"
 os.makedirs(MODEL_OUTPUT_DIR, exist_ok=True)
 
 # Reproducibility
