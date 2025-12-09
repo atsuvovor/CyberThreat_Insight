@@ -129,4 +129,9 @@ Unsupervised anomaly models fail to predict higher threat levels because:
 - These models generalize outliers as a single anomaly class (often mapped to class 1), unable to differentiate between moderate and critical threats.
 
 
+<p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/models_confusion_matrix.png" 
+       alt="Centered Image" 
+       style="width: 600px; height: 40%;">
+</p>  
 
