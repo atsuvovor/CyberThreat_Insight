@@ -132,6 +132,6 @@ Unsupervised anomaly models fail to predict higher threat levels because:
 <p align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/models_confusion_matrix.png" 
        alt="Centered Image" 
-       style="width: 600px; height: 40%;">
+       style="width: 100%; height: Auto;">
 </p>  
 
