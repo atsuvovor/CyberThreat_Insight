@@ -189,7 +189,7 @@ Real-World Data -> Preprocessing -> Scale (using saved scaler) -> Generate Anoma
 *   **Integration:** The model needs to be integrated with existing security information and event management (SIEM) systems or other security tools.  
 
 
-Conclusion  
+## Conclusion  
 
 
 This project successfully developed and evaluated a stacked anomaly detection classifier leveraging unsupervised anomaly features for enhanced cybersecurity threat detection. The integrated pipeline demonstrated the process from data loading and preprocessing through unsupervised feature engineering, stacked model training, and comprehensive evaluation. The results indicate the potential of this hybrid approach to improve the accuracy and interpretability of anomaly detection compared to using individual unsupervised methods alone. While the model shows promising performance, particularly in distinguishing various threat levels, the analysis also highlighted areas for potential improvement, such as enhancing the recall for critical threats and further optimizing individual unsupervised components. The saved model artifacts and detailed documentation provide a solid foundation for potential real-world deployment and further research into advanced anomaly detection techniques in cybersecurity.
