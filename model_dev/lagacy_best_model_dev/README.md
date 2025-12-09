@@ -1,4 +1,5 @@
-## **CyberThreat-Insight -  Cyber Threat Detection Engine using Supervised and Unsupervised Models**  
+# **CyberThreat-Insight** 
+## Cyber Threat Detection Engine using Supervised and Unsupervised Models 
 **Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI**
 
 The goal of this Model Development section is to build an effective cyber threat detection engine capable of identifying anomalous behavior in security log data. The target variable is **"Threat Level"**, classified as:  
