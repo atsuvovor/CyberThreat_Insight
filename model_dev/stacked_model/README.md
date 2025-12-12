@@ -7,7 +7,7 @@
        style="width: 80%; height: Auto;">
 </p>  
 
-## Stacked Supervised Model using Unsupervised Anomaly Features  
+
 
 **Toronto, Sept 17 202**  
 **Autor : Atsu Vovor**  
@@ -178,7 +178,14 @@ To use the trained Stacked Anomaly Detection Classifier in a real-world cybersec
 
 **Workflow Summary:**
 
-Real-World Data -> Preprocessing -> Scale (using saved scaler) -> Generate Anomaly Features (using saved unsupervised models) -> Stack Features + RF Proba (using saved RF base model) -> Predict Threat Level (using saved GB meta-learner) -> Action/Alerting
+Real-World Data -> Preprocessing -> Scale (using saved scaler) -> Generate Anomaly Features (using saved unsupervised models) -> Stack Features + RF Proba (using saved RF base model) -> Predict Threat Level (using saved GB meta-learner) -> Action/Alerting  
+
+<p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_model.png" 
+       alt="Centered Image" 
+       style="width: 80%; height: Auto;">
+</p>  
+
 
 **Considerations for Production:**
 
