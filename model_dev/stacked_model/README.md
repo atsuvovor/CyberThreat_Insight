@@ -1,4 +1,4 @@
-# **Cyber Threat Detection Engine - Stacked Supervised Model using Unsupervised Anomaly Features**  
+# **Stacked Supervised Model using Unsupervised Anomaly Features**  
 **Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI**
 
 <p align="center">
