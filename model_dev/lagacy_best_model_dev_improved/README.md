@@ -39,12 +39,14 @@ The performance of each model was assessed using standard multiclass classificat
 | Autoencoder        | 0.588972               | 0.147243          | 0.250000       | 0.185331         |
 | LSTM(Classifier)   | 0.775689               | 0.377089          | 0.407664       | 0.391757         |
 
-Based on the overall model accuracy, the **RandomForest** model was identified as the best performing model with an accuracy of 0.9812.
+
 <p align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/lagacy_model_improved_metrics_bar.png" 
        alt="Centered Image" 
        style="width: 1oo%; height: Auto;">
-</p> 
+</p>   
+
+Based on the overall model accuracy, the **RandomForest** model was identified as the best performing model with an accuracy of 0.9812.
 
 ### Performance Analysis of the Best Model (RandomForest)
 
@@ -62,52 +64,7 @@ The performance insight for the RandomForest model emphasizes its strong overall
        alt="Centered Image" 
        style="width: 1oo%; height: Auto;">
 </p> 
-
-
-<p align="center">
-  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/lagacy_model_improved_metrics_curves.png" 
-       alt="Centered Image" 
-       style="width: 1oo%; height: Auto;">
-</p> 
-
-### Visualization of Unsupervised Model Performance (KMeans)
-
-To understand the anomaly detection capabilities of the unsupervised models, we visualized the performance of the best unsupervised model, KMeans (Accuracy: 0.7243). The visualization included:
-
-*   **Scatter Plot:** Showed a visual separation between points identified as anomalies (red) and normal points (blue) based on 'Session Duration in Second' and 'Data Transfer MB'.
-*   **ROC Curve:** An AUC of 1.00 indicated excellent discriminative power between the identified anomalies and normal points in this specific visualization based on the KMeans clustering.
-*   **Precision-Recall Curve:** Highlighted the trade-off between precision and recall for the identified anomalies.
-
-The visualization insights suggest that KMeans, in this context, is effective at identifying data points that are distant from the cluster centers, which are treated as anomalies.
-
-### Conclusion
-
-This project successfully developed and evaluated a range of machine learning models for cybersecurity threat detection. The combined approach of supervised and unsupervised learning provides a comprehensive framework for identifying both known and potentially novel threats. The RandomForest model emerged as the best performer based on overall accuracy. While the model shows strong overall performance, future work should focus on improving the detection of 'Critical' threats, potentially through further feature engineering, exploring different model architectures, or implementing techniques specifically designed to handle imbalanced datasets and rare events.
-
-### Future Work and Improvements
-
-*   **Advanced Feature Engineering:** Explore creating more complex features that capture temporal dependencies or interaction patterns indicative of anomalous behavior.
-*   **Hyperparameter Tuning:** Conduct more extensive hyperparameter tuning for all models, especially for the best performing ones and those with potential for improvement (e.g., LSTM, unsupervised models).
-*   **Ensemble Methods:** Investigate combining multiple models (e.g., creating an ensemble of the best supervised and unsupervised models) to potentially improve overall performance and robustness.
-*   **Handling Imbalanced Data:** Implement techniques specifically designed for imbalanced datasets, such as oversampling minority classes (e.g., Critical threats), undersampling majority classes, or using algorithms that are less sensitive to imbalance.
-*   **Real-time Detection:** Adapt the models and pipeline for real-time or near-real-time threat detection in a streaming data environment.
-*   **Model Explainability:** Incorporate techniques to explain model predictions, particularly for critical alerts, to provide security analysts with actionable insights.
-*   **Integration with Security Systems:** Explore integrating the developed engine with existing security information and event management (SIEM) systems or other security platforms.
-*   **Exploring Other Models:** Evaluate additional models, including deep learning architectures specifically designed for anomaly detection or time series analysis.
----
-put performace metrics bar charts here
----
-Overall Best model selected by Overall Model Accuracy: RandomForest -> Accuracy: 0.9812
-CyberThreat_Insight/model_deployment/RandomForest_best_model.joblib
-
-RandomForest Agreggated Peformance Metrics:
-
-RandomForest classification_report:
-put confurion matrice and performance report here
----
-put raandomforesr-multiclass meyrics bell curves here
----
-Overall Model Accuracy :  0.981226533166458
+ 
 
 --- Performance Insight for RandomForest ---
 
@@ -170,17 +127,26 @@ Business Insights:
 - Consider deploying this model for automated threat detection, but maintain human oversight, especially for high-severity alerts.
 - Continuously monitor model performance in a production environment as threat patterns can evolve.
 - Investigate misclassified instances to understand the limitations and potential areas for model improvement or data enhancement.
+ 
 
-Overall Model Accuracy :  0.981226533166458
+### Visualization of Unsupervised Model Performance (KMeans)
+
+To understand the anomaly detection capabilities of the unsupervised models, we visualized the performance of the best unsupervised model, KMeans (Accuracy: 0.7243). The visualization included:
+
+*   **Scatter Plot:** Showed a visual separation between points identified as anomalies (red) and normal points (blue) based on 'Session Duration in Second' and 'Data Transfer MB'.
+*   **ROC Curve:** An AUC of 1.00 indicated excellent discriminative power between the identified anomalies and normal points in this specific visualization based on the KMeans clustering.
+*   **Precision-Recall Curve:** Highlighted the trade-off between precision and recall for the identified anomalies.
+
 
  Model Performance Visualisation:
 
+<p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/lagacy_model_improved_metrics_curves.png" 
+       alt="Centered Image" 
+       style="width: 1oo%; height: Auto;">
+</p>  
 
 Best Unsupervised model selected by Overall Model Accuracy: KMeans -> Accuracy: 0.8048
-
----
-put recall ROC scatter plot here
----
 
 --- Visualization Insights for KMeans ---
 
@@ -202,9 +168,19 @@ Business Insights from Visualization:
 - The visualization for the KMeans suggests that the model has good potential for identifying anomalous behavior. The clear separation in the scatter plot and the high AUC value are positive indicators.
 - This model could be used to prioritize events for further investigation by security analysts.
 - The shape of the Precision-Recall curve provides insight into how many anomalies the model can find before its positive predictions become unreliable. A curve that drops sharply indicates that increasing recall comes at a high cost of precision (more false alarms).
+The visualization insights suggest that KMeans, in this context, is effective at identifying data points that are distant from the cluster centers, which are treated as anomalies.
 
-End Visualization Insights for KMeans.
+### Conclusion
 
-Model development pipeline completed.
+This project successfully developed and evaluated a range of machine learning models for cybersecurity threat detection. The combined approach of supervised and unsupervised learning provides a comprehensive framework for identifying both known and potentially novel threats. The RandomForest model emerged as the best performer based on overall accuracy. While the model shows strong overall performance, future work should focus on improving the detection of 'Critical' threats, potentially through further feature engineering, exploring different model architectures, or implementing techniques specifically designed to handle imbalanced datasets and rare events.
 
-Visualizing performance for the best unsupervised model: KMeans
+### Future Work and Improvements
+
+*   **Advanced Feature Engineering:** Explore creating more complex features that capture temporal dependencies or interaction patterns indicative of anomalous behavior.
+*   **Hyperparameter Tuning:** Conduct more extensive hyperparameter tuning for all models, especially for the best performing ones and those with potential for improvement (e.g., LSTM, unsupervised models).
+*   **Ensemble Methods:** Investigate combining multiple models (e.g., creating an ensemble of the best supervised and unsupervised models) to potentially improve overall performance and robustness.
+*   **Handling Imbalanced Data:** Implement techniques specifically designed for imbalanced datasets, such as oversampling minority classes (e.g., Critical threats), undersampling majority classes, or using algorithms that are less sensitive to imbalance.
+*   **Real-time Detection:** Adapt the models and pipeline for real-time or near-real-time threat detection in a streaming data environment.
+*   **Model Explainability:** Incorporate techniques to explain model predictions, particularly for critical alerts, to provide security analysts with actionable insights.
+*   **Integration with Security Systems:** Explore integrating the developed engine with existing security information and event management (SIEM) systems or other security platforms.
+*   **Exploring Other Models:** Evaluate additional models, including deep learning architectures specifically designed for anomaly detection or time series analysis.
