@@ -1,4 +1,4 @@
-## Model Development - Cyber Threat Detection Engine(improved version)
+## Model Development - Cyber Threat Detection Engine improved
 
 ### Introduction
 
