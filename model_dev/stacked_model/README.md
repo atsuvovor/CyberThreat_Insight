@@ -2,7 +2,7 @@
 **Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI**
 
 <p align="center">
-  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_model.png" 
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_anomaly_detector2.png" 
        alt="Centered Image" 
        style="width: 80%; height: Auto;">
 </p>  
