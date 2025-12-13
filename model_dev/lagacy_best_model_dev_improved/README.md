@@ -1,7 +1,3 @@
-## **CyberThreat-Insight**  
-**Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI**
-
-
 # Model Development - Cyber Threat Detection Engine(improved version)
 ## Anomalous Behavior Detection in Cybersecurity Analytics
 
