@@ -396,9 +396,11 @@ We will generate the following performance outputs and charts to interpret model
   
 Here’s an expanded and more detailed rewrite of your section on **Cyber Attack Simulation**:
 
-  
+#### **9. Best model Improved**
 
-#### **9. Cyber Attack Simulation**
+#### **10. Stacked Model**
+
+#### **11. Cyber Attack Simulation**
 
 As part of the next phase of the project, we will extend the platform to simulate a range of high-impact cyber attacks. These simulations will provide a dynamic testing environment to evaluate detection capabilities, assess organizational vulnerabilities, and enhance the system’s AI-powered threat response mechanisms. The simulated attack types will include:
 
