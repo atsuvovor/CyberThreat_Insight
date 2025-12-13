@@ -55,7 +55,20 @@ The RandomForest model demonstrated strong performance across all threat levels,
 *   **Aggregated Metrics:** The macro and weighted averages for Precision, Recall, and F1 Score further support the model's overall strong performance.
 *   **Per-class Metrics (Bell Curves):** The bell curves for PPV, Sensitivity, NPV, and Specificity provide a visual representation of the model's performance on each class. The 'Critical' class shows a wider spread in the Sensitivity curve, reflecting the lower recall for this class.
 
-The performance insight for the RandomForest model emphasizes its strong overall accuracy but also points out the need to improve recall for 'Critical' threats to minimize risk.
+The performance insight for the RandomForest model emphasizes its strong overall accuracy but also points out the need to improve recall for 'Critical' threats to minimize risk.  
+
+<p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/lagacy_model_improved_confusion Matrix2.png" 
+       alt="Centered Image" 
+       style="width: 1oo%; height: Auto;">
+</p> 
+
+
+<p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/lagacy_model_improved_metrics_curves.png" 
+       alt="Centered Image" 
+       style="width: 1oo%; height: Auto;">
+</p> 
 
 ### Visualization of Unsupervised Model Performance (KMeans)
 
