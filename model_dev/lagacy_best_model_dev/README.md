@@ -1,6 +1,18 @@
 # **CyberThreat-Insight** 
 ## Cyber Threat Detection Engine using Supervised and Unsupervised Models 
-**Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI**
+<h1 align="center">
+Cyber Threat Detection Engine using Supervised and Unsupervised Models
+</h1> 
+<p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/lagacy_model_dev_github.png" 
+       alt="Centered Image" 
+       style="width: 1000px; height: Auto;">
+</p>  
+
+<p align="center">
+    Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI
+</p> 
+
 
 The goal of this Model Development section is to build an effective cyber threat detection engine capable of identifying anomalous behavior in security log data. The target variable is **"Threat Level"**, classified as:  
 - 0 = Low  
