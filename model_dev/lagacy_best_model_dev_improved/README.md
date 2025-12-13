@@ -43,7 +43,7 @@ Based on the overall model accuracy, the **RandomForest** model was identified a
 <p align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/lagacy_model_improved_metrics_bar.png" 
        alt="Centered Image" 
-       style="width: 1000px; height: Auto;">
+       style="width: 1oo%; height: Auto;">
 </p> 
 
 ### Performance Analysis of the Best Model (RandomForest)
