@@ -1,7 +1,9 @@
-## Model Development - Cyber Threat Detection Engine improved
 
+<h1 align="center">
+Model Development - Cyber Threat Detection Engine improved
+</h1> 
 <p align="center">
-  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/cyber_threat_detection_engine4.png" 
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/lagacy_model_improved_headline.png" 
        alt="Centered Image" 
        style="width: 600px; height: 40%;">
 </p>  
