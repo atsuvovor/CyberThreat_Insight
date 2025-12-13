@@ -40,6 +40,11 @@ The performance of each model was assessed using standard multiclass classificat
 | LSTM(Classifier)   | 0.775689               | 0.377089          | 0.407664       | 0.391757         |
 
 Based on the overall model accuracy, the **RandomForest** model was identified as the best performing model with an accuracy of 0.9812.
+<p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/lagacy_model_improved_headline.png" 
+       alt="Centered Image" 
+       style="width: 1000px; height: Auto;">
+</p> 
 
 ### Performance Analysis of the Best Model (RandomForest)
 
