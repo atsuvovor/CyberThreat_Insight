@@ -1,5 +1,3 @@
-# **CyberThreat-Insight** 
-## Cyber Threat Detection Engine using Supervised and Unsupervised Models 
 <h1 align="center">
 Cyber Threat Detection Engine using Supervised and Unsupervised Models
 </h1> 
