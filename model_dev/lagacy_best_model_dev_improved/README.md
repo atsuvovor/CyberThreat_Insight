@@ -1,5 +1,4 @@
-# Model Development - Cyber Threat Detection Engine(improved version)
-## Anomalous Behavior Detection in Cybersecurity Analytics
+## Model Development - Cyber Threat Detection Engine(improved version)
 
 ### Introduction
 
