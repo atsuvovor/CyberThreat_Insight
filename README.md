@@ -400,7 +400,11 @@ Here’s an expanded and more detailed rewrite of your section on **Cyber Attack
 
 #### **10. Stacked Model**
 
-#### **11. Cyber Attack Simulation**
+#### **11. Stacked Model Inference**
+
+#### **12. Stacked Model Production**
+
+#### **13. Cyber Attack Simulation**
 
 As part of the next phase of the project, we will extend the platform to simulate a range of high-impact cyber attacks. These simulations will provide a dynamic testing environment to evaluate detection capabilities, assess organizational vulnerabilities, and enhance the system’s AI-powered threat response mechanisms. The simulated attack types will include:
 
