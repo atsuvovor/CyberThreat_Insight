@@ -1,5 +1,16 @@
 ## Model Development - Cyber Threat Detection Engine improved
 
+<p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/cyber_threat_detection_engine4.png" 
+       alt="Centered Image" 
+       style="width: 600px; height: 40%;">
+</p>  
+
+<p align="center">
+    Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI**
+</p> 
+
+
 ### Introduction
 
 Cybersecurity threats are constantly evolving, making traditional signature-based detection insufficient. Identifying anomalous behavior is crucial for detecting novel threats. This article describes a Cyber Threat Detection Engine that uses both supervised and unsupervised machine learning to classify known threats and identify new anomalies. We evaluate various models to build a robust system for classifying cyber threats by severity level (Low, Medium, High, Critical).
