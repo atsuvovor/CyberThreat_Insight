@@ -1,5 +1,7 @@
-# **Stacked Supervised Model using Unsupervised Anomaly Features**  
-**Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI**
+<h1 align="center">
+Stacked Supervised Model using Unsupervised Anomaly Features
+</h1> 
+
 
 <p align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_anomaly_detector2.png" 
@@ -7,14 +9,9 @@
        style="width: 80%; height: Auto;">
 </p>  
 
-
-
-**Toronto, Sept 17 202**  
-**Autor : Atsu Vovor**  
-
-
-
-## Project Overview
+<p align="center">
+    Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI**
+</p> 
 
 ### Abstract
 
