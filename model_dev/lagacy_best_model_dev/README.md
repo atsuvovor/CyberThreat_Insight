@@ -1,6 +1,6 @@
-<h1 align="center">
+<h2 align="center">
 Cyber Threat Detection Engine using Supervised and Unsupervised Models
-</h1> 
+</h2> 
 <p align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/lagacy_model_dev_github.png" 
        alt="Centered Image" 
