@@ -66,7 +66,7 @@ The performance insight for the RandomForest model emphasizes its strong overall
 </p> 
  
 
-### Performance Insight for RandomForest ---
+### Performance Insight for RandomForest  
 
 **Metrics per Class:**  
 
