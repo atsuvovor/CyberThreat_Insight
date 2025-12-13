@@ -11,14 +11,25 @@ Cyber Threat Detection Engine using Supervised and Unsupervised Models
     Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI
 </p> 
 
+Below is a **polished, cohesive introduction** that flows naturally into the detailed sections you provided, followed by a **strong, executive-style conclusion** that reinforces the technical and business value of the work. The tone is suitable for a **GitHub project, technical report, or portfolio**.
 
-The goal of this Model Development section is to build an effective cyber threat detection engine capable of identifying anomalous behavior in security log data. The target variable is **"Threat Level"**, classified as:  
-- 0 = Low  
-- 1 = Medium  
-- 2 = High  
-- 3 = Critical  
+---
 
-This section details the full implementation, evaluation, and adaptation of both supervised and unsupervised learning models for detecting multi-class cyber threat levels. We first implement the following machine learning algorythms and select the model with the best performance. We then explore limitations of unsupervised anomaly detection models and propose a robust solution that adapts these models for multi-class classification.  
+## Introduction
+
+The objective of this Model Development section is to design and implement a robust cyber threat detection engine capable of identifying anomalous behavior within security log data and accurately assessing its severity. To achieve this, we model cyber risk using a multi-class target variable, **Threat Level**, defined as:
+
+* **0 – Low**
+* **1 – Medium**
+* **2 – High**
+* **3 – Critical**
+
+Accurately distinguishing between these threat levels is essential for enabling timely incident response, prioritizing security alerts, and supporting risk-informed decision-making.
+
+This section presents a comprehensive exploration of both **supervised and unsupervised machine learning approaches** for cyber threat detection. Multiple algorithms are implemented, evaluated, and compared to determine their effectiveness in identifying malicious activity across varying levels of severity. Supervised models are trained to directly predict threat levels using labeled data, while unsupervised models are applied to detect deviations from normal behavior in the absence of labels.
+
+Through empirical evaluation, this section highlights the strengths of supervised classification techniques in multi-class threat prediction, as well as the inherent limitations of traditional unsupervised anomaly detection methods. Building on these findings, we examine how unsupervised models can be adapted and augmented to better support multi-class threat classification, laying the groundwork for more resilient and scalable cyber defense systems.
+
 
 ## Models Implemented  
 
@@ -146,3 +157,14 @@ Unsupervised anomaly models fail to predict higher threat levels because:
        style="width: 100%; height: Auto;">
 </p>  
 
+
+
+## Conclusion
+
+This Model Development effort demonstrates that **supervised learning models**—particularly ensemble-based methods such as Random Forest and Gradient Boosting—are highly effective at predicting multi-class cyber threat levels when labeled data is available. These models successfully learn complex decision boundaries and consistently differentiate between low, medium, high, and critical threats, making them well-suited for operational security environments where historical labels exist.
+
+In contrast, **unsupervised anomaly detection models** excel at identifying deviations from normal behavior but are fundamentally limited to **binary outcomes** (normal vs. anomalous). As observed, models such as Isolation Forest, One-Class SVM, LOF, DBSCAN, Autoencoders, and LSTM-based detectors are unable to distinguish between higher-severity threat classes. This limitation stems from their design, which treats all anomalies as a single category without contextual or severity-based differentiation.
+
+These findings underscore a critical insight: while unsupervised models are valuable for early anomaly detection and zero-day threat discovery, they are insufficient on their own for nuanced, multi-level threat classification. Effective cyber threat intelligence systems must therefore either rely on supervised learning where labels exist or incorporate **hybrid and adaptive strategies** that combine anomaly detection with downstream classification, clustering, or risk-scoring mechanisms.
+
+Overall, this section establishes a clear, evidence-based framework for selecting and adapting machine learning models in cybersecurity analytics, bridging the gap between anomaly detection and actionable threat severity classification.
