@@ -66,11 +66,12 @@ The performance insight for the RandomForest model emphasizes its strong overall
 </p> 
  
 
---- Performance Insight for RandomForest ---
+### Performance Insight for RandomForest ---
 
-Metrics per Class:
+**Metrics per Class:**  
 
-  Class: Low
+
+  Class: Low  
     Precision: 0.9812 - Of all instances predicted as 'Low', this is the proportion that were actually 'Low'.
     Recall: 0.9958 - Of all actual 'Low' instances, this is the proportion that the model correctly identified.
     F1-Score: 0.9884 - A balanced measure of Precision and Recall for this class.
@@ -80,7 +81,7 @@ Metrics per Class:
     Sensitivity (True Positive Rate): 0.9958 - Ability to correctly identify positive instances.
     Specificity (True Negative Rate): 0.9726 - Ability to correctly identify negative instances.
 
-  Class: Medium
+  Class: Medium  
     Precision: 1.0000 - Of all instances predicted as 'Medium', this is the proportion that were actually 'Medium'.
     Recall: 0.8667 - Of all actual 'Medium' instances, this is the proportion that the model correctly identified.
     F1-Score: 0.9286 - A balanced measure of Precision and Recall for this class.
@@ -90,7 +91,7 @@ Metrics per Class:
     Sensitivity (True Positive Rate): 0.8667 - Ability to correctly identify positive instances.
     Specificity (True Negative Rate): 1.0000 - Ability to correctly identify negative instances.
 
-  Class: High
+  Class: High  
     Precision: 0.9819 - Of all instances predicted as 'High', this is the proportion that were actually 'High'.
     Recall: 1.0000 - Of all actual 'High' instances, this is the proportion that the model correctly identified.
     F1-Score: 0.9909 - A balanced measure of Precision and Recall for this class.
@@ -100,7 +101,7 @@ Metrics per Class:
     Sensitivity (True Positive Rate): 1.0000 - Ability to correctly identify positive instances.
     Specificity (True Negative Rate): 0.9905 - Ability to correctly identify negative instances.
 
-  Class: Critical
+  Class: Critical  
     Precision: 0.9474 - Of all instances predicted as 'Critical', this is the proportion that were actually 'Critical'.
     Recall: 0.6667 - Of all actual 'Critical' instances, this is the proportion that the model correctly identified.
     F1-Score: 0.7826 - A balanced measure of Precision and Recall for this class.
@@ -110,7 +111,7 @@ Metrics per Class:
     Sensitivity (True Positive Rate): 0.6667 - Ability to correctly identify positive instances.
     Specificity (True Negative Rate): 0.9987 - Ability to correctly identify negative instances.
 
-Aggregated Metrics:
+Aggregated Metrics:  
   Accuracy: 0.9812 - The overall proportion of correctly classified instances.
   Precision (Macro): 0.9776 - Average Precision across all classes, unweighted.
   Recall (Macro): 0.8823 - Average Recall across all classes, unweighted.
@@ -119,7 +120,7 @@ Aggregated Metrics:
   Recall (Weighted): 0.9812 - Average Recall across all classes, weighted by support.
   F1 Score (Weighted): 0.9800 - Average F1-Score across all classes, weighted by support.
 
-Business Insights:
+Business Insights:  
 - The model 'RandomForest' achieved an overall accuracy of 0.9812.
 - The model demonstrates strong overall performance across all major metrics and classes.
 - For 'Critical' threats (Recall: 0.6667, Precision: 0.9474), the model is able to capture a significant portion of actual critical events (Recall), and when it flags an event as critical, it is often correct (Precision). However, further investigation into missed critical events might be warranted to minimize risk.
@@ -138,7 +139,7 @@ To understand the anomaly detection capabilities of the unsupervised models, we 
 *   **Precision-Recall Curve:** Highlighted the trade-off between precision and recall for the identified anomalies.
 
 
- Model Performance Visualisation:
+ Model Performance Visualisation:  
 
 <p align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/lagacy_model_improved_metrics_curves.png" 
@@ -148,23 +149,23 @@ To understand the anomaly detection capabilities of the unsupervised models, we 
 
 Best Unsupervised model selected by Overall Model Accuracy: KMeans -> Accuracy: 0.8048
 
---- Visualization Insights for KMeans ---
+### Visualization Insights for KMeans
 
-Scatter Plot Insight:
+Scatter Plot Insight:  
 - The scatter plot visually separates points identified as anomalies (38 points, typically shown in red) from normal points (761 points, typically shown in blue).
 - A clear separation between the red and blue points indicates that the model is effectively distinguishing between normal and anomalous behavior based on the chosen features.
 
-ROC Curve Insight:
+ROC Curve Insight:  
 - The ROC curve shows the trade-off between the True Positive Rate (ability to detect actual anomalies) and the False Positive Rate (incorrectly flagging normal points as anomalies) at various threshold settings.
 - An Area Under the ROC Curve (AUC) of 1.0000 indicates the overall ability of the model to discriminate between positive (anomaly) and negative (normal) classes.
 - An AUC value above 0.8 suggests good discriminative power.
 
-Precision-Recall Curve Insight:
+Precision-Recall Curve Insight:  
 - The Precision-Recall curve highlights the trade-off between Precision (accuracy of positive predictions) and Recall (completeness of positive predictions) as the decision threshold is varied.
 - This curve is particularly informative for imbalanced datasets, where the number of anomalies is much smaller than normal instances.
 - A curve that stays high as recall increases indicates that the model can achieve high precision even when identifying a large proportion of actual anomalies.
 
-Business Insights from Visualization:
+Business Insights from Visualization:  
 - The visualization for the KMeans suggests that the model has good potential for identifying anomalous behavior. The clear separation in the scatter plot and the high AUC value are positive indicators.
 - This model could be used to prioritize events for further investigation by security analysts.
 - The shape of the Precision-Recall curve provides insight into how many anomalies the model can find before its positive predictions become unreliable. A curve that drops sharply indicates that increasing recall comes at a high cost of precision (more false alarms).
