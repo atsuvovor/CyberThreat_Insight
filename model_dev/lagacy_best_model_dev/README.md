@@ -11,9 +11,6 @@ Cyber Threat Detection Engine using Supervised and Unsupervised Models
     Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI
 </p> 
 
-Below is a **polished, cohesive introduction** that flows naturally into the detailed sections you provided, followed by a **strong, executive-style conclusion** that reinforces the technical and business value of the work. The tone is suitable for a **GitHub project, technical report, or portfolio**.
-
----
 
 ## Introduction
 
