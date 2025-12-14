@@ -612,7 +612,7 @@ Implications for the Stacked Model:
 <class 'pandas.core.frame.DataFrame'>  
 RangeIndex: 799 entries, 0 to 798   
 Data columns (total 24 columns):  
- #   Column                      Non-Null Count  Dtype    
+###   Column                      Non-Null Count  Dtype    
 ---  ------                      --------------  -----  
  0   Issue Response Time Days    799 non-null    float64  
  1   Impact Score                799 non-null    float64  
@@ -644,7 +644,7 @@ dtypes: float64(22), int64(2)
 <class 'pandas.core.frame.DataFrame'>    
 RangeIndex: 799 entries, 1 to 799    
 Data columns (total 26 columns):    
- #   Column                      Non-Null Count  Dtype    
+###   Column                      Non-Null Count  Dtype    
 ---  ------                      --------------  -----     
  0   Issue Response Time Days    799 non-null    float64  
  1   Impact Score                799 non-null    float64  
