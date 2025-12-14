@@ -6,7 +6,7 @@ Stacked Supervised Model using Unsupervised Anomaly Features
 <p align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_anomaly_detector2.png" 
        alt="Centered Image" 
-       style="width: 80%; height: Auto;">
+       style="width: 100%; height: Auto;">
 </p>  
 
 <p align="center">
