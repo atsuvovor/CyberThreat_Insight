@@ -43,10 +43,15 @@ This project focuses on the model development and evaluation phases using a pred
 Stacked Anomaly Detection Classifier Model flowchart  
      
 <p align="center">
-  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_anomaly_classifier_flowchart.png" 
-       alt="Centered Image" 
-       style="width: 100%; height: 150%;">
-</p>  
+  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_anomaly_classifier_flowchart.png" target="_blank">
+    <img
+      src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_anomaly_classifier_flowchart.png"
+      alt="Stacked Anomaly Classifier Flowchart"
+      style="width:100%; max-width:1000px; cursor: zoom-in;"
+    />
+  </a>
+</p>
+  
 
 
 The model employs a two-layer stacked architecture:
