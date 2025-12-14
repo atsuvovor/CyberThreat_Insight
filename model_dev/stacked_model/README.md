@@ -564,26 +564,15 @@ End Visualization Insights for Autoencoder.
 [INFO]   LSTM(Classifier) performance (Average Precision): 0.3288  
 [INFO]     LSTM(Classifier) performance (AUC): 0.3288  
 [INFO]   Displaying unsupervised model performance table...    
+INFO]   Displaying unsupervised model performance chart...  
 
 <p align="center">
-  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_model_unsup_model_bar.png" 
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_model_unsup_model_perf.png" 
        alt="Centered Image" 
        style="width: 80%; height: Auto;">
 </p>  
 
-INFO]   Displaying unsupervised model performance chart...   
-/content/CyberThreat_Insight/model_dev/stacked_model/stacked_anomaly_detection_classifier.py:1257: FutureWarning: 
-
-Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `y` variable to `hue` and set `legend=False` for the same effect.    
-
-
-<p align="center">
-  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_model_unsup_model_bar.png" 
-       alt="Centered Image" 
-       style="width: 80%; height: Auto;">
-</p>
-
-
+   
 --- Insights from Unsupervised Model Performance Comparison ---  
 Best Performing Model: Autoencoder (Metric: 0.5623)  
 Worst Performing Model: IsolationForest (Metric: 0.2366)  
