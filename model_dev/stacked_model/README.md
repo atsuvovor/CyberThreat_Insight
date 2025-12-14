@@ -287,11 +287,11 @@ Business Insights:
 
 ---Unsupervised Model Evaluation and Identification of the Best Model ---  
 
-[INFO] Evaluating unsupervised models and identifying the best...
-[INFO] Visualizing performance for all unsupervised models...
-[INFO]   Generating visualization data for IsolationForest...
-[INFO]   IsolationForest performance (Average Precision): 0.2366
-[INFO]   Visualizing performance for IsolationForest...  
+[INFO] Evaluating unsupervised models and identifying the best...  
+[INFO] Visualizing performance for all unsupervised models...  
+[INFO]   Generating visualization data for IsolationForest...  
+[INFO]   IsolationForest performance (Average Precision): 0.2366  
+[INFO]   Visualizing performance for IsolationForest...    
 
 
 <p align="center">
@@ -303,21 +303,21 @@ Business Insights:
 
 --- Visualization Insights for IsolationForest ---
 
-Scatter Plot Insight:
-- The scatter plot visually separates points identified as anomalies (298 points, typically shown in red) from normal points (501 points, typically shown in blue).
-- A clear separation between the red and blue points indicates that the model is effectively distinguishing between normal and anomalous behavior based on the chosen features.
+Scatter Plot Insight:  
+- The scatter plot visually separates points identified as anomalies (298 points, typically shown in red) from normal points (501 points, typically shown in blue).  
+- A clear separation between the red and blue points indicates that the model is effectively distinguishing between normal and anomalous behavior based on the chosen features.  
 
-ROC Curve Insight:
+ROC Curve Insight:  
 - The ROC curve shows the trade-off between the True Positive Rate (ability to detect actual anomalies) and the False Positive Rate (incorrectly flagging normal points as anomalies) at various threshold settings.
 - An Area Under the ROC Curve (AUC) of 0.1667 indicates the overall ability of the model to discriminate between positive (anomaly) and negative (normal) classes.
 - An AUC value below 0.5 suggests the model performs worse than random guessing.
 
-Precision-Recall Curve Insight:
+Precision-Recall Curve Insight:  
 - The Precision-Recall curve highlights the trade-off between Precision (accuracy of positive predictions) and Recall (completeness of positive predictions) as the decision threshold is varied.
 - This curve is particularly informative for imbalanced datasets, where the number of anomalies is much smaller than normal instances.
 - A curve that stays high as recall increases indicates that the model can achieve high precision even when identifying a large proportion of actual anomalies.
 
-Business Insights from Visualization:
+Business Insights from Visualization:  
 - The visualization for the IsolationForest suggests that the model's ability to discriminate anomalies is limited. The scatter plot may show significant overlap, and the AUC is low.
 - This model might not be suitable for direct deployment without significant improvements or a different approach.
 - The shape of the Precision-Recall curve provides insight into how many anomalies the model can find before its positive predictions become unreliable. A curve that drops sharply indicates that increasing recall comes at a high cost of precision (more false alarms).
@@ -335,31 +335,31 @@ End Visualization Insights for IsolationForest.
        style="width: 80%; height: Auto;">
 </p>   
 
---- Visualization Insights for OneClassSVM ---
+--- Visualization Insights for OneClassSVM ---   
 
-Scatter Plot Insight:
-- The scatter plot visually separates points identified as anomalies (298 points, typically shown in red) from normal points (501 points, typically shown in blue).
-- A clear separation between the red and blue points indicates that the model is effectively distinguishing between normal and anomalous behavior based on the chosen features.
+Scatter Plot Insight:  
+- The scatter plot visually separates points identified as anomalies (298 points, typically shown in red) from normal points (501 points, typically shown in blue).  
+- A clear separation between the red and blue points indicates that the model is effectively distinguishing between normal and anomalous behavior based on the chosen features.  
 
-ROC Curve Insight:
-- The ROC curve shows the trade-off between the True Positive Rate (ability to detect actual anomalies) and the False Positive Rate (incorrectly flagging normal points as anomalies) at various threshold settings.
-- An Area Under the ROC Curve (AUC) of 0.3158 indicates the overall ability of the model to discriminate between positive (anomaly) and negative (normal) classes.
-- An AUC value below 0.5 suggests the model performs worse than random guessing.
+ROC Curve Insight:  
+- The ROC curve shows the trade-off between the True Positive Rate (ability to detect actual anomalies) and the False Positive Rate (incorrectly flagging normal points as anomalies) at various threshold settings.  
+- An Area Under the ROC Curve (AUC) of 0.3158 indicates the overall ability of the model to discriminate between positive (anomaly) and negative (normal) classes.  
+- An AUC value below 0.5 suggests the model performs worse than random guessing.  
 
-Precision-Recall Curve Insight:
-- The Precision-Recall curve highlights the trade-off between Precision (accuracy of positive predictions) and Recall (completeness of positive predictions) as the decision threshold is varied.
-- This curve is particularly informative for imbalanced datasets, where the number of anomalies is much smaller than normal instances.
-- A curve that stays high as recall increases indicates that the model can achieve high precision even when identifying a large proportion of actual anomalies.
+Precision-Recall Curve Insight:  
+- The Precision-Recall curve highlights the trade-off between Precision (accuracy of positive predictions) and Recall (completeness of positive predictions) as the decision threshold is varied.  
+- This curve is particularly informative for imbalanced datasets, where the number of anomalies is much smaller than normal instances.  
+- A curve that stays high as recall increases indicates that the model can achieve high precision even when identifying a large proportion of actual anomalies.  
 
-Business Insights from Visualization:
-- The visualization for the OneClassSVM suggests that the model's ability to discriminate anomalies is limited. The scatter plot may show significant overlap, and the AUC is low.
-- This model might not be suitable for direct deployment without significant improvements or a different approach.
-- The shape of the Precision-Recall curve provides insight into how many anomalies the model can find before its positive predictions become unreliable. A curve that drops sharply indicates that increasing recall comes at a high cost of precision (more false alarms).
+Business Insights from Visualization:  
+- The visualization for the OneClassSVM suggests that the model's ability to discriminate anomalies is limited. The scatter plot may show significant overlap, and the AUC is low.  
+- This model might not be suitable for direct deployment without significant improvements or a different approach.  
+- The shape of the Precision-Recall curve provides insight into how many anomalies the model can find before its positive predictions become unreliable. A curve that drops sharply indicates that increasing recall comes at a high cost of precision (more false alarms).  
 
-End Visualization Insights for OneClassSVM.
-[INFO]   Generating visualization data for LocalOutlierFactor...
-[INFO]   LocalOutlierFactor performance (Average Precision): 0.3211
-[INFO]   Visualizing performance for LocalOutlierFactor...  
+End Visualization Insights for OneClassSVM.  
+[INFO]   Generating visualization data for LocalOutlierFactor...  
+[INFO]   LocalOutlierFactor performance (Average Precision): 0.3211  
+[INFO]   Visualizing performance for LocalOutlierFactor...    
 
 <p align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_model_local_outlier_scater_plot_roc_recall.png" 
@@ -367,33 +367,33 @@ End Visualization Insights for OneClassSVM.
        style="width: 80%; height: Auto;">
 </p>  
 
---- Visualization Insights for LocalOutlierFactor ---
+--- Visualization Insights for LocalOutlierFactor ---  
+  
+Scatter Plot Insight:  
+- The scatter plot visually separates points identified as anomalies (298 points, typically shown in red) from normal points (501 points, typically shown in blue).  
+- A clear separation between the red and blue points indicates that the model is effectively distinguishing between normal and anomalous behavior based on the chosen features.  
 
-Scatter Plot Insight:
-- The scatter plot visually separates points identified as anomalies (298 points, typically shown in red) from normal points (501 points, typically shown in blue).
-- A clear separation between the red and blue points indicates that the model is effectively distinguishing between normal and anomalous behavior based on the chosen features.
+ROC Curve Insight:  
+- The ROC curve shows the trade-off between the True Positive Rate (ability to detect actual anomalies) and the False Positive Rate (incorrectly flagging normal points as anomalies) at various threshold settings.  
+- An Area Under the ROC Curve (AUC) of 0.3883 indicates the overall ability of the model to discriminate between positive (anomaly) and negative (normal) classes.  
+- An AUC value below 0.5 suggests the model performs worse than random guessing.  
 
-ROC Curve Insight:
-- The ROC curve shows the trade-off between the True Positive Rate (ability to detect actual anomalies) and the False Positive Rate (incorrectly flagging normal points as anomalies) at various threshold settings.
-- An Area Under the ROC Curve (AUC) of 0.3883 indicates the overall ability of the model to discriminate between positive (anomaly) and negative (normal) classes.
-- An AUC value below 0.5 suggests the model performs worse than random guessing.
-
-Precision-Recall Curve Insight:
-- The Precision-Recall curve highlights the trade-off between Precision (accuracy of positive predictions) and Recall (completeness of positive predictions) as the decision threshold is varied.
+Precision-Recall Curve Insight:  
+- The Precision-Recall curve highlights the trade-off between Precision (accuracy of positive predictions) and Recall (completeness of positive predictions) as the decision threshold is varied.  
 - This curve is particularly informative for imbalanced datasets, where the number of anomalies is much smaller than normal instances.
-- A curve that stays high as recall increases indicates that the model can achieve high precision even when identifying a large proportion of actual anomalies.
+- A curve that stays high as recall increases indicates that the model can achieve high precision even when identifying a large proportion of actual anomalies.  
 
-Business Insights from Visualization:
-- The visualization for the LocalOutlierFactor suggests that the model's ability to discriminate anomalies is limited. The scatter plot may show significant overlap, and the AUC is low.
-- This model might not be suitable for direct deployment without significant improvements or a different approach.
-- The shape of the Precision-Recall curve provides insight into how many anomalies the model can find before its positive predictions become unreliable. A curve that drops sharply indicates that increasing recall comes at a high cost of precision (more false alarms).
+Business Insights from Visualization:  
+- The visualization for the LocalOutlierFactor suggests that the model's ability to discriminate anomalies is limited. The scatter plot may show significant overlap, and the AUC is low.  
+- This model might not be suitable for direct deployment without significant improvements or a different approach.  
+- The shape of the Precision-Recall curve provides insight into how many anomalies the model can find before its positive predictions become unreliable. A curve that drops sharply indicates that increasing recall comes at a high cost of precision (more false alarms).  
 
-End Visualization Insights for LocalOutlierFactor.
-[INFO]   Generating visualization data for DBSCAN...
-[INFO] Skipping visualization for DBSCAN: Anomaly score not available.
-[INFO]   Generating visualization data for KMeans...
-[INFO]   KMeans performance (Average Precision): 0.2511
-[INFO]   Visualizing performance for KMeans...  
+End Visualization Insights for LocalOutlierFactor.  
+[INFO]   Generating visualization data for DBSCAN...  
+[INFO] Skipping visualization for DBSCAN: Anomaly score not available.  
+[INFO]   Generating visualization data for KMeans...  
+[INFO]   KMeans performance (Average Precision): 0.2511  
+[INFO]   Visualizing performance for KMeans...    
 
 
 <p align="center">
@@ -404,29 +404,29 @@ End Visualization Insights for LocalOutlierFactor.
 
 --- Visualization Insights for KMeans ---
 
-Scatter Plot Insight:
-- The scatter plot visually separates points identified as anomalies (298 points, typically shown in red) from normal points (501 points, typically shown in blue).
-- A clear separation between the red and blue points indicates that the model is effectively distinguishing between normal and anomalous behavior based on the chosen features.
+Scatter Plot Insight:  
+- The scatter plot visually separates points identified as anomalies (298 points, typically shown in red) from normal points (501 points, typically shown in blue).  
+- A clear separation between the red and blue points indicates that the model is effectively distinguishing between normal and anomalous behavior based on the chosen features.  
 
-ROC Curve Insight:
-- The ROC curve shows the trade-off between the True Positive Rate (ability to detect actual anomalies) and the False Positive Rate (incorrectly flagging normal points as anomalies) at various threshold settings.
-- An Area Under the ROC Curve (AUC) of 0.2286 indicates the overall ability of the model to discriminate between positive (anomaly) and negative (normal) classes.
-- An AUC value below 0.5 suggests the model performs worse than random guessing.
+ROC Curve Insight:  
+- The ROC curve shows the trade-off between the True Positive Rate (ability to detect actual anomalies) and the False Positive Rate (incorrectly flagging normal points as anomalies) at various threshold settings.  
+- An Area Under the ROC Curve (AUC) of 0.2286 indicates the overall ability of the model to discriminate between positive (anomaly) and negative (normal) classes.   
+- An AUC value below 0.5 suggests the model performs worse than random guessing.  
 
-Precision-Recall Curve Insight:
-- The Precision-Recall curve highlights the trade-off between Precision (accuracy of positive predictions) and Recall (completeness of positive predictions) as the decision threshold is varied.
-- This curve is particularly informative for imbalanced datasets, where the number of anomalies is much smaller than normal instances.
-- A curve that stays high as recall increases indicates that the model can achieve high precision even when identifying a large proportion of actual anomalies.
+Precision-Recall Curve Insight:  
+- The Precision-Recall curve highlights the trade-off between Precision (accuracy of positive predictions) and Recall (completeness of positive predictions) as the decision threshold is varied.  
+- This curve is particularly informative for imbalanced datasets, where the number of anomalies is much smaller than normal instances.  
+- A curve that stays high as recall increases indicates that the model can achieve high precision even when identifying a large proportion of actual anomalies.  
 
-Business Insights from Visualization:
-- The visualization for the KMeans suggests that the model's ability to discriminate anomalies is limited. The scatter plot may show significant overlap, and the AUC is low.
-- This model might not be suitable for direct deployment without significant improvements or a different approach.
-- The shape of the Precision-Recall curve provides insight into how many anomalies the model can find before its positive predictions become unreliable. A curve that drops sharply indicates that increasing recall comes at a high cost of precision (more false alarms).
+Business Insights from Visualization:  
+- The visualization for the KMeans suggests that the model's ability to discriminate anomalies is limited. The scatter plot may show significant overlap, and the AUC is low.  
+- This model might not be suitable for direct deployment without significant improvements or a different approach.  
+- The shape of the Precision-Recall curve provides insight into how many anomalies the model can find before its positive predictions become unreliable. A curve that drops sharply indicates that increasing recall comes at a high cost of precision (more false alarms).  
 
-End Visualization Insights for KMeans.
-[INFO]   Generating visualization data for Autoencoder...
-[INFO]   Autoencoder performance (Average Precision): 0.5623
-[INFO]   Visualizing performance for Autoencoder...  
+End Visualization Insights for KMeans.  
+[INFO]   Generating visualization data for Autoencoder...  
+[INFO]   Autoencoder performance (Average Precision): 0.5623   
+[INFO]   Visualizing performance for Autoencoder...    
 
 
 
@@ -436,31 +436,31 @@ End Visualization Insights for KMeans.
        style="width: 80%; height: Auto;">
 </p>  
 
---- Visualization Insights for Autoencoder ---
+--- Visualization Insights for Autoencoder ---  
 
-Scatter Plot Insight:
-- The scatter plot visually separates points identified as anomalies (298 points, typically shown in red) from normal points (501 points, typically shown in blue).
-- A clear separation between the red and blue points indicates that the model is effectively distinguishing between normal and anomalous behavior based on the chosen features.
+Scatter Plot Insight:  
+- The scatter plot visually separates points identified as anomalies (298 points, typically shown in red) from normal points (501 points, typically shown in blue).  
+- A clear separation between the red and blue points indicates that the model is effectively distinguishing between normal and anomalous behavior based on the chosen features.  
 
-ROC Curve Insight:
-- The ROC curve shows the trade-off between the True Positive Rate (ability to detect actual anomalies) and the False Positive Rate (incorrectly flagging normal points as anomalies) at various threshold settings.
-- An Area Under the ROC Curve (AUC) of 0.6977 indicates the overall ability of the model to discriminate between positive (anomaly) and negative (normal) classes.
-- An AUC value above 0.5 suggests the model performs better than random guessing.
+ROC Curve Insight:  
+- The ROC curve shows the trade-off between the True Positive Rate (ability to detect actual anomalies) and the False Positive Rate (incorrectly flagging normal points as anomalies) at various threshold settings.   
+- An Area Under the ROC Curve (AUC) of 0.6977 indicates the overall ability of the model to discriminate between positive (anomaly) and negative (normal) classes.  
+- An AUC value above 0.5 suggests the model performs better than random guessing.  
 
-Precision-Recall Curve Insight:
-- The Precision-Recall curve highlights the trade-off between Precision (accuracy of positive predictions) and Recall (completeness of positive predictions) as the decision threshold is varied.
+Precision-Recall Curve Insight:   
+- The Precision-Recall curve highlights the trade-off between Precision (accuracy of positive predictions) and Recall (completeness of positive predictions) as the decision threshold is varied.  
 - This curve is particularly informative for imbalanced datasets, where the number of anomalies is much smaller than normal instances.
-- A curve that stays high as recall increases indicates that the model can achieve high precision even when identifying a large proportion of actual anomalies.
+- A curve that stays high as recall increases indicates that the model can achieve high precision even when identifying a large proportion of actual anomalies.  
 
-Business Insights from Visualization:
-- The visualization for the Autoencoder indicates that the model is somewhat effective at identifying anomalies, performing better than random guessing. However, there might be room for improvement in separating normal and anomalous instances.
-- Further refinement of features or model parameters could enhance its utility in practice.
-- The shape of the Precision-Recall curve provides insight into how many anomalies the model can find before its positive predictions become unreliable. A curve that drops sharply indicates that increasing recall comes at a high cost of precision (more false alarms).
+Business Insights from Visualization:  
+- The visualization for the Autoencoder indicates that the model is somewhat effective at identifying anomalies, performing better than random guessing. However, there might be room for improvement in separating normal and anomalous instances.  
+- Further refinement of features or model parameters could enhance its utility in practice.  
+- The shape of the Precision-Recall curve provides insight into how many anomalies the model can find before its positive predictions become unreliable. A curve that drops sharply indicates that increasing recall comes at a high cost of precision (more false alarms).   
 
-End Visualization Insights for Autoencoder.
-[INFO]   Generating visualization data for LSTM(Classifier)...
-[INFO]   LSTM(Classifier) performance (Average Precision): 0.3288
-[INFO]   Visualizing performance for LSTM(Classifier)...  
+End Visualization Insights for Autoencoder.  
+[INFO]   Generating visualization data for LSTM(Classifier)...  
+[INFO]   LSTM(Classifier) performance (Average Precision): 0.3288  
+[INFO]   Visualizing performance for LSTM(Classifier)...    
 
 
 
@@ -470,49 +470,49 @@ End Visualization Insights for Autoencoder.
        style="width: 80%; height: Auto;">
 </p>   
 
---- Visualization Insights for LSTM(Classifier) ---
+--- Visualization Insights for LSTM(Classifier) ---   
 
-Scatter Plot Insight:
-- The scatter plot visually separates points identified as anomalies (298 points, typically shown in red) from normal points (501 points, typically shown in blue).
-- A clear separation between the red and blue points indicates that the model is effectively distinguishing between normal and anomalous behavior based on the chosen features.
+Scatter Plot Insight:  
+- The scatter plot visually separates points identified as anomalies (298 points, typically shown in red) from normal points (501 points, typically shown in blue).  
+- A clear separation between the red and blue points indicates that the model is effectively distinguishing between normal and anomalous behavior based on the chosen features.  
 
-ROC Curve Insight:
-- The ROC curve shows the trade-off between the True Positive Rate (ability to detect actual anomalies) and the False Positive Rate (incorrectly flagging normal points as anomalies) at various threshold settings.
-- An Area Under the ROC Curve (AUC) of 0.4633 indicates the overall ability of the model to discriminate between positive (anomaly) and negative (normal) classes.
-- An AUC value below 0.5 suggests the model performs worse than random guessing.
+ROC Curve Insight:  
+- The ROC curve shows the trade-off between the True Positive Rate (ability to detect actual anomalies) and the False Positive Rate (incorrectly flagging normal points as anomalies) at various threshold settings.   
+- An Area Under the ROC Curve (AUC) of 0.4633 indicates the overall ability of the model to discriminate between positive (anomaly) and negative (normal) classes.  
+- An AUC value below 0.5 suggests the model performs worse than random guessing.  
 
-Precision-Recall Curve Insight:
-- The Precision-Recall curve highlights the trade-off between Precision (accuracy of positive predictions) and Recall (completeness of positive predictions) as the decision threshold is varied.
-- This curve is particularly informative for imbalanced datasets, where the number of anomalies is much smaller than normal instances.
-- A curve that stays high as recall increases indicates that the model can achieve high precision even when identifying a large proportion of actual anomalies.
+Precision-Recall Curve Insight:  
+- The Precision-Recall curve highlights the trade-off between Precision (accuracy of positive predictions) and Recall (completeness of positive predictions) as the decision threshold is varied.   
+- This curve is particularly informative for imbalanced datasets, where the number of anomalies is much smaller than normal instances.  
+- A curve that stays high as recall increases indicates that the model can achieve high precision even when identifying a large proportion of actual anomalies.  
 
-Business Insights from Visualization:
-- The visualization for the LSTM(Classifier) suggests that the model's ability to discriminate anomalies is limited. The scatter plot may show significant overlap, and the AUC is low.
-- This model might not be suitable for direct deployment without significant improvements or a different approach.
-- The shape of the Precision-Recall curve provides insight into how many anomalies the model can find before its positive predictions become unreliable. A curve that drops sharply indicates that increasing recall comes at a high cost of precision (more false alarms).
+Business Insights from Visualization:  
+- The visualization for the LSTM(Classifier) suggests that the model's ability to discriminate anomalies is limited. The scatter plot may show significant overlap, and the AUC is low.   
+- This model might not be suitable for direct deployment without significant improvements or a different approach.  
+- The shape of the Precision-Recall curve provides insight into how many anomalies the model can find before its positive predictions become unreliable. A curve that drops sharply indicates that increasing recall comes at a high cost of precision (more false alarms).  
 
-End Visualization Insights for LSTM(Classifier).
-[INFO] Finished visualizing performance for all unsupervised models.
-[INFO] Evaluating IsolationForest...
-[INFO]   IsolationForest performance (Average Precision): 0.2366
-[INFO] Evaluating OneClassSVM...
-[INFO]   OneClassSVM performance (Average Precision): 0.2713
-[INFO] Evaluating LocalOutlierFactor...
-[INFO]   LocalOutlierFactor performance (Average Precision): 0.3211
-[INFO] Evaluating DBSCAN...
-[INFO] Evaluating KMeans...
-[INFO]   KMeans performance (Average Precision): 0.2511
-[INFO] Evaluating Autoencoder...
-[INFO]   Autoencoder performance (Average Precision): 0.5623
-[INFO] Evaluating LSTM(Classifier)...
-[INFO]   LSTM(Classifier) performance (Average Precision): 0.3288
-[INFO] 
-Best unsupervised model: Autoencoder with performance: 0.5623  
+End Visualization Insights for LSTM(Classifier).   
+[INFO] Finished visualizing performance for all unsupervised models.  
+[INFO] Evaluating IsolationForest...  
+[INFO]   IsolationForest performance (Average Precision): 0.2366  
+[INFO] Evaluating OneClassSVM...   
+[INFO]   OneClassSVM performance (Average Precision): 0.2713   
+[INFO] Evaluating LocalOutlierFactor...  
+[INFO]   LocalOutlierFactor performance (Average Precision): 0.3211  
+[INFO] Evaluating DBSCAN...   
+[INFO] Evaluating KMeans...  
+[INFO]   KMeans performance (Average Precision): 0.2511   
+[INFO] Evaluating Autoencoder...  
+[INFO]   Autoencoder performance (Average Precision): 0.5623  
+[INFO] Evaluating LSTM(Classifier)...   
+[INFO]   LSTM(Classifier) performance (Average Precision): 0.3288  
+[INFO]   
+Best unsupervised model: Autoencoder with performance: 0.5623    
 
---- End of Unsupervised Model Visualizations and Insights ---
+--- End of Unsupervised Model Visualizations and Insights ---  
 
-Best unsupervised model for anomaly detection: Autoencoder
-[INFO] Visualizing performance for the best unsupervised model (Autoencoder)...  
+Best unsupervised model for anomaly detection: Autoencoder   
+[INFO] Visualizing performance for the best unsupervised model (Autoencoder)...    
 
 <p align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_model_autoencoder_roc_recall.png" 
@@ -520,50 +520,50 @@ Best unsupervised model for anomaly detection: Autoencoder
        style="width: 80%; height: Auto;">
 </p>   
 
---- Visualization Insights for Autoencoder ---
+--- Visualization Insights for Autoencoder ---  
 
-Scatter Plot Insight:
-- The scatter plot visually separates points identified as anomalies (298 points, typically shown in red) from normal points (501 points, typically shown in blue).
-- A clear separation between the red and blue points indicates that the model is effectively distinguishing between normal and anomalous behavior based on the chosen features.
+Scatter Plot Insight:  
+- The scatter plot visually separates points identified as anomalies (298 points, typically shown in red) from normal points (501 points, typically shown in blue).  
+- A clear separation between the red and blue points indicates that the model is effectively distinguishing between normal and anomalous behavior based on the chosen features.  
 
-ROC Curve Insight:
-- The ROC curve shows the trade-off between the True Positive Rate (ability to detect actual anomalies) and the False Positive Rate (incorrectly flagging normal points as anomalies) at various threshold settings.
-- An Area Under the ROC Curve (AUC) of 0.6977 indicates the overall ability of the model to discriminate between positive (anomaly) and negative (normal) classes.
-- An AUC value above 0.5 suggests the model performs better than random guessing.
+ROC Curve Insight:  
+- The ROC curve shows the trade-off between the True Positive Rate (ability to detect actual anomalies) and the False Positive Rate (incorrectly flagging normal points as anomalies) at various threshold settings.  
+- An Area Under the ROC Curve (AUC) of 0.6977 indicates the overall ability of the model to discriminate between positive (anomaly) and negative (normal) classes.  
+- An AUC value above 0.5 suggests the model performs better than random guessing.  
 
-Precision-Recall Curve Insight:
-- The Precision-Recall curve highlights the trade-off between Precision (accuracy of positive predictions) and Recall (completeness of positive predictions) as the decision threshold is varied.
-- This curve is particularly informative for imbalanced datasets, where the number of anomalies is much smaller than normal instances.
-- A curve that stays high as recall increases indicates that the model can achieve high precision even when identifying a large proportion of actual anomalies.
+Precision-Recall Curve Insight:   
+- The Precision-Recall curve highlights the trade-off between Precision (accuracy of positive predictions) and Recall (completeness of positive predictions) as the decision threshold is varied.  
+- This curve is particularly informative for imbalanced datasets, where the number of anomalies is much smaller than normal instances.  
+- A curve that stays high as recall increases indicates that the model can achieve high precision even when identifying a large proportion of actual anomalies.  
 
-Business Insights from Visualization:
-- The visualization for the Autoencoder indicates that the model is somewhat effective at identifying anomalies, performing better than random guessing. However, there might be room for improvement in separating normal and anomalous instances.
-- Further refinement of features or model parameters could enhance its utility in practice.
-- The shape of the Precision-Recall curve provides insight into how many anomalies the model can find before its positive predictions become unreliable. A curve that drops sharply indicates that increasing recall comes at a high cost of precision (more false alarms).
+Business Insights from Visualization:  
+- The visualization for the Autoencoder indicates that the model is somewhat effective at identifying anomalies, performing better than random guessing. However, there might be room for improvement in separating normal and anomalous instances.  
+- Further refinement of features or model parameters could enhance its utility in practice.  
+- The shape of the Precision-Recall curve provides insight into how many anomalies the model can find before its positive predictions become unreliable. A curve that drops sharply indicates that increasing recall comes at a high cost of precision (more false alarms).  
 
-End Visualization Insights for Autoencoder.
-[INFO] Generating comparative performance analysis...
-[INFO]   Evaluating IsolationForest...
-[INFO]   IsolationForest performance (Average Precision): 0.2366
-[INFO]     IsolationForest performance (AUC): 0.2366
-[INFO]   Evaluating OneClassSVM...
-[INFO]   OneClassSVM performance (Average Precision): 0.2713
-[INFO]     OneClassSVM performance (AUC): 0.2713
-[INFO]   Evaluating LocalOutlierFactor...
-[INFO]   LocalOutlierFactor performance (Average Precision): 0.3211
-[INFO]     LocalOutlierFactor performance (AUC): 0.3211
-[INFO]   Evaluating DBSCAN...
-[INFO]     Could not evaluate DBSCAN performance.
-[INFO]   Evaluating KMeans...
-[INFO]   KMeans performance (Average Precision): 0.2511
-[INFO]     KMeans performance (AUC): 0.2511
-[INFO]   Evaluating Autoencoder...
-[INFO]   Autoencoder performance (Average Precision): 0.5623
-[INFO]     Autoencoder performance (AUC): 0.5623
-[INFO]   Evaluating LSTM(Classifier)...
-[INFO]   LSTM(Classifier) performance (Average Precision): 0.3288
-[INFO]     LSTM(Classifier) performance (AUC): 0.3288
-[INFO]   Displaying unsupervised model performance table...  
+End Visualization Insights for Autoencoder.  
+[INFO] Generating comparative performance analysis...  
+[INFO]   Evaluating IsolationForest...  
+[INFO]   IsolationForest performance (Average Precision): 0.2366  
+[INFO]     IsolationForest performance (AUC): 0.2366  
+[INFO]   Evaluating OneClassSVM...  
+[INFO]   OneClassSVM performance (Average Precision): 0.2713  
+[INFO]     OneClassSVM performance (AUC): 0.2713  
+[INFO]   Evaluating LocalOutlierFactor...  
+[INFO]   LocalOutlierFactor performance (Average Precision): 0.3211  
+[INFO]     LocalOutlierFactor performance (AUC): 0.3211  
+[INFO]   Evaluating DBSCAN...   
+[INFO]     Could not evaluate DBSCAN performance.   
+[INFO]   Evaluating KMeans...  
+[INFO]   KMeans performance (Average Precision): 0.2511  
+[INFO]     KMeans performance (AUC): 0.2511  
+[INFO]   Evaluating Autoencoder...  
+[INFO]   Autoencoder performance (Average Precision): 0.5623  
+[INFO]     Autoencoder performance (AUC): 0.5623   
+[INFO]   Evaluating LSTM(Classifier)...  
+[INFO]   LSTM(Classifier) performance (Average Precision): 0.3288  
+[INFO]     LSTM(Classifier) performance (AUC): 0.3288  
+[INFO]   Displaying unsupervised model performance table...    
 
 <p align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_model_unsup_model_bar.png" 
@@ -571,10 +571,10 @@ End Visualization Insights for Autoencoder.
        style="width: 80%; height: Auto;">
 </p>  
 
-INFO]   Displaying unsupervised model performance chart...
+INFO]   Displaying unsupervised model performance chart...   
 /content/CyberThreat_Insight/model_dev/stacked_model/stacked_anomaly_detection_classifier.py:1257: FutureWarning: 
 
-Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `y` variable to `hue` and set `legend=False` for the same effect.  
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `y` variable to `hue` and set `legend=False` for the same effect.    
 
 
 <p align="center">
@@ -584,42 +584,42 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 </p>
 
 
---- Insights from Unsupervised Model Performance Comparison ---
-Best Performing Model: Autoencoder (Metric: 0.5623)
-Worst Performing Model: IsolationForest (Metric: 0.2366)
+--- Insights from Unsupervised Model Performance Comparison ---  
+Best Performing Model: Autoencoder (Metric: 0.5623)  
+Worst Performing Model: IsolationForest (Metric: 0.2366)  
 
-Performance Comparison by Model Type:
-- Autoencoder Models (Mean Metric): 0.4456
-- Clustering Models (Mean Metric): 0.2511
-- Tree-based Models (Mean Metric): 0.2789
-- One-Class SVM (Metric): 0.2713
+Performance Comparison by Model Type:  
+- Autoencoder Models (Mean Metric): 0.4456  
+- Clustering Models (Mean Metric): 0.2511  
+- Tree-based Models (Mean Metric): 0.2789   
+- One-Class SVM (Metric): 0.2713  
 
-Potential Reasons for Performance Differences:
-- Autoencoders (especially LSTM) might be better at capturing complex, non-linear relationships and temporal patterns in the data, which is relevant for anomaly detection in time-series-like threat data.
-- Clustering methods like DBSCAN and KMeans might struggle if anomalies don't form distinct clusters or if the concept of 'normal' varies significantly.
-- Tree-based methods (Isolation Forest, LOF) are often effective but might be sensitive to feature scaling and hyperparameters.
-- One-Class SVM is designed for novelty detection but its performance can be sensitive to the choice of kernel and hyperparameters.
-- The specific nature of the anomalies in this dataset (e.g., their density, shape, and relationship to normal data) heavily influences which model type is most suitable.
+Potential Reasons for Performance Differences:  
+- Autoencoders (especially LSTM) might be better at capturing complex, non-linear relationships and temporal patterns in the data, which is relevant for anomaly detection in time-series-like threat data.  
+- Clustering methods like DBSCAN and KMeans might struggle if anomalies don't form distinct clusters or if the concept of 'normal' varies significantly.  
+- Tree-based methods (Isolation Forest, LOF) are often effective but might be sensitive to feature scaling and hyperparameters.  
+- One-Class SVM is designed for novelty detection but its performance can be sensitive to the choice of kernel and hyperparameters.  
+- The specific nature of the anomalies in this dataset (e.g., their density, shape, and relationship to normal data) heavily influences which model type is most suitable.  
 
-Comparison to Baseline:
-- The best model (Autoencoder) achieved a metric of 0.5623.
-- Compared to a random guessing baseline (AUC = 0.5), the best AUC model performs better.
+Comparison to Baseline:  
+- The best model (Autoencoder) achieved a metric of 0.5623.  
+- Compared to a random guessing baseline (AUC = 0.5), the best AUC model performs better.  
 
-Implications for the Stacked Model:
-- The anomaly features generated by the unsupervised models, particularly the best performing ones like Autoencoder, will be fed into the supervised meta-learner.
-- Higher quality anomaly features (from better performing unsupervised models) are likely to improve the performance of the stacked supervised model, especially in distinguishing between different threat levels.
-- The meta-learner can learn to leverage the strengths of different anomaly detection signals from the various unsupervised models.
-- While the individual unsupervised models might not be perfect anomaly detectors on their own, their outputs serve as valuable additional features for the supervised layer.
+Implications for the Stacked Model:  
+- The anomaly features generated by the unsupervised models, particularly the best performing ones like Autoencoder, will be fed into the supervised meta-learner.  
+- Higher quality anomaly features (from better performing unsupervised models) are likely to improve the performance of the stacked supervised model, especially in distinguishing between different threat levels.   
+- The meta-learner can learn to leverage the strengths of different anomaly detection signals from the various unsupervised models.  
+- While the individual unsupervised models might not be perfect anomaly detectors on their own, their outputs serve as valuable additional features for the supervised layer.  
 
---- End of Insights ---
-[INFO] Saving models and metrics...
-[INFO]   Scaler and ALL models saved in 'CyberThreat_Insight/stacked_models_deployment'
-[INFO] Evaluation metrics saved in CyberThreat_Insight/stacked_models_deployment/metrics.json
-[INFO] Generating predictions from the stacked model...
-[INFO] Finished generating predictions.
-[INFO] Displaying Stacked Model Input and Output DataFrames...
+--- End of Insights ---  
+[INFO] Saving models and metrics...  
+[INFO]   Scaler and ALL models saved in 'CyberThreat_Insight/stacked_models_deployment'  
+[INFO] Evaluation metrics saved in CyberThreat_Insight/stacked_models_deployment/metrics.json  
+[INFO] Generating predictions from the stacked model...  
+[INFO] Finished generating predictions.  
+[INFO] Displaying Stacked Model Input and Output DataFrames...  
 
---- Stacked Model Input DataFrame & (First 5 rows) ---
+--- Stacked Model Input DataFrame & (First 5 rows) ---  
 <class 'pandas.core.frame.DataFrame'>
 RangeIndex: 799 entries, 0 to 798
 Data columns (total 24 columns):
@@ -651,10 +651,10 @@ Data columns (total 24 columns):
  23  predicted_anomaly           799 non-null    int64  
 dtypes: float64(22), int64(2)
 
--- Stacked Model Output DataFrame & (First 5 rows) ---
-<class 'pandas.core.frame.DataFrame'>
-RangeIndex: 799 entries, 1 to 799
-Data columns (total 26 columns):
+-- Stacked Model Output DataFrame & (First 5 rows) ---  
+<class 'pandas.core.frame.DataFrame'>  
+RangeIndex: 799 entries, 1 to 799  
+Data columns (total 26 columns):  
  #   Column                      Non-Null Count  Dtype  
 ---  ------                      --------------  -----  
  0   Issue Response Time Days    799 non-null    float64
