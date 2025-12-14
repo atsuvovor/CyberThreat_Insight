@@ -38,7 +38,7 @@ This project focuses on the model development and evaluation phases using a pred
 ## Stacked Supervised Model Technical Specifications  
 
 
-**Architecture:**  
+### Architecture:  
 
   
 <p align="center"><em>
