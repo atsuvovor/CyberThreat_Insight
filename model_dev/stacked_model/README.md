@@ -609,67 +609,67 @@ Implications for the Stacked Model:
 [INFO] Displaying Stacked Model Input and Output DataFrames...  
 
 --- Stacked Model Input DataFrame & (First 5 rows) ---  
-<class 'pandas.core.frame.DataFrame'>
-RangeIndex: 799 entries, 0 to 798
-Data columns (total 24 columns):
- #   Column                      Non-Null Count  Dtype  
----  ------                      --------------  -----  
- 0   Issue Response Time Days    799 non-null    float64
- 1   Impact Score                799 non-null    float64
- 2   Cost                        799 non-null    float64
- 3   Session Duration in Second  799 non-null    float64
- 4   Num Files Accessed          799 non-null    float64
- 5   Login Attempts              799 non-null    float64
- 6   Data Transfer MB            799 non-null    float64
- 7   CPU Usage %                 799 non-null    float64
- 8   Memory Usage MB             799 non-null    float64
- 9   Threat Score                799 non-null    float64
- 10  anomaly_0                   799 non-null    float64
- 11  anomaly_1                   799 non-null    float64
- 12  anomaly_2                   799 non-null    float64
- 13  anomaly_3                   799 non-null    float64
- 14  anomaly_4                   799 non-null    float64
- 15  anomaly_5                   799 non-null    float64
- 16  anomaly_6                   799 non-null    float64
- 17  rf_proba_0                  799 non-null    float64
- 18  rf_proba_1                  799 non-null    float64
- 19  rf_proba_2                  799 non-null    float64
- 20  rf_proba_3                  799 non-null    float64
- 21  true_anomaly                799 non-null    int64  
- 22  anomaly_score               799 non-null    float64
- 23  predicted_anomaly           799 non-null    int64  
-dtypes: float64(22), int64(2)
-
--- Stacked Model Output DataFrame & (First 5 rows) ---  
 <class 'pandas.core.frame.DataFrame'>  
-RangeIndex: 799 entries, 1 to 799  
-Data columns (total 26 columns):  
- #   Column                      Non-Null Count  Dtype  
+RangeIndex: 799 entries, 0 to 798   
+Data columns (total 24 columns):  
+ #   Column                      Non-Null Count  Dtype    
 ---  ------                      --------------  -----  
- 0   Issue Response Time Days    799 non-null    float64
- 1   Impact Score                799 non-null    float64
- 2   Cost                        799 non-null    float64
- 3   Session Duration in Second  799 non-null    float64
- 4   Num Files Accessed          799 non-null    float64
- 5   Login Attempts              799 non-null    float64
- 6   Data Transfer MB            799 non-null    float64
- 7   CPU Usage %                 799 non-null    float64
- 8   Memory Usage MB             799 non-null    float64
- 9   Threat Score                799 non-null    float64
- 10  anomaly_0                   799 non-null    float64
- 11  anomaly_1                   799 non-null    float64
- 12  anomaly_2                   799 non-null    float64
- 13  anomaly_3                   799 non-null    float64
- 14  anomaly_4                   799 non-null    float64
- 15  anomaly_5                   799 non-null    float64
- 16  anomaly_6                   799 non-null    float64
- 17  rf_proba_0                  799 non-null    float64
- 18  rf_proba_1                  799 non-null    float64
- 19  rf_proba_2                  799 non-null    float64
- 20  rf_proba_3                  799 non-null    float64
- 21  true_anomaly                799 non-null    int64  
- 22  anomaly_score               799 non-null    float64
- 23  predicted_anomaly           799 non-null    int64  
- 24  Actual Threat               799 non-null    int64  
- 25  Pred Threat                 799 non-null    int64  
-dtypes: float64(22), int64(4)
+ 0   Issue Response Time Days    799 non-null    float64  
+ 1   Impact Score                799 non-null    float64  
+ 2   Cost                        799 non-null    float64  
+ 3   Session Duration in Second  799 non-null    float64    
+ 4   Num Files Accessed          799 non-null    float64  
+ 5   Login Attempts              799 non-null    float64  
+ 6   Data Transfer MB            799 non-null    float64  
+ 7   CPU Usage %                 799 non-null    float64  
+ 8   Memory Usage MB             799 non-null    float64  
+ 9   Threat Score                799 non-null    float64  
+ 10  anomaly_0                   799 non-null    float64  
+ 11  anomaly_1                   799 non-null    float64  
+ 12  anomaly_2                   799 non-null    float64  
+ 13  anomaly_3                   799 non-null    float64  
+ 14  anomaly_4                   799 non-null    float64  
+ 15  anomaly_5                   799 non-null    float64  
+ 16  anomaly_6                   799 non-null    float64  
+ 17  rf_proba_0                  799 non-null    float64  
+ 18  rf_proba_1                  799 non-null    float64  
+ 19  rf_proba_2                  799 non-null    float64  
+ 20  rf_proba_3                  799 non-null    float64  
+ 21  true_anomaly                799 non-null    int64    
+ 22  anomaly_score               799 non-null    float64  
+ 23  predicted_anomaly           799 non-null    int64    
+dtypes: float64(22), int64(2)  
+
+-- Stacked Model Output DataFrame & (First 5 rows) ---    
+<class 'pandas.core.frame.DataFrame'>    
+RangeIndex: 799 entries, 1 to 799    
+Data columns (total 26 columns):    
+ #   Column                      Non-Null Count  Dtype    
+---  ------                      --------------  -----     
+ 0   Issue Response Time Days    799 non-null    float64  
+ 1   Impact Score                799 non-null    float64  
+ 2   Cost                        799 non-null    float64  
+ 3   Session Duration in Second  799 non-null    float64  
+ 4   Num Files Accessed          799 non-null    float64  
+ 5   Login Attempts              799 non-null    float64  
+ 6   Data Transfer MB            799 non-null    float64  
+ 7   CPU Usage %                 799 non-null    float64  
+ 8   Memory Usage MB             799 non-null    float64  
+ 9   Threat Score                799 non-null    float64    
+ 10  anomaly_0                   799 non-null    float64  
+ 11  anomaly_1                   799 non-null    float64  
+ 12  anomaly_2                   799 non-null    float64  
+ 13  anomaly_3                   799 non-null    float64  
+ 14  anomaly_4                   799 non-null    float64  
+ 15  anomaly_5                   799 non-null    float64  
+ 16  anomaly_6                   799 non-null    float64  
+ 17  rf_proba_0                  799 non-null    float64  
+ 18  rf_proba_1                  799 non-null    float64  
+ 19  rf_proba_2                  799 non-null    float64  
+ 20  rf_proba_3                  799 non-null    float64  
+ 21  true_anomaly                799 non-null    int64    
+ 22  anomaly_score               799 non-null    float64  
+ 23  predicted_anomaly           799 non-null    int64    
+ 24  Actual Threat               799 non-null    int64    
+ 25  Pred Threat                 799 non-null    int64    
+dtypes: float64(22), int64(4)  
