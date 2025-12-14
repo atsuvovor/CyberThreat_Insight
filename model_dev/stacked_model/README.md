@@ -226,7 +226,7 @@ This project successfully developed and evaluated a stacked anomaly detection cl
 """
 #Stacked Supervised Model using Unsupervised Anomaly Features  
 
-**Toronto, Sept 17 202**  
+**Toronto, Sept 17 2025**  
 **Autor : Atsu Vovor**
 >Master of Management in Artificial Intelligence    
 >Consultant Data Analytics Specialist | Machine Learning |  
