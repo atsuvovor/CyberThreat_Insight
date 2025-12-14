@@ -55,7 +55,7 @@ Stacked Anomaly Detection Classifier Model flowchart
       alt="Stacked Anomaly Classifier – End-to-End Architecture"
       style="
         width: 100%;
-        max-width: 1200px;
+        max-width: 5000px;
         height: auto;
         cursor: zoom-in;
         border-radius: 6px;
