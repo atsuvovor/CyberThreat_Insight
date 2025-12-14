@@ -44,12 +44,30 @@ Stacked Anomaly Detection Classifier Model flowchart
      
 
 <p align="center">
-  <a href="https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/main/images/stacked_supervised_ckassifier.svg" target="_blank">
-    <img src="https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/main/images/stacked_supervised_ckassifier.svg"
-         alt="Flowchart"
-         style="width: 100%; height: Auto;">
-  </a>
+  <style>
+    .zoom-toggle { display: none; }
+    .zoom-img {
+      width: 100%;
+      max-width: 1100px;
+      cursor: zoom-in;
+      transition: transform 0.3s ease;
+    }
+    .zoom-toggle:checked + img {
+      transform: scale(1.7);
+      cursor: zoom-out;
+    }
+  </style>
+
+  <label>
+    <input type="checkbox" class="zoom-toggle">
+    <img
+      src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_anomaly_classifier_flowchart.svg"
+      alt="Stacked Anomaly Classifier Architecture"
+      class="zoom-img"
+    />
+  </label>
 </p>
+
 
   
 
