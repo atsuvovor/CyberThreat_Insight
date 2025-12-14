@@ -44,8 +44,8 @@ Stacked Anomaly Detection Classifier Model flowchart
      
 
 <p align="center">
-  <a href="https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/main/images/stacked_anomaly_classifier_flowchart.png" target="_blank">
-    <img src="https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/main/images/stacked_anomaly_classifier_flowchart.png"
+  <a href="https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/main/images/stacked_anomaly_classifier_flowchart.svg" target="_blank">
+    <img src="https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/main/images/stacked_anomaly_classifier_flowchart.svg"
          alt="Flowchart"
          style="width: 100%; height: Auto;">
   </a>
