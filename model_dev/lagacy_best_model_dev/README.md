@@ -46,16 +46,16 @@ Through empirical evaluation, this section highlights the strengths of supervise
   
 
 ## Model Evaluation
- Run the code:
+**Run the code:**
 <a 
-  href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/lagacy_best_model_dev/lagacy_model_dev_github.ipynb"
+  href="https://colab.research.google.com/github/atsuvovor/CyberThreat_Insight/blob/main/model_dev/lagacy_best_model_dev/lagacy_model_dev_github.ipynb"
   target="_parent">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
 <details>
 
-<summary>Click to view the code</summary>
+<summary><strong>Click to view the code</strong>strong></summary>
 
 ```python
 
