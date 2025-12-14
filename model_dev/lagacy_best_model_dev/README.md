@@ -55,7 +55,7 @@ Through empirical evaluation, this section highlights the strengths of supervise
 
 <details>
 
-<summary><strong>Click to view the code</strong>strong></summary>
+<summary><strong>Click to view the code</strong></summary>
 
 ```python
 
