@@ -44,19 +44,20 @@ Stacked Anomaly Detection Classifier Model flowchart
      
 
 <p align="center">
-  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_anomaly_classifier_flowchart.svg" target="_blank">
+  <a
+    href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_anomaly_classifier_flowchart.svg"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
     <img
       src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_anomaly_classifier_flowchart.svg"
       alt="Stacked Anomaly Classifier Architecture"
-      style="width:100%; max-width:1100px; cursor: zoom-in;"
+      style="width:100%; max-width:1200px; cursor: zoom-in;"
     />
-  </a>
+  </a><br/>
+  <sub><strong>Figure:</strong> End-to-end stacked anomaly classifier pipeline</sub>
 </p>
 
-<p align="center"><em>
-Click to open full-resolution architecture diagram
-</em></p>
-  
 
 
 The model employs a two-layer stacked architecture:
