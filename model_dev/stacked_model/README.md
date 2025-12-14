@@ -222,68 +222,72 @@ GradientBoostingClassifier classification_report:
 
 Overall Model Accuracy :  0.951188986232791
 
---- Performance Insight for GradientBoostingClassifier ---
+--- Performance Insight for GradientBoostingClassifier ---  
 
-Metrics per Class:
+Metrics per Class:  
 
-  Class: Low
-    Precision: 0.9644 - Of all instances predicted as 'Low', this is the proportion that were actually 'Low'.
-    Recall: 0.9788 - Of all actual 'Low' instances, this is the proportion that the model correctly identified.
-    F1-Score: 0.9715 - A balanced measure of Precision and Recall for this class.
-    Support: 471.0 - The number of actual instances of this class in the test set.
-    PPV (Positive Predictive Value): 0.9644 - The probability that a positive prediction is a true positive.
-    NPV (Negative Predictive Value): 0.9688 - The probability that a negative prediction is a true negative.
-    Sensitivity (True Positive Rate): 0.9788 - Ability to correctly identify positive instances.
-    Specificity (True Negative Rate): 0.6506 - Ability to correctly identify negative instances.
+  Class: Low  
+    Precision: 0.9644 - Of all instances predicted as 'Low', this is the proportion that were actually 'Low'.  
+    Recall: 0.9788 - Of all actual 'Low' instances, this is the proportion that the model correctly identified.  
+    F1-Score: 0.9715 - A balanced measure of Precision and Recall for this class.  
+    Support: 471.0 - The number of actual instances of this class in the test set.  
+    PPV (Positive Predictive Value): 0.9644 - The probability that a positive prediction is a true positive.  
+    NPV (Negative Predictive Value): 0.9688 - The probability that a negative prediction is a true negative.  
+    Sensitivity (True Positive Rate): 0.9788 - Ability to correctly identify positive instances.  
+    Specificity (True Negative Rate): 0.6506 - Ability to correctly identify negative instances.  
 
-  Class: Medium
-    Precision: 1.0000 - Of all instances predicted as 'Medium', this is the proportion that were actually 'Medium'.
-    Recall: 0.7667 - Of all actual 'Medium' instances, this is the proportion that the model correctly identified.
-    F1-Score: 0.8679 - A balanced measure of Precision and Recall for this class.
-    Support: 30.0 - The number of actual instances of this class in the test set.
-    PPV (Positive Predictive Value): 1.0000 - The probability that a positive prediction is a true positive.
-    NPV (Negative Predictive Value): 0.9910 - The probability that a negative prediction is a true negative.
-    Sensitivity (True Positive Rate): 0.7667 - Ability to correctly identify positive instances.
-    Specificity (True Negative Rate): 33.4348 - Ability to correctly identify negative instances.
+        
 
-  Class: High
-    Precision: 0.9261 - Of all instances predicted as 'High', this is the proportion that were actually 'High'.
-    Recall: 0.9705 - Of all actual 'High' instances, this is the proportion that the model correctly identified.
-    F1-Score: 0.9477 - A balanced measure of Precision and Recall for this class.
-    Support: 271.0 - The number of actual instances of this class in the test set.
-    PPV (Positive Predictive Value): 0.9261 - The probability that a positive prediction is a true positive.
-    NPV (Negative Predictive Value): 0.9845 - The probability that a negative prediction is a true negative.
-    Sensitivity (True Positive Rate): 0.9705 - Ability to correctly identify positive instances.
-    Specificity (True Negative Rate): 1.7852 - Ability to correctly identify negative instances.
+  Class: Medium  
+    Precision: 1.0000 - Of all instances predicted as 'Medium', this is the proportion that were actually 'Medium'.  
+    Recall: 0.7667 - Of all actual 'Medium' instances, this is the proportion that the model correctly identified.  
+    F1-Score: 0.8679 - A balanced measure of Precision and Recall for this class.  
+    Support: 30.0 - The number of actual instances of this class in the test set.  
+    PPV (Positive Predictive Value): 1.0000 - The probability that a positive prediction is a true positive.  
+    NPV (Negative Predictive Value): 0.9910 - The probability that a negative prediction is a true negative.  
+    Sensitivity (True Positive Rate): 0.7667 - Ability to correctly identify positive instances.  
+    Specificity (True Negative Rate): 33.4348 - Ability to correctly identify negative instances.  
 
-  Class: Critical
-    Precision: 0.9286 - Of all instances predicted as 'Critical', this is the proportion that were actually 'Critical'.
-    Recall: 0.4815 - Of all actual 'Critical' instances, this is the proportion that the model correctly identified.
-    F1-Score: 0.6341 - A balanced measure of Precision and Recall for this class.
-    Support: 27.0 - The number of actual instances of this class in the test set.
-    PPV (Positive Predictive Value): 0.9286 - The probability that a positive prediction is a true positive.
-    NPV (Negative Predictive Value): 0.9822 - The probability that a negative prediction is a true negative.
-    Sensitivity (True Positive Rate): 0.4815 - Ability to correctly identify positive instances.
-    Specificity (True Negative Rate): 55.0714 - Ability to correctly identify negative instances.
+        
 
-Aggregated Metrics:
-  Accuracy: 0.9512 - The overall proportion of correctly classified instances.
-  Precision (Macro): 0.9548 - Average Precision across all classes, unweighted.
-  Recall (Macro): 0.7993 - Average Recall across all classes, unweighted.
-  F1 Score (Macro): 0.8553 - Average F1-Score across all classes, unweighted.
-  Precision (Weighted): 0.9515 - Average Precision across all classes, weighted by support.
-  Recall (Weighted): 0.9512 - Average Recall across all classes, weighted by support.
-  F1 Score (Weighted): 0.9482 - Average F1-Score across all classes, weighted by support.
+  Class: High  
+    Precision: 0.9261 - Of all instances predicted as 'High', this is the proportion that were actually 'High'.  
+    Recall: 0.9705 - Of all actual 'High' instances, this is the proportion that the model correctly identified.  
+    F1-Score: 0.9477 - A balanced measure of Precision and Recall for this class.  
+    Support: 271.0 - The number of actual instances of this class in the test set.  
+    PPV (Positive Predictive Value): 0.9261 - The probability that a positive prediction is a true positive.  
+    NPV (Negative Predictive Value): 0.9845 - The probability that a negative prediction is a true negative.  
+    Sensitivity (True Positive Rate): 0.9705 - Ability to correctly identify positive instances.  
+    Specificity (True Negative Rate): 1.7852 - Ability to correctly identify negative instances.  
 
-Business Insights:
-- The model 'GradientBoostingClassifier' achieved an overall accuracy of 0.9512.
-- Pay close attention to the model's performance on classes: Critical. Lower F1-scores here might indicate challenges in correctly identifying these specific threat levels.
-- For 'Critical' threats (Recall: 0.4815, Precision: 0.9286), the model is able to capture a significant portion of actual critical events (Recall), and when it flags an event as critical, it is often correct (Precision). However, further investigation into missed critical events might be warranted to minimize risk.
-- Improving recall for Critical threats should be a priority to ensure all high-severity events are detected.
-- Consider deploying this model for automated threat detection, but maintain human oversight, especially for high-severity alerts.
-- Continuously monitor model performance in a production environment as threat patterns can evolve.
-- Investigate misclassified instances to understand the limitations and potential areas for model improvement or data enhancement.
-[INFO] Saved evaluation metrics to CyberThreat_Insight/stacked_models_deployment/metrics.json
+  Class: Critical  
+    Precision: 0.9286 - Of all instances predicted as 'Critical', this is the proportion that were actually 'Critical'.  
+    Recall: 0.4815 - Of all actual 'Critical' instances, this is the proportion that the model correctly identified.  
+    F1-Score: 0.6341 - A balanced measure of Precision and Recall for this class.  
+    Support: 27.0 - The number of actual instances of this class in the test set.  
+    PPV (Positive Predictive Value): 0.9286 - The probability that a positive prediction is a true positive.  
+    NPV (Negative Predictive Value): 0.9822 - The probability that a negative prediction is a true negative.  
+    Sensitivity (True Positive Rate): 0.4815 - Ability to correctly identify positive instances.  
+    Specificity (True Negative Rate): 55.0714 - Ability to correctly identify negative instances.  
+  
+Aggregated Metrics:  
+  Accuracy: 0.9512 - The overall proportion of correctly classified instances.  
+  Precision (Macro): 0.9548 - Average Precision across all classes, unweighted.  
+  Recall (Macro): 0.7993 - Average Recall across all classes, unweighted.  
+  F1 Score (Macro): 0.8553 - Average F1-Score across all classes, unweighted.  
+  Precision (Weighted): 0.9515 - Average Precision across all classes, weighted by support.  
+  Recall (Weighted): 0.9512 - Average Recall across all classes, weighted by support.  
+  F1 Score (Weighted): 0.9482 - Average F1-Score across all classes, weighted by support.  
+
+Business Insights:  
+- The model 'GradientBoostingClassifier' achieved an overall accuracy of 0.9512.  
+- Pay close attention to the model's performance on classes: Critical. Lower F1-scores here might indicate challenges in correctly identifying these specific threat levels.  
+- For 'Critical' threats (Recall: 0.4815, Precision: 0.9286), the model is able to capture a significant portion of actual critical events (Recall), and when it flags an event as critical, it is often correct (Precision). However, further investigation into missed critical events might be warranted to minimize risk.  
+- Improving recall for Critical threats should be a priority to ensure all high-severity events are detected.  
+- Consider deploying this model for automated threat detection, but maintain human oversight, especially for high-severity alerts.  
+- Continuously monitor model performance in a production environment as threat patterns can evolve.  
+- Investigate misclassified instances to understand the limitations and potential areas for model improvement or data enhancement.  
+[INFO] Saved evaluation metrics to CyberThreat_Insight/stacked_models_deployment/metrics.json  
 
 ---Unsupervised Model Evaluation and Identification of the Best Model ---  
 
@@ -308,19 +312,21 @@ Scatter Plot Insight:
 - A clear separation between the red and blue points indicates that the model is effectively distinguishing between normal and anomalous behavior based on the chosen features.  
 
 ROC Curve Insight:  
-- The ROC curve shows the trade-off between the True Positive Rate (ability to detect actual anomalies) and the False Positive Rate (incorrectly flagging normal points as anomalies) at various threshold settings.
-- An Area Under the ROC Curve (AUC) of 0.1667 indicates the overall ability of the model to discriminate between positive (anomaly) and negative (normal) classes.
+- The ROC curve shows the trade-off between the True Positive Rate (ability to detect actual anomalies) and the False Positive Rate (incorrectly flagging normal points as anomalies) at various threshold settings.  
+- An Area Under the ROC Curve (AUC) of 0.1667 indicates the overall ability of the model to discriminate between positive (anomaly) and negative (normal) classes.  
 - An AUC value below 0.5 suggests the model performs worse than random guessing.
 
+  
+
 Precision-Recall Curve Insight:  
-- The Precision-Recall curve highlights the trade-off between Precision (accuracy of positive predictions) and Recall (completeness of positive predictions) as the decision threshold is varied.
-- This curve is particularly informative for imbalanced datasets, where the number of anomalies is much smaller than normal instances.
-- A curve that stays high as recall increases indicates that the model can achieve high precision even when identifying a large proportion of actual anomalies.
+- The Precision-Recall curve highlights the trade-off between Precision (accuracy of positive predictions) and Recall (completeness of positive predictions) as the decision threshold is varied.  
+- This curve is particularly informative for imbalanced datasets, where the number of anomalies is much smaller than normal instances.  
+- A curve that stays high as recall increases indicates that the model can achieve high precision even when identifying a large proportion of actual anomalies.  
 
 Business Insights from Visualization:  
-- The visualization for the IsolationForest suggests that the model's ability to discriminate anomalies is limited. The scatter plot may show significant overlap, and the AUC is low.
-- This model might not be suitable for direct deployment without significant improvements or a different approach.
-- The shape of the Precision-Recall curve provides insight into how many anomalies the model can find before its positive predictions become unreliable. A curve that drops sharply indicates that increasing recall comes at a high cost of precision (more false alarms).
+- The visualization for the IsolationForest suggests that the model's ability to discriminate anomalies is limited. The scatter plot may show significant overlap, and the AUC is low.  
+- This model might not be suitable for direct deployment without significant improvements or a different approach.  
+- The shape of the Precision-Recall curve provides insight into how many anomalies the model can find before its positive predictions become unreliable. A curve that drops sharply indicates that increasing recall comes at a high cost of precision (more false alarms).  
 
 
 
