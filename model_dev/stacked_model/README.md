@@ -52,6 +52,12 @@ Stacked Anomaly Detection Classifier Model flowchart
   </a>
 </p>
 
+p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_anomaly_classifier_flowchart.png" 
+       alt="Centered Image" 
+       style="width: 100%; height: Auto;">
+</p>  
+
 <p align="center"><em>
 Click the diagram to open in a new tab for full zoom and inspection
 </em></p>
