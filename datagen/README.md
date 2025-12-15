@@ -311,8 +311,6 @@ Potential future enhancements for this project include:
 
 
 ## Next Step: Feature Engineering
-## Feature Engineering
-
 <a 
   href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/feature_engineering/README.md"
   target="_parent">
