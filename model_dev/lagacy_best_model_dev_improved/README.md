@@ -1208,7 +1208,7 @@ This project successfully developed and evaluated a range of machine learning mo
 As next step, we will work to improve the this model with a stacked supervised model using unsupervised anomaly features .
  Click here to check the next step:
 <a 
-  href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/lagacy_best_model_dev_improved/README.md"
+  href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/stacked_model/README.md"
   target="_parent">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
