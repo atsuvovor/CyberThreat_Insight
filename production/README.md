@@ -1,6 +1,3 @@
-#  CyberThreat-Insight – Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI  
-##End User Documentation
-
 <h1 align="center">
 Production Simulation - Cyber Threat Detection Engine 
 </h1> 
