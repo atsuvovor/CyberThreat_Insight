@@ -105,9 +105,9 @@ Instead of discarding the unsupervised models, we utilized them as **Feature Gen
 
 This approach allows the classifier to use "statistical weirdness" (from unsupervised models) as a heavily weighted feature to help distinguish between *High* and *Critical* threats that might look similar in raw feature space.
 
-\<p align="center"\>
-\<img src="[https://github.com/atsuvovor/CyberThreat\_Insight/blob/main/images/stacked\_anomaly\_detector2.png](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_anomaly_detector2.png)" alt="Stacked Architecture" width="100%"\>
-\</p\>
+<p align="center">
+<img src="[https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_anomaly_detector2.png](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_anomaly_detector2.png)" alt="Stacked Architecture" width="100%">
+</p>
 
 -----
 
@@ -115,9 +115,9 @@ This approach allows the classifier to use "statistical weirdness" (from unsuper
 
 To understand *why* we included KMeans in the stack, we visualized its decision boundaries.
 
-\<p align="center"\>
-\<img src="[https://github.com/atsuvovor/CyberThreat\_Insight/blob/main/images/lagacy\_model\_improved\_metrics\_curves.png](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/lagacy_model_improved_metrics_curves.png)" alt="ROC and Precision-Recall Curves" width="100%"\>
-\</p\>
+<p align="center">
+<img src="[https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/lagacy_model_improved_metrics_curves.png](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/lagacy_model_improved_metrics_curves.png)" alt="ROC and Precision-Recall Curves" width="100%">
+</p>
 
   * **ROC AUC = 1.00:** In the latent space, KMeans provides perfect discrimination between the cluster centers (normal) and outliers.
   * **Scatter Plot:** Shows clear separation, confirming that distance-from-center is a high-value feature for the stacked model.
@@ -130,7 +130,7 @@ This engine demonstrates that **hybridizing ML approaches** outperforms single-m
 
 ### Future Work
 
-  * **Oversampling:** Implement SMOTE to address the class imbalance in the 'Critical' category and improve Recall \> 0.80.
+  * **Oversampling:** Implement SMOTE to address the class imbalance in the 'Critical' category and improve Recall > 0.80.
   * **Real-time Streaming:** Adapt the pipeline for Apache Kafka/Spark Streaming.
   * **Explainability:** Integrate SHAP (SHapley Additive exPlanations) values to tell SOC analysts *why* a log was flagged as Critical.
 
