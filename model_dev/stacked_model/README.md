@@ -26,7 +26,20 @@ In the rapidly evolving landscape of cybersecurity threats, the ability to accur
 The scope of this project includes:
 
 1.  **Data Processing:** Loading, splitting, and scaling a provided augmented cybersecurity dataset (`x_y_augmented_data_google_drive.csv`).
+<a 
+  href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/datagen/README.md"
+  target="_parent">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
+
+ 
 2.  **Unsupervised Anomaly Feature Engineering:** Applying and training various unsupervised anomaly detection models (Isolation Forest, One-Class SVM, Local Outlier Factor, DBSCAN, KMeans, Dense Autoencoder, LSTM Autoencoder) on the training data to generate anomaly scores and flags as new features.
+<a 
+  href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/feature_engineering/README.md"
+  target="_parent">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
+   
 3.  **Stacked Model Development:** Training a Random Forest classifier as a base model and a Gradient Boosting classifier as a meta-learner on the extended feature set (original scaled features + unsupervised anomaly features + Random Forest `predict_proba`).
 4.  **Model Evaluation:** Performing comprehensive evaluation of the final stacked model using multi-class classification metrics (Accuracy, Precision, Recall, F1-score, Confusion Matrix, Classification Report).
 5.  **Unsupervised Model Analysis:** Evaluating and visualizing the performance of individual unsupervised anomaly detection models to understand their contributions.
