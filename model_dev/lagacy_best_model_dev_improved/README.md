@@ -1205,7 +1205,7 @@ This project successfully developed and evaluated a range of machine learning mo
 *   **Integration with Security Systems:** Explore integrating the developed engine with existing security information and event management (SIEM) systems or other security platforms.
 *   **Exploring Other Models:** Evaluate additional models, including deep learning architectures specifically designed for anomaly detection or time series analysis.  
 
-As next step, we will work to improve the this model with .
+As next step, we will work to improve the this model with a stacked supervised model using unsupervised anomaly features .
  Click here to check the next step:
 <a 
   href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/lagacy_best_model_dev_improved/README.md"
