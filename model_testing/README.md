@@ -1,4 +1,4 @@
-#Stacked Supervised Model Inference
+# Stacked Anomaly Detection Classifier Inference
 
 **Toronto, Sept 17 202**  
 **Autor : Atsu Vovor**
