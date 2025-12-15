@@ -1,6 +1,6 @@
 
 <h1 align="center">
-Model Development - Cyber Threat Detection Engine improved
+Model Development - Hybrid Cyber Threat Detection Engine
 </h1> 
 <p align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/lagacy_model_improved_headline.png" 
