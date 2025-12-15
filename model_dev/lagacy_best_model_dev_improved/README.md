@@ -1,6 +1,6 @@
 
 <h1 align="center">
-Model Development - Hybrid ML Approach for Cyber Threat Classification
+Hybrid ML Approach for Cyber Threat Classification
 </h1> 
 <p align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/lagacy_model_improved_headline.png" 
