@@ -1,5 +1,5 @@
 <h2 align="center">
-Cyber Threat Detection Engine using Supervised and Unsupervised Models
+  Multi-Model Threat Detection Baseline
 </h2> 
 <p align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/lagacy_model_dev_github.png" 
