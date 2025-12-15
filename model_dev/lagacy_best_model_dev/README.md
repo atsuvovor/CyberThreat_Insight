@@ -1016,4 +1016,13 @@ In contrast, **unsupervised anomaly detection models** excel at identifying devi
 
 These findings underscore a critical insight: while unsupervised models are valuable for early anomaly detection and zero-day threat discovery, they are insufficient on their own for nuanced, multi-level threat classification. Effective cyber threat intelligence systems must therefore either rely on supervised learning where labels exist or incorporate **hybrid and adaptive strategies** that combine anomaly detection with downstream classification, clustering, or risk-scoring mechanisms.
 
-Overall, this section establishes a clear, evidence-based framework for selecting and adapting machine learning models in cybersecurity analytics, bridging the gap between anomaly detection and actionable threat severity classification.
+Overall, this section establishes a clear, evidence-based framework for selecting and adapting machine learning models in cybersecurity analytics, bridging the gap between anomaly detection and actionable threat severity classification.  
+
+As next step, we will work to improve the this model
+ Run the code:
+<a 
+  href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/lagacy_best_model_dev_improved/README.md"
+  target="_parent">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
+
