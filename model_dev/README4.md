@@ -82,9 +82,9 @@ While Random Forest achieved 98.12% accuracy, a deeper look at the **Critical** 
   * **Precision (Critical):** 0.9474 (High trust in positive alerts)
   * **Recall (Critical):** 0.6667 (Missed \~33% of critical events)
 
-\<p align="center"\>
-\<img src="[https://github.com/atsuvovor/CyberThreat\_Insight/blob/main/images/lagacy\_model\_improved\_confusion](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/lagacy_model_improved_confusion) Matrix2.png" alt="Confusion Matrix" width="600px"\>
-\</p\>
+<p align="center">
+<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/lagacy_model_improved_confusion_matrix2.png" alt="Confusion Matrix" width="600px">
+</p>
 
 **Business Insight:** The model is highly accurate but conservative. It minimizes False Positives (alert fatigue) but currently poses a risk of False Negatives for the most severe attacks. This specific gap drove the development of Stage 3.
 
