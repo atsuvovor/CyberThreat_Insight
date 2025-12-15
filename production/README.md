@@ -1,6 +1,23 @@
 #  CyberThreat-Insight – Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI  
 ##End User Documentation
 
+<h1 align="center">
+Production Simulation - Cyber Threat Detection Engine 
+</h1> 
+
+<h2 align="center">
+  End User Documentation
+</h2> 
+<p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_anomaly_detector2.png" 
+       alt="Centered Image" 
+       style="width: 1000px; height: Auto;">
+</p>  
+
+<p align="center">
+    Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI**
+</p> 
+
 **Toronto, Sept 17 202**  
 **Autor : Atsu Vovor**
 >Master of Management in Artificial Intelligence      
