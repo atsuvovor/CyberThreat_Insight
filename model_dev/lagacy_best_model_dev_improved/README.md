@@ -15,7 +15,11 @@ Model Development - Cyber Threat Detection Engine improved
 
 ### Introduction
 
-Cybersecurity threats are constantly evolving, making traditional signature-based detection insufficient. Identifying anomalous behavior is crucial for detecting novel threats. This article describes a Cyber Threat Detection Engine that uses both supervised and unsupervised machine learning to classify known threats and identify new anomalies. We evaluate various models to build a robust system for classifying cyber threats by severity level (Low, Medium, High, Critical).
+Cybersecurity threats continue to evolve at a rapid pace, rendering traditional signature-based detection methods increasingly inadequate. As a result, identifying anomalous behavior has become essential for detecting novel and emerging threats.href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/lagacy_best_model_dev/README.md" target="_blank">In the previous article</a> , supervised machine learning models were evaluated using standard classification metrics, including accuracy, precision, recall, F1-score, and confusion matrices. Among these models, Random Forest and Gradient Boosting demonstrated strong performance, accurately predicting all four threat classes.
+
+In contrast, unsupervised models were initially evaluated by transforming anomaly scores into binary labels (normal versus anomalous). While effective at detecting deviations from normal behavior, these models were limited to binary predictions—typically identifying only the lowest threat class—and failed to capture nuanced severity levels such as High and Critical.
+
+This article presents a Cyber Threat Detection Engine that integrates both supervised and unsupervised machine learning techniques to address these limitations. By combining precise classification of known threats with robust detection of previously unseen anomalies, the proposed system aims to deliver a more comprehensive and resilient approach to cyber threat classification across all severity levels: Low, Medium, High, and Critical.
 
 ### Supervised vs Unsupervised Learning in this Project
 
