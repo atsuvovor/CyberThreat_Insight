@@ -309,6 +309,16 @@ Potential future enhancements for this project include:
 %run /content/Cybersecurity-Data-Generator/cyberdatagen.py
 ```
 
+
+## Next Step: Feature Engineering
+## Feature Engineering
+
+<a 
+  href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/feature_engineering/README.md"
+  target="_parent">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
+
 ---
 
 ## 🤝 Connect With Me
