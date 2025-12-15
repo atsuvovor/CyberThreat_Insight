@@ -25,6 +25,22 @@ This article presents a Cyber Threat Detection Engine that integrates both super
 
 This project utilizes both supervised and unsupervised learning approaches. Supervised models like Random Forest and Gradient Boosting are trained on labeled data to directly classify known threat levels. Unsupervised models such as Isolation Forest and KMeans are used for anomaly detection and clustering to identify potentially novel threats. The outputs of these unsupervised models are then mapped to the defined threat levels. This combined approach leverages labeled data for known threats while enabling the detection of new anomalies.
 
+
+### Data Injection and Preprocessing:
+<a 
+  href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/datagen/README.md"
+  target="_parent">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
+
+### Feature Engineering:
+<a 
+  href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/feature_engineering/README.md"
+  target="_parent">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
+
+
 ### Model Development and Evaluation  
 
 Run the code:
