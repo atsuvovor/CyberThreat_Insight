@@ -25,7 +25,7 @@ In the rapidly evolving landscape of cybersecurity threats, the ability to accur
 
 The scope of this project includes:
 
-1.  **Data Processing:** Loading, splitting, and scaling a provided augmented cybersecurity dataset (`x_y_augmented_data_google_drive.csv`).
+1.  **Data Processing:** Loading, splitting, and scaling a provided augmented cybersecurity dataset (`x_y_augmented_data_google_drive.csv`).  
      <a 
       href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/datagen/README.md"
       target="_parent">
