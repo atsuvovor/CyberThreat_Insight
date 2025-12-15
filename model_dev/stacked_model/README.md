@@ -2092,4 +2092,18 @@ Data columns (total 26 columns):
  23  predicted_anomaly           799 non-null    int64    
  24  Actual Threat               799 non-null    int64    
  25  Pred Threat                 799 non-null    int64    
-dtypes: float64(22), int64(4)  
+dtypes: float64(22), int64(4)    
+
+
+
+## 🤝 Connect With Me
+I am always open to collaboration and discussion about new projects or technical roles.
+
+Atsu Vovor  
+Consultant, Data & Analytics    
+Ph: 416-795-8246 | ✉️ atsu.vovor@bell.net    
+🔗 <a href="https://www.linkedin.com/in/atsu-vovor-mmai-9188326/" target="_blank">LinkedIn</a> | <a href="https://atsuvovor.github.io/projects_portfolio.github.io/" target="_blank">GitHub</a> | <a href="https://public.tableau.com/app/profile/atsu.vovor8645/vizzes" target="_blank">Tableau Portfolio</a>    
+📍 Mississauga ON      
+
+### Thank you for visiting!🙏
+
