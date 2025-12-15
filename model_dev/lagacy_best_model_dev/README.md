@@ -28,15 +28,14 @@ This section presents a comprehensive exploration of both **supervised and unsup
 Through empirical evaluation, this section highlights the strengths of supervised classification techniques in multi-class threat prediction, as well as the inherent limitations of traditional unsupervised anomaly detection methods. Building on these findings, we examine how unsupervised models can be adapted and augmented to better support multi-class threat classification, laying the groundwork for more resilient and scalable cyber defense systems.
 
 
-## Data Injection and Preprocessing
+## Data Injection and Preprocessing:
 <a 
   href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/datagen/README.md"
   target="_parent">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
-## Feature Engineering
-
+## Feature Engineering:
 <a 
   href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/feature_engineering/README.md"
   target="_parent">
