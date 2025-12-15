@@ -30,7 +30,7 @@ Through empirical evaluation, this section highlights the strengths of supervise
 
 ## Data Injection and Preprocessing
 <a 
-  href="https://colab.research.google.com/github/atsuvovor/CyberThreat_Insight/blob/main/feature_engeneering/fe_flowchart_github_v2.ipynb"
+  href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/datagen/README.m"
   target="_parent">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
@@ -38,7 +38,7 @@ Through empirical evaluation, this section highlights the strengths of supervise
 ## Feature Engineering
 
 <a 
-  href="https://colab.research.google.com/github/atsuvovor/CyberThreat_Insight/blob/main/feature_engeneering/fe_flowchart_github_v2.ipynb"
+  href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/feature_engineering/README.md"
   target="_parent">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
