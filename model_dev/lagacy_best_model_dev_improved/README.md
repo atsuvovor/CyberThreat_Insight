@@ -1198,9 +1198,12 @@ This project successfully developed and evaluated a range of machine learning mo
 
 *   **Advanced Feature Engineering:** Explore creating more complex features that capture temporal dependencies or interaction patterns indicative of anomalous behavior.
 *   **Hyperparameter Tuning:** Conduct more extensive hyperparameter tuning for all models, especially for the best performing ones and those with potential for improvement (e.g., LSTM, unsupervised models).
+*   **Ensemble Methods:** Investigate combining multiple models (e.g., creating an ensemble of the best supervised and unsupervised models) to potentially improve overall performance and robustness.
+*   **Handling Imbalanced Data:** Implement techniques specifically designed for imbalanced datasets, such as oversampling minority classes (e.g., Critical threats), undersampling majority classes, or using algorithms that are less sensitive to imbalance.
 *   **Real-time Detection:** Adapt the models and pipeline for real-time or near-real-time threat detection in a streaming data environment.
+*   **Model Explainability:** Incorporate techniques to explain model predictions, particularly for critical alerts, to provide security analysts with actionable insights.
 *   **Integration with Security Systems:** Explore integrating the developed engine with existing security information and event management (SIEM) systems or other security platforms.
-*   **Exploring Other Models:** Evaluate additional models, including deep learning architectures specifically designed for anomaly detection or time series analysis.
+*   **Exploring Other Models:** Evaluate additional models, including deep learning architectures specifically designed for anomaly detection or time series analysis.  
 
 
 ---
