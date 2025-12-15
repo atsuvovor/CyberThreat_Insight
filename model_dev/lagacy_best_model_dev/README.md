@@ -1018,8 +1018,8 @@ These findings underscore a critical insight: while unsupervised models are valu
 
 Overall, this section establishes a clear, evidence-based framework for selecting and adapting machine learning models in cybersecurity analytics, bridging the gap between anomaly detection and actionable threat severity classification.  
 
-As next step, we will work to improve the this model
- Run the code:
+As next step, we will work to improve the this model.
+ Click here to check the next step:
 <a 
   href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/lagacy_best_model_dev_improved/README.md"
   target="_parent">
