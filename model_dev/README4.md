@@ -70,13 +70,14 @@ This repository is structured around three distinct stages of model maturity:
 
 ### 📂 Quick Links
 
-| Component | Description | Status |
+| Component | Description | Link |
 | :--- | :--- | :--- |
-| **Data Generation** | Synthetic log generation and preprocessing pipeline. | [](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/datagen/README.md) |
-| **Feature Engineering** | Normalization, encoding, and selection. Data Augmentation(Cholesky-based perturbation,SMOTE (Synthetic Minority Over-sampling Technique), GANs (Generative Adversarial Networks)) | [](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/feature_engineering/README.md) |
-| **Model Dev (Baseline)** | Initial multi-model benchmark. | [](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/lagacy_best_model_dev/README.md) |
-| **Hybrid Approach** | Integrated Supervised and Unsupervised Threat Detection | [](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/lagacy_best_model_dev_improved/README.md) |
-| **Stacked Model** | Final ensemble implementation. | [](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/stacked_model/README.md) |
+| **Data Generation** | Synthetic log generation and preprocessing pipeline. | [View README](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/datagen/README.md) |
+| **Feature Engineering** | Normalization, encoding, selection, and data augmentation (Cholesky, SMOTE, GANs). | [View README](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/feature_engineering/README.md) |
+| **Model Dev (Baseline)** | Initial supervised and unsupervised model benchmarks. | [View README](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/lagacy_best_model_dev/README.md) |
+| **Hybrid Approach** | Integrated supervised + unsupervised threat detection. | [View README](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/lagacy_best_model_dev_improved/README.md) |
+| **Stacked Model** | Final anomaly-augmented ensemble architecture. | [View README](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/stacked_model/README.md) |
+
 
 -----
 
