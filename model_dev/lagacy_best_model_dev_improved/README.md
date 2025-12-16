@@ -9,7 +9,7 @@ Hybrid ML Approach for Cyber Threat Classification
 </p>  
 
 <p align="center">
-    Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI**
+    Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI
 </p> 
 
 
@@ -17,7 +17,7 @@ Hybrid ML Approach for Cyber Threat Classification
 
 Cybersecurity threats continue to evolve at a rapid pace, rendering traditional signature-based detection methods increasingly inadequate. As a result, identifying anomalous behavior has become essential for detecting novel and emerging threats. <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/lagacy_best_model_dev/README.md" target="_blank">In the previous article</a> , supervised machine learning models were evaluated using standard classification metrics, including accuracy, precision, recall, F1-score, and confusion matrices. Among these models, Random Forest and Gradient Boosting demonstrated strong performance, accurately predicting all four threat classes.
 
-In contrast, unsupervised models were initially evaluated by transforming anomaly scores into binary labels (normal versus anomalous). While effective at detecting deviations from normal behavior, these models were limited to binary predictions—typically identifying only the lowest threat class—and failed to capture nuanced severity levels such as High and Critical.
+In contrast, unsupervised models were initially evaluated by transforming anomaly scores into binary labels (normal versus anomalous). While effective at detecting deviations from normal behavior, these models were limited to binary predictions typically identifying only the lowest threat class—and failed to capture nuanced severity levels such as High and Critical.
 
 This article presents a Cyber Threat Detection Engine that integrates both supervised and unsupervised machine learning techniques to address these limitations. By combining precise classification of known threats with robust detection of previously unseen anomalies, the proposed system aims to deliver a more comprehensive and resilient approach to cyber threat classification across all severity levels: Low, Medium, High, and Critical.
 
