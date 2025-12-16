@@ -100,7 +100,7 @@ def data_splitting(X_augmented, y_augmented, p_features_engineering_columns, tar
 
 ---
 
-## 🧠 Detection Engine Stages  
+## 🧠 Model Development - Detection Engine Stages  
 
 <h3>
   <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/lagacy_best_model_dev/README.md">
@@ -168,7 +168,7 @@ Unsupervised models alone cannot classify multiple threat levels. Stage 2 adapts
 
 ---
 
-## Stage 3 – Stacked Hybrid Ensemble
+
 <h3>
   <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/stacked_model/README.md">
     🤖 Stage 3 – Stacked Hybrid Ensemble
