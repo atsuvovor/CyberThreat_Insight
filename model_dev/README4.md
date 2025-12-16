@@ -64,7 +64,10 @@ We initially tested pure unsupervised models (Isolation Forest, One-Class SVM, A
        alt="Unsupervised Model Confusion Matrix"
        style="width: 100%; height: auto;">
 </p>
-**Key Challenge: Unsupervised Model Limitations**
+
+
+**Key Challenge: Unsupervised Model Limitations**  
+
 * Predict **binary outputs only** (normal vs anomaly)
 * Fail to distinguish between **High (2)** and **Critical (3)** threats
 * Treat all anomalies as a single class
