@@ -10,6 +10,42 @@
 
 </div>
 
+**Toronto, September 08 2025**  
+**Author: Atsu Vovor**
+
+---
+
+## Abstract
+
+Cybersecurity threats are increasingly sophisticated and stealthy, rendering traditional signature-based detection methods insufficient. This white paper presents the **Cyber Threat Detection Engine**, a three-stage anomaly detection framework leveraging both supervised and unsupervised machine learning models enhanced by generative AI.
+
+The methodology consists of:
+
+1. **Stage 1 – Baseline Modeling:** Traditional supervised classifiers (Random Forest, Gradient Boosting) and unsupervised anomaly detection algorithms (Isolation Forest, LOF, DBSCAN) were implemented and evaluated.
+2. **Stage 2 – Unsupervised Feature Adaptation:** Recognizing the limitations of unsupervised methods in multi-class classification, anomaly scores and cluster assignments were extracted from unsupervised models and included as additional features in supervised learning pipelines.
+3. **Stage 3 – Stacked Hybrid Ensemble:** A two-layer stacked ensemble was developed, combining Random Forest as the base learner with Gradient Boosting as the meta-learner, leveraging both original features and anomaly-derived features.
+
+Data augmentation techniques (SMOTE, GANs, Cholesky-based perturbations) were applied to balance the dataset. Evaluation demonstrates improved detection of rare and critical threat levels (Classes 2 and 3), outperforming individual supervised or unsupervised models. The framework provides a **robust, interpretable, and deployable solution** for real-time cybersecurity threat analytics.
+
+---
+
+## Introduction
+
+Modern cybersecurity landscapes are characterized by the **rarity and subtlety of malicious events**, the **volume of benign activity**, and the **rapid evolution of attack patterns**. Traditional detection approaches relying solely on known signatures are insufficient for:
+
+* Detecting zero-day attacks
+* Identifying insider threats
+* Recognizing anomalous patterns across multiple threat levels
+
+The goal of this project is to develop a **robust multi-class cyber threat detection engine** capable of predicting threat levels from 0 (Low) to 3 (Critical). To address this, we adopted a **three-stage model evolution**, each stage building upon insights from the previous stage:
+
+1. **Stage 1 – Baseline Modeling:** Implemented standard supervised and unsupervised models to establish performance benchmarks.
+2. **Stage 2 – Unsupervised Feature Adaptation:** Converted unsupervised anomaly outputs into features for supervised learning, addressing gaps in multi-class prediction.
+3. **Stage 3 – Stacked Ensemble:** Integrated original features, anomaly features, and base learner probabilities in a two-layer stacking architecture for optimal multi-class detection.
+
+This paper provides **comprehensive documentation**, including dataset preparation, modeling choices, feature engineering, evaluation, deployment considerations, and future research directions.
+
+---
 ## 📋 Executive Summary
 
 This project documents the end-to-end development of a **Cyber Threat Detection Engine** designed to identify anomalous behavior in security log data and classify threats by severity (**Low, Medium, High, Critical**).
