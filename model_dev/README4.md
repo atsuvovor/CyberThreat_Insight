@@ -116,8 +116,9 @@ This approach allows the classifier to use "statistical weirdness" (from unsuper
 To understand *why* we included KMeans in the stack, we visualized its decision boundaries.
 
 <p align="center">
-<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/lagacy_model_improved_metrics_curves.png" alt="ROC and Precision-Recall Curves" width="100%">
+<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_model_Kmeans_roc_recall.png" alt="ROC and Precision-Recall Curves" width="100%">
 </p>
+
 
   * **ROC AUC = 1.00:** In the latent space, KMeans provides perfect discrimination between the cluster centers (normal) and outliers.
   * **Scatter Plot:** Shows clear separation, confirming that distance-from-center is a high-value feature for the stacked model.
