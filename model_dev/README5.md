@@ -48,7 +48,7 @@ This paper provides **comprehensive documentation**, including dataset preparati
 
 ## Data Preparation and Augmentation
 
-<a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/datagen/README.md" target="_blank"><h3>📖Data Generation</h3></a>  
+📖<a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/datagen/README.md" target="_blank"><h3>Data Generation</h3></a>  
 
 The dataset consists of cybersecurity event logs with a target variable **“Threat Level”**:
 
