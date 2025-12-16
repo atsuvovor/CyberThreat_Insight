@@ -1084,6 +1084,11 @@ The performance insight for the RandomForest model emphasizes its strong overall
        style="width: 1oo%; height: Auto;">
 </p> 
  
+<p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/lagacy_model_improved_metrics_curves.png" 
+       alt="Centered Image" 
+       style="width: 1oo%; height: Auto;">
+</p> 
 
 ### Performance Insight for RandomForest  
 
