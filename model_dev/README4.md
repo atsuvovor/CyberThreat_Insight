@@ -77,8 +77,9 @@ This repository is structured around three distinct stages of model maturity:
 | **Stacked Model** | Final anomaly-augmented ensemble architecture. | [View README](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/stacked_model/README.md) |
 
 
------  
+---
 
+## 🔍 Stage 1: Baseline Models - The Multi-Class Challenge
 ## Models Implemented
 
 ### Unsupervised Models (Anomaly Detection)
@@ -102,9 +103,7 @@ This repository is structured around three distinct stages of model maturity:
 | Logistic Regression | Baseline comparison |
 | Stacked Ensemble | Final production model |
 
----
 
-## 🔍 Stage 1: The Multi-Class Challenge
 
 **Objective:** Model cyber risk using a multi-class target variable defined as:
 
@@ -117,8 +116,12 @@ This repository is structured around three distinct stages of model maturity:
 
 We initially tested pure unsupervised models (Isolation Forest, One-Class SVM, Autoencoders) to detect deviations. While these models excelled at binary classification (Normal vs. Anomaly), they failed to distinguish between threat severities.
 
-  * **Observation:** Unsupervised models generalize outliers into a single "Anomaly" class (mapped typically to Class 1), missing the nuance between a *Medium* risk and a *Critical* breach.
-  * **Result:** Models like Isolation Forest achieved only **\~58% accuracy** on the multi-class target because they inherently lack label context.
+**Observation:**
+  * **Supervised models** correctly classify all four threat levels using labeled data.  
+  *  **Unsupervised models** generalize outliers into a single "Anomaly" class (mapped typically to Class 1), missing the nuance between a *Medium* risk and a *Critical* breach.
+**Result:**
+  * Models like Isolation Forest achieved only **\~58% accuracy** on the multi-class target because they inherently lack label context.
+  * Stage 1 establishes **baseline performance metrics** and highlights the need for hybrid methods.
 
 <p align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/models_confusion_matrix.png"
