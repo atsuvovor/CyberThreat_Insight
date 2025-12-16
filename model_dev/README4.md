@@ -1,10 +1,8 @@
-
-
-<h1 align="center"> Cyber Threat Detection Engine: A Stacked Ensemble Approach</h1>
-
 <div align="center">
 
-<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/lagacy_model_dev_github.png" alt="Cyber Threat Detection Dashboard" width="900px">
+ <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/cyber_threat_detection_engine4.png" 
+       alt="Cyber Threat Detection Engine" 
+       style="width: 600px; height: 40%;">
 
 **Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI & Stacked Generalization**
 
