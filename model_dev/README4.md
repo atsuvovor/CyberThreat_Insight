@@ -77,7 +77,32 @@ This repository is structured around three distinct stages of model maturity:
 | **Stacked Model** | Final anomaly-augmented ensemble architecture. | [View README](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/stacked_model/README.md) |
 
 
------
+-----  
+
+## Models Implemented
+
+### Unsupervised Models (Anomaly Detection)
+
+| Model | Purpose |
+|------|--------|
+| Isolation Forest | Outlier isolation |
+| One-Class SVM | Boundary-based anomaly detection |
+| Local Outlier Factor (LOF) | Density deviation |
+| DBSCAN | Density-based clustering |
+| KMeans | Cluster distance analysis |
+| Autoencoder | Reconstruction error |
+| LSTM Autoencoder | Temporal anomaly detection |
+
+### Supervised Models (Threat Classification)
+
+| Model | Purpose |
+|------|--------|
+| Random Forest | Robust multi-class classification |
+| Gradient Boosting | High-precision meta learner |
+| Logistic Regression | Baseline comparison |
+| Stacked Ensemble | Final production model |
+
+---
 
 ## 🔍 Stage 1: The Multi-Class Challenge
 
