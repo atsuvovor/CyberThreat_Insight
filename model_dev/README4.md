@@ -72,9 +72,10 @@ This repository is structured around three distinct stages of model maturity:
 
 | Component | Description | Status |
 | :--- | :--- | :--- |
-| **Data Generation** | Synthetic log generation and preprocessing pipeline. | [](https://www.google.com/search?q=%5Bhttps://github.com/atsuvovor/CyberThreat_Insight/blob/main/datagen/README.md%5D\(https://github.com/atsuvovor/CyberThreat_Insight/blob/main/datagen/README.md\)) |
-| **Feature Engineering** | Normalization, encoding, and selection. | [](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/feature_engineering/README.md) |
-| **Model Dev (Baseline)** | Initial multi-model benchmark. | [](https://colab.research.google.com/github/atsuvovor/CyberThreat_Insight/blob/main/model_dev/lagacy_best_model_dev/lagacy_model_dev_github.ipynb) |
+| **Data Generation** | Synthetic log generation and preprocessing pipeline. | [](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/datagen/README.md) |
+| **Feature Engineering** | Normalization, encoding, and selection. Data Augmentation(Cholesky-based perturbation,SMOTE (Synthetic Minority Over-sampling Technique), GANs (Generative Adversarial Networks)) | [](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/feature_engineering/README.md") |
+| **Model Dev (Baseline)** | Initial multi-model benchmark. | [](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/lagacy_best_model_dev/README.md) |
+| **Hybrid Approach** | Integrated Supervised and Unsupervised Threat Detection | [](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/lagacy_best_model_dev_improved/README.md) |
 | **Stacked Model** | Final ensemble implementation. | [](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/stacked_model/README.md) |
 
 -----
