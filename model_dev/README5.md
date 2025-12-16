@@ -1,16 +1,16 @@
-<h1 align=center>
- Cyber Threat Detection Engine: Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI
-</h1>
-<p align="center">
-  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/cyber_threat_detection_engine4.png" 
+<div align="center">
+
+ <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/cyber_threat_detection_engine4.png" 
        alt="Cyber Threat Detection Engine" 
        style="width: 600px; height: 40%;">
-</p>  
 
-<p align="center">
+**Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI & Stacked Generalization**
+
+</div>
+
+
 **Toronto, September 08 2025**  
 **Author: Atsu Vovor**
-</p> 
 
 ---
 
