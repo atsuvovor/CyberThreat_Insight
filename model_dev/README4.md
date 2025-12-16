@@ -59,17 +59,18 @@ We initially tested pure unsupervised models (Isolation Forest, One-Class SVM, A
   * **Observation:** Unsupervised models generalize outliers into a single "Anomaly" class (mapped typically to Class 1), missing the nuance between a *Medium* risk and a *Critical* breach.
   * **Result:** Models like Isolation Forest achieved only **\~58% accuracy** on the multi-class target because they inherently lack label context.
 
+<p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/models_confusion_matrix.png"
+       alt="Unsupervised Model Confusion Matrix"
+       style="width: 100%; height: auto;">
+</p>
+
 **Key Challenge: Unsupervised Model Limitations**
 
 * Predict **binary outputs only** (normal vs anomaly)
 * Fail to distinguish between **High (2)** and **Critical (3)** threats
 * Treat all anomalies as a single class
 
-<p align="center">
-  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/models_confusion_matrix.png"
-       alt="Unsupervised Model Confusion Matrix"
-       style="width: 100%; height: auto;">
-</p>
 
 ---
 
