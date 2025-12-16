@@ -1028,7 +1028,7 @@ As next step, we will work to improve the this model.
 
 ---
 
-## 🤝 Connect With Me
+## 🤝 Connect with me
 I am always open to collaboration and discussion about new projects or technical roles.
 
 Atsu Vovor  
