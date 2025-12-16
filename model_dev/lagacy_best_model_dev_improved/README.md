@@ -1166,7 +1166,7 @@ To understand the anomaly detection capabilities of the unsupervised models, we 
  Model Performance Visualisation:  
 
 <p align="center">
-  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/lagacy_model_improved_metrics_curves.png" 
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/lagacy_model_improved_ROC_RECALL_curves.png" 
        alt="Centered Image" 
        style="width: 1oo%; height: Auto;">
 </p>  
