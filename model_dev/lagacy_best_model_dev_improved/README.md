@@ -255,20 +255,26 @@ classifier.fit(X_features, y_severity)
 
 > **This system converts unsupervised anomaly detectors into severity-aware feature generators by aligning their latent structure with known threat labels, enabling robust supervised multiclass cyber threat classification.**
 
+<p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/hybrid_cyber_threat_severity_classification_pipeline.png" 
+       alt="Centered Image" 
+       style="width: 1000px; height: Auto;">
+</p>
+
 ---
 
-##  SOC-Grade Architecture Is 
+##  SOC-Grade Architecture Is   
 
-✔ Detects **novel attacks**
-✔ Preserves **risk gradients**
-✔ Produces **explainable signals**
-✔ Aligns with **governance & model risk management**
-✔ Scales to **real-world SOC environments**
+✔ Detects **novel attacks**  
+✔ Preserves **risk gradients**  
+✔ Produces **explainable signals**  
+✔ Aligns with **governance & model risk management**  
+✔ Scales to **real-world SOC environments**  
 
-This design mirrors how **human SOC analysts reason**:
-*first detect abnormal behavior, then contextualize and prioritize severity.*
+This design mirrors how **human SOC analysts reason**:  
+*first detect abnormal behavior, then contextualize and prioritize severity.*  
 
-Run the code:
+### Run the code:
 <a 
   href="https://colab.research.google.com/github/atsuvovor/CyberThreat_Insight/blob/main/model_dev/lagacy_best_model_dev_improved/lagacy_model_dev_improved.ipynb"
   target="_parent">
