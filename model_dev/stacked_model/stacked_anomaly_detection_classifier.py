@@ -221,6 +221,7 @@ from tensorflow.keras.layers import Input, Dense, LSTM, RepeatVector
 from tensorflow.keras.callbacks import EarlyStopping
 from matplotlib.colors import LinearSegmentedColormap
 
+from  evaluation_utils import evaluate_model, export_evaluation_results
 
 # -----------
 # PARAMETERS
@@ -1482,12 +1483,35 @@ def step_train_stacked_model(X_train_ext, X_test_ext, y_train):
     return train_stacked_model(X_train_ext, X_test_ext, y_train, RANDOM_STATE)
 
 
-def step_evaluate_stacked_model(gb, X_test_stack, y_test):
-    """Step 5: Evaluate stacked supervised model"""
-    y_pred = gb.predict(X_test_stack)
-    evaluate_stacked_model(type(gb).__name__, y_test, y_pred, MODEL_OUTPUT_DIR)
-    return os.path.join(MODEL_OUTPUT_DIR, "metrics.json")
+#def step_evaluate_stacked_model(gb, X_test_stack, y_test):
+#    """Step 5: Evaluate stacked supervised model"""
+#    y_pred = gb.predict(X_test_stack)
+#    evaluate_stacked_model(type(gb).__name__, y_test, y_pred, MODEL_OUTPUT_DIR)
+#    return os.path.join(MODEL_OUTPUT_DIR, "metrics.json")
 
+def step_evaluate_stacked_model(model, X_test_stack, y_test):
+    """
+    Evaluates the stacked supervised model and exports results.
+    """
+    log("Evaluating stacked supervised model...")
+
+    y_pred = model.predict(X_test_stack)
+
+    stacked_metrics = evaluate_model(
+        name="Stacked w/ Anomaly Feat.",
+        y_true=y_test,
+        y_pred=y_pred
+    )
+
+    metrics_path, readme_table = export_evaluation_results(
+        [stacked_metrics],
+        MODEL_OUTPUT_DIR
+    )
+
+    log(f"Stacked model metrics saved to: {metrics_path}")
+    log("README-ready evaluation table generated:\n" + readme_table)
+
+    return metrics_path, y_pred
 
 def step_evaluate_unsupervised(X_test_scaled, y_test, unsupervised_models, X_columns):
     """Step 6: Evaluate and visualize unsupervised models"""
@@ -1504,10 +1528,54 @@ def step_save_all(scaler, rf, gb, unsupervised_models, metrics_path):
 #  Main Pipeline
 #------------------
 
-def run_stacked_model_pipeline_integrated(augmented_data = None):
+#def run_stacked_model_pipeline_integrated(augmented_data = None):
     """
     Orchestrates the entire data science process for the stacked model,
     integrating the steps previously in main_model_dev_stacked.
+    """
+#    log("Starting integrated stacked model pipeline...")
+
+    # 1. Load and split
+#    X_train, X_test, y_train, y_test, X_columns = step_load_and_split(augmented_data)
+
+    # 2. Scale data
+#    scaler, X_train_scaled, X_test_scaled = step_scale_data(X_train, X_test)
+
+    # 3. Extract anomaly features
+#   X_train_ext, X_test_ext, unsupervised_models = step_extract_anomaly_features(
+#        X_train_scaled, X_test_scaled, y_train, X_columns
+#    )
+
+    # 4. Train stacked supervised model
+#    rf, gb_model, X_test_stack = step_train_stacked_model(X_train_ext, X_test_ext, y_train)
+
+    # 5. Evaluate stacked model
+#    metrics_path = step_evaluate_stacked_model(gb_model, X_test_stack, y_test)
+
+    # 6. Evaluate unsupervised models
+ #   viz_data = step_evaluate_unsupervised(X_test_scaled, y_test, unsupervised_models, X_columns)
+
+    # 7. Save everything
+#    step_save_all(scaler, rf, gb_model, unsupervised_models, metrics_path)
+
+    # 8. get stacked model predictions
+#   y_pred = get_stacked_model_predictions(gb_model, X_test_stack)
+
+    #9. Display model input and output
+#   output_df = display_model_input_output(X_test_ext, X_test_stack, y_test, y_pred, X_columns, viz_data)
+
+    #10 save output_df
+#    output_df.to_csv(os.path.join(MODEL_OUTPUT_DIR, "stacked_anomaly_prediction_clissifier.csv"), index=False)
+#    log("Stacked model output data saved to :" + os.path.join(MODEL_OUTPUT_DIR, "stacked_anomaly_prediction_clissifier.csv"))
+
+
+#    log("Stacked model pipeline execution finished.")
+
+#------------------------------------------
+def run_stacked_model_pipeline_integrated(augmented_data=None):
+    """
+    Orchestrates the entire data science process for the stacked model,
+    integrating anomaly extraction, weak supervision, and evaluation.
     """
     log("Starting integrated stacked model pipeline...")
 
@@ -1517,36 +1585,52 @@ def run_stacked_model_pipeline_integrated(augmented_data = None):
     # 2. Scale data
     scaler, X_train_scaled, X_test_scaled = step_scale_data(X_train, X_test)
 
-    # 3. Extract anomaly features
+    # 3. Extract anomaly features (unsupervised → severity-aware features)
     X_train_ext, X_test_ext, unsupervised_models = step_extract_anomaly_features(
         X_train_scaled, X_test_scaled, y_train, X_columns
     )
 
     # 4. Train stacked supervised model
-    rf, gb_model, X_test_stack = step_train_stacked_model(X_train_ext, X_test_ext, y_train)
+    rf, gb_model, X_test_stack = step_train_stacked_model(
+        X_train_ext, X_test_ext, y_train
+    )
 
-    # 5. Evaluate stacked model
-    metrics_path = step_evaluate_stacked_model(gb_model, X_test_stack, y_test)
+    # 5. Evaluate stacked model (refactored & reproducible)
+    metrics_path, y_pred = step_evaluate_stacked_model(
+        gb_model, X_test_stack, y_test
+    )
 
-    # 6. Evaluate unsupervised models
-    viz_data = step_evaluate_unsupervised(X_test_scaled, y_test, unsupervised_models, X_columns)
+    # 6. Evaluate unsupervised models (diagnostic only)
+    viz_data = step_evaluate_unsupervised(
+        X_test_scaled, y_test, unsupervised_models, X_columns
+    )
 
-    # 7. Save everything
-    step_save_all(scaler, rf, gb_model, unsupervised_models, metrics_path)
+    # 7. Save all artifacts
+    step_save_all(
+        scaler, rf, gb_model, unsupervised_models, metrics_path
+    )
 
-    # 8. get stacked model predictions
-    y_pred = get_stacked_model_predictions(gb_model, X_test_stack)
+    # 8. Display model input and output
+    output_df = display_model_input_output(
+        X_test_ext,
+        X_test_stack,
+        y_test,
+        y_pred,
+        X_columns,
+        viz_data
+    )
 
-    #9. Display model input and output
-    output_df = display_model_input_output(X_test_ext, X_test_stack, y_test, y_pred, X_columns, viz_data)
+    # 9. Save final prediction output
+    output_path = os.path.join(
+        MODEL_OUTPUT_DIR,
+        "stacked_anomaly_prediction_classifier.csv"
+    )
+    output_df.to_csv(output_path, index=False)
 
-    #10 save output_df
-    output_df.to_csv(os.path.join(MODEL_OUTPUT_DIR, "stacked_anomaly_prediction_clissifier.csv"), index=False)
-    log("Stacked model output data saved to :" + os.path.join(MODEL_OUTPUT_DIR, "stacked_anomaly_prediction_clissifier.csv"))
-
-
+    log("Stacked model output data saved to: " + output_path)
     log("Stacked model pipeline execution finished.")
 
+#------------------------------------------
 
 # To run the integrated pipeline
 if __name__ == "__main__":
