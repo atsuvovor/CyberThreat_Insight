@@ -79,8 +79,9 @@ This repository is structured around three distinct stages of model maturity:
 
 ---
 
-## 🔍 Stage 1: Baseline Models - The Multi-Class Challenge
-## Models Implemented
+## 🧠 Model Development - Detection Engine Stages  
+### 🔍 Stage 1: Baseline Models - The Multi-Class Challenge
+### Models Implemented
 
 ### Unsupervised Models (Anomaly Detection)
 
@@ -114,7 +115,7 @@ This repository is structured around three distinct stages of model maturity:
 
 ### The Unsupervised Gap
 
-We initially tested pure unsupervised models (Isolation Forest, One-Class SVM, Autoencoders) to detect deviations. While these models excelled at binary classification (Normal vs. Anomaly), they failed to distinguish between threat severities.
+We initially tested unsupervised models  to detect deviations. While these models excelled at binary classification (Normal vs. Anomaly), they failed to distinguish between threat severities.
 
 **Observation:**
   * **Supervised models** correctly classify all four threat levels using labeled data.  
@@ -138,7 +139,8 @@ We initially tested pure unsupervised models (Isolation Forest, One-Class SVM, A
 
 ---
 
-## 📊 Stage 2: Supervised Success & Metrics
+## 📊 Stage 2: Unsupervised Models as Feature Generator - Supervised Success & Metrics
+
 
 We pivoted to supervised learning to capture the decision boundaries between risk levels. The **Random Forest** and **Gradient Boosting** algorithms were the top performers.
 
@@ -158,6 +160,28 @@ While Random Forest achieved 98.12% accuracy, a deeper look at the **Critical** 
 
   * **Precision (Critical):** 0.9474 (High trust in positive alerts)
   * **Recall (Critical):** 0.6667 (Missed \~33% of critical events)
+
+### Rationale
+
+Unsupervised models alone cannot classify multiple threat levels. Stage 2 adapts them to **generate informative features** for supervised learning.
+### Feature Extraction
+
+| Algorithm        | Feature Extracted               |
+| ---------------- | ------------------------------- |
+| Isolation Forest | Anomaly score                   |
+| One-Class SVM    | Binary anomaly prediction       |
+| LOF              | Local density deviation score   |
+| DBSCAN           | Cluster membership / outlier    |
+| Autoencoder      | Reconstruction error            |
+| KMeans           | Cluster assignment              |
+| LSTM             | Time-series anomaly probability |
+
+### Commentary
+
+* Enhances **signal for rare and critical threats** (Class 2 and 3).
+* Converts anomaly sensitivity into **auxiliary features**.
+* Stage 2 demonstrates **hybridization benefits**, enabling unsupervised models to contribute to multi-class prediction.
+
 
 <p align="center">
 <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/lagacy_model_improved_confusion Matrix2.png" alt="Confusion Matrix"  width="600px">
