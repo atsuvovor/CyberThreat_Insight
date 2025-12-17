@@ -76,7 +76,7 @@ To balance class distribution and improve model performance, the following techn
 * **SMOTE (Synthetic Minority Oversampling Technique):** Augments minority classes
 * **GANs (Generative Adversarial Networks):** Produces realistic synthetic threat patterns
 
-### Train-Test Split
+## Train-Test Split
 
 ```python
 from sklearn.model_selection import train_test_split
