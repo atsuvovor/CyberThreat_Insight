@@ -42,6 +42,231 @@ This project utilizes both supervised and unsupervised learning approaches. Supe
 
 
 ### Model Development and Evaluation  
+## Overview
+
+Purely unsupervised anomaly detection models are inherently limited:
+they can identify *novel or rare behavior*, but they **cannot natively classify cyber threats by severity** (Low / Medium / High / Critical).
+
+This project addresses that limitation through a **principled hybrid learning architecture** that:
+
+> **Transforms unsupervised anomaly detectors into severity-aware feature generators by aligning their latent structure with known threat labels, enabling robust supervised multiclass threat classification.**
+
+Rather than forcing unsupervised models to make semantic decisions they were never designed for, this architecture **leverages their strengths**—structure discovery and novelty detection—while delegating severity interpretation to supervised learning.
+
+---
+
+## Core Problem Addressed
+
+Unsupervised anomaly detectors typically produce one of the following outputs:
+
+* **Binary anomaly flags** (normal vs anomalous)
+* **Continuous anomaly scores** (distance, isolation, reconstruction error)
+* **Unlabeled clusters** (cluster IDs, density groups, noise points)
+
+These outputs:
+
+* Lack semantic meaning
+* Do not encode threat hierarchy
+* Cannot distinguish *severity*
+
+### Design Principle
+
+> **Unsupervised models extract structure and risk signals; supervised models assign meaning and severity.**
+
+---
+
+##  Architectural Pattern
+
+### **Unsupervised → Feature Generation → Supervised Multiclass Learning**
+
+Unsupervised models are **never used as final classifiers**.
+Instead, they act as **intermediate signal generators**.
+
+### Extracted Risk Signals
+
+| Signal Type         | Description                   |
+| ------------------- | ----------------------------- |
+| Anomaly score       | Continuous risk measure       |
+| Binary anomaly flag | Thresholded novelty indicator |
+| Cluster membership  | Behavioral regime identifier  |
+| Distance / density  | Deviation from learned norms  |
+
+These signals are later **aligned with known threat labels** and fed into supervised models.
+
+---
+
+## Weak Supervision via Label Alignment (Critical Step)
+
+The key innovation lies in **aligning unsupervised outputs with known threat labels using training data only**.
+
+### Concept
+
+For each unsupervised structure (cluster, anomaly flag, density group):
+
+1. Observe the **true labels** within that structure
+2. Assign the **majority threat severity**
+3. Store the mapping
+4. Apply it consistently to unseen data
+
+This introduces **semantic meaning without retraining unsupervised models**.
+
+---
+
+### 🔧 Key Function: Cluster / Signal → Severity Mapping
+
+```python
+def map_clusters_to_labels(cluster_ids, true_labels):
+    """
+    Maps unsupervised cluster or anomaly outputs to threat severity
+    using majority voting on training data only.
+    """
+    mapping = {}
+    unique_clusters = set(cluster_ids)
+
+    for cluster in unique_clusters:
+        indices = [i for i, c in enumerate(cluster_ids) if c == cluster]
+        labels = [true_labels[i] for i in indices]
+
+        if labels:
+            majority_label = max(set(labels), key=labels.count)
+            mapping[cluster] = majority_label
+
+    return mapping
+```
+
+**Why this is safe and principled**
+
+* Mapping is learned **only on training data**
+* No label leakage into test data
+* This is **weak supervision**, not supervised clustering
+
+---
+
+##  Model-Specific Feature Adaptation
+
+*  Isolation Forest / LOF / One-Class SVM
+
+**Raw outputs**
+
+* `decision_function()` → anomaly score
+* `predict()` → anomaly flag
+
+**Derived features**
+
+```python
+anomaly_score = model.decision_function(X)
+is_anomaly = model.predict(X)
+severity_hint = severity_map[is_anomaly]
+```
+
+*Severity correlates with degree of isolation*
+
+---
+
+### 🔹 Autoencoder
+
+**Raw output**
+
+* Reconstruction error (MSE)
+
+**Feature extraction**
+
+```python
+recon_error = np.mean((X - X_recon) ** 2, axis=1)
+is_anomaly = recon_error > threshold
+severity_hint = severity_map[is_anomaly]
+```
+
+*Severity correlates with deviation from learned normal behavior*
+
+---
+
+###  KMeans
+
+**Raw outputs**
+
+* Cluster ID
+* Distance to centroid
+
+```python
+clusters = kmeans.predict(X)
+distances = np.linalg.norm(X - kmeans.cluster_centers_[clusters], axis=1)
+
+severity_hint = [cluster_map[c] for c in clusters]
+```
+
+ *Severity correlates with behavioral regime and deviation from centroid*
+
+---
+
+###  DBSCAN
+
+**Raw outputs**
+
+* Cluster ID
+* Noise label (`-1`)
+
+```python
+clusters = dbscan.fit_predict(X)
+severity_hint = [cluster_map.get(c, "High") for c in clusters]
+```
+
+ *Severity correlates with density isolation*
+
+---
+
+##  Severity-Aware Feature Construction
+
+All unsupervised outputs are consolidated into a **feature matrix**:
+
+| Feature Type          | Purpose                  |
+| --------------------- | ------------------------ |
+| Continuous scores     | Preserve risk gradients  |
+| Binary flags          | Encode novelty           |
+| Cluster IDs           | Capture behavior regimes |
+| Mapped severity hints | Inject semantics         |
+
+These features are **interpretable, explainable, and auditable**.
+
+---
+
+##  Supervised Multiclass Threat Classification
+
+The final stage uses supervised models such as:
+
+* Random Forest
+* Gradient Boosting
+* XGBoost
+* LSTM (for temporal sequences)
+
+They learn:
+
+> How combinations of anomaly signals and behavioral patterns map to explicit threat severity levels.
+
+```python
+classifier.fit(X_features, y_severity)
+```
+
+ **Unsupervised models become feature extractors—not decision makers.**
+
+---
+
+## Architectural Summary
+
+> **This system converts unsupervised anomaly detectors into severity-aware feature generators by aligning their latent structure with known threat labels, enabling robust supervised multiclass cyber threat classification.**
+
+---
+
+##  SOC-Grade Architecture Is 
+
+✔ Detects **novel attacks**
+✔ Preserves **risk gradients**
+✔ Produces **explainable signals**
+✔ Aligns with **governance & model risk management**
+✔ Scales to **real-world SOC environments**
+
+This design mirrors how **human SOC analysts reason**:
+*first detect abnormal behavior, then contextualize and prioritize severity.*
 
 Run the code:
 <a 
