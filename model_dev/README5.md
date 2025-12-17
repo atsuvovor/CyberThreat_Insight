@@ -50,7 +50,7 @@ This paper provides **comprehensive documentation**, including dataset preparati
 
 <h3>
   <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/datagen/README.md">
-    🔄 Data Generation
+    🔄 Data Generation 👈click
   </a>
 </h3>
 
@@ -65,7 +65,7 @@ The dataset consists of synthetic cybersecurity event logs with a target variabl
 
 <h3>
   <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/feature_engineering/README.md">
-    🔄 Feature Engineering - Data Augmentation
+    🔄 Feature Engineering - Data Augmentation  👈click
   </a>
 </h3>
 
@@ -104,7 +104,7 @@ def data_splitting(X_augmented, y_augmented, p_features_engineering_columns, tar
 
 <h3>
   <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/lagacy_best_model_dev/README.md">
-    🤖 Stage 1 – Baseline Models
+    🤖 Stage 1 – Baseline Models  👈click
   </a>
 </h3>
 
@@ -139,7 +139,7 @@ def data_splitting(X_augmented, y_augmented, p_features_engineering_columns, tar
 
 <h3>
   <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/lagacy_best_model_dev_improved/README.md">
-    🤖 Stage 2 – Unsupervised Models as Feature Generator
+    🤖 Stage 2 – Unsupervised Models as Feature Generator  👈click
   </a>
 </h3>
 
@@ -207,7 +207,7 @@ Unsupervised models alone cannot classify multiple threat levels. Stage 2 adapts
 
 <h3>
   <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/stacked_model/README.md">
-    🤖 Stage 3 – Stacked Hybrid Ensemble
+    🤖 Stage 3 – Stacked Hybrid Ensemble  👈click
   </a>
 </h3>
 
