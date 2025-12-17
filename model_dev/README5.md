@@ -168,6 +168,17 @@ Unsupervised models alone cannot classify multiple threat levels. Stage 2 adapts
 
 ---
 
+## Architectural Summary
+
+> **This system converts unsupervised anomaly detectors into severity-aware feature generators by aligning their latent structure with known threat labels, enabling robust supervised multiclass cyber threat classification.**
+
+<p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/hybrid_cyber_threat_severity_classification_pipeline.png" 
+       alt="Centered Image" 
+       style="width: 80%; height: Auto;">
+</p>
+
+---
 
 <h3>
   <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/stacked_model/README.md">
