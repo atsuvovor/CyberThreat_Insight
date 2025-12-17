@@ -42,7 +42,7 @@ This project utilizes both supervised and unsupervised learning approaches. Supe
 
 
 ### Model Development and Evaluation  
-## Overview
+#### Overview
 
 Purely unsupervised anomaly detection models are inherently limited:
 they can identify *novel or rare behavior*, but they **cannot natively classify cyber threats by severity** (Low / Medium / High / Critical).
@@ -55,7 +55,7 @@ Rather than forcing unsupervised models to make semantic decisions they were nev
 
 ---
 
-## Core Problem Addressed
+### Core Problem Addressed
 
 Unsupervised anomaly detectors typically produce one of the following outputs:
 
@@ -75,7 +75,7 @@ These outputs:
 
 ---
 
-##  Architectural Pattern
+###  Architectural Pattern
 
 ### **Unsupervised → Feature Generation → Supervised Multiclass Learning**
 
@@ -95,7 +95,7 @@ These signals are later **aligned with known threat labels** and fed into superv
 
 ---
 
-## Weak Supervision via Label Alignment (Critical Step)
+### Weak Supervision via Label Alignment (Critical Step)
 
 The key innovation lies in **aligning unsupervised outputs with known threat labels using training data only**.
 
@@ -142,7 +142,7 @@ def map_clusters_to_labels(cluster_ids, true_labels):
 
 ---
 
-##  Model-Specific Feature Adaptation
+###  Model-Specific Feature Adaptation
 
 *  Isolation Forest / LOF / One-Class SVM
 
@@ -163,7 +163,7 @@ severity_hint = severity_map[is_anomaly]
 
 ---
 
-### 🔹 Autoencoder
+### Autoencoder
 
 **Raw output**
 
@@ -215,7 +215,7 @@ severity_hint = [cluster_map.get(c, "High") for c in clusters]
 
 ---
 
-##  Severity-Aware Feature Construction
+###  Severity-Aware Feature Construction
 
 All unsupervised outputs are consolidated into a **feature matrix**:
 
@@ -230,7 +230,7 @@ These features are **interpretable, explainable, and auditable**.
 
 ---
 
-##  Supervised Multiclass Threat Classification
+###  Supervised Multiclass Threat Classification
 
 The final stage uses supervised models such as:
 
@@ -251,7 +251,7 @@ classifier.fit(X_features, y_severity)
 
 ---
 
-## Architectural Summary
+### Architectural Summary
 
 > **This system converts unsupervised anomaly detectors into severity-aware feature generators by aligning their latent structure with known threat labels, enabling robust supervised multiclass cyber threat classification.**
 
@@ -263,7 +263,7 @@ classifier.fit(X_features, y_severity)
 
 ---
 
-##  SOC-Grade Architecture Is   
+###  SOC-Grade Architecture Is   
 
 ✔ Detects **novel attacks**  
 ✔ Preserves **risk gradients**  
@@ -1451,7 +1451,7 @@ As next step, we will work to improve the this model with a stacked supervised m
 
 ---
 
-## 🤝 Connect with me
+### 🤝 Connect with me
 I am always open to collaboration and discussion about new projects or technical roles.
 
 Atsu Vovor  
