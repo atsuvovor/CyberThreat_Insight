@@ -55,7 +55,7 @@ This paper provides **comprehensive documentation**, including dataset preparati
 </h3>
 
 
-The dataset consists of cybersecurity event logs with a target variable **“Threat Level”**:
+The dataset consists of synthetic cybersecurity event logs with a target variable **“Threat Level”**:
 
 * 0 = Low
 * 1 = Medium
