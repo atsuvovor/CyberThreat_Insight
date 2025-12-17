@@ -144,10 +144,40 @@ def data_splitting(X_augmented, y_augmented, p_features_engineering_columns, tar
 </h3>
 
 
+
+
+## Architectural Summary
+
+> **This system converts unsupervised anomaly detectors into severity-aware feature generators by aligning their latent structure with known threat labels, enabling robust supervised multiclass cyber threat classification.**
+
+<p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/hybrid_cyber_threat_severity_classification_pipeline.png" 
+       alt="Centered Image" 
+       style="width: 80%; height: Auto;">
+</p>
+
+We pivoted to supervised learning to capture the decision boundaries between risk levels. The **Random Forest** and **Gradient Boosting** algorithms were the top performers.
+
+### Comparative Metrics
+
+| Algorithm | Type | Accuracy | Precision (Macro) | Recall (Macro) | F1 Score (Macro) |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Random Forest** | Supervised | **0.9812** | 0.9704 | 0.8939 | 0.9265 |
+| **Gradient Boosting** | Supervised | **0.9786** | 0.9738 | 0.8842 | 0.9190 |
+| **LSTM Classifier** | Deep Learning | 0.7756 | 0.3770 | 0.4076 | 0.3917 |
+| **KMeans** | Unsupervised | 0.7243 | 0.3530 | 0.3641 | 0.3544 |
+| **Isolation Forest** | Unsupervised | 0.5889 | 0.1472 | 0.2500 | 0.1853 |
+
+### Deep Dive: Random Forest Performance
+
+While Random Forest achieved 98.12% accuracy, a deeper look at the **Critical** class (Class 3) revealed a specific challenge:
+
+  * **Precision (Critical):** 0.9474 (High trust in positive alerts)
+  * **Recall (Critical):** 0.6667 (Missed \~33% of critical events)
+
 ### Rationale
 
 Unsupervised models alone cannot classify multiple threat levels. Stage 2 adapts them to **generate informative features** for supervised learning.
-
 ### Feature Extraction
 
 | Algorithm        | Feature Extracted               |
@@ -166,17 +196,12 @@ Unsupervised models alone cannot classify multiple threat levels. Stage 2 adapts
 * Converts anomaly sensitivity into **auxiliary features**.
 * Stage 2 demonstrates **hybridization benefits**, enabling unsupervised models to contribute to multi-class prediction.
 
----
-
-## Architectural Summary
-
-> **This system converts unsupervised anomaly detectors into severity-aware feature generators by aligning their latent structure with known threat labels, enabling robust supervised multiclass cyber threat classification.**
 
 <p align="center">
-  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/hybrid_cyber_threat_severity_classification_pipeline.png" 
-       alt="Centered Image" 
-       style="width: 80%; height: Auto;">
+<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/lagacy_model_improved_confusion Matrix2.png" alt="Confusion Matrix"  width="600px">
 </p>
+
+**Business Insight:** The model is highly accurate but conservative. It minimizes False Positives (alert fatigue) but currently poses a risk of False Negatives for the most severe attacks. This specific gap drove the development of Stage 3.  
 
 ---
 
