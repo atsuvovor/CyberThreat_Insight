@@ -258,7 +258,7 @@ classifier.fit(X_features, y_severity)
 <p align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/hybrid_cyber_threat_severity_classification_pipeline.png" 
        alt="Centered Image" 
-       style="width: 1000px; height: Auto;">
+       style="width: 80%; height: Auto;">
 </p>
 
 ---
