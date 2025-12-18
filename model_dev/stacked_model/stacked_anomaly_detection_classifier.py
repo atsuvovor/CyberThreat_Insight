@@ -1160,29 +1160,93 @@ def evaluate_and_visualize_unsupervised_models(X_test_scaled, y_test, unsupervis
     return viz_data
 
 # 7. Refactor Saving Models and Metrics
-def save_all_models_and_metrics(output_dir, scaler, base_model, meta_model, unsupervised_models, metrics_path):
+#def save_all_models_and_metrics(output_dir, scaler, base_model, meta_model, unsupervised_models, metrics_path):
     """
     Saves the scaler, all trained models, and evaluation metrics.
     """
-    log("Saving models and metrics...")
-    os.makedirs(output_dir, exist_ok=True)
-    joblib.dump(scaler, os.path.join(output_dir, "scaler.joblib"))
-    joblib.dump(base_model, os.path.join(output_dir, "rf_base.joblib"))
-    joblib.dump(meta_model, os.path.join(output_dir, "gb_meta.joblib"))
+#    log("Saving models and metrics...")
+#    os.makedirs(output_dir, exist_ok=True)
+#    joblib.dump(scaler, os.path.join(output_dir, "scaler.joblib"))
+#    joblib.dump(base_model, os.path.join(output_dir, "rf_base.joblib"))
+#    joblib.dump(meta_model, os.path.join(output_dir, "gb_meta.joblib"))
     # save classical unsupervised models
-    for name in ['iso', 'ocsvm', 'lof', 'dbscan', 'kmeans']:
+#    for name in ['iso', 'ocsvm', 'lof', 'dbscan', 'kmeans']:
         joblib.dump(unsupervised_models[name], os.path.join(output_dir, f"{name}.joblib"))
     # save train_X_scaled for DBSCAN mapping
-    np.save(os.path.join(output_dir, "train_X_scaled.npy"), unsupervised_models['train_X'])
+#    np.save(os.path.join(output_dir, "train_X_scaled.npy"), unsupervised_models['train_X'])
     # save Keras models in native format (.keras)
-    dense_path = os.path.join(output_dir, "dense_autoencoder.keras")
-    lstm_path = os.path.join(output_dir, "lstm_autoencoder.keras")
-    unsupervised_models['dense_ae'].save(dense_path)
-    unsupervised_models['lstm_ae'].save(lstm_path)
-    log(f"  Scaler and ALL models saved in '{output_dir}'")
+#    dense_path = os.path.join(output_dir, "dense_autoencoder.keras")
+#    lstm_path = os.path.join(output_dir, "lstm_autoencoder.keras")
+#    unsupervised_models['dense_ae'].save(dense_path)
+#    unsupervised_models['lstm_ae'].save(lstm_path)
+#    log(f"  Scaler and ALL models saved in '{output_dir}'")
 
     # Metrics are already saved in evaluate_stacked_model, just log the path
-    log(f"Evaluation metrics saved in {metrics_path}")
+#    log(f"Evaluation metrics saved in {metrics_path}")
+#--
+def save_all_models_and_metrics(
+    output_dir,
+    scaler,
+    rf_baseline,
+    gb_baseline,
+    gb_stacked,
+    unsupervised_models,
+    metrics_path
+):
+    """
+    Saves scaler, supervised baseline models, stacked model,
+    unsupervised models, autoencoders, and evaluation metrics.
+    """
+    log("Saving models and metrics...")
+    os.makedirs(output_dir, exist_ok=True)
+
+    # ---------------------------
+    # Preprocessing
+    # ---------------------------
+    joblib.dump(scaler, os.path.join(output_dir, "scaler.joblib"))
+
+    # ---------------------------
+    # Supervised models
+    # ---------------------------
+    joblib.dump(rf_baseline, os.path.join(output_dir, "rf_baseline.joblib"))
+    joblib.dump(gb_baseline, os.path.join(output_dir, "gb_baseline.joblib"))
+    joblib.dump(gb_stacked, os.path.join(output_dir, "gb_stacked.joblib"))
+
+    # ---------------------------
+    # Classical unsupervised models
+    # ---------------------------
+    for name in ["iso", "ocsvm", "lof", "dbscan", "kmeans"]:
+        if name in unsupervised_models:
+            joblib.dump(
+                unsupervised_models[name],
+                os.path.join(output_dir, f"{name}.joblib")
+            )
+
+    # ---------------------------
+    # Save training data needed for DBSCAN mapping
+    # ---------------------------
+    if "train_X" in unsupervised_models:
+        np.save(
+            os.path.join(output_dir, "train_X_scaled.npy"),
+            unsupervised_models["train_X"]
+        )
+
+    # ---------------------------
+    # Keras autoencoders (native format)
+    # ---------------------------
+    if "dense_ae" in unsupervised_models:
+        unsupervised_models["dense_ae"].save(
+            os.path.join(output_dir, "dense_autoencoder.keras")
+        )
+
+    if "lstm_ae" in unsupervised_models:
+        unsupervised_models["lstm_ae"].save(
+            os.path.join(output_dir, "lstm_autoencoder.keras")
+        )
+
+    log(f"  All models and artifacts saved in '{output_dir}'")
+    log(f"  Evaluation metrics saved at: {metrics_path}")
+
 
 #-----------------------------------------
 #display input and the output
@@ -1340,10 +1404,31 @@ def step_evaluate_unsupervised(X_test_scaled, y_test, unsupervised_models, X_col
     return viz_data
 
 
-def step_save_all(scaler, rf, gb, unsupervised_models, metrics_path):
+#def step_save_all(scaler, rf, gb, unsupervised_models, metrics_path):
+#    """Step 7: Save scaler, models, and metrics"""
+#    save_all_models_and_metrics(MODEL_OUTPUT_DIR, scaler, rf, gb, unsupervised_models, metrics_path)
+#----
+
+def step_save_all(
+    scaler,
+    rf_baseline,
+    gb_baseline,
+    gb_stacked,
+    unsupervised_models,
+    metrics_path
+):
     """Step 7: Save scaler, models, and metrics"""
-    save_all_models_and_metrics(MODEL_OUTPUT_DIR, scaler, rf, gb, unsupervised_models, metrics_path)
-     
+    save_all_models_and_metrics(
+        MODEL_OUTPUT_DIR,
+        scaler,
+        rf_baseline,
+        gb_baseline,
+        gb_stacked,
+        unsupervised_models,
+        metrics_path
+    )
+
+
 #-----------------------------------------
 #     Standardized Evaluation Table
 #-----------------------------------------
@@ -1407,7 +1492,7 @@ def run_stacked_model_pipeline_integrated(augmented_data=None):
 
     # 5. Evaluate stacked model (refactored & reproducible)
     metrics_path, y_pred = step_evaluate_stacked_model(
-        gb_model, X_test_stack, y_test
+        gb_stacked, X_test_stack, y_test
     )
 
     # 6. Evaluate unsupervised models (diagnostic only)
@@ -1416,9 +1501,20 @@ def run_stacked_model_pipeline_integrated(augmented_data=None):
     )
 
     # 7. Save all artifacts
+    #step_save_all(
+    #    scaler, rf, gb_model, unsupervised_models, metrics_path
+    #)
+
+    # 7. Save all artifacts
     step_save_all(
-        scaler, rf, gb_model, unsupervised_models, metrics_path
+        scaler,
+        rf,              # rf_baseline
+        gb_baseline,     # gradient boosting baseline
+        gb_stacked,      # stacked gradient boosting
+        unsupervised_models,
+        metrics_path
     )
+
 
     # 8. Display model input and output
     output_df = display_model_input_output(
