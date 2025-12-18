@@ -1522,56 +1522,44 @@ def step_evaluate_unsupervised(X_test_scaled, y_test, unsupervised_models, X_col
 def step_save_all(scaler, rf, gb, unsupervised_models, metrics_path):
     """Step 7: Save scaler, models, and metrics"""
     save_all_models_and_metrics(MODEL_OUTPUT_DIR, scaler, rf, gb, unsupervised_models, metrics_path)
+     
+#-----------------------------------------
+#     Standardized Evaluation Table
+#-----------------------------------------
+def generate_evaluation_results_table(
+    y_test,
+    preds_rf,
+    preds_gb,
+    preds_stacked,
+    output_dir
+):
+    """
+    Generates, displays, and exports the evaluation table used in README.md
+    """
 
+    results = [
+        evaluate_model("Random Forest Only", y_test, preds_rf),
+        evaluate_model("Gradient Boosting Only", y_test, preds_gb),
+        evaluate_model("Stacked w/ Anomaly Feat.", y_test, preds_stacked),
+    ]
+
+    eval_df = pd.DataFrame(results)
+
+    # Display nicely in notebook / Streamlit / console
+    display(eval_df)
+
+    # Export CSV
+    csv_path = os.path.join(output_dir, "evaluation_results_summary.csv")
+    eval_df.to_csv(csv_path, index=False)
+
+    log("Evaluation results table saved to: " + csv_path)
+
+    return eval_df
 
 #------------------
 #  Main Pipeline
 #------------------
 
-#def run_stacked_model_pipeline_integrated(augmented_data = None):
-    """
-    Orchestrates the entire data science process for the stacked model,
-    integrating the steps previously in main_model_dev_stacked.
-    """
-#    log("Starting integrated stacked model pipeline...")
-
-    # 1. Load and split
-#    X_train, X_test, y_train, y_test, X_columns = step_load_and_split(augmented_data)
-
-    # 2. Scale data
-#    scaler, X_train_scaled, X_test_scaled = step_scale_data(X_train, X_test)
-
-    # 3. Extract anomaly features
-#   X_train_ext, X_test_ext, unsupervised_models = step_extract_anomaly_features(
-#        X_train_scaled, X_test_scaled, y_train, X_columns
-#    )
-
-    # 4. Train stacked supervised model
-#    rf, gb_model, X_test_stack = step_train_stacked_model(X_train_ext, X_test_ext, y_train)
-
-    # 5. Evaluate stacked model
-#    metrics_path = step_evaluate_stacked_model(gb_model, X_test_stack, y_test)
-
-    # 6. Evaluate unsupervised models
- #   viz_data = step_evaluate_unsupervised(X_test_scaled, y_test, unsupervised_models, X_columns)
-
-    # 7. Save everything
-#    step_save_all(scaler, rf, gb_model, unsupervised_models, metrics_path)
-
-    # 8. get stacked model predictions
-#   y_pred = get_stacked_model_predictions(gb_model, X_test_stack)
-
-    #9. Display model input and output
-#   output_df = display_model_input_output(X_test_ext, X_test_stack, y_test, y_pred, X_columns, viz_data)
-
-    #10 save output_df
-#    output_df.to_csv(os.path.join(MODEL_OUTPUT_DIR, "stacked_anomaly_prediction_clissifier.csv"), index=False)
-#    log("Stacked model output data saved to :" + os.path.join(MODEL_OUTPUT_DIR, "stacked_anomaly_prediction_clissifier.csv"))
-
-
-#    log("Stacked model pipeline execution finished.")
-
-#------------------------------------------
 def run_stacked_model_pipeline_integrated(augmented_data=None):
     """
     Orchestrates the entire data science process for the stacked model,
@@ -1620,7 +1608,25 @@ def run_stacked_model_pipeline_integrated(augmented_data=None):
         viz_data
     )
 
-    # 9. Save final prediction output
+     # 9--- Baseline predictions (no anomaly features) ---
+     rf_preds = rf.predict(X_test_ext)
+     gb_baseline_preds = gb_model.predict(X_test_ext)
+
+     # --- Stacked predictions (with anomaly-derived features) ---
+     stacked_preds = gb_model.predict(X_test_stack)
+
+     # --- Generate + display evaluation table ---
+     evaluation_df = generate_evaluation_results_table(
+         y_test=y_test,
+         preds_rf=rf_preds,
+         preds_gb=gb_baseline_preds,
+         preds_stacked=stacked_preds,
+         output_dir=MODEL_OUTPUT_DIR
+     )
+
+
+     
+    # 10. Save final prediction output
     output_path = os.path.join(
         MODEL_OUTPUT_DIR,
         "stacked_anomaly_prediction_classifier.csv"
