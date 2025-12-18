@@ -36,7 +36,8 @@ from tensorflow.keras.layers import Input, Dense, LSTM, RepeatVector
 from tensorflow.keras.callbacks import EarlyStopping
 from matplotlib.colors import LinearSegmentedColormap
 
-from  evaluation_utils import evaluate_model, export_evaluation_results
+from  utils.evaluation_utils import evaluate_model, export_evaluation_results
+from  utils.gdrive_utils import load_csv_from_gdrive_url
 
 # -----------
 # PARAMETERS
@@ -712,6 +713,10 @@ def load_and_split_data(data_path, label_col, test_size, random_state, df = None
     Loads the dataset and splits it into training and testing sets.
     """
     log("Loading dataset...")
+    #data_path = load_csv_from_gdrive_url(
+    #                                    gdrive_url: str,
+    #                                    output_dir: str = "CyberThreat_Insight/cybersecurity_data",
+    #                                    filename: str = "x_y_augmented_data_google_drive.csv)
     #validate df
     if df is None:
         if not os.path.exists(data_path):
