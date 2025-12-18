@@ -844,19 +844,24 @@ def train_stacked_model(X_train_ext, X_test_ext, y_train, random_state):
     """
     log("Training stacked supervised model...")
     log("  Training RandomForest base model...")
-    rf = RandomForestClassifier(n_estimators=200, random_state=random_state, n_jobs=-1)
-    rf.fit(X_train_ext, y_train)
-    rf_train_proba = rf.predict_proba(X_train_ext)
-    rf_test_proba = rf.predict_proba(X_test_ext)
+    rf_baseline = RandomForestClassifier(n_estimators=200, random_state=random_state, n_jobs=-1)
+    rf_baseline.fit(X_train_ext, y_train)
+    rf_baseline_train_proba = rf_baseline.predict_proba(X_train_ext)
+    rf_baseline_test_proba = rf_baseline.predict_proba(X_test_ext)
 
-    X_train_stack = np.hstack([X_train_ext.values, rf_train_proba])
-    X_test_stack = np.hstack([X_test_ext.values, rf_test_proba])
+    gb_baseline = GradientBoostingClassifier(random_state=random_state)
+    gb_baseline.fit(X_train_ext, y_train)
+    gb_baseline_train_proba = gb_baseline.predict_proba(X_train_ext)
+    gb_baseline_test_proba = gb_baseline.predict_proba(X_test_ext)
+
+    X_train_stack = np.hstack([X_train_ext.values, rf_baseline_train_proba])
+    X_test_stack = np.hstack([X_test_ext.values, rf_baseline_test_proba])
 
     log("  Training GradientBoosting meta model...")
-    gb = GradientBoostingClassifier(n_estimators=200, random_state=random_state)
-    gb.fit(X_train_stack, y_train)
+    gb_stacked = GradientBoostingClassifier(n_estimators=200, random_state=random_state)
+    gb_stacked.fit(X_train_stack, y_train)
 
-    return rf, gb, X_test_stack
+    return rf_baseline, gb_baseline, gb_stacked, X_test_stack
 
 # 5. Refactor Stacked Model Evaluation
 def evaluate_stacked_model(model_name, y_test, y_pred, model_output_dir):
@@ -1197,15 +1202,6 @@ def display_model_input_output(X_test_ext, X_test_stack, y_test, y_pred, X_colum
         X_columns (list): List of original column names.
         viz_data (pd.DataFrame) that contains Threat Score, true_anomaly, anomaly_score, predicted_anomaly
     """
-
-      # --- Generate + display evaluation table ---
-    #evaluation_df = generate_evaluation_results_table(
-    #    y_test=y_test,
-    #    preds_rf=rf_preds,
-    #    preds_gb=gb_baseline_preds,
-    #    preds_stacked=stacked_preds,
-    #     output_dir=MODEL_OUTPUT_DIR
-    #)
   
     log("Displaying Stacked Model Input and Output DataFrames...")
 
@@ -1404,9 +1400,10 @@ def run_stacked_model_pipeline_integrated(augmented_data=None):
     )
 
     # 4. Train stacked supervised model
-    rf, gb_model, X_test_stack = step_train_stacked_model(
+    rf, gb_baseline, gb_stacked, X_test_stack = step_train_stacked_model(
         X_train_ext, X_test_ext, y_train
     )
+
 
     # 5. Evaluate stacked model (refactored & reproducible)
     metrics_path, y_pred = step_evaluate_stacked_model(
@@ -1435,19 +1432,19 @@ def run_stacked_model_pipeline_integrated(augmented_data=None):
 
     # 9--- Baseline predictions (no anomaly features) ---
     rf_preds = rf.predict(X_test_ext)
-    gb_baseline_preds = gb_model.predict(X_test_ext)
+    gb_baseline_preds = gb_baseline.predict(X_test_ext)
 
     # --- Stacked predictions (with anomaly-derived features) ---
-    stacked_preds = gb_model.predict(X_test_stack)
+    stacked_preds = gb_stacked.predict(X_test_stack)
 
     # --- Generate + display evaluation table ---
-    #evaluation_df = generate_evaluation_results_table(
-    #    y_test=y_test,
-    #    preds_rf=rf_preds,
-    #    preds_gb=gb_baseline_preds,
-    #    preds_stacked=stacked_preds,
-    #     output_dir=MODEL_OUTPUT_DIR
-    #)
+    evaluation_df = generate_evaluation_results_table(
+      y_test=y_test,
+      preds_rf=rf_preds,
+      preds_gb=gb_baseline_preds,
+      preds_stacked=stacked_preds,
+      output_dir=MODEL_OUTPUT_DIR
+    )
 
 
      
