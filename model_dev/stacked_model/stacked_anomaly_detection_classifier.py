@@ -1171,7 +1171,7 @@ def evaluate_and_visualize_unsupervised_models(X_test_scaled, y_test, unsupervis
 #    joblib.dump(meta_model, os.path.join(output_dir, "gb_meta.joblib"))
     # save classical unsupervised models
 #    for name in ['iso', 'ocsvm', 'lof', 'dbscan', 'kmeans']:
-        joblib.dump(unsupervised_models[name], os.path.join(output_dir, f"{name}.joblib"))
+#        joblib.dump(unsupervised_models[name], os.path.join(output_dir, f"{name}.joblib"))
     # save train_X_scaled for DBSCAN mapping
 #    np.save(os.path.join(output_dir, "train_X_scaled.npy"), unsupervised_models['train_X'])
     # save Keras models in native format (.keras)
