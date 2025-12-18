@@ -1431,13 +1431,13 @@ def run_stacked_model_pipeline_integrated(augmented_data=None):
     stacked_preds = gb_model.predict(X_test_stack)
 
     # --- Generate + display evaluation table ---
-    evaluation_df = generate_evaluation_results_table(
-        y_test=y_test,
-        preds_rf=rf_preds,
-        preds_gb=gb_baseline_preds,
-        preds_stacked=stacked_preds,
-         output_dir=MODEL_OUTPUT_DIR
-    )
+    #evaluation_df = generate_evaluation_results_table(
+    #    y_test=y_test,
+    #    preds_rf=rf_preds,
+    #    preds_gb=gb_baseline_preds,
+    #    preds_stacked=stacked_preds,
+    #     output_dir=MODEL_OUTPUT_DIR
+    #)
 
 
      
