@@ -1424,11 +1424,11 @@ def run_stacked_model_pipeline_integrated(augmented_data=None):
     )
 
     # 9--- Baseline predictions (no anomaly features) ---
-    rf_preds = rf.predict(X_test_ext)
-    gb_baseline_preds = gb_model.predict(X_test_ext)
+    #rf_preds = rf.predict(X_test_ext)
+    #gb_baseline_preds = gb_model.predict(X_test_ext)
 
     # --- Stacked predictions (with anomaly-derived features) ---
-    stacked_preds = gb_model.predict(X_test_stack)
+    #stacked_preds = gb_model.predict(X_test_stack)
 
     # --- Generate + display evaluation table ---
     #evaluation_df = generate_evaluation_results_table(
