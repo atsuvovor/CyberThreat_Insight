@@ -1197,6 +1197,16 @@ def display_model_input_output(X_test_ext, X_test_stack, y_test, y_pred, X_colum
         X_columns (list): List of original column names.
         viz_data (pd.DataFrame) that contains Threat Score, true_anomaly, anomaly_score, predicted_anomaly
     """
+
+      # --- Generate + display evaluation table ---
+    #evaluation_df = generate_evaluation_results_table(
+    #    y_test=y_test,
+    #    preds_rf=rf_preds,
+    #    preds_gb=gb_baseline_preds,
+    #    preds_stacked=stacked_preds,
+    #     output_dir=MODEL_OUTPUT_DIR
+    #)
+  
     log("Displaying Stacked Model Input and Output DataFrames...")
 
     # Create DataFrame for the stacked input (including RF proba)
@@ -1424,7 +1434,7 @@ def run_stacked_model_pipeline_integrated(augmented_data=None):
     )
 
     # 9--- Baseline predictions (no anomaly features) ---
-    #rf_preds = rf.predict(X_test_ext)
+    rf_preds = rf.predict(X_test_ext)
     #gb_baseline_preds = gb_model.predict(X_test_ext)
 
     # --- Stacked predictions (with anomaly-derived features) ---
