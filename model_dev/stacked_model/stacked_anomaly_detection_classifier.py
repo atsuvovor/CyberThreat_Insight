@@ -36,8 +36,9 @@ from tensorflow.keras.layers import Input, Dense, LSTM, RepeatVector
 from tensorflow.keras.callbacks import EarlyStopping
 from matplotlib.colors import LinearSegmentedColormap
 
-from  utils.evaluation_utils import evaluate_model, export_evaluation_results
-from  utils.gdrive_utils import load_csv_from_gdrive_url
+from CyberThreat_Insight.utils.evaluation_utils import (evaluate_model, export_evaluation_results)
+from CyberThreat_Insight.utils.gdrive_utils import load_csv_from_gdrive_url
+
 
 # -----------
 # PARAMETERS
