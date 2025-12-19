@@ -1,4 +1,10 @@
-# Stacked Anomaly Detection Classifier Inference
+<h3 align-"center">Stacked Anomaly Detection Classifier Inference</h3>
+<p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_model_classifier2.png" 
+       alt="Centered Image" 
+       style="width: 600px; height: 40%;">
+</p>  
+
 
 **Toronto, Sept 17 202**  
 **Autor : Atsu Vovor**
