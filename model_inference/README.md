@@ -2,7 +2,7 @@
 <p align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_model_classifier2.png" 
        alt="Centered Image" 
-       style="width: 600px; height: 40%;">
+       style="width: 100%; height: 40%;">
 </p>  
 
 
