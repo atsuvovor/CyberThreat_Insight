@@ -1,4 +1,4 @@
-<h3 align-"center">Stacked Anomaly Detection Classifier Inference</h3>
+<h3 align="center">Stacked Anomaly Detection Classifier Inference</h3>
 <p align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_model_classifier2.png" 
        alt="Centered Image" 
