@@ -408,7 +408,7 @@ def visualizing_model_performance_pipeline(data, x, y,
     plt.show()
     generate_visualization_insight(data, anomaly_score, is_anomaly, best_unsupervised_model_name)
 #----------------------------------------------------
-def print_model_performance_report(model_name, model_y_test, y_model_pred):
+def (model_name, model_y_test, y_model_pred):
     """Print comprehensive model performance report including classification report, confusion matrix, and aggregated metrics."""
 
     print("\n" + model_name + " classification_report:\n")
