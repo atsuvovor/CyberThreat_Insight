@@ -1165,31 +1165,6 @@ def evaluate_and_visualize_unsupervised_models(X_test_scaled, y_test, unsupervis
     #returbest_unsupervised_model_name, best_anomaly_score, best_is_anomaly
     return viz_data
 
-# 7. Refactor Saving Models and Metrics
-#def save_all_models_and_metrics(output_dir, scaler, base_model, meta_model, unsupervised_models, metrics_path):
-    """
-    Saves the scaler, all trained models, and evaluation metrics.
-    """
-#    log("Saving models and metrics...")
-#    os.makedirs(output_dir, exist_ok=True)
-#    joblib.dump(scaler, os.path.join(output_dir, "scaler.joblib"))
-#    joblib.dump(base_model, os.path.join(output_dir, "rf_base.joblib"))
-#    joblib.dump(meta_model, os.path.join(output_dir, "gb_meta.joblib"))
-    # save classical unsupervised models
-#    for name in ['iso', 'ocsvm', 'lof', 'dbscan', 'kmeans']:
-#        joblib.dump(unsupervised_models[name], os.path.join(output_dir, f"{name}.joblib"))
-    # save train_X_scaled for DBSCAN mapping
-#    np.save(os.path.join(output_dir, "train_X_scaled.npy"), unsupervised_models['train_X'])
-    # save Keras models in native format (.keras)
-#    dense_path = os.path.join(output_dir, "dense_autoencoder.keras")
-#    lstm_path = os.path.join(output_dir, "lstm_autoencoder.keras")
-#    unsupervised_models['dense_ae'].save(dense_path)
-#    unsupervised_models['lstm_ae'].save(lstm_path)
-#    log(f"  Scaler and ALL models saved in '{output_dir}'")
-
-    # Metrics are already saved in evaluate_stacked_model, just log the path
-#    log(f"Evaluation metrics saved in {metrics_path}")
-#--
 def save_all_models_and_metrics(
     output_dir,
     scaler,
@@ -1374,12 +1349,6 @@ def step_train_stacked_model(X_train_ext, X_test_ext, y_train):
     return train_stacked_model(X_train_ext, X_test_ext, y_train, RANDOM_STATE)
 
 
-#def step_evaluate_stacked_model(gb, X_test_stack, y_test):
-#    """Step 5: Evaluate stacked supervised model"""
-#    y_pred = gb.predict(X_test_stack)
-#    evaluate_stacked_model(type(gb).__name__, y_test, y_pred, MODEL_OUTPUT_DIR)
-#    return os.path.join(MODEL_OUTPUT_DIR, "metrics.json")
-
 def step_evaluate_stacked_model(model, X_test_stack, y_test):
     """
     Evaluates the stacked supervised model and exports results.
@@ -1501,16 +1470,22 @@ def run_stacked_model_pipeline_integrated(augmented_data=None):
         gb_stacked, X_test_stack, y_test
     )
 
+    # Step 5: Predict (stacked model)
+    y_pred_stacked = get_stacked_model_predictions(gb_stacked, X_test_stack)
+
+    # Step 6: Generate stacked model reports (this matches your screenshot)
+    print_model_performance_report(
+                                model_name="Stacked GradientBoosting (Anomaly-Aware)",
+                                model_y_test=y_test,
+                                y_model_pred=y_pred_stacked
+    )
+
     # 6. Evaluate unsupervised models (diagnostic only)
     viz_data = step_evaluate_unsupervised(
         X_test_scaled, y_test, unsupervised_models, X_columns
     )
 
-    # 7. Save all artifacts
-    #step_save_all(
-    #    scaler, rf, gb_model, unsupervised_models, metrics_path
-    #)
-
+   
     # 7. Save all artifacts
     step_save_all(
         scaler,
