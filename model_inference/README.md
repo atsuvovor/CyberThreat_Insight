@@ -2,7 +2,7 @@
 <p align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_model_classifier2.png" 
        alt="Centered Image" 
-       style="width: 600px; height: 40%;">
+       style="width: 800px; height: 40%;">
 </p>  
 
 
@@ -49,7 +49,7 @@ This project focuses on the model development and evaluation phases using a pred
 <p align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_anomaly_classifier_flowchart.png" 
        alt="Stacked Model Flowchart"" 
-       style="width: 600px; height: 40%;">
+       style="width: 800px; height: 40%;">
 </p>
 
 The model employs a two-layer stacked architecture:
