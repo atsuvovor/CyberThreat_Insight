@@ -41,10 +41,9 @@ This project focuses on the model development and evaluation phases using a pred
 
 Stacked Anomaly Detection Classifier Model flowchart  
 
-<img src="https://drive.google.com/uc?export=view&id=1NGQBLFu7oxQfRefJYSskZ4q772nklM-W"
+<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_model_classifier2.png"
      alt="Stacked Model Flowchart"
      width="100%"/>
-
 
 The model employs a two-layer stacked architecture:
 1.  **Base Learners:** A set of unsupervised anomaly detection models are used as feature generators. These models process the input data and produce continuous anomaly scores or binary anomaly flags. The models used are:
