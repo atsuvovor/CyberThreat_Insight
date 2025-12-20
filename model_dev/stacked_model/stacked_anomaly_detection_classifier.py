@@ -1540,4 +1540,4 @@ def run_stacked_model_pipeline_integrated(URL=None, augmented_data=None):
 
 # To run the integrated pipeline
 if __name__ == "__main__":
-    run_stacked_model_pipeline_integrated()
+    run_stacked_model_pipeline_integrated(URL)
