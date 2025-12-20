@@ -715,9 +715,9 @@ def load_and_split_data(URL, label_col, test_size, random_state, df = None):
     log("Loading dataset...")
 
     #validate df
-    if df is None:
-        if not os.path.exists(data_path):
-            raise FileNotFoundError(f"Dataset not found: {data_path}")
+    if df is not None:
+       data = df.copy()
+        
     elif URL is not None:
           data_path = load_csv_from_gdrive_url(gdrive_url = URL,
                                                output_dir = "CyberThreat_Insight/cybersecurity_data",
