@@ -14,13 +14,14 @@ import sys
 #--------------------------------
 # Add the directory containing your modules to the system path
 sys.path.append('/content/CyberThreat_Insight/model_inference')
-from feature_engeneering.f_engineering import (load_objects_from_drive,
-                                               features_engineering_pipeline,
-                                               data_augmentation_pipeline)
-#cyber_insights_web/model_development/model_dev_stack_vers_03
-from model_development.model_dev_stack_vers_03.stacked_anomaly_detection_classifier import (print_model_performance_report,
-                                                                                visualizing_model_performance_pipeline,
-                                                                                get_best_unsupervised_model_corrected)
+#CyberThreat_Insight.feature_engineering/
+from CyberThreat_Insight.feature_engineering.f_engineering import (load_objects_from_drive,
+                                                                   features_engineering_pipeline,
+                                                                   data_augmentation_pipeline)
+#CyberThreat_Insight/model_dev/stacked_model/
+from CyberThreat_Insight.model_dev.stacked_model.stacked_anomaly_detection_classifier import (print_model_performance_report,
+                                                                                            visualizing_model_performance_pipeline,
+                                                                                            get_best_unsupervised_model_corrected)
 
 #get_best_unsupervised_model_corrected(X_test_scaled, y_test, unsupervised_models)
 #best_model_name, best_anomaly_score, best_is_anomaly = get_best_unsupervised_model_corrected(X_test_scaled, y_test, unsupervised_models)
@@ -32,7 +33,7 @@ MODEL_TYPE = "Stacked Supervised Model using Unsupervised Anomaly Features"
 MODEL_NAME = "Stacked_AD_classifier"
 THREASHHOLD_PERC = 95
 LABEL_COL = "Threat Level"  # Ground truth label column name
-MODELS_DIR = "/content/drive/My Drive/stacked_models_deployment"
+MODELS_DIR = "CyberThreat_Insight/stacked_models_deployment"
 SIMULATED_REAL_TIME_DATA_FILE = \
                          "/content/drive/My Drive/Cybersecurity Data/normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb.csv"
 
