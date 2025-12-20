@@ -718,7 +718,7 @@ def load_and_split_data(URL, label_col, test_size, random_state, df = None):
     data_path = load_csv_from_gdrive_url(
                                         gdrive_url = URL,
                                         output_dir = "CyberThreat_Insight/cybersecurity_data",
-                                        filename = "x_y_augmented_data_google_drive.csv)
+                                        filename = "x_y_augmented_data_google_drive.csv")
     #validate df
     if df is None:
         if not os.path.exists(data_path):
