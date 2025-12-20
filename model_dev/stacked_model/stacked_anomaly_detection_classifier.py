@@ -59,6 +59,7 @@ CONTAMINATION = 0.05
 DATA_PATH =  "CyberThreat_Insight/cybersecurity_data"
 DATA_PATH = DATA_PATH + "/x_y_augmented_data_google_drive.csv"
 MODEL_OUTPUT_DIR = "CyberThreat_Insight/stacked_models_deployment"
+URL ="https://drive.google.com/file/d/10UYplPdqse328vu1S1tdUAlYMN_TJ8II/view?usp=drive_link"
 os.makedirs(MODEL_OUTPUT_DIR, exist_ok=True)
 
 # Reproducibility
@@ -709,15 +710,15 @@ def get_unsupervised_model_performance_data_corrected(X_test_scaled, y_test, uns
 
 
 # 1. Refactor Data Loading and Splitting
-def load_and_split_data(data_path, label_col, test_size, random_state, df = None):
+def load_and_split_data(URL, label_col, test_size, random_state, df = None):
     """
     Loads the dataset and splits it into training and testing sets.
     """
     log("Loading dataset...")
-    #data_path = load_csv_from_gdrive_url(
-    #                                    gdrive_url: str,
-    #                                    output_dir: str = "CyberThreat_Insight/cybersecurity_data",
-    #                                    filename: str = "x_y_augmented_data_google_drive.csv)
+    data_path = load_csv_from_gdrive_url(
+                                        gdrive_url = URL,
+                                        output_dir = "CyberThreat_Insight/cybersecurity_data",
+                                        filename = "x_y_augmented_data_google_drive.csv)
     #validate df
     if df is None:
         if not os.path.exists(data_path):
@@ -1311,9 +1312,9 @@ def get_stacked_model_predictions(gb_model, X_test_stack):
 #  Sub Functions
 #------------------
 
-def step_load_and_split(augmented_data = None):
+def step_load_and_split(URL = None, augmented_data = None):
     """Step 1: Load and split dataset"""
-    return load_and_split_data(DATA_PATH, LABEL_COL, TEST_SIZE, RANDOM_STATE, augmented_data)
+    return load_and_split_data(URL, LABEL_COL, TEST_SIZE, RANDOM_STATE, augmented_data)
 
 
 def step_scale_data(X_train, X_test):
@@ -1441,7 +1442,7 @@ def generate_evaluation_results_table(
 #  Main Pipeline
 #------------------
 
-def run_stacked_model_pipeline_integrated(augmented_data=None):
+def run_stacked_model_pipeline_integrated(URL=None, augmented_data=None):
     """
     Orchestrates the entire data science process for the stacked model,
     integrating anomaly extraction, weak supervision, and evaluation.
@@ -1449,7 +1450,7 @@ def run_stacked_model_pipeline_integrated(augmented_data=None):
     log("Starting integrated stacked model pipeline...")
 
     # 1. Load and split
-    X_train, X_test, y_train, y_test, X_columns = step_load_and_split(augmented_data)
+    X_train, X_test, y_train, y_test, X_columns = step_load_and_split(URL, augmented_data)
 
     # 2. Scale data
     scaler, X_train_scaled, X_test_scaled = step_scale_data(X_train, X_test)
