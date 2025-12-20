@@ -6,11 +6,7 @@
 </p>  
 
 
-**Toronto, Sept 17 202**  
-**Autor : Atsu Vovor**
->Master of Management in Artificial Intelligence    
->Consultant Data Analytics Specialist | Machine Learning |  
-Data science | Quantitative Analysis |French & English Bilingual  
+**Toronto, Sept 17 2025**  
 
 **Model Name:** Stacked Anomaly Detection Classifier
 
@@ -193,3 +189,19 @@ Conclusion
 
 
 This project successfully developed and evaluated a stacked anomaly detection classifier leveraging unsupervised anomaly features for enhanced cybersecurity threat detection. The integrated pipeline demonstrated the process from data loading and preprocessing through unsupervised feature engineering, stacked model training, and comprehensive evaluation. The results indicate the potential of this hybrid approach to improve the accuracy and interpretability of anomaly detection compared to using individual unsupervised methods alone. While the model shows promising performance, particularly in distinguishing various threat levels, the analysis also highlighted areas for potential improvement, such as enhancing the recall for critical threats and further optimizing individual unsupervised components. The saved model artifacts and detailed documentation provide a solid foundation for potential real-world deployment and further research into advanced anomaly detection techniques in cybersecurity.
+
+
+
+---
+## 🤝 Connect with me
+I am always open to collaboration and discussion about new projects or technical roles.
+
+Atsu Vovor  
+Consultant, Data & Analytics    
+Ph: 416-795-8246 | ✉️ atsu.vovor@bell.net    
+🔗 <a href="https://www.linkedin.com/in/atsu-vovor-mmai-9188326/" target="_blank">LinkedIn</a> | <a href="https://atsuvovor.github.io/projects_portfolio.github.io/" target="_blank">GitHub</a> | <a href="https://public.tableau.com/app/profile/atsu.vovor8645/vizzes" target="_blank">Tableau Portfolio</a>    
+📍 Mississauga ON      
+
+### Thank you for visiting!🙏
+
+
