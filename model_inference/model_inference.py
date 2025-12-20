@@ -38,7 +38,7 @@ MODEL_NAME = "Stacked_AD_classifier"
 THREASHHOLD_PERC = 95
 LABEL_COL = "Threat Level"  # Ground truth label column name
 MODELS_DIR = "CyberThreat_Insight/stacked_models_deployment"
-url = "https://drive.google.com/file/d/1Nr9PymyvLfDh3qTfaeKNVbvLwt7lNX6l/view?usp=drive_link"
+URL = "https://drive.google.com/file/d/1Nr9PymyvLfDh3qTfaeKNVbvLwt7lNX6l/view?usp=drive_link"
 
 # --------------------------
 #   Ensure model directory exists
@@ -414,34 +414,28 @@ This output provides a snapshot of the model's inference phase.
 - To gain more specific business insights, analyze the distribution of predicted threat levels across all instances and investigate instances with lower confidence scores.
 """)
 
+  
+# --------------------------
+#   model inference pipeline
+# --------------------------
+if __name__ == "__main__":
+def model_inference_pipeline(URL = None):
+  SIMULATED_REAL_TIME_DATA_FILE = load_csv_from_gdrive_url( gdrive_url= URL,
+                                                           output_dir = "CyberThreat_Insight/cybersecurity_data",
+                                                           filename = "normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb")
+  
+  preds, probs = predict_new_data(SIMULATED_REAL_TIME_DATA_FILE, LABEL_COL)
+  class_names = {
+    0: 'Low',
+    1: 'Medium',
+    2: 'High',
+    3: 'Critical'
+  }
+  display_model_inference_output(preds, probs, class_names)
+
 # --------------------------
 #   Main Execution
 # --------------------------
 if __name__ == "__main__":
-
-    SIMULATED_REAL_TIME_DATA_FILE = load_csv_from_gdrive_url( gdrive_url= url,
-                                                             output_dir = "CyberThreat_Insight/cybersecurity_data",
-                                                             filename = "normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb")
+  model_inference_pipeline(URL)
   
-    preds, probs = predict_new_data(SIMULATED_REAL_TIME_DATA_FILE, LABEL_COL)
-
-    # Log shapes
-    #print(f"\nPredicted classes shape: {preds.shape}")
-    #print(f"Prediction probabilities shape: {probs.shape}")
-
-    # Show first few predictions
-    #print("\nPredicted classes (first 10):", preds[:10])
-    #print("Prediction probabilities (first 10):\n", np.round(probs[:10], 4))
-
-    # Aggregate probability stats
-    #print(f"\nAverage probability: {np.mean(probs):.4f}")
-    #print(f"Max probability: {np.max(probs):.4f}")
-    #print(f"Min probability: {np.min(probs):.4f}")
-
-    class_names = {
-        0: 'Low',
-        1: 'Medium',
-        2: 'High',
-        3: 'Critical'
-    }
-    display_model_inference_output(preds, probs, class_names)
