@@ -1473,23 +1473,23 @@ def run_stacked_model_pipeline_integrated(URL=None, augmented_data=None):
         gb_stacked, X_test_stack, y_test
     )
 
-    # Step 5: Predict (stacked model)
+    # Step 6: Predict (stacked model)
     y_pred_stacked = get_stacked_model_predictions(gb_stacked, X_test_stack)
 
-    # Step 6: Generate stacked model reports (this matches your screenshot)
+    # Step 7: Generate stacked model reports (this matches your screenshot)
     print_model_performance_report(
                                 model_name="Stacked GradientBoosting (Anomaly-Aware)",
                                 model_y_test=y_test,
                                 y_model_pred=y_pred_stacked
     )
 
-    # 6. Evaluate unsupervised models (diagnostic only)
+    # 8. Evaluate unsupervised models (diagnostic only)
     viz_data = step_evaluate_unsupervised(
         X_test_scaled, y_test, unsupervised_models, X_columns
     )
 
    
-    # 7. Save all artifacts
+    # 9. Save all artifacts
     step_save_all(
         scaler,
         rf,              # rf_baseline
@@ -1500,7 +1500,7 @@ def run_stacked_model_pipeline_integrated(URL=None, augmented_data=None):
     )
 
 
-    # 8. Display model input and output
+    # 10. Display model input and output
     output_df = display_model_input_output(
         X_test_ext,
         X_test_stack,
@@ -1510,7 +1510,7 @@ def run_stacked_model_pipeline_integrated(URL=None, augmented_data=None):
         viz_data
     )
 
-    # 9--- Baseline predictions (no anomaly features) ---
+    # 11--- Baseline predictions (no anomaly features) ---
     rf_preds = rf.predict(X_test_ext)
     gb_baseline_preds = gb_baseline.predict(X_test_ext)
 
@@ -1528,7 +1528,7 @@ def run_stacked_model_pipeline_integrated(URL=None, augmented_data=None):
 
 
      
-    # 10. Save final prediction output
+    # 12. Save final prediction output
     output_path = os.path.join(
         MODEL_OUTPUT_DIR,
         "stacked_anomaly_prediction_classifier.csv"
