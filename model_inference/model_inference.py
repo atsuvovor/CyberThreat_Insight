@@ -13,7 +13,7 @@ import sys
 
 #--------------------------------
 # Add the directory containing your modules to the system path
-sys.path.append('/content/drive/My Drive/cyber_insights_web')
+sys.path.append('/content/CyberThreat_Insight/model_inference')
 from feature_engeneering.f_engineering import (load_objects_from_drive,
                                                features_engineering_pipeline,
                                                data_augmentation_pipeline)
