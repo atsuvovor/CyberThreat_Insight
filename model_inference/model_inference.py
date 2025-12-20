@@ -40,7 +40,7 @@ LABEL_COL = "Threat Level"  # Ground truth label column name
 MODELS_DIR = "CyberThreat_Insight/stacked_models_deployment"
 #SIMULATED_REAL_TIME_DATA_FILE = \
 #                         "/content/drive/My Drive/Cybersecurity Data/normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb.csv"
-url = "https://drive.google.com/drive/folders/11IF7FK23GFNoMZEybXUlbWEBbpELPsVB?lfhs=2"
+url = "https://drive.google.com/file/d/1Nr9PymyvLfDh3qTfaeKNVbvLwt7lNX6l/view?usp=drive_link"
 
 # --------------------------
 #   Ensure model directory exists
