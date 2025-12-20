@@ -715,18 +715,20 @@ def load_and_split_data(URL, label_col, test_size, random_state, df = None):
     Loads the dataset and splits it into training and testing sets.
     """
     log("Loading dataset...")
-    data_path = load_csv_from_gdrive_url(
-                                        gdrive_url = URL,
-                                        output_dir = "CyberThreat_Insight/cybersecurity_data",
-                                        filename = "x_y_augmented_data_google_drive.csv")
+
     #validate df
     if df is None:
         if not os.path.exists(data_path):
             raise FileNotFoundError(f"Dataset not found: {data_path}")
-        #df = pd.read_csv(data_path)
-        else:
-            df = pd.read_csv(data_path)
-
+    elif URL is not None:
+          data_path = load_csv_from_gdrive_url(gdrive_url = URL,
+                                               output_dir = "CyberThreat_Insight/cybersecurity_data",
+                                               filename = "x_y_augmented_data_google_drive.csv")
+      
+          df = pd.read_csv(data_path)
+    else:
+      raise ValueError("No data source provided. Supply either a Google Drive URL or a DataFrame.")
+      
     if label_col not in df.columns:
         raise ValueError(f"Label column '{label_col}' not found in dataset.")
     df[label_col] = df[label_col].astype(int) # ensure integer labels
