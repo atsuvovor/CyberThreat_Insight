@@ -23,9 +23,9 @@ from CyberThreat_Insight.model_dev.stacked_model.stacked_anomaly_detection_class
                                                                                             visualizing_model_performance_pipeline,
                                                                                             get_best_unsupervised_model_corrected)
 
-#----
+
 from CyberThreat_Insight.utils.gdrive_utils import load_csv_from_gdrive_url
-#----
+
 
 #get_best_unsupervised_model_corrected(X_test_scaled, y_test, unsupervised_models)
 #best_model_name, best_anomaly_score, best_is_anomaly = get_best_unsupervised_model_corrected(X_test_scaled, y_test, unsupervised_models)
@@ -38,8 +38,9 @@ MODEL_NAME = "Stacked_AD_classifier"
 THREASHHOLD_PERC = 95
 LABEL_COL = "Threat Level"  # Ground truth label column name
 MODELS_DIR = "CyberThreat_Insight/stacked_models_deployment"
-SIMULATED_REAL_TIME_DATA_FILE = \
-                         "/content/drive/My Drive/Cybersecurity Data/normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb.csv"
+#SIMULATED_REAL_TIME_DATA_FILE = \
+#                         "/content/drive/My Drive/Cybersecurity Data/normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb.csv"
+url = "https://drive.google.com/drive/folders/11IF7FK23GFNoMZEybXUlbWEBbpELPsVB?lfhs=2"
 
 # --------------------------
 #   Ensure model directory exists
@@ -251,12 +252,13 @@ def model_2SM2UAF_predict_anomaly_features_inference(encoded_df,
 
     return encoded_df
 
-
+ 
 def predict_new_data(input_data, LABEL_COL, model_dir=MODELS_DIR):
 
 
     """Predicts on new data and evaluates if LABEL_COL exists."""
     log("Loading scaler and models for inference...")
+    
     scaler, base_model, meta_model, unsupervised_models = load_scaler_and_models(model_dir)
 
     #if isinstance(input_data, str):
@@ -418,6 +420,11 @@ This output provides a snapshot of the model's inference phase.
 #   Main Execution
 # --------------------------
 if __name__ == "__main__":
+
+    SIMULATED_REAL_TIME_DATA_FILE = load_csv_from_gdrive_url( gdrive_url= url,
+                                                             output_dir = "CyberThreat_Insight/cybersecurity_data",
+                                                             filename = "normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb")
+  
     preds, probs = predict_new_data(SIMULATED_REAL_TIME_DATA_FILE, LABEL_COL)
 
     # Log shapes
