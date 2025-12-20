@@ -12,11 +12,8 @@
 
 **Model Type:** Stacked Ensemble Model
 
-<h3>
-  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/datagen/README.md">
-    🔄 Data Generation 👈click
-  </a>
-</h3>
+
+🔄 👉Run Model Inference
 <a 
   href="https://colab.research.google.com/github/atsuvovor/Cybersecurity-Data-Generator/blob/main/CyberInsightDataGenerator.ipynb" 
   target="_parent"
