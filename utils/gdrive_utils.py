@@ -27,6 +27,9 @@ def load_csv_from_gdrive_url(
         Absolute path to the downloaded CSV
     """
 
+    if not gdrive_url:
+        raise ValueError("Google Drive URL is None or empty")
+            
     # -------------------------
     # Extract file ID
     # -------------------------
