@@ -21,15 +21,15 @@ import pandas as pd
 import joblib
 from tensorflow.keras.models import load_model
 from sklearn.neighbors import NearestNeighbors
-from google.colab import drive
+#from google.colab import drive
 # Mount Google Drive
-drive.mount('/content/drive')
+#drive.mount('/content/drive')
 # Add the directory containing your modules to the system path
-sys.path.append('/content/drive/My Drive/cyber_insights_web')
+sys.path.append('/content/CyberThreat_Insight/production')
 
-MODEL_DIR = "/content/drive/My Drive/stacked_models_deployment"
-DATA_FILE = "/content/drive/My Drive/Cybersecurity Data/normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb.csv"
-DATA_PATH =  "/content/drive/My Drive/Cybersecurity Data"
+MODEL_DIR = "/content/CyberThreat_Insight/stacked_models_deployment"
+DATA_FILE = "/content/CyberThreat_Insight/cybersecurity_data/normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb.csv"
+DATA_PATH =  "/content/CyberThreat_Insight/cybersecurity_data"
 DATA_PATH = DATA_PATH + "/x_y_augmented_data_google_drive.csv"
 
 #------------------------------------------------------------------------------------------
