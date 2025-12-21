@@ -258,7 +258,7 @@ This production pipeline enables **advanced cyber threat detection** using a **h
 End users can run **high-fidelity inference** on new cybersecurity data **without retraining**, making this solution ideal for operational analytics, research, and executive reporting.
 
 ---
-## 🤝 Connect With Me
+## 🤝 Connect with me
 I am always open to collaboration and discussion about new projects or technical roles.
 
 Atsu Vovor  
