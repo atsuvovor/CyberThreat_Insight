@@ -71,7 +71,7 @@ def load_new_data(URL, LABEL_COL, df = None):
     if URL is not None:
           data_path = load_csv_from_gdrive_url(gdrive_url = URL,
                                                output_dir = "CyberThreat_Insight/cybersecurity_data",
-                                               filename = "normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb".csv")
+                                               filename = "normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb.csv")
              
           new_data = pd.read_csv(data_path)
     return new_data
