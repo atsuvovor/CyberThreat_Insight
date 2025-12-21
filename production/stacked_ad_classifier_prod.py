@@ -32,11 +32,13 @@ MODEL_DIR = "CyberThreat_Insight/stacked_models_deployment"
 #DATA_FILE = "CyberThreat_Insight/cybersecurity_data/normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb.csv"
 #DATA_PATH =  "CyberThreat_Insight/cybersecurity_data"
 #DATA_PATH = DATA_PATH + "/x_y_augmented_data_google_drive.csv"
+DATA_PATH =  "CyberThreat_Insight/cybersecurity_data"
 NEW_DATA_URL = "https://drive.google.com/file/d/1Nr9PymyvLfDh3qTfaeKNVbvLwt7lNX6l/view?usp=sharing"
 AUGMENTED_DATA_URL = "https://drive.google.com/file/d/10UYplPdqse328vu1S1tdUAlYMN_TJ8II/view?usp=sharing"
 #------------------------------------------------------------------------------------------
 def log(msg):
-    print(f"[INFO] {msg}")
+    print(f"[INFO] {msg} to {DATA_PATH}")
+    
 
 #load augmented data to mutch it columns with the operational data features for prediction
 def load_aumented_dataset(AUGMENTED_DATA_URL, LABEL_COL = "Threat Level"):
@@ -60,7 +62,7 @@ def load_new_data(URL, LABEL_COL, df = None):
     """
     Loads the dataset and splits it into training and testing sets.
     """
-    log("Loading ooperational dataset...")
+    log("Loading operational dataset from Google Drive ...")
 
     #validate df
     if df is not None:
