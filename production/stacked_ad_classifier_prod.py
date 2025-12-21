@@ -32,14 +32,14 @@ MODEL_DIR = "CyberThreat_Insight/stacked_models_deployment"
 #DATA_FILE = "CyberThreat_Insight/cybersecurity_data/normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb.csv"
 #DATA_PATH =  "CyberThreat_Insight/cybersecurity_data"
 #DATA_PATH = DATA_PATH + "/x_y_augmented_data_google_drive.csv"
-URL = "https://drive.google.com/file/d/1Nr9PymyvLfDh3qTfaeKNVbvLwt7lNX6l/view?usp=sharing"
-
+NEW_DATA_URL = "https://drive.google.com/file/d/1Nr9PymyvLfDh3qTfaeKNVbvLwt7lNX6l/view?usp=sharing"
+AUGMENTED_DATA_URL = "https://drive.google.com/file/d/10UYplPdqse328vu1S1tdUAlYMN_TJ8II/view?usp=sharing"
 #------------------------------------------------------------------------------------------
 #load augmented data to mutch it columns with the operational data features for prediction
 def load_aumented_dataset(URL, LABEL_COL = "Threat Level"):
 
     if URL is not None:
-        data_path = load_csv_from_gdrive_url(gdrive_url = URL,
+        data_path = load_csv_from_gdrive_url(gdrive_url = AUGMENTED_DATA_URL,
                                             output_dir = "CyberThreat_Insight/cybersecurity_data",
                                             filename = "x_y_augmented_data_google_drive.csv")
       
@@ -53,7 +53,7 @@ def load_aumented_dataset(URL, LABEL_COL = "Threat Level"):
 
     return augmented_df
 
-def predict_new_data(URL, model_dir, label_col="Threat Level"):
+def predict_new_data(NEW_DATA_URL, model_dir, label_col="Threat Level"):
     """
     Run inference on new data using pretrained stacked anomaly detection classifier.
 
@@ -83,10 +83,10 @@ def predict_new_data(URL, model_dir, label_col="Threat Level"):
 
     # --- Load new dataset ---
     #f_new = pd.read_csv(csv_path)
-    df_new = load_csv_from_gdrive_url( gdrive_url= URL,
+    df_new = load_csv_from_gdrive_url( gdrive_url= NEW_DATA_URL,
                                         output_dir = "CyberThreat_Insight/cybersecurity_data",
                                         filename = "normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb")
-    augmented_df = load_aumented_dataset(URL)
+    augmented_df = load_aumented_dataset(AUGMENTED_DATA_URL)
 
     #X_new and df_augmented have the same column names
     X_new = df_new[augmented_df.columns].drop(columns=[label_col], errors="ignore")
