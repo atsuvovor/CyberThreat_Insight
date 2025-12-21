@@ -14,7 +14,11 @@
 
 **Toronto, Sept 17, 2024**  
 **Author:** Atsu Vovor  
- French & English Bilingual  
+
+
+**Project:** Stacked Anomaly Detection Classifier  
+**Model Type:** Stacked Supervised Classifier with Unsupervised Anomaly Features  
+
 
 ---
 
