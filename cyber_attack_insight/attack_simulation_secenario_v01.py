@@ -1,6 +1,7 @@
 from datetime import datetime
 import numpy as np
 import pandas as pd
+from CyberThreat_Insight.utils.gdrive_utils import load_csv_from_gdrive_url
 
 # --- Utility Functions ---
 def ensure_datetime(df, column):
