@@ -25,11 +25,11 @@ from sklearn.neighbors import NearestNeighbors
 # Mount Google Drive
 #drive.mount('/content/drive')
 # Add the directory containing your modules to the system path
-sys.path.append('/content/CyberThreat_Insight/production')
+sys.path.append('CyberThreat_Insight/production')
 
-MODEL_DIR = "/content/CyberThreat_Insight/stacked_models_deployment"
-DATA_FILE = "/content/CyberThreat_Insight/cybersecurity_data/normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb.csv"
-DATA_PATH =  "/content/CyberThreat_Insight/cybersecurity_data"
+MODEL_DIR = "CyberThreat_Insight/stacked_models_deployment"
+DATA_FILE = "CyberThreat_Insight/cybersecurity_data/normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb.csv"
+DATA_PATH =  "CyberThreat_Insight/cybersecurity_data"
 DATA_PATH = DATA_PATH + "/x_y_augmented_data_google_drive.csv"
 
 #------------------------------------------------------------------------------------------
