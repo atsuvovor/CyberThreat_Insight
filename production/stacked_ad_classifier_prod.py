@@ -52,6 +52,25 @@ def load_aumented_dataset(AUGMENTED_DATA_URL, LABEL_COL = "Threat Level"):
     augmented_df[LABEL_COL] = augmented_df[LABEL_COL].astype(int)
 
     return augmented_df
+    
+def load_new_data(URL, LABEL_COL, df = None):
+    """
+    Loads the dataset and splits it into training and testing sets.
+    """
+    log("Loading dataset...")
+
+    #validate df
+    if df is not None:
+       new_data = df.copy()
+        
+    if URL is not None:
+          data_path = load_csv_from_gdrive_url(gdrive_url = URL,
+                                               output_dir = "CyberThreat_Insight/cybersecurity_data",
+                                               filename = "x_y_augmented_data_google_drive.csv")
+      
+          new_data = pd.read_csv(data_path)
+    return new_data
+
 
 def predict_new_data(NEW_DATA_URL, AUGMENTED_DATA_URL, model_dir, label_col="Threat Level"):
     """
@@ -83,9 +102,10 @@ def predict_new_data(NEW_DATA_URL, AUGMENTED_DATA_URL, model_dir, label_col="Thr
 
     # --- Load new dataset ---
     #f_new = pd.read_csv(csv_path)
-    df_new = load_csv_from_gdrive_url( gdrive_url= NEW_DATA_URL,
-                                        output_dir = "CyberThreat_Insight/cybersecurity_data",
-                                        filename = "normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb")
+    #df_new = load_csv_from_gdrive_url( gdrive_url= NEW_DATA_URL,
+    #                                    output_dir = "CyberThreat_Insight/cybersecurity_data",
+    #                                    filename = "normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb")
+    df_new = load_new_data(NEW_DATA_URL, label_col)
     augmented_df = load_aumented_dataset(AUGMENTED_DATA_URL)
 
     #X_new and df_augmented have the same column names
