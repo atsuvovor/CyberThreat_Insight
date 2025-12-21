@@ -272,7 +272,8 @@ class ExecutiveReport(FPDF):
 # Main Dashboard Execution
 # ==========================================================
 
-def main_dashboard() -> None:
+def main_dashboard( 
+    simulated_attacks_file_path: str = "CyberThreat_Insight/cybersecurity_data/combined_normal_and_simulated_attacks_class_df.csv") -> None:
     """
     Entry point for the simulation executive dashboard.
     Loads data and runs all executive summaries.
