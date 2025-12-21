@@ -69,7 +69,10 @@ def save_dataframe_to_drive(df, save_path):
   print(f"DataFrame saved to: {save_path}")
 
 # --- Main Simulation Runner ---
-def simulate_attack_scenarios(year_filter=None, attacks_to_simulate=None, verbose=True):
+def simulate_attack_scenarios(
+        anomalous_flaged_production_df = "CyberThreat_Insight/cybersecurity_data/normal_and_anomalous_flaged_df.csv",
+        file_production_data_folder = "CyberThreat_Insight/cybersecurity_data",
+        year_filter=None, attacks_to_simulate=None, verbose=True):
 
     anomalous_flaged_production_df = "/content/drive/My Drive/Cybersecurity Data/normal_and_anomalous_flaged_df.csv"
     file_production_data_folder = "/content/drive/My Drive/Cybersecurity Data/"
