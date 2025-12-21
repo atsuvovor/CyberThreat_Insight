@@ -241,8 +241,13 @@ High / Critical → 1 (Anomaly)
 | TensorFlow errors | Restart Colab runtime                            |
 
 ---
-
-## 12. Summary
+## 12. How to run stacked_ad_classifier in Google Golab  
+```python
+!git clone https://github.com/atsuvovor/CyberThreat_Insight.git 2>/dev/null
+%run /content/CyberThreat_Insight/production/stacked_ad_classifier_prod.py
+```
+---  
+## 13. Summary  
 
 This production pipeline enables **advanced cyber threat detection** using a **hybrid AI architecture** that combines:
 
