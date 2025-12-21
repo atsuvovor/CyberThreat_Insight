@@ -36,7 +36,7 @@ NEW_DATA_URL = "https://drive.google.com/file/d/1Nr9PymyvLfDh3qTfaeKNVbvLwt7lNX6
 AUGMENTED_DATA_URL = "https://drive.google.com/file/d/10UYplPdqse328vu1S1tdUAlYMN_TJ8II/view?usp=sharing"
 #------------------------------------------------------------------------------------------
 #load augmented data to mutch it columns with the operational data features for prediction
-def load_aumented_dataset(URL, LABEL_COL = "Threat Level"):
+def load_aumented_dataset(AUGMENTED_DATA_URL, LABEL_COL = "Threat Level"):
 
     if URL is not None:
         data_path = load_csv_from_gdrive_url(gdrive_url = AUGMENTED_DATA_URL,
@@ -53,7 +53,7 @@ def load_aumented_dataset(URL, LABEL_COL = "Threat Level"):
 
     return augmented_df
 
-def predict_new_data(NEW_DATA_URL, model_dir, label_col="Threat Level"):
+def predict_new_data(NEW_DATA_URL, AUGMENTED_DATA_URL, model_dir, label_col="Threat Level"):
     """
     Run inference on new data using pretrained stacked anomaly detection classifier.
 
@@ -153,6 +153,6 @@ def predict_new_data(NEW_DATA_URL, model_dir, label_col="Threat Level"):
 
 #main
 if __name__ == "__main__":
-    results_df = predict_new_data(URL, MODEL_DIR)
+    results_df = predict_new_data(NEW_DATA_URL, AUGMENTED_DATA_URL, MODEL_DIR)
     display(results_df.head())
 
