@@ -35,6 +35,11 @@ MODEL_DIR = "CyberThreat_Insight/stacked_models_deployment"
 NEW_DATA_URL = "https://drive.google.com/file/d/1Nr9PymyvLfDh3qTfaeKNVbvLwt7lNX6l/view?usp=sharing"
 AUGMENTED_DATA_URL = "https://drive.google.com/file/d/10UYplPdqse328vu1S1tdUAlYMN_TJ8II/view?usp=sharing"
 #------------------------------------------------------------------------------------------
+def log(msg):
+    print(f"[INFO] {msg}")
+    with open(os.path.join(MODEL_OUTPUT_DIR, "log.txt"), "a") as f:
+        f.write(f"{msg}\n")
+
 #load augmented data to mutch it columns with the operational data features for prediction
 def load_aumented_dataset(AUGMENTED_DATA_URL, LABEL_COL = "Threat Level"):
 
@@ -57,7 +62,7 @@ def load_new_data(URL, LABEL_COL, df = None):
     """
     Loads the dataset and splits it into training and testing sets.
     """
-    log("Loading dataset...")
+    log("Loading ooperational dataset...")
 
     #validate df
     if df is not None:
