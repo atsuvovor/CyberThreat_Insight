@@ -25,20 +25,27 @@ from sklearn.neighbors import NearestNeighbors
 # Mount Google Drive
 #drive.mount('/content/drive')
 # Add the directory containing your modules to the system path
-sys.path.append('CyberThreat_Insight/production')
+sys.path.append('/content/CyberThreat_Insight/production')
+from CyberThreat_Insight.utils.gdrive_utils import load_csv_from_gdrive_url
 
 MODEL_DIR = "CyberThreat_Insight/stacked_models_deployment"
-DATA_FILE = "CyberThreat_Insight/cybersecurity_data/normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb.csv"
-DATA_PATH =  "CyberThreat_Insight/cybersecurity_data"
-DATA_PATH = DATA_PATH + "/x_y_augmented_data_google_drive.csv"
+#DATA_FILE = "CyberThreat_Insight/cybersecurity_data/normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb.csv"
+#DATA_PATH =  "CyberThreat_Insight/cybersecurity_data"
+#DATA_PATH = DATA_PATH + "/x_y_augmented_data_google_drive.csv"
+URL = "https://drive.google.com/file/d/1Nr9PymyvLfDh3qTfaeKNVbvLwt7lNX6l/view?usp=sharing"
 
 #------------------------------------------------------------------------------------------
 #load augmented data to mutch it columns with the operational data features for prediction
-def load_aumented_dataset(LABEL_COL = "Threat Level"):
+def load_aumented_dataset(URL, LABEL_COL = "Threat Level"):
 
-    if not os.path.exists(DATA_PATH):
-        raise FileNotFoundError(f"Dataset not found: {DATA_PATH}")
-    augmented_df = pd.read_csv(DATA_PATH)
+    if URL is not None:
+        data_path = load_csv_from_gdrive_url(gdrive_url = URL,
+                                            output_dir = "CyberThreat_Insight/cybersecurity_data",
+                                            filename = "x_y_augmented_data_google_drive.csv")
+      
+        daugmented_df = pd.read_csv(data_path)
+    else:
+        raise ValueError("No data source provided. Supply either a Google Drive URL or a DataFrame.")
     if LABEL_COL not in augmented_df.columns:
         raise ValueError(f"Label column '{LABEL_COL}' not found in dataset.")
     # ensure integer labels
@@ -46,7 +53,7 @@ def load_aumented_dataset(LABEL_COL = "Threat Level"):
 
     return augmented_df
 
-def predict_new_data(csv_path, model_dir, label_col="Threat Level"):
+def predict_new_data(URL, model_dir, label_col="Threat Level"):
     """
     Run inference on new data using pretrained stacked anomaly detection classifier.
 
@@ -75,8 +82,10 @@ def predict_new_data(csv_path, model_dir, label_col="Threat Level"):
     train_X_scaled = np.load(f"{model_dir}/train_X_scaled.npy")
 
     # --- Load new dataset ---
-    df_new = pd.read_csv(csv_path)
-
+    #f_new = pd.read_csv(csv_path)
+    df_new = load_csv_from_gdrive_url( gdrive_url= URL,
+                                        output_dir = "CyberThreat_Insight/cybersecurity_data",
+                                        filename = "normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb")
     augmented_df = load_aumented_dataset()
 
     #X_new and df_augmented have the same column names
@@ -144,6 +153,6 @@ def predict_new_data(csv_path, model_dir, label_col="Threat Level"):
 
 #main
 if __name__ == "__main__":
-    results_df = predict_new_data(DATA_FILE, MODEL_DIR)
+    results_df = predict_new_data(URL, MODEL_DIR)
     display(results_df.head())
 
