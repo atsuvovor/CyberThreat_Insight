@@ -74,8 +74,8 @@ def simulate_attack_scenarios(
         file_production_data_folder = "CyberThreat_Insight/cybersecurity_data",
         year_filter=None, attacks_to_simulate=None, verbose=True):
 
-    anomalous_flaged_production_df = "/content/drive/My Drive/Cybersecurity Data/normal_and_anomalous_flaged_df.csv"
-    file_production_data_folder = "/content/drive/My Drive/Cybersecurity Data/"
+    #anomalous_flaged_production_df = "/content/drive/My Drive/Cybersecurity Data/normal_and_anomalous_flaged_df.csv"
+    #file_production_data_folder = "/content/drive/My Drive/Cybersecurity Data/"
     # Load the dataset
     attack_df = pd.read_csv(anomalous_flaged_production_df)
 
