@@ -37,8 +37,6 @@ AUGMENTED_DATA_URL = "https://drive.google.com/file/d/10UYplPdqse328vu1S1tdUAlYM
 #------------------------------------------------------------------------------------------
 def log(msg):
     print(f"[INFO] {msg}")
-    with open(os.path.join(MODEL_OUTPUT_DIR, "log.txt"), "a") as f:
-        f.write(f"{msg}\n")
 
 #load augmented data to mutch it columns with the operational data features for prediction
 def load_aumented_dataset(AUGMENTED_DATA_URL, LABEL_COL = "Threat Level"):
