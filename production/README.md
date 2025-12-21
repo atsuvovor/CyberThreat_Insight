@@ -12,12 +12,9 @@
   <strong>Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI</strong>
 </p>
 
-**Toronto, Sept 17, 2024**
-**Author:** Atsu Vovor
-
-> Master of Management in Artificial Intelligence
-> Consultant – Data Analytics | Machine Learning | Data Science | Quantitative Analysis
-> French & English Bilingual
+**Toronto, Sept 17, 2024**  
+**Author:** Atsu Vovor  
+ French & English Bilingual  
 
 ---
 
