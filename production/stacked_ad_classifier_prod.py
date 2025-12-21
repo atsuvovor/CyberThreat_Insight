@@ -43,7 +43,7 @@ def load_aumented_dataset(AUGMENTED_DATA_URL, LABEL_COL = "Threat Level"):
                                             output_dir = "CyberThreat_Insight/cybersecurity_data",
                                             filename = "x_y_augmented_data_google_drive.csv")
       
-        daugmented_df = pd.read_csv(data_path)
+        augmented_df = pd.read_csv(data_path)
     else:
         raise ValueError("No data source provided. Supply either a Google Drive URL or a DataFrame.")
     if LABEL_COL not in augmented_df.columns:
