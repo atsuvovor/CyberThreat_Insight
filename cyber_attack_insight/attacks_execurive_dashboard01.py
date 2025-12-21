@@ -24,6 +24,9 @@ from fpdf import FPDF
 
 from IPython.display import display
 
+from cyber_attack_insight.attack_symulation_classes01.py import  main_attacks_simulation_pipeline
+
+
 
 # ============================
 # Executive Report Aggregation
@@ -299,7 +302,9 @@ def main_dashboard(
         CSV path for attack simulation data
     """
 
-    attack_simulation_df = pd.read_csv(simulated_attacks_file_path)
+    #attack_simulation_df = pd.read_csv(simulated_attacks_file_path)
+    attack_simulation_df = main_attacks_simulation_pipeline()
+
 
     print("\nRunning Executive KPI Dashboard\n")
     main_executive_report_pipeline(attack_simulation_df)
