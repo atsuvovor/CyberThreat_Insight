@@ -86,7 +86,7 @@ def predict_new_data(URL, model_dir, label_col="Threat Level"):
     df_new = load_csv_from_gdrive_url( gdrive_url= URL,
                                         output_dir = "CyberThreat_Insight/cybersecurity_data",
                                         filename = "normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb")
-    augmented_df = load_aumented_dataset()
+    augmented_df = load_aumented_dataset(URL)
 
     #X_new and df_augmented have the same column names
     X_new = df_new[augmented_df.columns].drop(columns=[label_col], errors="ignore")
