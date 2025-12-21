@@ -419,19 +419,19 @@ This output provides a snapshot of the model's inference phase.
 #   model inference pipeline
 # --------------------------
 if __name__ == "__main__":
-def model_inference_pipeline(URL = None):
-  SIMULATED_REAL_TIME_DATA_FILE = load_csv_from_gdrive_url( gdrive_url= URL,
+  def model_inference_pipeline(URL = None):
+    SIMULATED_REAL_TIME_DATA_FILE = load_csv_from_gdrive_url( gdrive_url= URL,
                                                            output_dir = "CyberThreat_Insight/cybersecurity_data",
                                                            filename = "normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb")
   
-  preds, probs = predict_new_data(SIMULATED_REAL_TIME_DATA_FILE, LABEL_COL)
-  class_names = {
-    0: 'Low',
-    1: 'Medium',
-    2: 'High',
-    3: 'Critical'
-  }
-  display_model_inference_output(preds, probs, class_names)
+    preds, probs = predict_new_data(SIMULATED_REAL_TIME_DATA_FILE, LABEL_COL)
+    class_names = {
+      0: 'Low',
+      1: 'Medium',
+      2: 'High',
+      3: 'Critical'
+    }
+    display_model_inference_output(preds, probs, class_names)
 
 # --------------------------
 #   Main Execution
