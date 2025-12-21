@@ -38,7 +38,7 @@ AUGMENTED_DATA_URL = "https://drive.google.com/file/d/10UYplPdqse328vu1S1tdUAlYM
 #load augmented data to mutch it columns with the operational data features for prediction
 def load_aumented_dataset(AUGMENTED_DATA_URL, LABEL_COL = "Threat Level"):
 
-    if URL is not None:
+    if AUGMENTED_DATA_URL is not None:
         data_path = load_csv_from_gdrive_url(gdrive_url = AUGMENTED_DATA_URL,
                                             output_dir = "CyberThreat_Insight/cybersecurity_data",
                                             filename = "x_y_augmented_data_google_drive.csv")
