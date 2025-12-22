@@ -74,8 +74,7 @@ def save_dataframe_to_drive(df, save_path):
   print(f"DataFrame saved to: {save_path}")
 
 # --- Main Simulation Runner ---
-def simulate_attack_scenarios(
-        anomalous_flaged_production_df = "CyberThreat_Insight/cybersecurity_data/normal_and_anomalous_flaged_df.csv",
+def simulate_attack_scenarios(anomalous_flaged_production_df = None,
         file_production_data_folder = "CyberThreat_Insight/cybersecurity_data",
         year_filter=None, attacks_to_simulate=None, verbose=True):
 
@@ -120,8 +119,9 @@ def get_attacks_data(URL = None):
                                                    output_dir = "CyberThreat_Insight/cybersecurity_data", 
                                                    filename = "normal_and_anomalous_flaged_df.csv" )
     display(anomalous_flaged_production_df)
-    #simulated_attacks_df = simulate_attack_scenarios(anomalous_flaged_production_df)
-    #return simulated_attacks_df
+    simulated_attacks_df = simulate_attack_scenarios(anomalous_flaged_production_df)
+    display(simulated_attacks_df)
+    return simulated_attacks_df
 
 if __name__ == "__main__":
     get_attacks_data(NEW_DATA_URL)
