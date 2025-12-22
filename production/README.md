@@ -1,13 +1,10 @@
-# 🚨 Production Simulation – Cyber Threat Detection Engine
-
-## Stacked Anomaly Detection Classifier (Inference Only)
-
+<h3 align="center">🚨 Production Simulation – Cyber Threat Detection Engine - Stacked Anomaly Detection Classifier</h3>
 <p align="center">
-  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_anomaly_detector2.png"
-       alt="Stacked Anomaly Detection Architecture"
-       style="width: 1000px; height: auto;">
-</p>
-
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_model_classifier2.png" 
+       alt="Centered Image" 
+       style="width: 800px; height: 40%;">
+</p> 
+#-----
 <p align="center">
   <strong>Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI</strong>
 </p>
