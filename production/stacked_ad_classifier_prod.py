@@ -33,6 +33,7 @@ MODEL_DIR = "CyberThreat_Insight/stacked_models_deployment"
 #DATA_PATH =  "CyberThreat_Insight/cybersecurity_data"
 #DATA_PATH = DATA_PATH + "/x_y_augmented_data_google_drive.csv"
 DATA_PATH =  "CyberThreat_Insight/cybersecurity_data"
+AUGMENTED_DATA_PATH = DATA_PATH + "/x_y_augmented_data_google_drive.csv"
 NEW_DATA_URL = "https://drive.google.com/file/d/1Nr9PymyvLfDh3qTfaeKNVbvLwt7lNX6l/view?usp=sharing"
 AUGMENTED_DATA_URL = "https://drive.google.com/file/d/10UYplPdqse328vu1S1tdUAlYMN_TJ8II/view?usp=sharing"
 #------------------------------------------------------------------------------------------
@@ -41,9 +42,12 @@ def log(msg):
     
 
 #load augmented data to mutch it columns with the operational data features for prediction
-def load_aumented_dataset(AUGMENTED_DATA_URL, LABEL_COL = "Threat Level"):
+def load_aumented_dataset(AUGMENTED_DATA_URL = None, LABEL_COL = None, AUGMENTED_DATA_PATH = None):
+    
+    if AUGMENTED_DATA_PATH is not None:
+        augmented_df = pd.read_csv(AUGMENTED_DATA_PATH)
 
-    if AUGMENTED_DATA_URL is not None:
+    elif AUGMENTED_DATA_URL is not None:
         data_path = load_csv_from_gdrive_url(gdrive_url = AUGMENTED_DATA_URL,
                                             output_dir = "CyberThreat_Insight/cybersecurity_data",
                                             filename = "x_y_augmented_data_google_drive.csv")
@@ -111,7 +115,9 @@ def predict_new_data(NEW_DATA_URL, AUGMENTED_DATA_URL, model_dir, label_col="Thr
     #                                    output_dir = "CyberThreat_Insight/cybersecurity_data",
     #                                    filename = "normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb")
     df_new = load_new_data(NEW_DATA_URL, label_col)
-    augmented_df = load_aumented_dataset(AUGMENTED_DATA_URL)
+    augmented_df = load_aumented_dataset(AUGMENTED_DATA_URL = None, 
+                                         LABEL_COL = label_col, 
+                                         AUGMENTED_DATA_PATH = AUGMENTED_DATA_PATH)
 
     #X_new and df_augmented have the same column names
     X_new = df_new[augmented_df.columns].drop(columns=[label_col], errors="ignore")
