@@ -66,18 +66,18 @@ def load_new_data(URL, LABEL_COL, df = None):
     """
     Loads the dataset and splits it into training and testing sets.
     """
-    log("Loading operational dataset from Google Drive ...")
 
     #validate df
     if df is not None:
        new_data = df.copy()
         
     if URL is not None:
-          data_path = load_csv_from_gdrive_url(gdrive_url = URL,
-                                               output_dir = "CyberThreat_Insight/cybersecurity_data",
-                                               filename = "normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb.csv")
-             
-          new_data = pd.read_csv(data_path)
+        log("Loading operational dataset from Google Drive ...")
+        data_path = load_csv_from_gdrive_url(gdrive_url = URL,
+                                             output_dir = "CyberThreat_Insight/cybersecurity_data",
+                                             filename = "normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb.csv")
+              
+        new_data = pd.read_csv(data_path)
         
     return new_data
 
