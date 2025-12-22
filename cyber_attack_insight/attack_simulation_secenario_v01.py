@@ -2,6 +2,10 @@ from datetime import datetime
 import numpy as np
 import pandas as pd
 from CyberThreat_Insight.utils.gdrive_utils import load_csv_from_gdrive_url
+from CyberThreat_Insight.production.stacked_ad_classifier_prod import predict_new_data
+
+
+NEW_DATA_URL = "https://drive.google.com/file/d/1XyNzISx9al6LqMVtEo220LkMpH_jOC22/view?usp=sharing"
 
 # --- Utility Functions ---
 def ensure_datetime(df, column):
