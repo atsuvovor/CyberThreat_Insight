@@ -2,7 +2,9 @@ import os
 import re
 import requests
 
-
+def log(msg):
+    print(f"[INFO] {msg}")
+    
 def load_csv_from_gdrive_url(
     gdrive_url: str,
     output_dir: str = "CyberThreat_Insight/cybersecurity_data",
