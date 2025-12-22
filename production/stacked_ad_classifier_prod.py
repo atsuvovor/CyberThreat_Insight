@@ -78,10 +78,11 @@ def load_new_data(URL, LABEL_COL, df = None):
                                                filename = "normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb.csv")
              
           new_data = pd.read_csv(data_path)
+        
     return new_data
 
 
-def predict_new_data(NEW_DATA_URL, AUGMENTED_DATA_URL, model_dir, label_col="Threat Level"):
+def predict_new_data(NEW_DATA_URL, AUGMENTED_DATA_URL, model_dir, ops_df = None, label_col="Threat Level"):
     """
     Run inference on new data using pretrained stacked anomaly detection classifier.
 
@@ -110,11 +111,9 @@ def predict_new_data(NEW_DATA_URL, AUGMENTED_DATA_URL, model_dir, label_col="Thr
     train_X_scaled = np.load(f"{model_dir}/train_X_scaled.npy")
 
     # --- Load new dataset ---
-    #f_new = pd.read_csv(csv_path)
-    #df_new = load_csv_from_gdrive_url( gdrive_url= NEW_DATA_URL,
-    #                                    output_dir = "CyberThreat_Insight/cybersecurity_data",
-    #                                    filename = "normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb")
-    df_new = load_new_data(NEW_DATA_URL, label_col)
+    
+    df_new = load_new_data(NEW_DATA_URL, label_col, ops_df)
+    
     augmented_df = load_aumented_dataset(AUGMENTED_DATA_URL = None, 
                                          LABEL_COL = label_col, 
                                          AUGMENTED_DATA_PATH = AUGMENTED_DATA_PATH)
