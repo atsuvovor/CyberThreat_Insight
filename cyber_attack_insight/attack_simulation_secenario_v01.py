@@ -1,7 +1,7 @@
 from datetime import datetime
 import numpy as np
 import pandas as pd
-from CyberThreat_Insight.utils.gdrive_utils import load_csv_from_gdrive_url
+from CyberThreat_Insight.utils.gdrive_utils import load_csv_from_gdrive_url, load_new_data
 from CyberThreat_Insight.production.stacked_ad_classifier_prod import predict_new_data
 
 
