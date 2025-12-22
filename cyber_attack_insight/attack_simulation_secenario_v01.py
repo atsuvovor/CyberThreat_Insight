@@ -81,9 +81,9 @@ def simulate_attack_scenarios(anomalous_flaged_production_df = None,
     #anomalous_flaged_production_df = "/content/drive/My Drive/Cybersecurity Data/normal_and_anomalous_flaged_df.csv"
     #file_production_data_folder = "/content/drive/My Drive/Cybersecurity Data/"
     # Load the dataset
-    attack_df = pd.read_csv(anomalous_flaged_production_df)
-
-    attack_df = ensure_datetime(attack_df, "Timestamps")
+    #attack_df = pd.read_csv(anomalous_flaged_production_df)
+    #attack_df = anomalous_flaged_production_df.copy()
+    attack_df = ensure_datetime(anomalous_flaged_production_df, "Timestamps")
 
     if year_filter:
         attack_df = filter_by_year(attack_df, "Timestamps", year_filter)
