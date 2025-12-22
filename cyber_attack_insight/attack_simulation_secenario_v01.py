@@ -134,7 +134,7 @@ def get_attacks_data(URL = None):
     anomalous_flaged_attack_production_df = predict_new_data(NEW_DATA_URL = None,
                                                              AUGMENTED_DATA_URL = AUGMENTED_DATA_URL, 
                                                              model_dir = MODEL_DIR, 
-                                                             ops_df = simulated_attacks_df):
+                                                             ops_df = simulated_attacks_df)
     return anomalous_flaged_attack_production_df
 
 if __name__ == "__main__":
