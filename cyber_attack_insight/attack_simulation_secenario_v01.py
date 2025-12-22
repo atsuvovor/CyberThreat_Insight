@@ -119,7 +119,7 @@ def simulate_attack_scenarios(anomalous_flaged_production_df = None,
     return simulated_attacks_df
 
 def get_attacks_data(URL = None):
-    anomalous_flaged_production_df = predict_new_data(NEW_DATA_URL, AUGMENTED_DATA_PATH, MODEL_DIR)
+    #anomalous_flaged_production_df = predict_new_data(NEW_DATA_URL, AUGMENTED_DATA_PATH, MODEL_DIR)
     #anomalous_flaged_production_df = load_new_data(URL, 
     #                                               output_dir = "CyberThreat_Insight/cybersecurity_data", 
     #                                               filename = "normal_and_anomalous_flaged_df.csv" )
@@ -130,7 +130,11 @@ def get_attacks_data(URL = None):
     
     #simulated_attacks_df = simulate_attack_scenarios(anomalous_flaged_production_df)
     simulated_attacks_df = simulate_attack_scenarios(normal_and_anomalous_production_df)
-    anomalous_flaged_attack_production_df = predict_new_data(NEW_DATA_URL, AUGMENTED_DATA_PATH, MODEL_DIR)
+    #anomalous_flaged_attack_production_df = predict_new_data(NEW_DATA_URL, AUGMENTED_DATA_PATH, MODEL_DIR)
+    anomalous_flaged_attack_production_df = predict_new_data(NEW_DATA_URL = None,
+                                                             AUGMENTED_DATA_URL = AUGMENTED_DATA_URL, 
+                                                             model_dir = MODEL_DIR, 
+                                                             ops_df = simulated_attacks_df):
     return anomalous_flaged_attack_production_df
 
 if __name__ == "__main__":
