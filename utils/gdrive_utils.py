@@ -66,3 +66,14 @@ def load_csv_from_gdrive_url(
 
     print(f"[INFO] Google Drive CSV downloaded to: {output_path}")
     return output_path
+
+
+def load_new_data(URL, output_dir = "CyberThreat_Insight/cybersecurity_data", filename = None ):
+    """
+    Loads the dataset from URL end return the datasets.
+    """
+    log("Loading operational dataset from Google Drive ...")       
+    if URL is not None:
+          data_path = load_csv_from_gdrive_url(URL, output_dir, filename)     
+          new_data = pd.read_csv(data_path)
+    return new_data
