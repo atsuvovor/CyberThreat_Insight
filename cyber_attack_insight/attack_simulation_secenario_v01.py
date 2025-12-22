@@ -118,9 +118,7 @@ def get_attacks_data(URL = None):
     anomalous_flaged_production_df = load_new_data(URL, 
                                                    output_dir = "CyberThreat_Insight/cybersecurity_data", 
                                                    filename = "normal_and_anomalous_flaged_df.csv" )
-    display(anomalous_flaged_production_df)
     simulated_attacks_df = simulate_attack_scenarios(anomalous_flaged_production_df)
-    display(simulated_attacks_df)
     return simulated_attacks_df
 
 if __name__ == "__main__":
