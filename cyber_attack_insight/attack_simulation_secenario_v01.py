@@ -4,8 +4,8 @@ import pandas as pd
 from CyberThreat_Insight.utils.gdrive_utils import load_csv_from_gdrive_url, load_new_data
 from CyberThreat_Insight.production.stacked_ad_classifier_prod import predict_new_data
 
-
-NEW_DATA_URL = "https://drive.google.com/file/d/1XyNzISx9al6LqMVtEo220LkMpH_jOC22/view?usp=sharing"
+NEW_DATA_URL = "https://drive.google.com/file/d/1Nr9PymyvLfDh3qTfaeKNVbvLwt7lNX6l/view?usp=sharing"
+#NEW_DATA_URL = "https://drive.google.com/file/d/1XyNzISx9al6LqMVtEo220LkMpH_jOC22/view?usp=sharing"
 
 # --- Utility Functions ---
 def ensure_datetime(df, column):
@@ -115,6 +115,7 @@ def simulate_attack_scenarios(anomalous_flaged_production_df = None,
     return simulated_attacks_df
 
 def get_attacks_data(URL = None):
+    anomalous_flaged_production_df = predict_new_data(NEW_DATA_URL, AUGMENTED_DATA_URL, MODEL_DIR)
     anomalous_flaged_production_df = load_new_data(URL, 
                                                    output_dir = "CyberThreat_Insight/cybersecurity_data", 
                                                    filename = "normal_and_anomalous_flaged_df.csv" )
