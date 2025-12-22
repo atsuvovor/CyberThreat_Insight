@@ -4,7 +4,7 @@
        alt="Centered Image" 
        style="width: 800px; height: 40%;">
 </p> 
-#-----
+
 <p align="center">
   <strong>Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI</strong>
 </p>
