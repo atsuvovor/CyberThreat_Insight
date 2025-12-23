@@ -26,6 +26,22 @@ NEW_DATA_URL = "https://drive.google.com/file/d/1Nr9PymyvLfDh3qTfaeKNVbvLwt7lNX6
 DATA_FOLDER_PATH =  "CyberThreat_Insight/cybersecurity_data"
 executive_cybersecurity_attack_report_on_drive = os.path.join(DATA_FOLDER_PATH, "Executive_Cybersecurity_Attack_Report.pdf")
 
+
+def normalize_threat_level(df, THREAT_LEVEL = "Threat Level"):
+    # Normalize Threat Level
+    THREAT_LEVEL_MAP = {
+        0: "Low",
+        1: "Medium",
+        2: "High",
+        3: "Critical"
+        }
+    attack_simulation_df[THREAT_LEVEL] = (
+        attack_simulation_df[THREAT_LEVEL]
+        .map(THREAT_LEVEL_MAP)
+        .fillna(attack_simulation_df[THREAT_LEVEL])
+    )
+    return df
+    
 def generate_executive_report(df):
     # ========================
     # Executive KPI Metrics
@@ -179,11 +195,11 @@ def plot_executive_report_donut_charts(data_dic):
         # Prepare data for the pie chart
         labels = data.index
         values = data.values
-        #colors = [color_map[label] for label in labels]
-        colors = [
-            color_map.get(label, "#9e9e9e")  # fallback gray for non-severity labels
-            for label in labels
-        ]
+        colors = [color_map[label] for label in labels]
+        #colors = [
+        #    color_map.get(label, "#9e9e9e")  # fallback gray for non-severity labels
+        #    for label in labels
+        #]
 
         total = values.sum()  # Total sum of values
 
@@ -460,10 +476,11 @@ def main_dashboard(NEW_DATA_URL = None,
     """
     #load attacks data 
     if simulated_attacks_file_path is not None:
-        attack_simulation_df = pd.read_csv(simulated_attacks_file_path)
+        df = pd.read_csv(simulated_attacks_file_path)
+        attack_simulation_df = normalize_threat_level(df)
     else:
-        attack_simulation_df = get_attacks_data(NEW_DATA_URL)
-
+        df = get_attacks_data(NEW_DATA_URL)
+        attack_simulation_df = normalize_threat_level(df)
         print("\nDashboar main_attacks_executive_summary_reporting_pipeline\n")
         main_executive_report_pipeline(attack_simulation_df)
 
