@@ -13,7 +13,7 @@ This module:
 # ============================
 # Required Libraries (Only)
 # ============================
-
+import os # Import the os module to create directories
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FuncFormatter
@@ -23,7 +23,8 @@ from CyberThreat_Insight.cyber_attack_insight.attack_simulation_secenario_v01 im
 
 
 NEW_DATA_URL = "https://drive.google.com/file/d/1Nr9PymyvLfDh3qTfaeKNVbvLwt7lNX6l/view?usp=sharing"
-
+DATA_FOLDER_PATH =  "CyberThreat_Insight/cybersecurity_data"
+executive_cybersecurity_attack_report_on_drive = os.path.join(DATA_FOLDER_PATH, "Executive_Cybersecurity_Attack_Report.pdf")
 
 def generate_executive_report(df):
     # ========================
@@ -415,8 +416,8 @@ def generate_attacks_pdf_report(metrics, Insident_summary, attack_scenarios, cri
 
 
     # Save the report
-    report.output(Executive_Cybersecurity_Attack_Report_on_google_drive)
-    print(f"Executive Report saved to {Executive_Cybersecurity_Attack_Report_on_google_drive}")
+    report.output(executive_cybersecurity_attack_report_on_drive)
+    print(f"Executive Report saved to {executive_cybersecurity_attack_report_on_drive}")
 
 #------------Metric extraction pipiline------------
 def attacks_key_metrics_pipeline(df):
