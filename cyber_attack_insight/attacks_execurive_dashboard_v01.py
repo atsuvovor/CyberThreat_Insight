@@ -35,10 +35,10 @@ def normalize_threat_level(df, THREAT_LEVEL = "Threat Level"):
         2: "High",
         3: "Critical"
         }
-    attack_simulation_df[THREAT_LEVEL] = (
-        attack_simulation_df[THREAT_LEVEL]
+    df[THREAT_LEVEL] = (
+        df[THREAT_LEVEL]
         .map(THREAT_LEVEL_MAP)
-        .fillna(attack_simulation_df[THREAT_LEVEL])
+        .fillna(df[THREAT_LEVEL])
     )
     return df
     
