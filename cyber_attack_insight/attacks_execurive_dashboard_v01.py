@@ -286,10 +286,10 @@ def main_dashboard( NEW_DATA_URL = None,
     #    "/content/drive/My Drive/Cybersecurity Data/simulated_attacks_df.csv"
     #)
 
-        if simulated_attacks_file_path is not None:
-            attack_simulation_df = pd.read_csv(simulated_attacks_file_path)
-        else:
-            attack_simulation_df = get_attacks_data(NEW_DATA_URL)
+    if simulated_attacks_file_path is not None:
+        attack_simulation_df = pd.read_csv(simulated_attacks_file_path)
+    else:
+        attack_simulation_df = get_attacks_data(NEW_DATA_URL)
             
     print("\nDashboard: Executive KPI Summary\n")
     main_executive_report_pipeline(attack_simulation_df)
