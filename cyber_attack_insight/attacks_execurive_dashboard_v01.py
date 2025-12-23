@@ -456,4 +456,4 @@ def main_dashboard(NEW_DATA_URL = None,
     main_attacks_executive_summary_reporting_pipeline(attack_simulation_df)
 
 if __name__ == "__main__":
-    main_dashboard()
+    main_dashboard(NEW_DATA_URL)
