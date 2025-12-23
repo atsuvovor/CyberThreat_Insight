@@ -19,7 +19,10 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import FuncFormatter
 from fpdf import FPDF
 from IPython.display import display
+from CyberThreat_Insight.cyber_attack_insight.attack_simulation_secenario_v01 import get_attacks_data
 
+
+NEW_DATA_URL = "https://drive.google.com/file/d/1Nr9PymyvLfDh3qTfaeKNVbvLwt7lNX6l/view?usp=sharing"
 
 # ==========================================================
 # Executive Report Aggregation
@@ -272,19 +275,22 @@ class ExecutiveReport(FPDF):
 # Main Dashboard Execution
 # ==========================================================
 
-def main_dashboard( 
+def main_dashboard( NEW_DATA_URL = None,
     simulated_attacks_file_path: str = "CyberThreat_Insight/cybersecurity_data/combined_normal_and_simulated_attacks_class_df.csv") -> None:
     """
     Entry point for the simulation executive dashboard.
     Loads data and runs all executive summaries.
     """
 
-    simulated_attacks_file_path = (
-        "/content/drive/My Drive/Cybersecurity Data/simulated_attacks_df.csv"
-    )
+    #simulated_attacks_file_path = (
+    #    "/content/drive/My Drive/Cybersecurity Data/simulated_attacks_df.csv"
+    #)
 
-    attack_simulation_df = pd.read_csv(simulated_attacks_file_path)
-
+        if simulated_attacks_file_path is not None:
+            attack_simulation_df = pd.read_csv(simulated_attacks_file_path)
+        else:
+            attack_simulation_df = get_attacks_data(NEW_DATA_URL)
+            
     print("\nDashboard: Executive KPI Summary\n")
     main_executive_report_pipeline(attack_simulation_df)
 
@@ -293,4 +299,4 @@ def main_dashboard(
 
 
 if __name__ == "__main__":
-    main_dashboard()
+    main_dashboard(NEW_DATA_URL = NEW_DATA_URL)
