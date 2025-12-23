@@ -178,7 +178,12 @@ def plot_executive_report_donut_charts(data_dic):
         # Prepare data for the pie chart
         labels = data.index
         values = data.values
-        colors = [color_map[label] for label in labels]
+        #colors = [color_map[label] for label in labels]
+        colors = [
+            color_map.get(label, "#9e9e9e")  # fallback gray for non-severity labels
+            for label in labels
+        ]
+
         total = values.sum()  # Total sum of values
 
         # Create a donut plot
