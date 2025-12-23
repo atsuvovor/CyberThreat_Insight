@@ -437,7 +437,7 @@ def main_attacks_executive_summary_reporting_pipeline(df):
 #-----------------------------------------Main Dashboard-----------------------------------------------------------------------------
 
 def main_dashboard(NEW_DATA_URL = None,
-                   simulated_attacks_file_path: str = "CyberThreat_Insight/cybersecurity_data/combined_normal_and_simulated_attacks_class_df.csv") -> None:
+                   simulated_attacks_file_path = None) -> None:
                        
     """
     Entry point for the simulation executive dashboard.
