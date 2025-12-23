@@ -5,6 +5,15 @@ import random
 import socket
 import struct
 
+from CyberThreat_Insight.utils.gdrive_utils import load_csv_from_gdrive_url, load_new_data
+from CyberThreat_Insight.production.stacked_ad_classifier_prod import predict_new_data
+
+
+MODEL_DIR = "CyberThreat_Insight/stacked_models_deployment"
+DATA_PATH =  "CyberThreat_Insight/cybersecurity_data"
+AUGMENTED_DATA_PATH = DATA_PATH + "/x_y_augmented_data_google_drive.csv"
+NEW_DATA_URL = "https://drive.google.com/file/d/1Nr9PymyvLfDh3qTfaeKNVbvLwt7lNX6l/view?usp=sharing"
+
 # -------------------- Attack Classes --------------------
 
 class BaseAttack:
@@ -157,42 +166,47 @@ def run_selected_attacks(df, selected_attacks, verbose=True):
 
 
 #------------------------------Main attacks simulation pipeline----------------------------
-def main_attacks_simulation_pipeline(
-        anomalous_flaged_production_df = "CyberThreat_Insight/cybersecurity_data/normal_and_anomalous_flaged_df.csv",
-        file_production_data_folder = "CyberThreat_Insight/cybersecurity_data"):
+def main_attacks_simulation_pipeline(URL = None):
+    #anomalous_flaged_production_df = "CyberThreat_Insight/cybersecurity_data/normal_and_anomalous_flaged_df.csv",
+    #file_production_data_folder = "CyberThreat_Insight/cybersecurity_data"
 
-    
+    normal_and_anomalous_production_df = load_new_data(URL, 
+                                                       output_dir = "CyberThreat_Insight/cybersecurity_data", 
+                                                       filename = "normal_and_anomalous_df.csv" )
 
     selected_attacks=["phishing", "malware", "ddos", "data_leak", "insider", "ransomware"]
 
     # Load the dataset
-    production_df = pd.read_csv(anomalous_flaged_production_df)
-    production_df.head()
+    #production_df = pd.read_csv(anomalous_flaged_production_df)
+    #production_df.head()
 
 
     #detect production data early anomalous
     # Check if production_df is loaded correctly
-    if production_df is not None:
-        df_anomalies, df_normal = EarlyAnomalyDetectorClass(production_df).detect_early_anomalies()
-    else:
-        print("Error: production_df is None. Please check the file path.")
-        return  # Exit the function if data loading failed
+    #if production_df is not None:
+    #    df_anomalies, df_normal = EarlyAnomalyDetectorClass(production_df).detect_early_anomalies()
+    #else:
+    #    print("Error: production_df is None. Please check the file path.")
+    #    return  # Exit the function if data loading failed
 
     #df_anomalies_copy = df_anomalies.copy()  # Create a copy here
     #display(df_anomalies_copy.head())
     #df = DataCombiner(df_normal, df_anomalies_copy).combine_data()
     #simulate the attacks on anomalous data frame
-    simulated_attacks_df = run_selected_attacks(df_anomalies, selected_attacks, verbose=True)
+    #simulated_attacks_df = run_selected_attacks(df_anomalies, selected_attacks, verbose=True)
+    simulated_attacks_df = run_selected_attacks(normal_and_anomalous_production_df, selected_attacks, verbose=True)
     #df.head()
 
     #Combined normal and anomalous data frames
-    combined_normal_and_simulated_attacks_df = DataCombiner(df_normal, simulated_attacks_df).combine_data()
+    #combined_normal_and_simulated_attacks_df = DataCombiner(df_normal, simulated_attacks_df).combine_data()
     #combined_normal_and_simulated_attacks_df.head()
-
+    normal_and_simulated_attacks_class_df = predict_new_data(AUGMENTED_DATA_URL = AUGMENTED_DATA_PATH, 
+                                                             model_dir = MODEL_DIR, 
+                                                             ops_df = simulated_attacks_df
     #save the combined data frame to google drive
-    save_dataframe_to_drive(combined_normal_and_simulated_attacks_df,
-                            file_production_data_folder+"combined_normal_and_simulated_attacks_class_df.csv")
-    display(combined_normal_and_simulated_attacks_df.head())
+    save_dataframe_to_drive(normal_and_simulated_attacks_class_df,
+                            combined_normal_and_simulated_attacks_class_df+"normal_and_simulated_attacks_class_df.csv")
+    display(normal_and_simulated_attacks_df.head())
 
 if __name__ == "__main__":
 
