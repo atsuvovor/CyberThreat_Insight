@@ -105,15 +105,14 @@ def generate_executive_report(df):
     # ========================
 
     print("\nExecutive KPI Summary\n")
-    for k, v in report_summary_data_dic.items():
-        display(v)
+    display(pd.DataFrame(report_summary_data_dic).fillna(0))
 
     print("\nAverage Response Time\n")
     display(avg_response_time_df)
-
+    
     print("\nTop 5 Issues – Adaptive Defense\n")
     display(top_five_issues_df)
-    display(pd.DataFrame(report_summary_data_dic))
+    
     # IMPORTANT: return ONLY what plotting functions expect
     return report_summary_data_dic
 
