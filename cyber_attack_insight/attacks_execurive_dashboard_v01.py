@@ -452,8 +452,8 @@ def main_dashboard(NEW_DATA_URL = None,
         print("\nDashboar main_attacks_executive_summary_reporting_pipeline\n")
         main_executive_report_pipeline(attack_simulation_df)
 
-   print("\nDashboar attacks_executive_summary_reporting_pipeline\n")
-   main_attacks_executive_summary_reporting_pipeline(attack_simulation_df)
+    print("\nDashboar attacks_executive_summary_reporting_pipeline\n")
+    main_attacks_executive_summary_reporting_pipeline(attack_simulation_df)
 
 if __name__ == "__main__":
     main_dashboard()
