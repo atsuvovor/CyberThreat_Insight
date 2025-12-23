@@ -113,7 +113,7 @@ def generate_executive_report(df):
 
     print("\nTop 5 Issues – Adaptive Defense\n")
     display(top_five_issues_df)
-
+    display(pd.DataFrame(report_summary_data_dic))
     # IMPORTANT: return ONLY what plotting functions expect
     return report_summary_data_dic
 
