@@ -1,3 +1,30 @@
+"""
+summary_executive_dashboard.py
+--------------------------------
+Executive-level cybersecurity simulation dashboard.
+
+This module:
+- Aggregates attack and incident metrics
+- Generates executive KPIs
+- Produces visual summaries (bar & donut charts)
+- Generates a PDF executive report
+"""
+
+# ============================
+# Required Libraries (Only)
+# ============================
+
+import pandas as pd
+import matplotlib.pyplot as plt
+from matplotlib.ticker import FuncFormatter
+from fpdf import FPDF
+from IPython.display import display
+from CyberThreat_Insight.cyber_attack_insight.attack_simulation_secenario_v01 import get_attacks_data
+
+
+NEW_DATA_URL = "https://drive.google.com/file/d/1Nr9PymyvLfDh3qTfaeKNVbvLwt7lNX6l/view?usp=sharing"
+
+
 def generate_executive_report(df):
     # Threat statistics
     total_theats = df.groupby("Threat Level").size()
@@ -409,16 +436,21 @@ def main_attacks_executive_summary_reporting_pipeline(df):
     generate_attacks_pdf_report(metrics, incident_summary, attack_scenarios, critical_issues_df)
 #-----------------------------------------Main Dashboard-----------------------------------------------------------------------------
 
-def main_dashboard():
+def main_dashboard(NEW_DATA_URL = None,
+                   simulated_attacks_file_path: str = "CyberThreat_Insight/cybersecurity_data/combined_normal_and_simulated_attacks_class_df.csv") -> None:
+                       
+    """
+    Entry point for the simulation executive dashboard.
+    Loads data and runs all executive summaries.
+    """
+    #load attacks data 
+    if simulated_attacks_file_path is not None:
+        attack_simulation_df = pd.read_csv(simulated_attacks_file_path)
+    else:
+        attack_simulation_df = get_attacks_data(NEW_DATA_URL)
 
-   simulated_attacks_file_path = "/content/drive/My Drive/Cybersecurity Data/simulated_attacks_df.csv"
-
-   #load attacks data from drive
-   attack_simulation_df = pd.read_csv(simulated_attacks_file_path)
-
-
-   print("\nDashboar main_attacks_executive_summary_reporting_pipeline\n")
-   main_executive_report_pipeline(attack_simulation_df)
+        print("\nDashboar main_attacks_executive_summary_reporting_pipeline\n")
+        main_executive_report_pipeline(attack_simulation_df)
 
    print("\nDashboar attacks_executive_summary_reporting_pipeline\n")
    main_attacks_executive_summary_reporting_pipeline(attack_simulation_df)
