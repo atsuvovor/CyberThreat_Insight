@@ -11,7 +11,8 @@ seaborn                # High-level statistical visualization (built on matplotl
 sentence-transformers  # Pre-trained transformer embeddings (semantic search, RAG)
 streamlit              # Build interactive dashboards and shareable web apps
 transformers           # Hugging Face Transformers library (large NLP models and pipelines)
-numpy		       # Numerical computing
-ipython 	       # For IPython.display (used to display DataFrames nicely)
+numpy		           # Numerical computing
+ipython 	           # For IPython.display (used to display DataFrames nicely)
 google-colab 	       # Optional: provides google.colab.files for ZIP download when running in Colab
-		       # (Safe to include; GitHub Actions won't use it since COLAB=False)
+		               # (Safe to include; GitHub Actions won't use it since COLAB=False)
+fpdf		           # For pgf reporting
