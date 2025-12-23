@@ -105,7 +105,8 @@ def generate_executive_report(df):
     # ========================
 
     print("\nExecutive KPI Summary\n")
-    display(pd.DataFrame(report_summary_data_dic).fillna(0))
+    report_summary_df = pd.DataFrame(report_summary_data_dic).fillna(0)
+    display(report_summary_df)
 
     print("\nAverage Response Time\n")
     display(avg_response_time_df)
