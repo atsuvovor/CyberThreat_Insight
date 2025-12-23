@@ -26,71 +26,80 @@ NEW_DATA_URL = "https://drive.google.com/file/d/1Nr9PymyvLfDh3qTfaeKNVbvLwt7lNX6
 
 
 def generate_executive_report(df):
-    # Threat statistics
+    # ========================
+    # Executive KPI Metrics
+    # ========================
+
     total_theats = df.groupby("Threat Level").size()
     severity_stats = df.groupby("Severity").size()
-    impact_cost_stats = round(df.groupby("Severity")["Cost"].sum()/ 1_000_000)
+    impact_cost_stats = round(df.groupby("Severity")["Cost"].sum() / 1_000_000)
+
     resolved_stats = df[df["Status"].isin(["Resolved", "Closed"])].groupby("Threat Level").size()
     out_standing_issues = df[df["Status"].isin(["Open", "In Progress"])].groupby("Threat Level").size()
-    outstanding_issues_avg_resp_time = round(df[df["Status"].isin(["Open", "In Progress"])].groupby("Threat Level")["Issue Response Time Days"].mean())
-    solved_issues_avg_resp_time = round(df[df["Status"].isin(["Resolved", "Closed"])].groupby("Threat Level")["Issue Response Time Days"].mean())
 
+    outstanding_issues_avg_resp_time = round(
+        df[df["Status"].isin(["Open", "In Progress"])]
+        .groupby("Threat Level")["Issue Response Time Days"].mean()
+    )
 
-    # Top 5 issues
-    top_issues = df.nlargest(5, "Threat Score")
+    solved_issues_avg_resp_time = round(
+        df[df["Status"].isin(["Resolved", "Closed"])]
+        .groupby("Threat Level")["Issue Response Time Days"].mean()
+    )
 
-    # Average response time
-    overall_avg_response_time = df["Issue Response Time Days"].mean()
+    # ========================
+    # Top 5 Issues (separate)
+    # ========================
 
-    # Save to CSV
+    top_five_issues_df = df.nlargest(5, "Threat Score")[
+        ["Issue ID", "Threat Level", "Severity", "Issue Response Time Days",
+         "Department Affected", "Cost", "Defense Action"]
+    ].copy()
+
+    top_five_issues_df["Cost (M$)"] = round(top_five_issues_df["Cost"] / 1_000_000)
+
+    # ========================
+    # Overall Average Response Time
+    # ========================
+
+    avg_days = round(df["Issue Response Time Days"].mean())
+    avg_response_time_df = pd.DataFrame({
+        "Average Response Time (Days)": [avg_days],
+        "Average Response Time (Hours)": [avg_days * 24],
+        "Average Response Time (Minutes)": [avg_days * 1440]
+    })
+
+    # ========================
+    # Executive Summary Dictionary (Series ONLY)
+    # ========================
+
     report_summary_data_dic = {
-        "Total Attack": total_theats,
-        "Attack Volume Severity": severity_stats,
-        "Impact in Cost(M$)": impact_cost_stats,
-        "Resolved Issues": resolved_stats,
-        "Outstanding Issues": out_standing_issues,
-        "Outstanding Issues Avg Response Time": outstanding_issues_avg_resp_time,
-        "Solved Issues Avg Response Time": solved_issues_avg_resp_time,
-        "Top 5 Issues": top_issues.to_dict(),
-        "Overall Average Response Time(days)": overall_avg_response_time
+        "Total Attacks by Threat Level": total_theats,
+        "Attack Volume by Severity": severity_stats,
+        "Impact Cost (M$)": impact_cost_stats,
+        "Resolved Issues by Threat Level": resolved_stats,
+        "Outstanding Issues by Threat Level": out_standing_issues,
+        "Outstanding Avg Response Time (Days)": outstanding_issues_avg_resp_time,
+        "Solved Avg Response Time (Days)": solved_issues_avg_resp_time
     }
 
-    top_five_issues_df = pd.DataFrame(report_summary_data_dic.pop("Top 5 Issues"))
-    top_five_issues_df["cost"] =  top_five_issues_df["Cost"].apply(lambda x: round(x/1_000_000))
-    average_response_time = round(report_summary_data_dic.pop("Overall Average Response Time(days)"))
+    # ========================
+    # Display (Notebook Only)
+    # ========================
 
-    # Convert numeric columns to numeric type before creating the DataFrame
-    for col in ["Impact in Cost(M$)", "Outstanding Issues Avg Response Time", "Solved Issues Avg Response Time"]:
-        report_summary_data_dic[col] = pd.to_numeric(report_summary_data_dic[col], errors='coerce')
+    print("\nExecutive KPI Summary\n")
+    for k, v in report_summary_data_dic.items():
+        display(v)
 
+    print("\nAverage Response Time\n")
+    display(avg_response_time_df)
 
-    # Create report_summary_df from report_summary_data_dic
-    report_summary_df = pd.DataFrame(report_summary_data_dic)
+    print("\nTop 5 Issues – Adaptive Defense\n")
+    display(top_five_issues_df)
 
-    # Apply round to numeric columns only after creating the DataFrame
-    report_summary_df = report_summary_df.apply(lambda x: round(x) if x.dtype.kind in 'biufc' else x)
-
-    top_five_incidents_defense_df = top_five_issues_df[["Issue ID", "Threat Level", "Severity",
-                                                        "Issue Response Time Days", "Department Affected", "Cost", "Defense Action"]]
-    days = 184
-    hours = days * 24
-    minutes = days * 1440
-    average_response_time ={
-        "Average Response Time in days" : average_response_time,
-        "Average Response Time in hours" : hours,
-        "Average Response Time in minutes" : minutes
-        }
-
-    average_response_time_df = pd.DataFrame(average_response_time, index=[0])
-
-    print("\nreport_summary_df\n")
-    display(report_summary_df)
-    print("\naverage_response_time\n")
-    display(average_response_time_df)
-    print("\nTop 5 issues impact with  Addaptative Defense Mechanism\n")
-    display(top_five_incidents_defense_df)
-
+    # IMPORTANT: return ONLY what plotting functions expect
     return report_summary_data_dic
+
 
 #------------------------- Plot Executive Report metrics--------------------------------------------
 
