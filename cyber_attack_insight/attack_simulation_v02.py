@@ -202,7 +202,7 @@ def main_attacks_simulation_pipeline(URL = None):
     #combined_normal_and_simulated_attacks_df.head()
     normal_and_simulated_attacks_class_df = predict_new_data(AUGMENTED_DATA_URL = AUGMENTED_DATA_PATH, 
                                                              model_dir = MODEL_DIR, 
-                                                             ops_df = simulated_attacks_df
+                                                             ops_df = simulated_attacks_df)
     #save the combined data frame to google drive
     save_dataframe_to_drive(normal_and_simulated_attacks_class_df,
                             combined_normal_and_simulated_attacks_class_df+"normal_and_simulated_attacks_class_df.csv")
