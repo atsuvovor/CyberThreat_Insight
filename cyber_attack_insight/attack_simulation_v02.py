@@ -299,10 +299,9 @@ def main_attacks_simulation_pipeline(URL=None):
 
     # ---------------- Prediction ----------------
     print("[INFO] Running stacked anomaly classifier ...")
-    predict_new_data(NEW_DATA_URL = None, AUGMENTED_DATA_URL = None, model_dir = None, ops_df = None, label_col="Threat Level"):
     predictions_df = predict_new_data(
         NEW_DATA_URL = URL,
-        AUGMENTED_DATA_URL=AUGMENTED_DATA_PATH,
+        AUGMENTED_DATA_PATHL=AUGMENTED_DATA_PATH,
         model_dir=MODEL_DIR,
         ops_df=simulated_attacks_df
     )
