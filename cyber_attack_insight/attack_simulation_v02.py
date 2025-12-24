@@ -210,4 +210,4 @@ def main_attacks_simulation_pipeline(URL = None):
 
 if __name__ == "__main__":
 
-    main_attacks_simulation_pipeline()
+    main_attacks_simulation_pipeline(NEW_DATA_URL)
