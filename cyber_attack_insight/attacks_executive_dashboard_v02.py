@@ -32,6 +32,21 @@ executive_cybersecurity_attack_report_on_drive = os.path.join(DATA_FOLDER_PATH, 
 
 
 
+def normalize_threat_level(df, THREAT_LEVEL = "Threat Level"):
+    # Normalize Threat Level
+    THREAT_LEVEL_MAP = {
+        0: "Low",
+        1: "Medium",
+        2: "High",
+        3: "Critical"
+        }
+    df[THREAT_LEVEL] = (
+        df[THREAT_LEVEL]
+        .map(THREAT_LEVEL_MAP)
+        .fillna(df[THREAT_LEVEL])
+    )
+    return df
+    
 # ============================
 # Executive Report Aggregation
 # ============================
@@ -309,11 +324,22 @@ def main_dashboard(NEW_DATA_URL = None,
 
     #attack_simulation_df = pd.read_csv(simulated_attacks_file_path)
     attack_simulation_df = main_attacks_simulation_pipeline(NEW_DATA_URL)
-
-
-    print("\nRunning Executive KPI Dashboard\n")
+    
+     #load attacks data 
+    if simulated_attacks_file_path is not None:
+        df = pd.read_csv(simulated_attacks_file_path)
+        attack_simulation_df = normalize_threat_level(df)
+    else:
+        df =  main_attacks_simulation_pipeline(NEW_DATA_URL)
+        attack_simulation_df = normalize_threat_level(df)
+                       
+    print("\nDashboar main_attacks_executive_reporting_pipeline\n")
     main_executive_report_pipeline(attack_simulation_df)
-
+        
+    #print("\nRunning Executive KPI Dashboard\n")
+    #print("\nDashboar attacks_executive_summary_reporting_pipeline\n")
+   # main_attacks_executive_summary_reporting_pipeline(attack_simulation_df)
+   
 
 if __name__ == "__main__":
     main_dashboard(NEW_DATA_URL)
