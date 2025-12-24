@@ -82,7 +82,7 @@ def load_new_data(URL, LABEL_COL, df = None):
     return new_data
 
 
-def predict_new_data(NEW_DATA_URL = None, AUGMENTED_DATA_URL = None, model_dir = None, ops_df = None, label_col="Threat Level"):
+def predict_new_data(NEW_DATA_URL = None, AUGMENTED_DATA_PATH = None, model_dir = None, ops_df = None, label_col="Threat Level"):
     """
     Run inference on new data using pretrained stacked anomaly detection classifier.
 
