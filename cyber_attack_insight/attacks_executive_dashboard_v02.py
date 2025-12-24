@@ -14,6 +14,7 @@ Author: Atsu Vovor
 # Required Libraries
 # ============================
 
+import os # Import the os module to create directories
 import pandas as pd
 import numpy as np
 
