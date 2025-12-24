@@ -16,116 +16,168 @@ NEW_DATA_URL = "https://drive.google.com/file/d/1Nr9PymyvLfDh3qTfaeKNVbvLwt7lNX6
 
 # -------------------- Attack Classes --------------------
 
+
+# -------------------- Base Attack --------------------
+
 class BaseAttack:
-    def __init__(self, df):
+    NUMERIC_COLS = [
+        "Login Attempts",
+        "Impact Score",
+        "Threat Score",
+        "Session Duration in Second",
+        "CPU Usage %",
+        "Memory Usage MB",
+        "Num Files Accessed",
+        "Data Transfer MB"
+    ]
+
+    LIMITS = {
+        "CPU Usage %": (0, 100),
+        "Memory Usage MB": (0, 256_000),       # 256 GB
+        "Data Transfer MB": (0, 1_000_000),    # 1 TB
+        "Session Duration in Second": (0, 86_400),
+        "Login Attempts": (0, 10_000),
+        "Num Files Accessed": (0, 100_000),
+        "Impact Score": (0, 100),
+        "Threat Score": (0, 100),
+    }
+
+    def __init__(self, df: pd.DataFrame):
         self.df = df.copy()
         self.ip_generator = IPAddressGenerator()
+        self._cast_numeric()
+
+    def _cast_numeric(self):
+        for col in self.NUMERIC_COLS:
+            if col in self.df.columns:
+                self.df[col] = pd.to_numeric(self.df[col], errors="coerce").astype("float64")
+
+    def _bounded_lognormal(self, base_mean, sigma, size):
+        """
+        Safe multiplicative noise generator
+        """
+        noise = np.random.lognormal(mean=0.0, sigma=sigma, size=size)
+        return base_mean * noise
+
+    def _clip_metrics(self):
+        for col, (lo, hi) in self.LIMITS.items():
+            if col in self.df.columns:
+                self.df[col] = self.df[col].clip(lo, hi)
 
     def apply(self):
-        raise NotImplementedError("Each attack must implement the apply() method.")
+        raise NotImplementedError
 
 class PhishingAttack(BaseAttack):
     def apply(self):
         targets = self.df[self.df["Category"] == "Access Control"].sample(frac=0.1, random_state=42)
-        anomaly_magnitude = 1.0
-        self.df.loc[targets.index, "Login Attempts"] += anomaly_magnitude * np.random.poisson(lam=self.df["Login Attempts"].mean(), size=len(targets))
-        self.df.loc[targets.index, "Impact Score"] += anomaly_magnitude * np.random.normal(loc=self.df["Impact Score"].mean(), scale=self.df["Impact Score"].std(), size=len(targets)).astype(int)
-        self.df.loc[targets.index, "Threat Score"] += anomaly_magnitude * np.random.normal(loc=self.df["Threat Score"].mean(), scale=self.df["Threat Score"].std(), size=len(targets)).astype(int)
+
+        self.df.loc[targets.index, "Login Attempts"] += np.random.poisson(
+            lam=self.df["Login Attempts"].mean(), size=len(targets)
+        )
+
+        self.df.loc[targets.index, "Impact Score"] += np.random.normal(5, 3, size=len(targets))
+        self.df.loc[targets.index, "Threat Score"] += np.random.normal(6, 3, size=len(targets))
+
         self.df.loc[targets.index, "Attack Type"] = "Phishing"
+        self._clip_metrics()
         return self.df
 
 class MalwareAttack(BaseAttack):
     def apply(self):
         targets = self.df[self.df["Category"] == "System Vulnerability"].sample(frac=0.1, random_state=42)
-        anomaly_magnitude = 1.0
-        self.df.loc[targets.index, "Num Files Accessed"] += anomaly_magnitude * np.random.poisson(lam=self.df["Num Files Accessed"].mean(), size=len(targets))
-        self.df.loc[targets.index, "Impact Score"] += anomaly_magnitude * np.random.normal(loc=self.df["Impact Score"].mean(), scale=self.df["Impact Score"].std(), size=len(targets)).astype(int)
-        self.df.loc[targets.index, "Threat Score"] += anomaly_magnitude * np.random.normal(loc=self.df["Threat Score"].mean(), scale=self.df["Threat Score"].std(), size=len(targets)).astype(int)
+
+        self.df.loc[targets.index, "Num Files Accessed"] += np.random.poisson(
+            lam=self.df["Num Files Accessed"].mean(), size=len(targets)
+        )
+
+        self.df.loc[targets.index, "Impact Score"] += np.random.normal(7, 4, size=len(targets))
+        self.df.loc[targets.index, "Threat Score"] += np.random.normal(7, 4, size=len(targets))
+
         self.df.loc[targets.index, "Attack Type"] = "Malware"
+        self._clip_metrics()
         return self.df
 
 class DDoSAttack(BaseAttack):
     def apply(self):
         targets = self.df[self.df["Category"] == "Network Security"].sample(frac=0.2, random_state=42)
-        anomaly_magnitude = 1.0
-        self.df.loc[targets.index, "Session Duration in Second"] += anomaly_magnitude * np.random.exponential(scale=self.df["Session Duration in Second"].mean(), size=len(targets)).astype(int)
-        self.df.loc[targets.index, "Impact Score"] += anomaly_magnitude * np.random.exponential(scale=self.df["Impact Score"].mean(), size=len(targets)).astype(int)
-        self.df.loc[targets.index, "Threat Score"] += anomaly_magnitude * np.random.exponential(scale=self.df["Threat Score"].mean(), size=len(targets)).astype(int)
-        self.df.loc[targets.index, "Login Attempts"] += anomaly_magnitude * np.random.poisson(lam=self.df["Login Attempts"].mean(), size=len(targets))
-        self.df.loc[targets.index, "Source IP Address"] = "192.168.1.10"
-        self.df.loc[targets.index, "Destination IP Address"] = "192.168.1.10"
+
+        self.df.loc[targets.index, "Session Duration in Second"] += np.random.exponential(
+            scale=self.df["Session Duration in Second"].mean(), size=len(targets)
+        )
+
+        self.df.loc[targets.index, "Login Attempts"] += np.random.poisson(
+            lam=self.df["Login Attempts"].mean(), size=len(targets)
+        )
+
+        self.df.loc[targets.index, "Impact Score"] += np.random.exponential(8, size=len(targets))
+        self.df.loc[targets.index, "Threat Score"] += np.random.exponential(8, size=len(targets))
+
         self.df.loc[targets.index, "Attack Type"] = "DDoS"
+        self._clip_metrics()
         return self.df
 
 class DataLeakAttack(BaseAttack):
     def apply(self):
         targets = self.df[self.df["Category"] == "Data Breach"].sample(frac=0.1, random_state=42)
-        anomaly_magnitude = 1.0
-        transfer_log_mean = np.log(self.df["Data Transfer MB"].mean())
-        transfer_log_std = np.log(self.df["Data Transfer MB"].std())
-        self.df.loc[targets.index, "Data Transfer MB"] += anomaly_magnitude * np.random.lognormal(mean=transfer_log_mean, sigma=transfer_log_std, size=len(targets))
-        self.df.loc[targets.index, "Impact Score"] += anomaly_magnitude * np.random.lognormal(mean=np.log(self.df["Impact Score"].mean()), sigma=transfer_log_std, size=len(targets))
-        self.df.loc[targets.index, "Threat Score"] += anomaly_magnitude * np.random.lognormal(mean=np.log(self.df["Threat Score"].mean()), sigma=transfer_log_std, size=len(targets))
-        self.df.loc[targets.index, "Attack Type"] = "Data Leak"
-        return self.df
 
-class InsiderThreatAttack(BaseAttack):
-    def apply(self):
-        self.df['hour'] = pd.to_datetime(self.df['Timestamps'], errors='coerce').dt.hour
-        late_hours = self.df[(self.df['hour'] < 6) | (self.df['hour'] > 23)]
-        targets = late_hours.sample(frac=0.1, random_state=42)
-        anomaly_magnitude = 1.0
-        transfer_log_mean = np.log(self.df["Data Transfer MB"].mean())
-        transfer_log_std = np.log(self.df["Data Transfer MB"].std())
-        self.df.loc[targets.index, "Access Restricted Files"] = True
-        self.df.loc[targets.index, "Data Transfer MB"] += anomaly_magnitude * np.random.lognormal(mean=transfer_log_mean, sigma=transfer_log_std, size=len(targets))
-        self.df.loc[targets.index, "Impact Score"] += anomaly_magnitude * np.random.normal(loc=self.df["Impact Score"].mean(), scale=self.df["Impact Score"].std(), size=len(targets)).astype(int)
-        self.df.loc[targets.index, "Threat Score"] += anomaly_magnitude * np.random.normal(loc=self.df["Threat Score"].mean(), scale=self.df["Threat Score"].std(), size=len(targets)).astype(int)
-        self.df.loc[targets.index, "Attack Type"] = "Insider Threat"
+        mean_transfer = self.df["Data Transfer MB"].mean()
+        self.df.loc[targets.index, "Data Transfer MB"] += self._bounded_lognormal(
+            mean_transfer, sigma=0.4, size=len(targets)
+        )
+
+        self.df.loc[targets.index, "Impact Score"] += np.random.normal(12, 5, size=len(targets))
+        self.df.loc[targets.index, "Threat Score"] += np.random.normal(12, 5, size=len(targets))
+
+        self.df.loc[targets.index, "Attack Type"] = "Data Leak"
+        self._clip_metrics()
         return self.df
 
 class RansomwareAttack(BaseAttack):
     def apply(self):
         targets = self.df[self.df["Category"] == "System Vulnerability"].sample(frac=0.02, random_state=42)
-        anomaly_magnitude = 1.0
-        self.df.loc[targets.index, "CPU Usage %"] += anomaly_magnitude * np.random.normal(loc=self.df["CPU Usage %"].mean(), scale=self.df["CPU Usage %"].std(), size=len(targets))
-        self.df.loc[targets.index, "Memory Usage MB"] += anomaly_magnitude * np.random.lognormal(mean=np.log(self.df["Memory Usage MB"].mean()), sigma=np.log(self.df["Memory Usage MB"].std()), size=len(targets))
-        self.df.loc[targets.index, "Num Files Accessed"] += anomaly_magnitude * np.random.poisson(lam=self.df["Num Files Accessed"].mean(), size=len(targets))
-        self.df.loc[targets.index, "Threat Score"] += anomaly_magnitude * np.random.normal(loc=self.df["Threat Score"].mean(), scale=self.df["Threat Score"].std(), size=len(targets)).astype(int)
-        self.df.loc[targets.index, "Impact Score"] += anomaly_magnitude * np.random.normal(loc=self.df["Impact Score"].mean(), scale=self.df["Impact Score"].std(), size=len(targets)).astype(int)
+
+        mean_mem = self.df["Memory Usage MB"].mean()
+        self.df.loc[targets.index, "Memory Usage MB"] += self._bounded_lognormal(
+            mean_mem, sigma=0.5, size=len(targets)
+        )
+
+        self.df.loc[targets.index, "CPU Usage %"] += np.random.normal(20, 10, size=len(targets))
+        self.df.loc[targets.index, "Num Files Accessed"] += np.random.poisson(
+            lam=self.df["Num Files Accessed"].mean(), size=len(targets)
+        )
+
+        self.df.loc[targets.index, "Threat Score"] += np.random.normal(15, 5, size=len(targets))
+        self.df.loc[targets.index, "Impact Score"] += np.random.normal(15, 5, size=len(targets))
+
         self.df.loc[targets.index, "Attack Type"] = "Ransomware"
+        self._clip_metrics()
         return self.df
 
+def sanitize_for_ml(df):
+    df = df.replace([np.inf, -np.inf], np.nan)
+    df = df.fillna(df.median(numeric_only=True))
+    return df.astype("float32")
 
 
+class InsiderThreatAttack(BaseAttack):
+    def apply(self):
+        self.df["hour"] = pd.to_datetime(self.df["Timestamps"], errors="coerce").dt.hour
+        late_hours = self.df[(self.df["hour"] < 6) | (self.df["hour"] > 23)]
+        targets = late_hours.sample(frac=0.1, random_state=42)
 
+        mean_transfer = self.df["Data Transfer MB"].mean()
+        self.df.loc[targets.index, "Access Restricted Files"] = True
+        self.df.loc[targets.index, "Data Transfer MB"] += self._bounded_lognormal(
+            mean_transfer, sigma=0.3, size=len(targets)
+        )
 
-class EarlyAnomalyDetectorClass:
-    #def __init__(self):
-    #    pass
-    def __init__(self, df):
-        self.df = df.copy()
+        self.df.loc[targets.index, "Impact Score"] += np.random.normal(10, 4, size=len(targets))
+        self.df.loc[targets.index, "Threat Score"] += np.random.normal(10, 4, size=len(targets))
 
-    def detect_early_anomalies(self, column='Threat Score'):
-        Q1 = self.df[column].quantile(0.25)
-        Q3 = self.df[column].quantile(0.75)
-        IQR = Q3 - Q1
-        self.df['Actual Anomaly'] = ((self.df[column] < Q1 - 1.5 * IQR) | (self.df[column] > Q3 + 1.5 * IQR)).astype(int)
-        #get anomlous dataframe
-        df_anomalies = self.df[self.df['Actual Anomaly'] == 1]
-        #get normal dataframe
-        df_normal = self.df[self.df['Actual Anomaly'] == 0]
+        self.df.loc[targets.index, "Attack Type"] = "Insider Threat"
+        self._clip_metrics()
+        return self.df
 
-        return df_anomalies, df_normal
-
-class DataCombiner:
-    def __init__(self, normal_df, anomalous_df):
-        self.normal_df = normal_df.copy()
-        self.anomalous_df = anomalous_df.copy()
-
-    def combine_data(self):
-        combined_df = pd.concat([self.normal_df, self.anomalous_df], ignore_index=True)
-        return combined_df
 
 class IPAddressGenerator:
     """A class for generating random IPv4 addresses and pairs."""
@@ -141,73 +193,79 @@ class IPAddressGenerator:
         destination_ip = self.generate_random_ip()
         return source_ip, destination_ip
 
-# -------------------- Combined Runner --------------------
 
-def run_selected_attacks(df, selected_attacks, verbose=True):
-    attack_map = {
-        "phishing": PhishingAttack,
-        "malware": MalwareAttack,
-        "ddos": DDoSAttack,
-        "data_leak": DataLeakAttack,
-        "insider": InsiderThreatAttack,
-        "ransomware": RansomwareAttack
-    }
-    if df is None:
-        raise ValueError("Input DataFrame is None at the start of attack simulation.")
-
-    for attack in selected_attacks:
-        if verbose: print(f"[+] Applying {attack.capitalize()} Attack")
-        attack_class = attack_map[attack]
-        df = attack_class(df).apply()
-        if df is None:
-            raise ValueError(f"Attack {attack} returned None. Ensure its `.apply()` method returns a DataFrame.")
-
-    return df
 
 
 #------------------------------Main attacks simulation pipeline----------------------------
-def main_attacks_simulation_pipeline(URL = None):
-    #anomalous_flaged_production_df = "CyberThreat_Insight/cybersecurity_data/normal_and_anomalous_flaged_df.csv",
-    #file_production_data_folder = "CyberThreat_Insight/cybersecurity_data"
+def main_attacks_simulation_pipeline(URL=None):
+    """
+    End-to-end attack simulation + stacked model inference pipeline
+    """
 
-    normal_and_anomalous_production_df = load_new_data(URL, 
-                                                       output_dir = "CyberThreat_Insight/cybersecurity_data", 
-                                                       filename = "normal_and_anomalous_df.csv" )
+    print("[INFO] Loading operational dataset from Google Drive ...")
 
-    selected_attacks=["phishing", "malware", "ddos", "data_leak", "insider", "ransomware"]
+    ops_df = load_new_data(
+        URL,
+        output_dir=DATA_PATH,
+        filename="normal_and_anomalous_df.csv"
+    )
 
-    # Load the dataset
-    #production_df = pd.read_csv(anomalous_flaged_production_df)
-    #production_df.head()
+    print(f"[INFO] Dataset loaded | shape={ops_df.shape}")
 
+    # ---------------- Attack Selection ----------------
+    selected_attacks = [
+        "phishing",
+        "malware",
+        "ddos",
+        "data_leak",
+        "insider",
+        "ransomware"
+    ]
 
-    #detect production data early anomalous
-    # Check if production_df is loaded correctly
-    #if production_df is not None:
-    #    df_anomalies, df_normal = EarlyAnomalyDetectorClass(production_df).detect_early_anomalies()
-    #else:
-    #    print("Error: production_df is None. Please check the file path.")
-    #    return  # Exit the function if data loading failed
+    print("[INFO] Running selected attack simulations ...")
 
-    #df_anomalies_copy = df_anomalies.copy()  # Create a copy here
-    #display(df_anomalies_copy.head())
-    #df = DataCombiner(df_normal, df_anomalies_copy).combine_data()
-    #simulate the attacks on anomalous data frame
-    #simulated_attacks_df = run_selected_attacks(df_anomalies, selected_attacks, verbose=True)
-    simulated_attacks_df = run_selected_attacks(normal_and_anomalous_production_df, selected_attacks, verbose=True)
-    #df.head()
+    simulated_attacks_df = run_selected_attacks(
+        ops_df,
+        selected_attacks,
+        verbose=True
+    )
 
-    #Combined normal and anomalous data frames
-    #combined_normal_and_simulated_attacks_df = DataCombiner(df_normal, simulated_attacks_df).combine_data()
-    #combined_normal_and_simulated_attacks_df.head()
-    normal_and_simulated_attacks_class_df = predict_new_data(AUGMENTED_DATA_URL = AUGMENTED_DATA_PATH, 
-                                                             model_dir = MODEL_DIR, 
-                                                             ops_df = simulated_attacks_df)
-    #save the combined data frame to google drive
-    #save_dataframe_to_drive(normal_and_simulated_attacks_class_df,
-    #                        combined_normal_and_simulated_attacks_class_df+"normal_and_simulated_attacks_class_df.csv")
-    display(normal_and_simulated_attacks_class_df.head())
+    print(f"[INFO] Simulation complete | shape={simulated_attacks_df.shape}")
 
-if __name__ == "__main__":
+    # ---------------- SCHEMA VALIDATION ----------------
+    required_cols = ["Impact Score", "Threat Score", "Attack Type"]
+    missing = set(required_cols) - set(simulated_attacks_df.columns)
 
-    main_attacks_simulation_pipeline(NEW_DATA_URL)
+    if missing:
+        raise ValueError(f"[ERROR] Missing required columns: {missing}")
+
+    print("[INFO] Schema validation passed")
+
+    # ---------------- ML SAFETY GATE ----------------
+    print("[INFO] Sanitizing simulated data for ML inference ...")
+
+    simulated_attacks_df = sanitize_for_ml(simulated_attacks_df)
+
+    # ---------------- Prediction ----------------
+    print("[INFO] Running stacked anomaly classifier ...")
+
+    predictions_df = predict_new_data(
+        AUGMENTED_DATA_URL=AUGMENTED_DATA_PATH,
+        model_dir=MODEL_DIR,
+        ops_df=simulated_attacks_df
+    )
+
+    print("[INFO] Prediction complete")
+
+    # ---------------- PERSIST RESULTS ----------------
+    output_path = (
+        f"{DATA_PATH}/simulated_with_predictions_"
+        f"{datetime.now():%Y%m%d_%H%M%S}.csv"
+    )
+
+    predictions_df.to_csv(output_path, index=False)
+    print(f"[INFO] Results saved to {output_path}")
+
+    print(predictions_df.head())
+
+    return predictions_df
