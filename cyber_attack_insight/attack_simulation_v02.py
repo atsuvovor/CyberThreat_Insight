@@ -151,10 +151,31 @@ class RansomwareAttack(BaseAttack):
         self._clip_metrics()
         return self.df
 
-def sanitize_for_ml(df):
-    df = df.replace([np.inf, -np.inf], np.nan)
-    df = df.fillna(df.median(numeric_only=True))
-    return df.astype("float32")
+def sanitize_for_ml(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Cleans numeric features for ML inference while preserving metadata columns.
+    """
+
+    df_clean = df.copy()
+
+    # Select numeric columns only
+    numeric_cols = df_clean.select_dtypes(include=[np.number]).columns
+
+    # Replace inf / -inf
+    df_clean[numeric_cols] = df_clean[numeric_cols].replace(
+        [np.inf, -np.inf], np.nan
+    )
+
+    # Fill NaNs using column medians
+    df_clean[numeric_cols] = df_clean[numeric_cols].fillna(
+        df_clean[numeric_cols].median()
+    )
+
+    # Cast ONLY numeric columns to float32
+    df_clean[numeric_cols] = df_clean[numeric_cols].astype("float32")
+
+    return df_clean
+
 
 
 class InsiderThreatAttack(BaseAttack):
