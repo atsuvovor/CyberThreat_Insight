@@ -113,7 +113,7 @@ def predict_new_data(NEW_DATA_URL = None, AUGMENTED_DATA_URL = None, model_dir =
     # --- Load new dataset ---
     
     df_new = load_new_data(NEW_DATA_URL, label_col, ops_df)
-    
+
     augmented_df = load_aumented_dataset(AUGMENTED_DATA_URL = None, 
                                          LABEL_COL = label_col, 
                                          AUGMENTED_DATA_PATH = AUGMENTED_DATA_PATH)
@@ -121,8 +121,15 @@ def predict_new_data(NEW_DATA_URL = None, AUGMENTED_DATA_URL = None, model_dir =
     #X_new and df_augmented have the same column names
     X_new = df_new[augmented_df.columns].drop(columns=[label_col], errors="ignore")
 
-    X_new_scaled = scaler.transform(X_new)
+    np.seterr(all="raise")  # catches silent numeric issues
 
+    print("[INFO] Inference input dtypes:")
+    print(X_new.dtypes.value_counts())
+    X_new = X_new.astype("float32")
+
+    X_new = scaler.transform(X_new)
+    X_new_scaled = np.asarray(X_new, dtype=np.float32)
+    
     # --- Generate anomaly features ---
     features_new = pd.DataFrame(index=np.arange(X_new_scaled.shape[0]))
 
