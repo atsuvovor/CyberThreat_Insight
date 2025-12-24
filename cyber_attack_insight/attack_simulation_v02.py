@@ -14,8 +14,6 @@ DATA_PATH =  "CyberThreat_Insight/cybersecurity_data"
 AUGMENTED_DATA_PATH = DATA_PATH + "/x_y_augmented_data_google_drive.csv"
 NEW_DATA_URL = "https://drive.google.com/file/d/1Nr9PymyvLfDh3qTfaeKNVbvLwt7lNX6l/view?usp=sharing"
 
-# -------------------- Attack Classes --------------------
-
 
 # -------------------- Base Attack --------------------
 
@@ -269,3 +267,7 @@ def main_attacks_simulation_pipeline(URL=None):
     print(predictions_df.head())
 
     return predictions_df
+
+
+if __name__ == "__main__":
+    main_attacks_simulation_pipeline(NEW_DATA_URL)
