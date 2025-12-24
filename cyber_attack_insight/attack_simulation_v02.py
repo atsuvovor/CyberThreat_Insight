@@ -192,6 +192,26 @@ class IPAddressGenerator:
         return source_ip, destination_ip
 
 
+def run_selected_attacks(df, selected_attacks, verbose=True):
+    attack_map = {
+        "phishing": PhishingAttack,
+        "malware": MalwareAttack,
+        "ddos": DDoSAttack,
+        "data_leak": DataLeakAttack,
+        "insider": InsiderThreatAttack,
+        "ransomware": RansomwareAttack
+    }
+    if df is None:
+        raise ValueError("Input DataFrame is None at the start of attack simulation.")
+
+    for attack in selected_attacks:
+        if verbose: print(f"[+] Applying {attack.capitalize()} Attack")
+        attack_class = attack_map[attack]
+        df = attack_class(df).apply()
+        if df is None:
+            raise ValueError(f"Attack {attack} returned None. Ensure its `.apply()` method returns a DataFrame.")
+
+    return df
 
 
 #------------------------------Main attacks simulation pipeline----------------------------
