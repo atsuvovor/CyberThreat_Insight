@@ -271,6 +271,11 @@ def main_attacks_simulation_pipeline(URL=None):
 
     print(f"[INFO] Simulation complete | shape={simulated_attacks_df.shape}")
 
+        # ---------------- ML SAFETY GATE ----------------
+    print("[INFO] Sanitizing simulated data for ML inference ...")
+
+    simulated_attacks_df = sanitize_for_ml(simulated_attacks_df)
+
     # ---------------- SCHEMA VALIDATION ----------------
     required_cols = ["Impact Score", "Threat Score", "Attack Type"]
     missing = set(required_cols) - set(simulated_attacks_df.columns)
@@ -279,11 +284,18 @@ def main_attacks_simulation_pipeline(URL=None):
         raise ValueError(f"[ERROR] Missing required columns: {missing}")
 
     print("[INFO] Schema validation passed")
+    simulated_attacks_df[["Impact Score", "Threat Score"]] = (
+    simulated_attacks_df[["Impact Score", "Threat Score"]]
+    .astype("float32")
+    )
 
-    # ---------------- ML SAFETY GATE ----------------
-    print("[INFO] Sanitizing simulated data for ML inference ...")
-
-    simulated_attacks_df = sanitize_for_ml(simulated_attacks_df)
+    # Save augmented dataset
+    output_path = (
+        f"{DATA_PATH}/simulated_with_predictions_"
+        f"{datetime.now():%Y%m%d_%H%M%S}.csv"
+    )
+    simulated_attacks_df.to_csv(output_path, index=False)
+    print(f"[INFO] Results saved to {output_path}")
 
     # ---------------- Prediction ----------------
     print("[INFO] Running stacked anomaly classifier ...")
