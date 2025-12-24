@@ -23,8 +23,11 @@ from matplotlib.ticker import FuncFormatter
 from fpdf import FPDF
 
 from IPython.display import display
+from CyberThreat_Insight.cyber_attack_insight.attack_simulation_v02 import main_attacks_simulation_pipeline
 
-from cyber_attack_insight.attack_symulation_classes01.py import  main_attacks_simulation_pipeline
+NEW_DATA_URL = "https://drive.google.com/file/d/1Nr9PymyvLfDh3qTfaeKNVbvLwt7lNX6l/view?usp=sharing"
+DATA_FOLDER_PATH =  "CyberThreat_Insight/cybersecurity_data"
+executive_cybersecurity_attack_report_on_drive = os.path.join(DATA_FOLDER_PATH, "Executive_Cybersecurity_Attack_Report.pdf")
 
 
 
@@ -289,21 +292,22 @@ def main_executive_report_pipeline(df: pd.DataFrame) -> None:
     plot_executive_report_donut_charts(report_summary_data_dic)
 
 
-def main_dashboard(
-    simulated_attacks_file_path: str =
-    "CyberThreat_Insight/cybersecurity_data/combined_normal_and_simulated_attacks_class_df.csv"
-) -> None:
+def main_dashboard(NEW_DATA_URL = None,
+                   simulated_attacks_file_path = None) -> None:
+    #simulated_attacks_file_path: str =
+    #"CyberThreat_Insight/cybersecurity_data/combined_normal_and_simulated_attacks_class_df.csv"
+
     """
     Main dashboard execution entry point.
 
     Parameters
     ----------
-    simulated_attacks_file_path : str
-        CSV path for attack simulation data
+    NEW_DATA_URL: sty #  simulated= attacks file URL 
+    simulated_attacks_file_path: sty #  simulated= attacks file path
     """
 
     #attack_simulation_df = pd.read_csv(simulated_attacks_file_path)
-    attack_simulation_df = main_attacks_simulation_pipeline()
+    attack_simulation_df = main_attacks_simulation_pipeline(NEW_DATA_URL)
 
 
     print("\nRunning Executive KPI Dashboard\n")
@@ -311,4 +315,4 @@ def main_dashboard(
 
 
 if __name__ == "__main__":
-    main_dashboard()
+    main_dashboard(NEW_DATA_URL)
