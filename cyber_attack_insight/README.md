@@ -1,4 +1,4 @@
-# 🛡️ CyberThreat-Insight - Attack Simulation and Detection
+# 🛡️ CyberThreat-Insight - Attack Simulation & Stacked Anomaly Detection Platform
 <div align="center">
 
  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/cyber_threat_detection_engine4.png" 
@@ -8,7 +8,7 @@
 **Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI & Stacked Generalization**
 
 </div>
-## Attack Simulation & Stacked Anomaly Detection Platform
+  
 
 **Author:** Atsu Vovor
 **Title:** Data & Analytics Consultant | Cybersecurity | AI Reporting
