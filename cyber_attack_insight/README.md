@@ -347,7 +347,23 @@ Residual risk is **intentional** to support stress-testing.
 | ISO 27001 | Security monitoring         |
 | NIST CSF  | Detect / Respond            |
 
----
+## 📋 Regulatory Compliance Mapping
+
+| Pipeline Stage                   | Controls / Governance                                       | Applicable Standard / Framework                   | Notes / Implementation                                                                |
+| -------------------------------- | ----------------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| **Data Sources**                 | Source validation, hash checks, access controls             | NIST SP 800-53 AC-1, ISO 27001 A.8.1              | Verify CSV integrity, restrict access to Google Drive files                           |
+| **Data Loader**                  | Schema enforcement, missing value handling, type validation | SOC 2 CC6.1, ISO 27001 A.12.5                     | Ensure operational dataset matches expected structure, prevent corrupt data ingestion |
+| **Attack Simulation Engine**     | Parameter bounds, random seed, reproducibility              | NIST CSF PR.DS-1, ISO 27001 A.12.6                | Log attack parameters; ensure reproducible simulations for audit                      |
+| **MITRE ATT&CK Mapping**         | Mapping audit, logging of attacks                           | MITRE ATT&CK Enterprise, NIST CSF DE.CM-1         | Each simulated attack mapped to MITRE techniques for threat modeling                  |
+| **Sanitization / ML Safety**     | NaN / Inf handling, float32 casting, numeric scaling        | ISO 27001 A.12.4, SOC 2 CC7.1                     | Prevent ML errors and maintain safe numerical operations                              |
+| **Stacked Anomaly Detection**    | Model versioning, validation, threshold enforcement         | NIST AI RMF, ISO/IEC 42001, EU AI Act (high-risk) | Track base and meta model versions; log model inputs and outputs                      |
+| **Predictions & Risk Scores**    | Output verification, scoring consistency                    | SOC 2 CC7.1, NIST CSF DE.CM-7                     | Validate prediction outputs for completeness and numeric stability                    |
+| **Dashboards / Reports**         | Access controls, versioning, audit trail                    | ISO 27001 A.9, SOC 2 CC6.1, GDPR Art. 32          | Executive dashboards only accessible to approved users; track exported reports        |
+| **Audit / Logging Layer**        | Full pipeline traceability                                  | SOC 2 CC3.1, NIST SP 800-53 AU-2                  | Store timestamps, attack types, model versions, validation logs                       |
+| **Model Governance & Oversight** | Committee approvals, documentation, risk assessment         | NIST AI RMF, EU AI Act, ISO/IEC 42001             | Periodic review by Model Risk Committee; governance reports for regulators            |
+
+## Updated  Attacks  Architecture Diagram with Governance Overlay
+--- 
 
 ## 📤 Outputs
 
