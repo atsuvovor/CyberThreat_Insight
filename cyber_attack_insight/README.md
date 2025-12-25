@@ -385,16 +385,6 @@ CyberThreat-Insight prioritizes:
 
 It bridges **cybersecurity, data science, and AI governance** into a single, auditable framework.
 
----
-
-Perfect — below is a **clean, regulator-ready extension** you can **drop directly into your `README.md`** (or keep as an appendix file).
-It adds **three things auditors, academics, and model risk teams explicitly look for**:
-
-1. **A LaTeX-only appendix** (submission-ready)
-2. **Plain-English executive explanations** of each formula
-3. **A formal model validation checklist** referencing the equations
-
-This is aligned with **OSFI / SR 11-7 / internal MRM** standards.
 
 ---
 
@@ -408,81 +398,81 @@ This is aligned with **OSFI / SR 11-7 / internal MRM** standards.
 
 ## A.1 Phishing — Credential Abuse
 
-[
+$$
 X_{\text{login}} \sim \text{Poisson}(\lambda)
-]
+$$
 
-[
+$$
 \text{Impact} \sim \mathcal{N}(5, 3^2)
-]
+$$
 
-[
+$$
 \text{Threat} \sim \mathcal{N}(6, 3^2)
-]
+$$
 
 ---
 
 ## A.2 Malware — System Enumeration
 
-[
+$$
 X_{\text{files}} \sim \text{Poisson}(\lambda)
-]
+$$
 
-[
+$$
 \text{Impact},; \text{Threat} \sim \mathcal{N}(7, 4^2)
-]
+$$
 
 ---
 
 ## A.3 DDoS — Resource Saturation
 
-[
+$$
 X_{\text{session}} \sim \text{Exponential}(\beta)
-]
+$$
 
-[
+$$
 \text{Impact},; \text{Threat} \sim \text{Exponential}(8)
-]
+$$
 
 ---
 
 ## A.4 Data Leak — Exfiltration
 
-[
+$$
 X = \mu \cdot e^{\sigma Z}, \quad Z \sim \mathcal{N}(0,1)
-]
+$$
 
-[
+$$
 \text{Impact},; \text{Threat} \sim \mathcal{N}(12, 5^2)
-]
+$$
 
 ---
 
 ## A.5 Insider Threat — Time-Based Abuse
 
-[
+$$
 \text{hour} < 6 \quad \text{or} \quad \text{hour} > 23
-]
+$$
 
-[
+$$
 X_{\text{transfer}} \sim \text{LogNormal}(\sigma = 0.3)
-]
+$$
 
 ---
 
 ## A.6 Ransomware — Encryption Storms
 
-[
+$$
 X_{\text{CPU}} \sim \mathcal{N}(20, 10^2)
-]
+$$
 
-[
+$$
 X_{\text{memory}} \sim \text{LogNormal}(\sigma = 0.5)
-]
+$$
 
-[
+$$
 \text{Impact},; \text{Threat} \sim \mathcal{N}(15, 5^2)
-]
+$$
 
 ---
 
@@ -603,16 +593,6 @@ This framework was designed to:
 ✔ Align with **financial-services model governance standards**
 ✔ Provide **explainable, auditable outputs**
 
----
-
-If you want next, I can:
-
-• Split this into a **formal Model Card (PDF)**
-• Produce a **Model Risk Committee slide**
-• Add **OSFI / SR 11-7 explicit control mapping**
-• Package this as a **client-ready deliverable**
-
-Just say the word.
 
 ---
 ## 👤 Author
