@@ -1,5 +1,13 @@
-# 🛡️ CyberThreat-Insight
+# 🛡️ CyberThreat-Insight - Attack Simulation and Detection
+<div align="center">
 
+ <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/cyber_threat_detection_engine4.png" 
+       alt="Cyber Threat Detection Engine" 
+       style="width: 600px; height: 40%;">
+
+**Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI & Stacked Generalization**
+
+</div>
 ## Attack Simulation & Stacked Anomaly Detection Platform
 
 **Author:** Atsu Vovor
@@ -60,6 +68,9 @@ Threat Scores & Anomaly Predictions
             ▼
 Persisted Outputs (CSV / Dashboards / AI Reports)
 ```
+<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/cyber_threat_detection_engine4.png" 
+       alt="Cyber Threat Detection Engine" 
+       style="width: 600px; height: 40%;">
 
 ---
 
@@ -222,7 +233,117 @@ $$
 $$
 
 ---
+---
 
+# 📎 Appendix A — Mathematical Specifications  
+> **Audience:** Executives, Audit, Risk Committees, non-technical stakeholders  
+
+> **Purpose:**
+> This appendix provides a formal mathematical description of the cyber-attack simulation logic, suitable for **academic review, regulator submission, or independent model validation**.
+> No narrative interpretation is included in this section.
+
+---
+
+## A.1 Phishing — Credential Abuse
+
+$$
+X_{\text{login}} \sim \text{Poisson}(\lambda)
+$$
+
+$$
+\text{Impact} \sim \mathcal{N}(5, 3^2)
+$$
+
+$$
+\text{Threat} \sim \mathcal{N}(6, 3^2)
+$$
+
+*Login attempts follow a Poisson distribution* because phishing attacks generate **many small, repeated login attempts**.
+Impact and threat scores use a **normal distribution** to reflect moderate but consistent operational ris
+---
+
+## A.2 Malware — System Enumeration
+
+$$
+X_{\text{files}} \sim \text{Poisson}(\lambda)
+$$
+
+$$
+\text{Impact},; \text{Threat} \sim \mathcal{N}(7, 4^2)
+$$
+
+Malware tends to **scan files repeatedly**, which is well modeled by a Poisson process.
+Severity scores are centered higher than phishing, reflecting **greater system compromise risk**.
+
+---
+
+## A.3 DDoS — Resource Saturation
+
+$$
+X_{\text{session}} \sim \text{Exponential}(\beta)
+$$
+
+$$
+\text{Impact},; \text{Threat} \sim \text{Exponential}(8)
+$$
+
+Session durations follow an **exponential distribution**, capturing the fact that most attacks are short, but a few last a very long time.
+Severity escalates rapidly as resources are exhausted.
+
+---
+
+## A.4 Data Leak — Exfiltration
+
+$$
+X = \mu \cdot e^{\sigma Z}, \quad Z \sim \mathcal{N}(0,1)
+$$
+
+$$
+\text{Impact},; \text{Threat} \sim \mathcal{N}(12, 5^2)
+$$
+
+
+Data exfiltration follows a **lognormal distribution**, reflecting that:
+
+* Most leaks are small
+* A few rare events cause massive losses
+
+This aligns with real-world breach patterns.
+---
+
+## A.5 Insider Threat — Time-Based Abuse
+
+$$
+\text{hour} < 6 \quad \text{or} \quad \text{hour} > 23
+$$
+
+$$
+X_{\text{transfer}} \sim \text{LogNormal}(\sigma = 0.3)
+$$
+
+Insider activity is flagged **outside normal business hours**.
+Data transfers follow a lognormal pattern, modeling **stealthy but potentially severe misuse**.
+---
+
+## A.6 Ransomware — Encryption Storms
+
+$$
+X_{\text{CPU}} \sim \mathcal{N}(20, 10^2)
+$$
+
+$$
+X_{\text{memory}} \sim \text{LogNormal}(\sigma = 0.5)
+$$
+
+$$
+\text{Impact},; \text{Threat} \sim \mathcal{N}(15, 5^2)
+$$
+
+
+CPU and memory usage spike sharply during encryption.
+Severity scores are the highest, reflecting **business-critical impact and recovery cost**.  
+
+---
 ### ✅ Notes for Reviewers & Regulators
 
 * All distributions are **explicitly defined** for transparency and reproducibility
@@ -363,6 +484,10 @@ Residual risk is **intentional** to support stress-testing.
 | **Model Governance & Oversight** | Committee approvals, documentation, risk assessment         | NIST AI RMF, EU AI Act, ISO/IEC 42001             | Periodic review by Model Risk Committee; governance reports for regulators            |
 
 ## Updated  Attacks  Architecture Diagram with Governance Overlay
+<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/cyber_threat_detection_engine4.png" 
+       alt="Cyber Threat Detection Engine" 
+       style="width: 600px; height: 40%;">
+
 --- 
 
 ## 📤 Outputs
@@ -404,7 +529,8 @@ It bridges **cybersecurity, data science, and AI governance** into a single, aud
 
 ---
 
-# 📎 Appendix A — Mathematical Specifications (LaTeX-Only)
+# 📎 Appendix A — Mathematical Specifications  
+> **Audience:** Executives, Audit, Risk Committees, non-technical stakeholders  
 
 > **Purpose:**
 > This appendix provides a formal mathematical description of the cyber-attack simulation logic, suitable for **academic review, regulator submission, or independent model validation**.
@@ -426,6 +552,8 @@ $$
 \text{Threat} \sim \mathcal{N}(6, 3^2)
 $$
 
+*Login attempts follow a Poisson distribution* because phishing attacks generate **many small, repeated login attempts**.
+Impact and threat scores use a **normal distribution** to reflect moderate but consistent operational ris
 ---
 
 ## A.2 Malware — System Enumeration
@@ -437,6 +565,9 @@ $$
 $$
 \text{Impact},; \text{Threat} \sim \mathcal{N}(7, 4^2)
 $$
+
+Malware tends to **scan files repeatedly**, which is well modeled by a Poisson process.
+Severity scores are centered higher than phishing, reflecting **greater system compromise risk**.
 
 ---
 
@@ -450,6 +581,9 @@ $$
 \text{Impact},; \text{Threat} \sim \text{Exponential}(8)
 $$
 
+Session durations follow an **exponential distribution**, capturing the fact that most attacks are short, but a few last a very long time.
+Severity escalates rapidly as resources are exhausted.
+
 ---
 
 ## A.4 Data Leak — Exfiltration
@@ -462,6 +596,13 @@ $$
 \text{Impact},; \text{Threat} \sim \mathcal{N}(12, 5^2)
 $$
 
+
+Data exfiltration follows a **lognormal distribution**, reflecting that:
+
+* Most leaks are small
+* A few rare events cause massive losses
+
+This aligns with real-world breach patterns.
 ---
 
 ## A.5 Insider Threat — Time-Based Abuse
@@ -474,6 +615,8 @@ $$
 X_{\text{transfer}} \sim \text{LogNormal}(\sigma = 0.3)
 $$
 
+Insider activity is flagged **outside normal business hours**.
+Data transfers follow a lognormal pattern, modeling **stealthy but potentially severe misuse**.
 ---
 
 ## A.6 Ransomware — Encryption Storms
@@ -489,6 +632,10 @@ $$
 $$
 \text{Impact},; \text{Threat} \sim \mathcal{N}(15, 5^2)
 $$
+
+
+CPU and memory usage spike sharply during encryption.
+Severity scores are the highest, reflecting **business-critical impact and recovery cost**.  
 
 ---
 
@@ -600,15 +747,18 @@ Severity scores are the highest, reflecting **business-critical impact and recov
 
 ---
 
-# 🏁 Final Note for Regulators & Committees
+# 🏁 Final Note for Regulators & Committees  
 
-This framework was designed to:
+This framework was designed to:  
 
-✔ Support **stress testing and scenario analysis**
-✔ Enable **transparent validation**
-✔ Align with **financial-services model governance standards**
-✔ Provide **explainable, auditable outputs**
+✔ Support **stress testing and scenario analysis**  
+✔ Enable **transparent validation**  
+✔ Align with **financial-services model governance standards**  
+✔ Provide **explainable, auditable outputs**  
 
+<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/cyber_threat_detection_engine4.png" 
+       alt="Cyber Threat Detection Engine" 
+       style="width: 600px; height: 40%;">
 
 ---
 ## 👤 Author
