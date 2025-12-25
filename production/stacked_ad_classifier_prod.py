@@ -154,7 +154,7 @@ def predict_new_data(
     nn_idx = nbrs.kneighbors(X_new_scaled, return_distance=False)[:, 0]
     features_new["dbscan_anomaly"] = (dbscan.labels_[nn_idx] == -1).astype(float)
 
-    # KMeans — ✅ now safe
+    # KMeans —  now safe
     print("X dtype:", X_new_scaled.dtype)
     print("Centers dtype:", kmeans.cluster_centers_.dtype)
     k_labels = kmeans.predict(X_new_scaled)
