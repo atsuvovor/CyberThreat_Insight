@@ -119,130 +119,13 @@ Each attack:
 
 ## 📊 Mathematical Foundations of Attack Simulation
 
-Each attack is governed by **explicit probabilistic models** to ensure realism, explainability, and repeatability.
-
----
-
-Here is the **correct, clean, and Markdown-compatible rewrite** of your section.
-It will render properly in **GitHub README.md**, **MkDocs**, and **enterprise documentation tools**, while keeping the mathematics precise and readable.
-
----
-
-## 📨 Phishing — Credential Abuse
-
-**Login Attempts**
-
-$$
-X_{\text{login}} \sim \text{Poisson}(\lambda)
-$$
-
-**Impact and Threat Scores**
-
-$$
-\text{Impact} \sim \mathcal{N}(5, 3^2)
-$$
-
-$$
-\text{Threat} \sim \mathcal{N}(6, 3^2)
-$$
-
----
-
-## 🦠 Malware — System Enumeration
-
-**Files Accessed**
-
-$$
-X_{\text{files}} \sim \text{Poisson}(\lambda)
-$$
-
-**Impact and Threat Scores**
-
-$$
-(\text{Impact}, \text{Threat}) \sim \mathcal{N}(7, 4^2)
-$$
-
----
-
-## 🌐 DDoS — Resource Saturation
-
-**Session Duration**
-
-$$
-X_{\text{session}} \sim \text{Exponential}(\beta)
-$$
-
-**Impact and Threat Escalation**
-
-$$
-(\text{Impact}, \text{Threat}) \sim \text{Exponential}(8)
-$$
-
----
-
-## 💾 Data Leak — Data Exfiltration
-
-**Data Transfer Volume**
-
-$$
-X = \mu \cdot e^{\sigma Z}, \quad Z \sim \mathcal{N}(0,1)
-$$
-
-**Impact and Threat Scores**
-
-$$
-(\text{Impact}, \text{Threat}) \sim \mathcal{N}(12, 5^2)
-$$
-
----
-
-## 🔐 Insider Threat — Time-Based Abuse
-
-**Targeted Sessions**
-
-$$
-\text{hour} < 6 \quad \text{or} \quad \text{hour} > 23
-$$
-
-**Data Transfer Volume**
-
-$$
-X_{\text{transfer}} \sim \text{LogNormal}(\sigma = 0.3)
-$$
-
----
-
-## 💣 Ransomware — Encryption Storms
-
-**CPU Utilization**
-
-$$
-X_{\text{CPU}} \sim \mathcal{N}(20, 10^2)
-$$
-
-**Memory Consumption**
-
-$$
-X_{\text{memory}} \sim \text{LogNormal}(\sigma = 0.5)
-$$
-
-**Impact and Threat Scores**
-
-$$
-(\text{Impact}, \text{Threat}) \sim \mathcal{N}(15, 5^2)
-$$
-
----
----
-
-# 📎 Appendix A — Mathematical Specifications  
+Each attack is governed by **explicit probabilistic models** to ensure realism, explainability, and repeatability.  
+  
 > **Audience:** Executives, Audit, Risk Committees, non-technical stakeholders  
 
 > **Purpose:**
 > This appendix provides a formal mathematical description of the cyber-attack simulation logic, suitable for **academic review, regulator submission, or independent model validation**.
-> No narrative interpretation is included in this section.
-
----
+> No narrative interpretation is included in this section.  
 
 ## A.1 Phishing — Credential Abuse
 
@@ -259,8 +142,8 @@ $$
 $$
 
 *Login attempts follow a Poisson distribution* because phishing attacks generate **many small, repeated login attempts**.
-Impact and threat scores use a **normal distribution** to reflect moderate but consistent operational ris
----
+Impact and threat scores use a **normal distribution** to reflect moderate but consistent operational ris  
+
 
 ## A.2 Malware — System Enumeration
 
@@ -273,9 +156,8 @@ $$
 $$
 
 Malware tends to **scan files repeatedly**, which is well modeled by a Poisson process.
-Severity scores are centered higher than phishing, reflecting **greater system compromise risk**.
+Severity scores are centered higher than phishing, reflecting **greater system compromise risk**.  
 
----
 
 ## A.3 DDoS — Resource Saturation
 
@@ -288,9 +170,8 @@ $$
 $$
 
 Session durations follow an **exponential distribution**, capturing the fact that most attacks are short, but a few last a very long time.
-Severity escalates rapidly as resources are exhausted.
+Severity escalates rapidly as resources are exhausted.   
 
----
 
 ## A.4 Data Leak — Exfiltration
 
@@ -303,15 +184,14 @@ $$
 $$
 
 
-Data exfiltration follows a **lognormal distribution**, reflecting that:
+Data exfiltration follows a **lognormal distribution**, reflecting that:  
 
-* Most leaks are small
-* A few rare events cause massive losses
+* Most leaks are small  
+* A few rare events cause massive losses  
 
-This aligns with real-world breach patterns.
----
+This aligns with real-world breach patterns.  
 
-## A.5 Insider Threat — Time-Based Abuse
+## A.5 Insider Threat — Time-Based Abuse  
 
 $$
 \text{hour} < 6 \quad \text{or} \quad \text{hour} > 23
@@ -321,9 +201,8 @@ $$
 X_{\text{transfer}} \sim \text{LogNormal}(\sigma = 0.3)
 $$
 
-Insider activity is flagged **outside normal business hours**.
-Data transfers follow a lognormal pattern, modeling **stealthy but potentially severe misuse**.
----
+Insider activity is flagged **outside normal business hours**.  
+Data transfers follow a lognormal pattern, modeling **stealthy but potentially severe misuse**.  
 
 ## A.6 Ransomware — Encryption Storms
 
@@ -343,7 +222,6 @@ $$
 CPU and memory usage spike sharply during encryption.
 Severity scores are the highest, reflecting **business-critical impact and recovery cost**.  
 
----
 ### ✅ Notes for Reviewers & Regulators
 
 * All distributions are **explicitly defined** for transparency and reproducibility
