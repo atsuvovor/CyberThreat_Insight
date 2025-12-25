@@ -14,7 +14,7 @@
 **Title:** Data & Analytics Consultant | Cybersecurity | AI Reporting
 **Location:** Toronto, Canada
 
----
+
 
 ## 📌 Executive Overview
 
@@ -30,7 +30,7 @@ The platform augments **real operational cybersecurity data** with **statistical
 
 This solution is intentionally designed to align with how **financial institutions, insurers, and regulated enterprises** evaluate analytics platforms during **Model Risk Committee, Internal Audit, and regulator reviews**.
 
----
+
 
 ## 🧠 Platform Capabilities at a Glance
 
@@ -72,7 +72,7 @@ Persisted Outputs (CSV / Dashboards / AI Reports)
        alt="Cyber Threat Detection Engine" 
        style="width: 600px; height: 40%;">
 
----
+
 
 ## 🧭 MITRE ATT&CK–Mapped Architecture View
 
@@ -94,7 +94,7 @@ Each simulated attack is explicitly mapped to **MITRE ATT&CK tactics and techniq
 | Ransomware     | T1486              | Data Encrypted for Impact    |
 | Ransomware     | T1490              | Inhibit System Recovery      |
 
----
+
 
 ## ⚙️ Key Features
 
@@ -115,9 +115,9 @@ Each attack:
 * Applies statistically bounded perturbations
 * Preserves schema integrity and numeric limits
 
----
 
-### Mathematical Foundations of Attack Simulation
+
+## Mathematical Foundations of Attack Simulation
 
 Each attack is governed by **explicit probabilistic models** to ensure realism, explainability, and repeatability.  
   
@@ -222,7 +222,7 @@ $$
 CPU and memory usage spike sharply during encryption.
 Severity scores are the highest, reflecting **business-critical impact and recovery cost**.  
 
-### ✅ Notes for Reviewers & Regulators
+## Notes for Reviewers & Regulators
 
 * All distributions are **explicitly defined** for transparency and reproducibility
 * Parameters are **bounded in code** to enforce operational realism
@@ -230,7 +230,7 @@ Severity scores are the highest, reflecting **business-critical impact and recov
 
 
 
-## 🧼 ML-Safe Data Engineering
+## ML-Safe Data Engineering
 
 ### Sanitization Controls
 
@@ -243,7 +243,7 @@ Severity scores are the highest, reflecting **business-critical impact and recov
 This prevents **inference-time failures** and supports **model reproducibility**.
 
 
-## 🔮 Stacked Anomaly Detection Model
+## Stacked Anomaly Detection Model
 
 The anomaly detection engine is a **stacked ensemble** consisting of:
 
@@ -257,9 +257,9 @@ The anomaly detection engine is a **stacked ensemble** consisting of:
 
 A **Gradient Boosting meta-model** produces the final anomaly classification and threat score.
 
----
 
-## 📂 Project Structure
+
+## Project Structure
 
 ```
 CyberThreat_Insight/
@@ -326,9 +326,9 @@ CyberThreat_Insight/
 
 Residual risk is **intentional** to support stress-testing.
 
----
+-
 
-## 📜 Regulatory & Compliance Alignment
+## Regulatory & Compliance Alignment
 
 | Framework | Coverage                    |
 | --------- | --------------------------- |
@@ -357,16 +357,16 @@ Residual risk is **intentional** to support stress-testing.
        alt="Cyber Threat Detection Engine" 
        style="width: 600px; height: 40%;">
 
---- 
 
-## 📤 Outputs
+
+## Outputs
 
 * Simulated datasets with attack annotations
 * Anomaly scores & threat levels
 * Dashboard-ready tables
 * AI-generated executive summaries
 
----
+
 
 ## 🎯 Intended Use & Limitations
 
@@ -382,7 +382,7 @@ Residual risk is **intentional** to support stress-testing.
 * User performance monitoring
 * Law-enforcement decisioning
 
----
+
 
 ## 🧠 Design Philosophy
 
@@ -394,10 +394,6 @@ CyberThreat-Insight prioritizes:
 * Executive trust
 
 It bridges **cybersecurity, data science, and AI governance** into a single, auditable framework.
-
-
----
-
 
 
 ## Model Validation Checklist (MRM / Audit)
@@ -454,7 +450,7 @@ It bridges **cybersecurity, data science, and AI governance** into a single, aud
 * Severity scores represent **system risk**, not user intent
 * Insider logic is heuristic, not behavioral profiling
 
----
+
 
 ##  Final Note for Regulators & Committees  
 
@@ -469,7 +465,7 @@ This framework was designed to:
        alt="Cyber Threat Detection Engine" 
        style="width: 600px; height: 40%;">
 
----
+
 ## 👤 Author
 
 **Atsu Vovor**
