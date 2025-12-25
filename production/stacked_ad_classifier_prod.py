@@ -125,17 +125,34 @@ def predict_new_data(NEW_DATA_URL = None, AUGMENTED_DATA_PATH = None, model_dir 
 
     print("[INFO] Inference input dtypes:")
     print(X_new.dtypes.value_counts())
-    X_new = X_new.astype("float32")
-
+    # ---------------- FORCE NUMERIC + FLOAT32 ----------------
+    X_new = (
+        X_new
+        .apply(pd.to_numeric, errors="coerce")
+        .fillna(0.0)
+        .to_numpy(dtype=np.float32)
+    )
+    
+    # ---------------- SCALE (RETURNS float64!) ----------------
     X_new_scaled = scaler.transform(X_new)
-    X_new_scaled = (
-    pd.DataFrame(X_new_scaled)
-    .apply(pd.to_numeric, errors="coerce")
-    .fillna(0.0)
-    .astype(np.float32)
-    .to_numpy()
-)
-    X_new_scaled = np.asarray(X_new, dtype=np.float32)
+
+    # ---------------- FORCE BACK TO float32 ----------------
+    X_new_scaled = np.asarray(X_new_scaled, dtype=np.float32)
+
+    # ---------------- HARD SAFETY CHECK ----------------
+    assert X_new_scaled.dtype == np.float32, X_new_scaled.dtype
+
+    # ---------------- ANOMALY FEATURES ----------------
+    #features_new = pd.DataFrame(index=np.arange(X_new_scaled.shape[0]))
+    
+    #X_new_scaled = (
+    #pd.DataFrame(X_new_scaled)
+    #.apply(pd.to_numeric, errors="coerce")
+    #.fillna(0.0)
+    #.astype(np.float32)
+    #.to_numpy()
+    #)
+    #X_new_scaled = np.asarray(X_new, dtype=np.float32)
     
     # --- Generate anomaly features ---
     features_new = pd.DataFrame(index=np.arange(X_new_scaled.shape[0]))
@@ -166,7 +183,7 @@ def predict_new_data(NEW_DATA_URL = None, AUGMENTED_DATA_PATH = None, model_dir 
     recon_lstm = lstm_autoencoder.predict(X_seq, verbose=0)
     features_new['lstm_mse'] = np.mean((X_seq - recon_lstm) ** 2, axis=(1,2))
 
-    # --- Build extended features ---
+    # --- Build extended features STACK FEATURES---
     X_new_ext = pd.DataFrame(
         np.hstack([X_new_scaled, features_new]),
         columns = list(X_new.columns) + list(features_new.columns)
@@ -187,7 +204,7 @@ def predict_new_data(NEW_DATA_URL = None, AUGMENTED_DATA_PATH = None, model_dir 
 
     # Add anomaly info
     # map df_new[label_col]
-    df_new[label_col] = df_new[label_col].map({'Low': 0, 'Medium': 1, 'High': 2, 'Critical': 2})
+    df_new[label_col] = df_new[label_col].map({'Low': 0, 'Medium': 1, 'High': 2, 'Critical': 3})
     df_new['true_anomaly'] = (df_new[label_col] >= 2).astype(int) if label_col in df_new else np.nan
     df_new['anomaly_score'] = features_new.mean(axis=1)  # aggregate score across detectors
     df_new['predicted_anomaly'] = (df_new['Predicted Threat Level'] >= 2).astype(int)
