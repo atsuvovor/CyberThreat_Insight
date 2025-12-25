@@ -8,11 +8,12 @@
 **Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI & Stacked Generalization**
 
 </div>
+
   
 
-**Author:** Atsu Vovor
-**Title:** Data & Analytics Consultant | Cybersecurity | AI Reporting
-**Location:** Toronto, Canada
+**Author:** Atsu Vovor  
+**Title:** Data & Analytics Consultant | Cybersecurity | AI Reporting  
+**Location:** Toronto, Canada  
 
 
 
