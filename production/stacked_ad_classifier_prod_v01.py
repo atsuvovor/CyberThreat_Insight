@@ -104,6 +104,7 @@ def predict_new_data(NEW_DATA_URL = None, AUGMENTED_DATA_PATH = None, model_dir 
     lof = joblib.load(f"{model_dir}/lof.joblib")
     dbscan = joblib.load(f"{model_dir}/dbscan.joblib")
     kmeans = joblib.load(f"{model_dir}/kmeans.joblib")
+    kmeans.cluster_centers_ = kmeans.cluster_centers_.astype(np.float32)
 
     dense_autoencoder = load_model(f"{model_dir}/dense_autoencoder.keras")
     lstm_autoencoder = load_model(f"{model_dir}/lstm_autoencoder.keras")
@@ -168,6 +169,9 @@ def predict_new_data(NEW_DATA_URL = None, AUGMENTED_DATA_PATH = None, model_dir 
     features_new['dbscan_anomaly'] = (assigned_labels == -1).astype(float)
 
     # KMeans distances
+    print("X dtype:", X_new_scaled.dtype)
+    print("Centers dtype:", kmeans.cluster_centers_.dtype)
+
     k_labels = kmeans.predict(X_new_scaled)
     features_new['kmeans_dist'] = np.linalg.norm(
         X_new_scaled - kmeans.cluster_centers_[k_labels], axis=1
