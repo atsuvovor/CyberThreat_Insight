@@ -96,9 +96,9 @@ Each simulated attack is explicitly mapped to **MITRE ATT&CK tactics and techniq
 
 
 
-## ⚙️ Key Features
+## Key Features
 
-### ✅ Multi-Attack Simulation Framework
+### Multi-Attack Simulation Framework
 
 Supported attack vectors:
 
@@ -282,7 +282,7 @@ CyberThreat_Insight/
 │   └── simulated_with_predictions_YYYYMMDD.csv
 ```
 
----
+
 
 ## 🏛️ Data Lineage & Model Governance
 
@@ -297,7 +297,7 @@ CyberThreat_Insight/
 | Output         | Timestamped CSV + hash    |
 | Reporting      | Prompt versioning         |
 
----
+
 
 ### Governance Objectives
 
@@ -305,7 +305,7 @@ CyberThreat_Insight/
 * SR 11-7 principles
 * Explainable AI (XAI) standards
 
----
+
 
 ## ⚖️ Risk & Bias Analysis
 
@@ -326,7 +326,7 @@ CyberThreat_Insight/
 
 Residual risk is **intentional** to support stress-testing.
 
--
+
 
 ## Regulatory & Compliance Alignment
 
@@ -337,7 +337,8 @@ Residual risk is **intentional** to support stress-testing.
 | ISO 27001 | Security monitoring         |
 | NIST CSF  | Detect / Respond            |
 
-## 📋 Regulatory Compliance Mapping
+
+## Regulatory Compliance Mapping
 
 | Pipeline Stage                   | Controls / Governance                                       | Applicable Standard / Framework                   | Notes / Implementation                                                                |
 | -------------------------------- | ----------------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------- |
@@ -351,6 +352,8 @@ Residual risk is **intentional** to support stress-testing.
 | **Dashboards / Reports**         | Access controls, versioning, audit trail                    | ISO 27001 A.9, SOC 2 CC6.1, GDPR Art. 32          | Executive dashboards only accessible to approved users; track exported reports        |
 | **Audit / Logging Layer**        | Full pipeline traceability                                  | SOC 2 CC3.1, NIST SP 800-53 AU-2                  | Store timestamps, attack types, model versions, validation logs                       |
 | **Model Governance & Oversight** | Committee approvals, documentation, risk assessment         | NIST AI RMF, EU AI Act, ISO/IEC 42001             | Periodic review by Model Risk Committee; governance reports for regulators            |
+
+
 
 ## Updated  Attacks  Architecture Diagram with Governance Overlay
 <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/cyber_threat_detection_engine4.png" 
@@ -368,7 +371,7 @@ Residual risk is **intentional** to support stress-testing.
 
 
 
-## 🎯 Intended Use & Limitations
+## Intended Use & Limitations
 
 **Appropriate for:**
 
@@ -384,7 +387,7 @@ Residual risk is **intentional** to support stress-testing.
 
 
 
-## 🧠 Design Philosophy
+## Design Philosophy
 
 CyberThreat-Insight prioritizes:
 
