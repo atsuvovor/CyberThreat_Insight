@@ -128,6 +128,13 @@ def predict_new_data(NEW_DATA_URL = None, AUGMENTED_DATA_PATH = None, model_dir 
     X_new = X_new.astype("float32")
 
     X_new = scaler.transform(X_new)
+    X_new_scaled = (
+    pd.DataFrame(X_new_scaled)
+    .apply(pd.to_numeric, errors="coerce")
+    .fillna(0.0)
+    .astype(np.float32)
+    .to_numpy()
+)
     X_new_scaled = np.asarray(X_new, dtype=np.float32)
     
     # --- Generate anomaly features ---
