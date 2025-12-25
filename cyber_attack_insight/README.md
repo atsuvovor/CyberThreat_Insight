@@ -123,17 +123,17 @@ It will render properly in **GitHub README.md**, **MkDocs**, and **enterprise do
 
 $$
 X_{\text{login}} \sim \text{Poisson}(\lambda)
-]$$
+$$
 
 **Impact and Threat Scores**
 
-[
+$$
 \text{Impact} \sim \mathcal{N}(5, 3^2)
-]
+$$
 
-[
+$$
 \text{Threat} \sim \mathcal{N}(6, 3^2)
-]
+$$
 
 ---
 
@@ -141,15 +141,15 @@ X_{\text{login}} \sim \text{Poisson}(\lambda)
 
 **Files Accessed**
 
-[
+$$
 X_{\text{files}} \sim \text{Poisson}(\lambda)
-]
+$$
 
 **Impact and Threat Scores**
 
-[
+$$
 (\text{Impact}, \text{Threat}) \sim \mathcal{N}(7, 4^2)
-]
+$$
 
 ---
 
@@ -157,15 +157,15 @@ X_{\text{files}} \sim \text{Poisson}(\lambda)
 
 **Session Duration**
 
-[
+$$
 X_{\text{session}} \sim \text{Exponential}(\beta)
-]
+$$
 
 **Impact and Threat Escalation**
 
-[
+$$
 (\text{Impact}, \text{Threat}) \sim \text{Exponential}(8)
-]
+$$
 
 ---
 
@@ -173,15 +173,15 @@ X_{\text{session}} \sim \text{Exponential}(\beta)
 
 **Data Transfer Volume**
 
-[
+$$
 X = \mu \cdot e^{\sigma Z}, \quad Z \sim \mathcal{N}(0,1)
-]
+$$
 
 **Impact and Threat Scores**
 
-[
+$$
 (\text{Impact}, \text{Threat}) \sim \mathcal{N}(12, 5^2)
-]
+$$
 
 ---
 
@@ -189,15 +189,15 @@ X = \mu \cdot e^{\sigma Z}, \quad Z \sim \mathcal{N}(0,1)
 
 **Targeted Sessions**
 
-[
+$$
 \text{hour} < 6 \quad \text{or} \quad \text{hour} > 23
-]
+$$
 
 **Data Transfer Volume**
 
-[
+$$
 X_{\text{transfer}} \sim \text{LogNormal}(\sigma = 0.3)
-]
+$$
 
 ---
 
@@ -205,21 +205,21 @@ X_{\text{transfer}} \sim \text{LogNormal}(\sigma = 0.3)
 
 **CPU Utilization**
 
-[
+$$
 X_{\text{CPU}} \sim \mathcal{N}(20, 10^2)
-]
+$$
 
 **Memory Consumption**
 
-[
+$$
 X_{\text{memory}} \sim \text{LogNormal}(\sigma = 0.5)
-]
+$$
 
 **Impact and Threat Scores**
 
-[
+$$
 (\text{Impact}, \text{Threat}) \sim \mathcal{N}(15, 5^2)
-]
+$$
 
 ---
 
