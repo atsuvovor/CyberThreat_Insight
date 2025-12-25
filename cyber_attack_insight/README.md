@@ -1,10 +1,3 @@
-Below is a **single, unified, production-grade `README.md`** that **fully consolidates everything** you requested into **one regulator-, executive-, and Model Risk Committee–ready documentation pack**.
-
-You can **drop this directly** into your `CyberThreat-Insight` repository **without edits**.
-Tone, structure, and depth are aligned with **OSFI / SR 11-7 / enterprise MRM expectations**, while still being readable by **technical reviewers and recruiters**.
-
----
-
 # 🛡️ CyberThreat-Insight
 
 ## Attack Simulation & Stacked Anomaly Detection Platform
@@ -119,88 +112,130 @@ Each attack is governed by **explicit probabilistic models** to ensure realism, 
 
 ---
 
-### 📨 Phishing — Credential Abuse
+Here is the **correct, clean, and Markdown-compatible rewrite** of your section.
+It will render properly in **GitHub README.md**, **MkDocs**, and **enterprise documentation tools**, while keeping the mathematics precise and readable.
 
-**Login Attempts:**
+---
+
+## 📨 Phishing — Credential Abuse
+
+**Login Attempts**
 
 [
 X_{\text{login}} \sim \text{Poisson}(\lambda)
 ]
 
-**Impact / Threat Scores:**
+**Impact and Threat Scores**
 
 [
 \text{Impact} \sim \mathcal{N}(5, 3^2)
 ]
+
 [
 \text{Threat} \sim \mathcal{N}(6, 3^2)
 ]
 
 ---
 
-### 🦠 Malware — System Enumeration
+## 🦠 Malware — System Enumeration
+
+**Files Accessed**
 
 [
 X_{\text{files}} \sim \text{Poisson}(\lambda)
 ]
 
+**Impact and Threat Scores**
+
 [
-\text{Impact}, \text{Threat} \sim \mathcal{N}(7, 4^2)
+(\text{Impact}, \text{Threat}) \sim \mathcal{N}(7, 4^2)
 ]
 
 ---
 
-### 🌐 DDoS — Resource Saturation
+## 🌐 DDoS — Resource Saturation
+
+**Session Duration**
 
 [
 X_{\text{session}} \sim \text{Exponential}(\beta)
 ]
 
+**Impact and Threat Escalation**
+
 [
-\text{Impact}, \text{Threat} \sim \text{Exponential}(8)
+(\text{Impact}, \text{Threat}) \sim \text{Exponential}(8)
 ]
 
 ---
 
-### 💾 Data Leak — Exfiltration
+## 💾 Data Leak — Data Exfiltration
+
+**Data Transfer Volume**
 
 [
 X = \mu \cdot e^{\sigma Z}, \quad Z \sim \mathcal{N}(0,1)
 ]
 
+**Impact and Threat Scores**
+
 [
-\text{Impact}, \text{Threat} \sim \mathcal{N}(12, 5^2)
+(\text{Impact}, \text{Threat}) \sim \mathcal{N}(12, 5^2)
 ]
 
 ---
 
-### 🔐 Insider Threat — Time-Based Abuse
+## 🔐 Insider Threat — Time-Based Abuse
 
-Sessions occurring outside business hours:
+**Targeted Sessions**
 
 [
 \text{hour} < 6 \quad \text{or} \quad \text{hour} > 23
 ]
 
+**Data Transfer Volume**
+
 [
-X_{\text{transfer}} \sim \text{LogNormal}(\sigma=0.3)
+X_{\text{transfer}} \sim \text{LogNormal}(\sigma = 0.3)
 ]
 
 ---
 
-### 💣 Ransomware — Encryption Storms
+## 💣 Ransomware — Encryption Storms
+
+**CPU Utilization**
 
 [
 X_{\text{CPU}} \sim \mathcal{N}(20, 10^2)
 ]
 
-[
-X_{\text{memory}} \sim \text{LogNormal}(\sigma=0.5)
-]
+**Memory Consumption**
 
 [
-\text{Impact}, \text{Threat} \sim \mathcal{N}(15, 5^2)
+X_{\text{memory}} \sim \text{LogNormal}(\sigma = 0.5)
 ]
+
+**Impact and Threat Scores**
+
+[
+(\text{Impact}, \text{Threat}) \sim \mathcal{N}(15, 5^2)
+]
+
+---
+
+### ✅ Notes for Reviewers & Regulators
+
+* All distributions are **explicitly defined** for transparency and reproducibility
+* Parameters are **bounded in code** to enforce operational realism
+* Scores represent **system risk indicators**, not attacker intent or attribution
+
+If you want, I can also provide:
+
+* A **LaTeX-only appendix** for academic or regulator submissions
+* A **plain-English executive explanation** of each formula
+* A **model validation checklist** referencing these equations
+
+Just say the word.
 
 ---
 
@@ -360,13 +395,4 @@ Data & Analytics Consultant | Cybersecurity | AI Reporting
 🔗 LinkedIn: [https://www.linkedin.com/in/atsu-vovor-mmai-9188326/](https://www.linkedin.com/in/atsu-vovor-mmai-9188326/)
 💻 GitHub: [https://github.com/atsuvovor](https://github.com/atsuvovor)
 
----
 
-### 🚀 Next Add-Ons (Optional)
-
-* Model Card (PDF)
-* Executive Summary (1-page)
-* Model Risk Committee slide
-* Tableau / Streamlit AI commentary
-
-Just say the word — this project is already **enterprise-ready**.
