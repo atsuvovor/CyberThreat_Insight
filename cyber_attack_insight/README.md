@@ -121,9 +121,9 @@ It will render properly in **GitHub README.md**, **MkDocs**, and **enterprise do
 
 **Login Attempts**
 
-[
+$$
 X_{\text{login}} \sim \text{Poisson}(\lambda)
-]
+]$$
 
 **Impact and Threat Scores**
 
