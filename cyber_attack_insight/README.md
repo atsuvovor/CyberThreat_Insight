@@ -42,7 +42,7 @@ This solution is intentionally designed to align with how **financial institutio
 * AI-assisted executive reporting
 * Audit- and regulator-ready documentation
 
----
+
 
 ## 🧩 High-Level Architecture
 
