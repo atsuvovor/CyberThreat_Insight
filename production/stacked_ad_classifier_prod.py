@@ -127,7 +127,7 @@ def predict_new_data(NEW_DATA_URL = None, AUGMENTED_DATA_PATH = None, model_dir 
     print(X_new.dtypes.value_counts())
     X_new = X_new.astype("float32")
 
-    X_new = scaler.transform(X_new)
+    X_new_scaled = scaler.transform(X_new)
     X_new_scaled = (
     pd.DataFrame(X_new_scaled)
     .apply(pd.to_numeric, errors="coerce")
@@ -197,6 +197,6 @@ def predict_new_data(NEW_DATA_URL = None, AUGMENTED_DATA_PATH = None, model_dir 
 
 #main
 if __name__ == "__main__":
-    results_df = predict_new_data(NEW_DATA_URL, AUGMENTED_DATA_URL, MODEL_DIR)
+    results_df = predict_new_data(NEW_DATA_URL, AUGMENTED_DATA_PATH, MODEL_DIR)
     display(results_df.head())
 
