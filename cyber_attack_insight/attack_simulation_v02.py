@@ -317,7 +317,7 @@ def main_attacks_simulation_pipeline(URL=None):
     predictions_df.to_csv(output_path, index=False)
     print(f"[INFO] Results saved to {output_path}")
 
-    print(predictions_df.head())
+    display(predictions_df.head())
 
     return predictions_df
 
