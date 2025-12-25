@@ -69,7 +69,7 @@ Threat Scores & Anomaly Predictions
             ▼
 Persisted Outputs (CSV / Dashboards / AI Reports)
 ```
-<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/cyber_threat_detection_engine4.png" 
+<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/high_level_cyber_threat_architecture_file_path.png" 
        alt="Cyber Threat Detection Engine" 
        style="width: 600px; height: 40%;">
 
@@ -308,7 +308,7 @@ CyberThreat_Insight/
 
 
 
-## ⚖️ Risk & Bias Analysis
+## Risk & Bias Analysis
 
 ### Identified Risks
 
@@ -357,7 +357,7 @@ Residual risk is **intentional** to support stress-testing.
 
 
 ## Updated  Attacks  Architecture Diagram with Governance Overlay
-<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/cyber_threat_detection_engine4.png" 
+<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/Attacks _architecture_diagram_with_governance" 
        alt="Cyber Threat Detection Engine" 
        style="width: 600px; height: 40%;">
 
