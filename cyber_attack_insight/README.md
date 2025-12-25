@@ -16,7 +16,7 @@
 
 
 
-## 📌 Executive Overview
+## Executive Overview
 
 **CyberThreat-Insight** is an **enterprise-grade cyber attack simulation, anomaly detection, and AI-assisted reporting platform** designed to support:
 
@@ -32,7 +32,7 @@ This solution is intentionally designed to align with how **financial institutio
 
 
 
-## 🧠 Platform Capabilities at a Glance
+## Platform Capabilities at a Glance
 
 * Multi-vector cyber attack simulation
 * MITRE ATT&CK–aligned threat modeling
@@ -44,7 +44,7 @@ This solution is intentionally designed to align with how **financial institutio
 
 
 
-## 🧩 High-Level Architecture
+## High-Level Architecture
 
 ```
 External Data Sources (CSV / Google Drive)
@@ -74,7 +74,7 @@ Persisted Outputs (CSV / Dashboards / AI Reports)
 
 
 
-## 🧭 MITRE ATT&CK–Mapped Architecture View
+## MITRE ATT&CK–Mapped Architecture View
 
 Each simulated attack is explicitly mapped to **MITRE ATT&CK tactics and techniques**, enabling:
 
