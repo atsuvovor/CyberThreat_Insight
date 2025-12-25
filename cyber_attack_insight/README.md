@@ -117,7 +117,7 @@ Each attack:
 
 ---
 
-## 📊 Mathematical Foundations of Attack Simulation
+### Mathematical Foundations of Attack Simulation
 
 Each attack is governed by **explicit probabilistic models** to ensure realism, explainability, and repeatability.  
   
@@ -127,7 +127,7 @@ Each attack is governed by **explicit probabilistic models** to ensure realism, 
 > This appendix provides a formal mathematical description of the cyber-attack simulation logic, suitable for **academic review, regulator submission, or independent model validation**.
 > No narrative interpretation is included in this section.  
 
-## A.1 Phishing — Credential Abuse
+### Phishing — Credential Abuse
 
 $$
 X_{\text{login}} \sim \text{Poisson}(\lambda)
@@ -145,7 +145,7 @@ $$
 Impact and threat scores use a **normal distribution** to reflect moderate but consistent operational ris  
 
 
-## A.2 Malware — System Enumeration
+### Malware — System Enumeration
 
 $$
 X_{\text{files}} \sim \text{Poisson}(\lambda)
@@ -159,7 +159,7 @@ Malware tends to **scan files repeatedly**, which is well modeled by a Poisson p
 Severity scores are centered higher than phishing, reflecting **greater system compromise risk**.  
 
 
-## A.3 DDoS — Resource Saturation
+### DDoS — Resource Saturation
 
 $$
 X_{\text{session}} \sim \text{Exponential}(\beta)
@@ -173,7 +173,7 @@ Session durations follow an **exponential distribution**, capturing the fact tha
 Severity escalates rapidly as resources are exhausted.   
 
 
-## A.4 Data Leak — Exfiltration
+### Data Leak — Exfiltration
 
 $$
 X = \mu \cdot e^{\sigma Z}, \quad Z \sim \mathcal{N}(0,1)
@@ -191,7 +191,7 @@ Data exfiltration follows a **lognormal distribution**, reflecting that:
 
 This aligns with real-world breach patterns.  
 
-## A.5 Insider Threat — Time-Based Abuse  
+### Insider Threat — Time-Based Abuse  
 
 $$
 \text{hour} < 6 \quad \text{or} \quad \text{hour} > 23
@@ -204,7 +204,7 @@ $$
 Insider activity is flagged **outside normal business hours**.  
 Data transfers follow a lognormal pattern, modeling **stealthy but potentially severe misuse**.  
 
-## A.6 Ransomware — Encryption Storms
+### Ransomware — Encryption Storms
 
 $$
 X_{\text{CPU}} \sim \mathcal{N}(20, 10^2)
@@ -228,15 +228,7 @@ Severity scores are the highest, reflecting **business-critical impact and recov
 * Parameters are **bounded in code** to enforce operational realism
 * Scores represent **system risk indicators**, not attacker intent or attribution
 
-If you want, I can also provide:
 
-* A **LaTeX-only appendix** for academic or regulator submissions
-* A **plain-English executive explanation** of each formula
-* A **model validation checklist** referencing these equations
-
-Just say the word.
-
----
 
 ## 🧼 ML-Safe Data Engineering
 
@@ -250,7 +242,6 @@ Just say the word.
 
 This prevents **inference-time failures** and supports **model reproducibility**.
 
----
 
 ## 🔮 Stacked Anomaly Detection Model
 
@@ -407,176 +398,16 @@ It bridges **cybersecurity, data science, and AI governance** into a single, aud
 
 ---
 
-# 📎 Appendix A — Mathematical Specifications  
-> **Audience:** Executives, Audit, Risk Committees, non-technical stakeholders  
-
-> **Purpose:**
-> This appendix provides a formal mathematical description of the cyber-attack simulation logic, suitable for **academic review, regulator submission, or independent model validation**.
-> No narrative interpretation is included in this section.
-
----
-
-## A.1 Phishing — Credential Abuse
-
-$$
-X_{\text{login}} \sim \text{Poisson}(\lambda)
-$$
-
-$$
-\text{Impact} \sim \mathcal{N}(5, 3^2)
-$$
-
-$$
-\text{Threat} \sim \mathcal{N}(6, 3^2)
-$$
-
-*Login attempts follow a Poisson distribution* because phishing attacks generate **many small, repeated login attempts**.
-Impact and threat scores use a **normal distribution** to reflect moderate but consistent operational ris
----
-
-## A.2 Malware — System Enumeration
-
-$$
-X_{\text{files}} \sim \text{Poisson}(\lambda)
-$$
-
-$$
-\text{Impact},; \text{Threat} \sim \mathcal{N}(7, 4^2)
-$$
-
-Malware tends to **scan files repeatedly**, which is well modeled by a Poisson process.
-Severity scores are centered higher than phishing, reflecting **greater system compromise risk**.
-
----
-
-## A.3 DDoS — Resource Saturation
-
-$$
-X_{\text{session}} \sim \text{Exponential}(\beta)
-$$
-
-$$
-\text{Impact},; \text{Threat} \sim \text{Exponential}(8)
-$$
-
-Session durations follow an **exponential distribution**, capturing the fact that most attacks are short, but a few last a very long time.
-Severity escalates rapidly as resources are exhausted.
-
----
-
-## A.4 Data Leak — Exfiltration
-
-$$
-X = \mu \cdot e^{\sigma Z}, \quad Z \sim \mathcal{N}(0,1)
-$$
-
-$$
-\text{Impact},; \text{Threat} \sim \mathcal{N}(12, 5^2)
-$$
 
 
-Data exfiltration follows a **lognormal distribution**, reflecting that:
-
-* Most leaks are small
-* A few rare events cause massive losses
-
-This aligns with real-world breach patterns.
----
-
-## A.5 Insider Threat — Time-Based Abuse
-
-$$
-\text{hour} < 6 \quad \text{or} \quad \text{hour} > 23
-$$
-
-$$
-X_{\text{transfer}} \sim \text{LogNormal}(\sigma = 0.3)
-$$
-
-Insider activity is flagged **outside normal business hours**.
-Data transfers follow a lognormal pattern, modeling **stealthy but potentially severe misuse**.
----
-
-## A.6 Ransomware — Encryption Storms
-
-$$
-X_{\text{CPU}} \sim \mathcal{N}(20, 10^2)
-$$
-
-$$
-X_{\text{memory}} \sim \text{LogNormal}(\sigma = 0.5)
-$$
-
-$$
-\text{Impact},; \text{Threat} \sim \mathcal{N}(15, 5^2)
-$$
-
-
-CPU and memory usage spike sharply during encryption.
-Severity scores are the highest, reflecting **business-critical impact and recovery cost**.  
-
----
-
-# 🧠 Appendix B — Executive (Plain-English) Explanation
-
-> **Audience:** Executives, Audit, Risk Committees, non-technical stakeholders
-
----
-
-### Phishing (Credential Abuse)
-
-*Login attempts follow a Poisson distribution* because phishing attacks generate **many small, repeated login attempts**.
-Impact and threat scores use a **normal distribution** to reflect moderate but consistent operational risk.
-
----
-
-### Malware (System Enumeration)
-
-Malware tends to **scan files repeatedly**, which is well modeled by a Poisson process.
-Severity scores are centered higher than phishing, reflecting **greater system compromise risk**.
-
----
-
-### DDoS (Resource Saturation)
-
-Session durations follow an **exponential distribution**, capturing the fact that most attacks are short, but a few last a very long time.
-Severity escalates rapidly as resources are exhausted.
-
----
-
-### Data Leak (Exfiltration)
-
-Data exfiltration follows a **lognormal distribution**, reflecting that:
-
-* Most leaks are small
-* A few rare events cause massive losses
-
-This aligns with real-world breach patterns.
-
----
-
-### Insider Threat (Time-Based Abuse)
-
-Insider activity is flagged **outside normal business hours**.
-Data transfers follow a lognormal pattern, modeling **stealthy but potentially severe misuse**.
-
----
-
-### Ransomware (Encryption Storms)
-
-CPU and memory usage spike sharply during encryption.
-Severity scores are the highest, reflecting **business-critical impact and recovery cost**.
-
----
-
-# 🧪 Appendix C — Model Validation Checklist (MRM / Audit)
+## Model Validation Checklist (MRM / Audit)
 
 > **Purpose:**
 > To support **independent model validation, audit review, and regulatory challenge**
 
 ---
 
-## C.1 Conceptual Soundness
+### Conceptual Soundness
 
 | Check                     | Description                                       | Status |
 | ------------------------- | ------------------------------------------------- | ------ |
@@ -584,9 +415,9 @@ Severity scores are the highest, reflecting **business-critical impact and recov
 | Domain alignment          | Distributions align with real cyber behavior      | ✅      |
 | Severity calibration      | Impact & Threat scores bounded and interpretable  | ✅      |
 
----
 
-## C.2 Implementation Verification
+
+### Implementation Verification
 
 | Check             | Reference                                | Status |
 | ----------------- | ---------------------------------------- | ------ |
@@ -595,9 +426,9 @@ Severity scores are the highest, reflecting **business-critical impact and recov
 | Lognormal logic   | Data Leak, Insider, Ransomware (A.4–A.6) | ✅      |
 | Numeric bounds    | Clipping applied post-simulation         | ✅      |
 
----
 
-## C.3 Data Integrity Controls
+
+### Data Integrity Controls
 
 | Control            | Description                      | Status |
 | ------------------ | -------------------------------- | ------ |
@@ -605,9 +436,9 @@ Severity scores are the highest, reflecting **business-critical impact and recov
 | Precision control  | Numeric features cast to float32 | ✅      |
 | Schema enforcement | Required columns validated       | ✅      |
 
----
 
-## C.4 Output Reasonableness
+
+### Output Reasonableness
 
 | Check               | Description                                    |
 | ------------------- | ---------------------------------------------- |
@@ -615,9 +446,9 @@ Severity scores are the highest, reflecting **business-critical impact and recov
 | Anomaly rate        | Monitored for inflation or collapse            |
 | Stress behavior     | Rare events intentionally amplified            |
 
----
 
-## C.5 Model Limitations (Disclosed)
+
+### Model Limitations  
 
 * Simulations are **synthetic**, not attributional
 * Severity scores represent **system risk**, not user intent
@@ -625,7 +456,7 @@ Severity scores are the highest, reflecting **business-critical impact and recov
 
 ---
 
-# 🏁 Final Note for Regulators & Committees  
+##  Final Note for Regulators & Committees  
 
 This framework was designed to:  
 
