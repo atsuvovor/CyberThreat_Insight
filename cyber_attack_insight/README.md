@@ -45,33 +45,12 @@ This solution is intentionally designed to align with how **financial institutio
 
 
 
-## High-Level Architecture
+## High-Level Architecture  
 
-```
-External Data Sources (CSV / Google Drive)
-            │
-            ▼
-Operational Cybersecurity Dataset
-            │
-            ▼
-Attack Simulation Engine
-(Phishing, Malware, DDoS, Insider, etc.)
-            │
-            ▼
-ML-Safe Data Sanitization & Validation
-            │
-            ▼
-Stacked Anomaly Detection Models
-            │
-            ▼
-Threat Scores & Anomaly Predictions
-            │
-            ▼
-Persisted Outputs (CSV / Dashboards / AI Reports)
-```
+
 <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/high_level_cyber_threat_architecture_file_path.png" 
        alt="Cyber Threat Detection Engine" 
-       style="width: 600px; height: 40%;">
+       style="width: 80%; height: 40%;">
 
 
 
