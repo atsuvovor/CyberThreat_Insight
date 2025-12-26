@@ -1,3 +1,5 @@
+#attack_simulation_v02.py
+#Author: Atsu Vovor
 from datetime import datetime
 import numpy as np
 import pandas as pd
