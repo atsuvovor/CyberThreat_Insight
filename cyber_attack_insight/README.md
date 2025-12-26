@@ -264,7 +264,7 @@ CyberThreat_Insight/
 
 
 
-## 🏛️ Data Lineage & Model Governance
+## Data Lineage & Model Governance
 
 ### End-to-End Lineage
 
