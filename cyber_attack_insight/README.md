@@ -50,7 +50,7 @@ This solution is intentionally designed to align with how **financial institutio
 <div align="center">
 <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/high_level_cyber_threat_architecture_file_path.png" 
        alt="Cyber Threat Detection Engine" 
-       style="width: 100%; height: Aoto;">
+       style="width: 40%; height: Aoto;">
 
 </div>
 
