@@ -336,7 +336,7 @@ Residual risk is **intentional** to support stress-testing.
 
 
 ## Updated  Attacks  Architecture Diagram with Governance Overlay
-<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/attacks_architecture_diagram_with_governance" 
+<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/attacks_architecture_diagram_with_governance.png" 
        alt="Cyber Threat Detection Engine" 
        style="width: 600px; height: 40%;">
 
