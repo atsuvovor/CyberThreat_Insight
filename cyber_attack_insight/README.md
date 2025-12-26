@@ -48,7 +48,7 @@ This solution is intentionally designed to align with how **financial institutio
 ## High-Level Architecture  
 
 <div align="center">
-<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/attacks _architecture_diagram_with_governance.png" 
+<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/high_level_cyber_threat_architecture_file_path.png" 
        alt="Cyber Threat Detection Engine" 
        style="width: 100%; height: Aoto;">
 
@@ -338,12 +338,11 @@ Residual risk is **intentional** to support stress-testing.
 ## Updated  Attacks  Architecture Diagram with Governance Overlay
 
 <div align="center">
-<h2>  CyberThreat-Insight - Attack Simulation & Stacked Anomaly Detection Platform</h2>
- <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/attacks_architecture_diagram_with_governance.png" 
+<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/attacks _architecture_diagram_with_governance.png" 
        alt="Cyber Threat Detection Engine" 
-       style="width: 600px; height: 40%;">
-</div>
+       style="width: 100%; height: Aoto;">
 
+</div>
 
 
 ## Outputs
