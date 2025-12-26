@@ -344,7 +344,6 @@ Residual risk is **intentional** to support stress-testing.
 
 </div>
 
-
 ## Outputs
 
 * Simulated datasets with attack annotations
