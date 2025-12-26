@@ -48,7 +48,7 @@ This solution is intentionally designed to align with how **financial institutio
 ## High-Level Architecture  
 
 <div align="center">
-<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/high_level_cyber_threat_architecture_file_path.png" 
+<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/attacks _architecture_diagram_with_governance.png" 
        alt="Cyber Threat Detection Engine" 
        style="width: 400px; height: 20%;">
 
