@@ -17,7 +17,7 @@
 
 
 
-## Executive Overview
+## Overview
 
 **CyberThreat-Insight** is an **enterprise-grade cyber attack simulation, anomaly detection, and AI-assisted reporting platform** designed to support:
 
@@ -34,7 +34,7 @@ This solution is intentionally designed to align with how **financial institutio
 
 
 
-## Platform Capabilities at a Glance - High-Level Architecture  
+## Platform Capabilities at a Glance & High-Level Architecture  
 
 <div align="center">
 <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/high_level_cyber_threat_architecture_file_path.png" 
@@ -57,7 +57,7 @@ This solution is intentionally designed to align with how **financial institutio
 <div align="center">
 <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/core multiple attack simulation engine.png" 
        alt="Cyber Threat Detection Engine" 
-       style="width: 100%; height: Aoto;">
+       style="width: 100%; height: 600px;">
 
 </div>
 
