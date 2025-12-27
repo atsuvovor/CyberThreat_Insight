@@ -31,6 +31,29 @@ DATA_FOLDER_PATH =  "CyberThreat_Insight/cybersecurity_data"
 executive_cybersecurity_attack_report_on_drive = os.path.join(DATA_FOLDER_PATH, "Executive_Cybersecurity_Attack_Report.pdf")
 
 
+def pdf_safe_text(text: str) -> str:
+    """
+    Convert Unicode text to FPDF-safe Latin-1.
+    """
+    if not isinstance(text, str):
+        text = str(text)
+
+    replacements = {
+        "–": "-",   # en dash
+        "—": "-",   # em dash
+        "’": "'",
+        "‘": "'",
+        "“": '"',
+        "”": '"',
+        "•": "-",
+        "→": "->"
+    }
+
+    for k, v in replacements.items():
+        text = text.replace(k, v)
+
+    return text
+
 
 def normalize_threat_level(df, THREAT_LEVEL = "Threat Level"):
     # Normalize Threat Level
@@ -277,7 +300,9 @@ class ExecutiveReport(FPDF):
 
     def header(self):
         self.set_font("Arial", "B", 12)
-        self.cell(0, 10, "Executive Report: Cybersecurity Incident Analysis", align="C", ln=True)
+        #self.cell(0, 10, "Executive Report: Cybersecurity Incident Analysis", align="C", ln=True)
+        self.cell(0, 10, pdf_safe_text(title), ln=True)
+
         self.ln(10)
 
     def footer(self):
@@ -294,7 +319,9 @@ class ExecutiveReport(FPDF):
     def section_body(self, body: str):
         """Add a paragraph body."""
         self.set_font("Arial", "", 11)
-        self.multi_cell(0, 10, body)
+        #self.multi_cell(0, 10, body)
+        self.multi_cell(0, 10, pdf_safe_text(body))
+
         self.ln()
 
     def add_table(self, headers, data, col_widths):
@@ -308,6 +335,8 @@ class ExecutiveReport(FPDF):
         for row in data:
             for i, item in enumerate(row):
                 self.cell(col_widths[i], 10, str(item), border=1, align="C")
+                self.cell(col_widths[i], 10, pdf_safe_text(item), border=1, align="C" )
+
             self.ln()
 
 
