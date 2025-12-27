@@ -435,7 +435,10 @@ def generate_executive_dashboard_pdf(
     """
 
     report_data = generate_executive_report(df)
-
+    report_summary_data_dic = report_data
+    plot_executive_report_bars(report_summary_data_dic)
+    plot_executive_report_donut_charts(report_summary_data_dic)
+    
     # Temporary chart files
     bar_chart_path = os.path.join(DATA_FOLDER_PATH, "exec_bar_charts.png")
     donut_chart_path = os.path.join(DATA_FOLDER_PATH, "exec_donut_charts.png")
@@ -448,24 +451,24 @@ def generate_executive_dashboard_pdf(
     pdf.set_auto_page_break(auto=True, margin=15)
     pdf.add_page()
     # ---------------- Executive Summary ----------------
-    pdf.section_title("Executive Summary")
-    pdf.section_body(
+    pdf.section_title(pdf_safe_text("Executive Summary"))
+    pdf.section_body(pdf_safe_text(
         "This executive report summarizes cybersecurity risk exposure, "
         "attack patterns, response effectiveness, and financial impact "
         "based on simulated attack scenarios and ML-based anomaly detection."
-    )
+    ))
 
     # ---------------- KPI Charts ----------------
-    pdf.section_title("Key Risk Indicators – Executive Dashboard")
+    pdf.section_title(pdf_safe_text("Key Risk Indicators – Executive Dashboard"))
     pdf.image(bar_chart_path, x=10, w=190)
     pdf.ln(5)
 
-    pdf.section_title("Threat Distribution Overview")
+    pdf.section_title(pdf_safe_text("Threat Distribution Overview"))
     pdf.image(donut_chart_path, x=10, w=190)
     pdf.ln(5)
 
     # ---------------- Top 5 Issues ----------------
-    pdf.section_title("Top 5 Highest-Risk Cybersecurity Issues")
+    pdf.section_title(pdf_safe_text("Top 5 Highest-Risk Cybersecurity Issues"))
 
     top_issues_df = df.nlargest(5, "Threat Score")
 
@@ -490,13 +493,13 @@ def generate_executive_dashboard_pdf(
     pdf.add_table(headers, table_data, col_widths)
 
     # ---------------- Governance ----------------
-    pdf.section_title("Model Governance & Assurance")
-    pdf.section_body(
+    pdf.section_title(pdf_safe_text("Model Governance & Assurance"))
+    pdf.section_body(pdf_safe_text(
         "All analytics are generated using validated simulation logic, "
         "bounded stochastic modeling, and supervised ML classifiers. "
         "Data sanitization, schema validation, and inference controls "
         "ensure compliance with internal model risk standards."
-    )
+    ))
 
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     pdf.output(output_path)
@@ -538,7 +541,7 @@ def main_dashboard(NEW_DATA_URL = None,
     """
 
     #attack_simulation_df = pd.read_csv(simulated_attacks_file_path)
-    attack_simulation_df = main_attacks_simulation_pipeline(NEW_DATA_URL)
+    #attack_simulation_df = main_attacks_simulation_pipeline(NEW_DATA_URL)
     
      #load attacks data 
     if simulated_attacks_file_path is not None:
@@ -548,11 +551,11 @@ def main_dashboard(NEW_DATA_URL = None,
         df =  main_attacks_simulation_pipeline(NEW_DATA_URL)
         attack_simulation_df = normalize_threat_level(df)
                        
-    print("\nDashboar main_attacks_executive_reporting_pipeline\n")
-    main_executive_report_pipeline(attack_simulation_df)
+    #print("\nDashboar main_attacks_executive_reporting_pipeline\n")
+    #main_executive_report_pipeline(attack_simulation_df)
                        
     # ✅ Generate Executive PDF
-    generate_executive_dashboard_pdf(df)   
+    generate_executive_dashboard_pdf(attack_simulation_df)   
 
    
 
