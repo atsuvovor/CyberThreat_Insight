@@ -51,22 +51,272 @@ This solution is intentionally designed to align with how **financial institutio
 * AI-assisted executive reporting
 * Audit- and regulator-ready documentation
 
+### Outputs
 
-## Core Multiple Attack Simulation Engine
+* Simulated datasets with attack annotations
+* Anomaly scores & threat levels
+* Dashboard-ready tables
+* AI-generated executive summaries
+
+
+##   Attack Simulation Model – Class & Function Reference
 
 <div align="center">
 <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/core multiple attack simulation engine.png" 
        alt="Cyber Threat Detection Engine" 
        style="width: 50%; height: Aoto;">
 
-</div>
+</div>  
 
-## Outputs
 
-* Simulated datasets with attack annotations
-* Anomaly scores & threat levels
-* Dashboard-ready tables
-* AI-generated executive summaries
+
+This module implements a **controlled cyber-attack simulation framework** designed to augment operational cybersecurity datasets with realistic attack behaviors prior to **ML anomaly detection and risk scoring**.
+
+It supports **MITRE ATT&CK–aligned attack types**, ML-safe data handling, and production-grade inference pipelines.
+
+---
+
+### 🔹 Base Classes
+
+### `BaseAttack`
+
+**Purpose:**
+Abstract parent class for all simulated attack types.
+Provides **shared utilities** for numeric casting, safe noise generation, and metric bounding to ensure **data realism and ML safety**.
+
+**Key Responsibilities:**
+
+* Enforces numeric type consistency
+* Applies metric clipping based on domain limits
+* Provides reusable noise generators
+* Prevents unrealistic or invalid values during simulation
+
+**Core Attributes:**
+
+* `NUMERIC_COLS`: List of metrics eligible for numeric manipulation
+* `LIMITS`: Upper and lower bounds for critical system and security metrics
+
+**Key Methods:**
+
+* `_cast_numeric()` – Coerces numeric columns to `float64`
+* `_bounded_lognormal()` – Generates multiplicative noise without runaway values
+* `_clip_metrics()` – Enforces operational bounds on metrics
+* `apply()` – Abstract method implemented by all attack subclasses
+
+---
+
+### 🔹 Attack Simulation Classes
+
+Each attack class simulates **statistically distinct behavior patterns** consistent with real-world cyber threats.
+
+---
+
+### `PhishingAttack`
+
+**Threat Modeled:** Credential abuse / Initial access
+**MITRE ATT&CK:** T1566
+
+**Behavior Simulated:**
+
+* Elevated login attempts
+* Moderate increases in impact and threat scores
+* Targets access-control related records
+
+**Key Metrics Affected:**
+
+* Login Attempts
+* Impact Score
+* Threat Score
+
+---
+
+### `MalwareAttack`
+
+**Threat Modeled:** Malicious execution & enumeration
+**MITRE ATT&CK:** T1204
+
+**Behavior Simulated:**
+
+* Increased file access activity
+* Elevated impact and threat scores
+* Targets system vulnerability categories
+
+**Key Metrics Affected:**
+
+* Num Files Accessed
+* Impact Score
+* Threat Score
+
+---
+
+### `DDoSAttack`
+
+**Threat Modeled:** Resource exhaustion
+**MITRE ATT&CK:** T1499
+
+**Behavior Simulated:**
+
+* Abnormally long sessions
+* Elevated login activity
+* Exponential growth in impact and threat
+
+**Key Metrics Affected:**
+
+* Session Duration
+* Login Attempts
+* Impact Score
+* Threat Score
+
+---
+
+### `DataLeakAttack`
+
+**Threat Modeled:** Data exfiltration
+**MITRE ATT&CK:** T1041
+
+**Behavior Simulated:**
+
+* Large outbound data transfers
+* High impact and threat escalation
+* Log-normal transfer amplification
+
+**Key Metrics Affected:**
+
+* Data Transfer MB
+* Impact Score
+* Threat Score
+
+---
+
+### `InsiderThreatAttack`
+
+**Threat Modeled:** Privileged misuse outside business hours
+**MITRE ATT&CK:** T1078
+
+**Behavior Simulated:**
+
+* Suspicious after-hours activity
+* Restricted file access
+* Elevated data transfer volumes
+
+**Key Metrics Affected:**
+
+* Data Transfer MB
+* Impact Score
+* Threat Score
+* Access Restricted Files (flag)
+
+---
+
+### `RansomwareAttack`
+
+**Threat Modeled:** Mass encryption & system impact
+**MITRE ATT&CK:** T1486
+
+**Behavior Simulated:**
+
+* Memory and CPU spikes
+* Excessive file access
+* Severe threat and impact escalation
+
+**Key Metrics Affected:**
+
+* Memory Usage
+* CPU Usage
+* Num Files Accessed
+* Impact Score
+* Threat Score
+
+---
+
+## 🔹 Utility & Support Classes
+
+### `IPAddressGenerator`
+
+**Purpose:**
+Generates realistic IPv4 source/destination pairs for simulated network activity.
+
+**Methods:**
+
+* `generate_random_ip()` – Produces a random IPv4 address
+* `generate_ip_pair()` – Produces a source–destination IP pair
+
+---
+
+## 🔹 Data Preparation & ML Safety
+
+### `sanitize_for_ml(df)`
+
+**Purpose:**
+Ensures simulated data is **safe, clean, and schema-consistent** before ML inference.
+
+**Controls Applied:**
+
+* Replaces infinite values
+* Imputes missing values using medians
+* Casts numeric features to `float32`
+* Preserves non-numeric metadata
+
+**Governance Role:**
+Acts as an **ML safety gate** prior to model scoring.
+
+---
+
+## 🔹 Orchestration Functions
+
+### `run_selected_attacks(df, selected_attacks, verbose=True)`
+
+**Purpose:**
+Sequentially applies selected attack simulations to an operational dataset.
+
+**Features:**
+
+* Validates DataFrame integrity
+* Ensures each attack returns a valid dataset
+* Provides verbose execution logging
+
+---
+
+### `main_attacks_simulation_pipeline(URL=None)`
+
+**Purpose:**
+End-to-end **production attack simulation and ML inference pipeline**.
+
+**Pipeline Stages:**
+
+1. Load operational dataset (CSV / Google Drive)
+2. Apply selected cyber-attack simulations
+3. Sanitize data for ML inference
+4. Validate required schema fields
+5. Persist augmented dataset
+6. Run stacked anomaly detection model
+7. Save predictions and risk scores
+
+**Outputs:**
+
+* Augmented datasets with simulated attacks
+* ML-generated anomaly predictions
+* Persisted CSV outputs for dashboards and reporting
+
+---
+
+## 🛡️ Governance & Model Risk Notes
+
+* All simulations are **bounded and controlled**
+* Statistical assumptions are transparent and reproducible
+* ML inference occurs only after explicit sanitation and validation
+* Designed to support **SR 11-7 / OSFI model governance expectations**
+
+---
+
+If you want next, I can:
+
+* 🔹 Convert this into a **Model Card**
+* 🔹 Add **OSFI / SR 11-7 control mapping**
+* 🔹 Produce a **client-ready PDF**
+* 🔹 Package everything into a **final delivery ZIP**
+
+Just say the word.
 
 ## Mathematical Foundations of Attack Simulation
 
