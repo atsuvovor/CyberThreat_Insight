@@ -298,7 +298,7 @@ End-to-end **production attack simulation and ML inference pipeline**.
 * ML-generated anomaly predictions
 * Persisted CSV outputs for dashboards and reporting
 
----
+
 
 ### Governance & Model Risk Notes
 
