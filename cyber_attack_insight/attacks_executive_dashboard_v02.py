@@ -311,6 +311,175 @@ class ExecutiveReport(FPDF):
             self.ln()
 
 
+#-------------------------------
+# save_executive_bar_plot
+#------------------------------
+def save_executive_bar_plots(data_dic: dict, output_path: str) -> str:
+    """
+    Generate executive KPI bar charts and save as image.
+
+    Returns
+    -------
+    str : path to saved image
+    """
+
+    fig, axes = plt.subplots(2, 4, figsize=(20, 10), constrained_layout=True)
+    axes = axes.flatten()
+
+    for i, (title, data) in enumerate(data_dic.items()):
+        if i >= len(axes):
+            break
+
+        sorted_data = data.sort_values()
+        ax = axes[i]
+        ax.barh(sorted_data.index, sorted_data.values)
+        ax.set_title(title)
+        ax.xaxis.set_visible(False)
+
+        for spine in ax.spines.values():
+            spine.set_visible(False)
+
+    for i in range(len(data_dic), len(axes)):
+        fig.delaxes(axes[i])
+
+    plt.savefig(output_path, dpi=300, bbox_inches="tight")
+    plt.close()
+
+    return output_path
+
+#---------------------------------
+# save_executive_donut_plot
+#---------------------------------
+def save_executive_donut_plots(data_dic: dict, output_path: str) -> str:
+    """
+    Generate executive donut charts and save as image.
+
+    Returns
+    -------
+    str : path to saved image
+    """
+
+    fig, axes = plt.subplots(2, 4, figsize=(20, 10), constrained_layout=True)
+    axes = axes.flatten()
+
+    color_map = {
+        "Critical": "darkred",
+        "High": "red",
+        "Medium": "orange",
+        "Low": "green"
+    }
+
+    for i, (title, data) in enumerate(data_dic.items()):
+        if i >= len(axes):
+            break
+
+        labels = data.index
+        values = data.values
+        colors = [color_map.get(label, "gray") for label in labels]
+
+        axes[i].pie(
+            values,
+            labels=labels,
+            startangle=90,
+            colors=colors,
+            wedgeprops=dict(width=0.4)
+        )
+        axes[i].set_title(title)
+
+    for i in range(len(data_dic), len(axes)):
+        fig.delaxes(axes[i])
+
+    plt.savefig(output_path, dpi=300, bbox_inches="tight")
+    plt.close()
+
+    return output_path
+
+#-----------------------------------
+#generate_executive_dashboard_pdf
+#-----------------------------------
+def generate_executive_dashboard_pdf(
+    df: pd.DataFrame,
+    output_path: str = executive_cybersecurity_attack_report_on_drive
+) -> str:
+    """
+    Generate full Executive Cybersecurity PDF with charts.
+    """
+
+    report_data = generate_executive_report(df)
+
+    # Temporary chart files
+    bar_chart_path = os.path.join(DATA_FOLDER_PATH, "exec_bar_charts.png")
+    donut_chart_path = os.path.join(DATA_FOLDER_PATH, "exec_donut_charts.png")
+
+    save_executive_bar_plots(report_data, bar_chart_path)
+    save_executive_donut_plots(report_data, donut_chart_path)
+
+    pdf = ExecutiveReport()
+    pdf.set_auto_page_break(auto=True, margin=15)
+    pdf.add_page()
+
+    # ---------------- Executive Summary ----------------
+    pdf.section_title("Executive Summary")
+    pdf.section_body(
+        "This executive report summarizes cybersecurity risk exposure, "
+        "attack patterns, response effectiveness, and financial impact "
+        "based on simulated attack scenarios and ML-based anomaly detection."
+    )
+
+    # ---------------- KPI Charts ----------------
+    pdf.section_title("Key Risk Indicators – Executive Dashboard")
+    pdf.image(bar_chart_path, x=10, w=190)
+    pdf.ln(5)
+
+    pdf.section_title("Threat Distribution Overview")
+    pdf.image(donut_chart_path, x=10, w=190)
+    pdf.ln(5)
+
+    # ---------------- Top 5 Issues ----------------
+    pdf.section_title("Top 5 Highest-Risk Cybersecurity Issues")
+
+    top_issues_df = df.nlargest(5, "Threat Score")
+
+    headers = [
+        "Issue ID", "Threat Level", "Severity",
+        "Response Days", "Department", "Cost", "Defense"
+    ]
+
+    table_data = top_issues_df[
+        [
+            "Issue ID",
+            "Threat Level",
+            "Severity",
+            "Issue Response Time Days",
+            "Department Affected",
+            "Cost",
+            "Defense Action"
+        ]
+    ].values.tolist()
+
+    col_widths = [20, 20, 20, 28, 35, 22, 30]
+    pdf.add_table(headers, table_data, col_widths)
+
+    # ---------------- Governance ----------------
+    pdf.section_title("Model Governance & Assurance")
+    pdf.section_body(
+        "All analytics are generated using validated simulation logic, "
+        "bounded stochastic modeling, and supervised ML classifiers. "
+        "Data sanitization, schema validation, and inference controls "
+        "ensure compliance with internal model risk standards."
+    )
+
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    pdf.output(output_path)
+
+    # Cleanup
+    for f in [bar_chart_path, donut_chart_path]:
+        if os.path.exists(f):
+            os.remove(f)
+
+    print(f"[INFO] Executive PDF report generated: {output_path}")
+    return output_path
+
 # =====================================================
 # Main Execution Pipelines (Dashboard & PDF)
 # =====================================================
@@ -322,6 +491,9 @@ def main_executive_report_pipeline(df: pd.DataFrame) -> None:
     plot_executive_report_donut_charts(report_summary_data_dic)
 
 
+#--------------------
+# Main Dashboard
+#--------------------
 def main_dashboard(NEW_DATA_URL = None,
                    simulated_attacks_file_path = None) -> None:
     #simulated_attacks_file_path: str =
@@ -349,10 +521,10 @@ def main_dashboard(NEW_DATA_URL = None,
                        
     print("\nDashboar main_attacks_executive_reporting_pipeline\n")
     main_executive_report_pipeline(attack_simulation_df)
-        
-    #print("\nRunning Executive KPI Dashboard\n")
-    #print("\nDashboar attacks_executive_summary_reporting_pipeline\n")
-   # main_attacks_executive_summary_reporting_pipeline(attack_simulation_df)
+                       
+    # ✅ Generate Executive PDF
+    generate_executive_dashboard_pdf(df)   
+
    
 
 if __name__ == "__main__":
