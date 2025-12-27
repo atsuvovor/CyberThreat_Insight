@@ -198,6 +198,13 @@ def plot_executive_report_bars(data_dic: dict) -> None:
         for j, v in enumerate(sorted_data.values):
             ax.text(v, j, str(v), va="center", fontsize=10)
 
+    # Remove extra subplots if fewer data points
+    for i in range(len(data_dic), len(axes)):
+        fig.delaxes(axes[i])
+
+    # Display the plots
+    tight_layout()
+    
     plt.show()
 
 
@@ -249,6 +256,13 @@ def plot_executive_report_donut_charts(data_dic: dict) -> None:
         axes[i].text(0, 0, str(total), ha="center", va="center", fontsize=14, fontweight="bold")
         axes[i].set_title(title, fontsize=14)
 
+    # Remove extra subplots if fewer data points
+    for i in range(len(data_dic), len(axes)):
+        fig.delaxes(axes[i])
+
+    # Display the plots
+    tight_layout()
+    
     plt.show()
 
 
