@@ -361,6 +361,17 @@ Each attack is governed by **explicit probabilistic models** to ensure realism, 
 > This appendix provides a formal mathematical description of the cyber-attack simulation logic, suitable for **academic review, regulator submission, or independent model validation**.
 > No narrative interpretation is included in this section.  
 
+Below is a **clean, regulator- and academic-friendly enhancement** of your section.
+I’ve **added a concise “Notation & Symbols” explanation under each attack type**, written in **plain English**, without overloading the math.
+
+You can paste this directly into your `README.md`.
+
+
+
+## Mathematical Foundations of Attack Simulation (with Notation)
+
+
+
 ### Phishing — Credential Abuse
 
 $$
@@ -375,9 +386,18 @@ $$
 \text{Threat} \sim \mathcal{N}(6, 3^2)
 $$
 
-*Login attempts follow a Poisson distribution* because phishing attacks generate **many small, repeated login attempts**.
-Impact and threat scores use a **normal distribution** to reflect moderate but consistent operational ris  
+**Where**
 
+* $X_{\text{login}}$ — Number of login attempts generated during a phishing event
+* $\text{Poisson}(\lambda)$ — Poisson distribution with rate parameter $\lambda$, representing the expected number of attempts in a given period
+* $\mathcal{N}(\mu, \sigma^2)$ — Normal distribution with mean $\mu$ and variance $\sigma^2$
+* **Impact** — Simulated operational impact score
+* **Threat** — Simulated threat severity score
+
+*Login attempts follow a Poisson distribution* because phishing attacks generate **many small, repeated login attempts**.
+Impact and threat scores use a **normal distribution** to reflect moderate but consistent operational risk.
+
+---
 
 ### Malware — System Enumeration
 
@@ -389,9 +409,17 @@ $$
 \text{Impact},; \text{Threat} \sim \mathcal{N}(7, 4^2)
 $$
 
-Malware tends to **scan files repeatedly**, which is well modeled by a Poisson process.
-Severity scores are centered higher than phishing, reflecting **greater system compromise risk**.  
+**Where:**
 
+* $X_{\text{files}}$ — Number of files accessed or scanned by malware
+* $\lambda$ — Expected scanning intensity
+* $\mathcal{N}(7, 4^2)$ — Normal distribution centered at higher severity than phishing
+* **Impact / Threat** — System compromise severity indicators
+
+Malware tends to **scan files repeatedly**, which is well modeled by a Poisson process.
+Severity scores are centered higher than phishing, reflecting **greater system compromise risk**.
+
+---
 
 ### DDoS — Resource Saturation
 
@@ -403,9 +431,16 @@ $$
 \text{Impact},; \text{Threat} \sim \text{Exponential}(8)
 $$
 
-Session durations follow an **exponential distribution**, capturing the fact that most attacks are short, but a few last a very long time.
-Severity escalates rapidly as resources are exhausted.   
+**Where:**
 
+* $X_{\text{session}}$ — Duration of network sessions under attack
+* $\text{Exponential}(\beta)$ — Exponential distribution with rate $\beta$
+* **Impact / Threat** — Severity measures that increase rapidly with resource exhaustion
+
+Session durations follow an **exponential distribution**, capturing the fact that most attacks are short, but a few last a very long time.
+Severity escalates rapidly as resources are exhausted.
+
+---
 
 ### Data Leak — Exfiltration
 
@@ -417,15 +452,24 @@ $$
 \text{Impact},; \text{Threat} \sim \mathcal{N}(12, 5^2)
 $$
 
+**Where:**
 
-Data exfiltration follows a **lognormal distribution**, reflecting that:  
+* $X$ — Volume of data exfiltrated
+* $\mu$ — Scale parameter representing typical transfer size
+* $\sigma$ — Volatility parameter controlling tail risk
+* $Z$ — Standard normal random variable
+* $\mathcal{N}(12, 5^2)$ — High-impact severity distribution
 
-* Most leaks are small  
-* A few rare events cause massive losses  
+Data exfiltration follows a **lognormal distribution**, reflecting that:
 
-This aligns with real-world breach patterns.  
+* Most leaks are small
+* A few rare events cause massive losses
 
-### Insider Threat — Time-Based Abuse  
+This aligns with real-world breach patterns.
+
+---
+
+### Insider Threat — Time-Based Abuse
 
 $$
 \text{hour} < 6 \quad \text{or} \quad \text{hour} > 23
@@ -435,8 +479,16 @@ $$
 X_{\text{transfer}} \sim \text{LogNormal}(\sigma = 0.3)
 $$
 
-Insider activity is flagged **outside normal business hours**.  
-Data transfers follow a lognormal pattern, modeling **stealthy but potentially severe misuse**.  
+**Where:**
+
+* **hour** — System access timestamp (24-hour clock)
+* $X_{\text{transfer}}$ — Volume of data transferred
+* $\text{LogNormal}(\sigma)$ — Lognormal distribution modeling skewed, stealthy behavior
+
+Insider activity is flagged **outside normal business hours**.
+Data transfers follow a lognormal pattern, modeling **stealthy but potentially severe misuse**.
+
+---
 
 ### Ransomware — Encryption Storms
 
@@ -452,9 +504,18 @@ $$
 \text{Impact},; \text{Threat} \sim \mathcal{N}(15, 5^2)
 $$
 
+**Where:**
+
+* $X_{\text{CPU}}$ — CPU utilization increase during encryption
+* $X_{\text{memory}}$ — Memory consumption spike
+* $\mathcal{N}(15, 5^2)$ — Highest severity distribution in the simulation
+* **Impact / Threat** — Business and operational risk indicators
 
 CPU and memory usage spike sharply during encryption.
-Severity scores are the highest, reflecting **business-critical impact and recovery cost**.  
+Severity scores are the highest, reflecting **business-critical impact and recovery cost**.
+
+
+
 
 ## Notes for Reviewers & Regulators
 
