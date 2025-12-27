@@ -444,10 +444,10 @@ def generate_executive_dashboard_pdf(
     save_executive_donut_plots(report_data, donut_chart_path)
 
     pdf = ExecutiveReport()
-    pdf.header(title= "Executive Report: Cybersecurity Incident Analysis")
+   
     pdf.set_auto_page_break(auto=True, margin=15)
     pdf.add_page()
-
+    pdf.header(title= "Executive Report: Cybersecurity Incident Analysis")
     # ---------------- Executive Summary ----------------
     pdf.section_title("Executive Summary")
     pdf.section_body(
