@@ -682,8 +682,13 @@ It bridges **cybersecurity, data science, and AI governance** into a single, aud
 * Insider logic is heuristic, not behavioral profiling
 
 
+## Model Output Visualization 
 
-##  Final Note for Regulators & Committees  
+
+
+
+
+##  Conclusion 
 
 This framework was designed to:  
 
@@ -700,9 +705,9 @@ This framework was designed to:
 ## 👤 Author
 
 **Atsu Vovor**
-Data & Analytics Consultant | Cybersecurity | AI Reporting
-📧 [atsu.vovor@bell.net](mailto:atsu.vovor@bell.net)
-🔗 LinkedIn: [https://www.linkedin.com/in/atsu-vovor-mmai-9188326/](https://www.linkedin.com/in/atsu-vovor-mmai-9188326/)
-💻 GitHub: [https://github.com/atsuvovor](https://github.com/atsuvovor)
+Data & Analytics Consultant | Cybersecurity | AI Reporting  
+📧 [atsu.vovor@bell.net](mailto:atsu.vovor@bell.net)  
+🔗 LinkedIn: [https://www.linkedin.com/in/atsu-vovor-mmai-9188326/](https://www.linkedin.com/in/atsu-vovor-mmai-9188326/)  
+💻 GitHub: [https://github.com/atsuvovor](https://github.com/atsuvovor)  
 
 
