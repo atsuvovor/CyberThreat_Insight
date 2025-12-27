@@ -447,16 +447,22 @@ def generate_executive_dashboard_pdf(
         "ensure compliance with internal model risk standards."
     )
 
-    print("\nExecutive Summary")
-    print("\n"+about_report_text+"\n")
-    print("\n"+body_text+"\n")
     report_data = generate_executive_report(df)
+    print("\nThis executive report summarizes cybersecurity risk exposure, ")
+    print("attack patterns, response effectiveness, and financial impact ")
+    print("based on simulated attack scenarios and ML-based anomaly detection.\n")
     report_summary_data_dic = report_data
 
     print("\nKey Risk Indicators – Executive Dashboard")
     plot_executive_report_bars(report_summary_data_dic)
+    
     print("\nThreat Distribution Overview")
     plot_executive_report_donut_charts(report_summary_data_dic)
+    
+    print("\nAll analytics are generated using validated simulation logic, ")
+    print("bounded stochastic modeling, and supervised ML classifiers. ")
+    print("Data sanitization, schema validation, and inference controls ")
+    print("ensure compliance with internal model risk standards.\n")
     
     # Temporary chart files
     bar_chart_path = os.path.join(DATA_FOLDER_PATH, "exec_bar_charts.png")
