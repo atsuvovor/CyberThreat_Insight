@@ -186,7 +186,7 @@ Each attack class simulates **statistically distinct behavior patterns** consist
 * Impact Score
 * Threat Score
 
----
+
 
 ### `InsiderThreatAttack`
 
@@ -260,7 +260,7 @@ Ensures simulated data is **safe, clean, and schema-consistent** before ML infer
 **Governance Role:**
 Acts as an **ML safety gate** prior to model scoring.
 
----
+
 
 ###  Orchestration Functions
 
