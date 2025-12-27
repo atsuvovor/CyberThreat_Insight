@@ -718,9 +718,6 @@ This framework was designed to:
 ✔ Align with **financial-services model governance standards**  
 ✔ Provide **explainable, auditable outputs**  
 
-<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/cyber_threat_detection_engine4.png" 
-       alt="Cyber Threat Detection Engine" 
-       style="width: 600px; height: 40%;">
 
 
 ## 👤 Author
