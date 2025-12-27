@@ -458,8 +458,9 @@ def generate_executive_dashboard_pdf(
     
     print("\nThreat Distribution Overview")
     plot_executive_report_donut_charts(report_summary_data_dic)
-    
-    print("\nAll analytics are generated using validated simulation logic, ")
+
+    print("\nModel Governance & Assurance:")
+    print("All analytics are generated using validated simulation logic, ")
     print("bounded stochastic modeling, and supervised ML classifiers. ")
     print("Data sanitization, schema validation, and inference controls ")
     print("ensure compliance with internal model risk standards.\n")
@@ -468,6 +469,7 @@ def generate_executive_dashboard_pdf(
     bar_chart_path = os.path.join(DATA_FOLDER_PATH, "exec_bar_charts.png")
     donut_chart_path = os.path.join(DATA_FOLDER_PATH, "exec_donut_charts.png")
 
+    print(f"\n[INFO] Generatting Executive PDF report...")
     save_executive_bar_plots(report_data, bar_chart_path)
     save_executive_donut_plots(report_data, donut_chart_path)
 
