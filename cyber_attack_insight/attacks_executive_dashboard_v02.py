@@ -203,7 +203,7 @@ def plot_executive_report_bars(data_dic: dict) -> None:
         fig.delaxes(axes[i])
 
     # Display the plots
-    tight_layout()
+    plt.tight_layout()
     
     plt.show()
 
@@ -261,7 +261,7 @@ def plot_executive_report_donut_charts(data_dic: dict) -> None:
         fig.delaxes(axes[i])
 
     # Display the plots
-    tight_layout()
+    plt.tight_layout()
     
     plt.show()
 
