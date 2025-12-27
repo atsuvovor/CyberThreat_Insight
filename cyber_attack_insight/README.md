@@ -33,7 +33,15 @@ This solution is intentionally designed to align with how **financial institutio
 
 
 
-## Platform Capabilities at a Glance
+
+## Platform Capabilities at a Glance - High-Level Architecture  
+
+<div align="center">
+<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/high_level_cyber_threat_architecture_file_path.png" 
+       alt="Cyber Threat Detection Engine" 
+       style="width: 40%; height: Aoto;">
+
+</div>
 
 * Multi-vector cyber attack simulation
 * MITRE ATT&CK–aligned threat modeling
@@ -44,19 +52,14 @@ This solution is intentionally designed to align with how **financial institutio
 * Audit- and regulator-ready documentation
 
 
-
-## High-Level Architecture  
+## Core Multiple Attack Simulation Engine
 
 <div align="center">
-<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/high_level_cyber_threat_architecture_file_path.png" 
+<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/core multiple attack simulation engine.png" 
        alt="Cyber Threat Detection Engine" 
        style="width: 40%; height: Aoto;">
 
 </div>
-
-## Cyber Security Attack Analytics Simulation Engine
-
-
 
 ## Outputs
 
