@@ -54,48 +54,16 @@ This solution is intentionally designed to align with how **financial institutio
 
 </div>
 
-## MITRE ATT&CK–Mapped Architecture View
-
-Each simulated attack is explicitly mapped to **MITRE ATT&CK tactics and techniques**, enabling:
-
-* Threat coverage validation
-* Blue-team alignment
-* Regulatory traceability
-
-| Attack Type    | MITRE Technique ID | Technique Name               |
-| -------------- | ------------------ | ---------------------------- |
-| Phishing       | T1566              | Phishing                     |
-| Malware        | T1204              | User Execution               |
-| Malware        | T1059              | Command & Scripting          |
-| DDoS           | T1499              | Network Denial of Service    |
-| Data Leak      | T1041              | Exfiltration Over C2 Channel |
-| Insider Threat | T1078              | Valid Accounts               |
-| Insider Threat | T1087              | Account Discovery            |
-| Ransomware     | T1486              | Data Encrypted for Impact    |
-| Ransomware     | T1490              | Inhibit System Recovery      |
+## Cyber Security Attack Analytics Simulation Engine
 
 
 
-## Key Features
+## Outputs
 
-### Multi-Attack Simulation Framework
-
-Supported attack vectors:
-
-* Phishing
-* Malware
-* Distributed Denial-of-Service (DDoS)
-* Data Leakage
-* Insider Threat
-* Ransomware
-
-Each attack:
-
-* Targets realistic subsets of operational data
-* Applies statistically bounded perturbations
-* Preserves schema integrity and numeric limits
-
-
+* Simulated datasets with attack annotations
+* Anomaly scores & threat levels
+* Dashboard-ready tables
+* AI-generated executive summaries
 
 ## Mathematical Foundations of Attack Simulation
 
@@ -333,9 +301,49 @@ Residual risk is **intentional** to support stress-testing.
 | **Audit / Logging Layer**        | Full pipeline traceability                                  | SOC 2 CC3.1, NIST SP 800-53 AU-2                  | Store timestamps, attack types, model versions, validation logs                       |
 | **Model Governance & Oversight** | Committee approvals, documentation, risk assessment         | NIST AI RMF, EU AI Act, ISO/IEC 42001             | Periodic review by Model Risk Committee; governance reports for regulators            |
 
+## MITRE ATT&CK–Mapped Architecture View
+
+Each simulated attack is explicitly mapped to **MITRE ATT&CK tactics and techniques**, enabling:
+
+* Threat coverage validation
+* Blue-team alignment
+* Regulatory traceability
+
+| Attack Type    | MITRE Technique ID | Technique Name               |
+| -------------- | ------------------ | ---------------------------- |
+| Phishing       | T1566              | Phishing                     |
+| Malware        | T1204              | User Execution               |
+| Malware        | T1059              | Command & Scripting          |
+| DDoS           | T1499              | Network Denial of Service    |
+| Data Leak      | T1041              | Exfiltration Over C2 Channel |
+| Insider Threat | T1078              | Valid Accounts               |
+| Insider Threat | T1087              | Account Discovery            |
+| Ransomware     | T1486              | Data Encrypted for Impact    |
+| Ransomware     | T1490              | Inhibit System Recovery      |
 
 
-## Updated  Attacks  Architecture Diagram with Governance Overlay
+
+## Key Features
+
+### Multi-Attack Simulation Framework
+
+Supported attack vectors:
+
+* Phishing
+* Malware
+* Distributed Denial-of-Service (DDoS)
+* Data Leakage
+* Insider Threat
+* Ransomware
+
+Each attack:
+
+* Targets realistic subsets of operational data
+* Applies statistically bounded perturbations
+* Preserves schema integrity and numeric limits
+
+
+## Attacks  Architecture Diagram with Governance Overlay
 
 <div align="center">
 <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/attacks_architecture_diagram_governance.png" 
@@ -344,12 +352,7 @@ Residual risk is **intentional** to support stress-testing.
 
 </div>
 
-## Outputs
 
-* Simulated datasets with attack annotations
-* Anomaly scores & threat levels
-* Dashboard-ready tables
-* AI-generated executive summaries
 
 
 
