@@ -74,11 +74,11 @@ This module implements a **controlled cyber-attack simulation framework** design
 
 It supports **MITRE ATT&CK–aligned attack types**, ML-safe data handling, and production-grade inference pipelines.
 
----
 
-### 🔹 Base Classes
 
-### `BaseAttack`
+### Base Classes
+
+#### `BaseAttack`
 
 **Purpose:**
 Abstract parent class for all simulated attack types.
@@ -103,15 +103,15 @@ Provides **shared utilities** for numeric casting, safe noise generation, and me
 * `_clip_metrics()` – Enforces operational bounds on metrics
 * `apply()` – Abstract method implemented by all attack subclasses
 
----
 
-### 🔹 Attack Simulation Classes
+
+### Attack Simulation Classes
 
 Each attack class simulates **statistically distinct behavior patterns** consistent with real-world cyber threats.
 
----
 
-### `PhishingAttack`
+
+#### `PhishingAttack`
 
 **Threat Modeled:** Credential abuse / Initial access
 **MITRE ATT&CK:** T1566
@@ -128,9 +128,9 @@ Each attack class simulates **statistically distinct behavior patterns** consist
 * Impact Score
 * Threat Score
 
----
 
-### `MalwareAttack`
+
+#### `MalwareAttack`
 
 **Threat Modeled:** Malicious execution & enumeration
 **MITRE ATT&CK:** T1204
@@ -147,9 +147,9 @@ Each attack class simulates **statistically distinct behavior patterns** consist
 * Impact Score
 * Threat Score
 
----
 
-### `DDoSAttack`
+
+#### `DDoSAttack`
 
 **Threat Modeled:** Resource exhaustion
 **MITRE ATT&CK:** T1499
@@ -167,9 +167,9 @@ Each attack class simulates **statistically distinct behavior patterns** consist
 * Impact Score
 * Threat Score
 
----
 
-### `DataLeakAttack`
+
+#### `DataLeakAttack`
 
 **Threat Modeled:** Data exfiltration
 **MITRE ATT&CK:** T1041
@@ -206,9 +206,9 @@ Each attack class simulates **statistically distinct behavior patterns** consist
 * Threat Score
 * Access Restricted Files (flag)
 
----
 
-### `RansomwareAttack`
+
+#### `RansomwareAttack`
 
 **Threat Modeled:** Mass encryption & system impact
 **MITRE ATT&CK:** T1486
@@ -227,9 +227,9 @@ Each attack class simulates **statistically distinct behavior patterns** consist
 * Impact Score
 * Threat Score
 
----
 
-## 🔹 Utility & Support Classes
+
+###  Utility & Support Classes
 
 ### `IPAddressGenerator`
 
@@ -241,11 +241,11 @@ Generates realistic IPv4 source/destination pairs for simulated network activity
 * `generate_random_ip()` – Produces a random IPv4 address
 * `generate_ip_pair()` – Produces a source–destination IP pair
 
----
 
-## 🔹 Data Preparation & ML Safety
 
-### `sanitize_for_ml(df)`
+###  Data Preparation & ML Safety
+
+#### `sanitize_for_ml(df)`
 
 **Purpose:**
 Ensures simulated data is **safe, clean, and schema-consistent** before ML inference.
@@ -262,9 +262,9 @@ Acts as an **ML safety gate** prior to model scoring.
 
 ---
 
-## 🔹 Orchestration Functions
+###  Orchestration Functions
 
-### `run_selected_attacks(df, selected_attacks, verbose=True)`
+#### `run_selected_attacks(df, selected_attacks, verbose=True)`
 
 **Purpose:**
 Sequentially applies selected attack simulations to an operational dataset.
@@ -275,7 +275,7 @@ Sequentially applies selected attack simulations to an operational dataset.
 * Ensures each attack returns a valid dataset
 * Provides verbose execution logging
 
----
+
 
 ### `main_attacks_simulation_pipeline(URL=None)`
 
@@ -300,23 +300,13 @@ End-to-end **production attack simulation and ML inference pipeline**.
 
 ---
 
-## 🛡️ Governance & Model Risk Notes
+### Governance & Model Risk Notes
 
 * All simulations are **bounded and controlled**
 * Statistical assumptions are transparent and reproducible
 * ML inference occurs only after explicit sanitation and validation
 * Designed to support **SR 11-7 / OSFI model governance expectations**
 
----
-
-If you want next, I can:
-
-* 🔹 Convert this into a **Model Card**
-* 🔹 Add **OSFI / SR 11-7 control mapping**
-* 🔹 Produce a **client-ready PDF**
-* 🔹 Package everything into a **final delivery ZIP**
-
-Just say the word.
 
 ## Mathematical Foundations of Attack Simulation
 
