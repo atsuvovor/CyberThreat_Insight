@@ -298,7 +298,7 @@ class ExecutiveReport(FPDF):
     Custom PDF class for executive cybersecurity reporting.
     """
 
-    def header(self):
+    def header(self, title: str):
         self.set_font("Arial", "B", 12)
         #self.cell(0, 10, "Executive Report: Cybersecurity Incident Analysis", align="C", ln=True)
         self.cell(0, 10, pdf_safe_text(title), ln=True)
@@ -444,6 +444,7 @@ def generate_executive_dashboard_pdf(
     save_executive_donut_plots(report_data, donut_chart_path)
 
     pdf = ExecutiveReport()
+    pdf.header(title= "Executive Report: Cybersecurity Incident Analysis")
     pdf.set_auto_page_break(auto=True, margin=15)
     pdf.add_page()
 
