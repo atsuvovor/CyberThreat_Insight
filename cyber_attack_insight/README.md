@@ -1,8 +1,9 @@
 
 <div align="center">
 <h2>  CyberThreat-Insight - Attack Simulation & Stacked Anomaly Detection Platform</h2>
- <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/cyber_attack simulation engine2.png" 
-       alt="Cyber Threat Detection Engine" 
+ <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/cyber_attack_simulation_engine2.png
+" 
+       alt="Cyber Attack symulation Engine" 
        style="width: 600px; height: 40%;">
 
 **Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI & Stacked Generalization**
