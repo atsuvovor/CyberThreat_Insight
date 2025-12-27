@@ -471,7 +471,7 @@ def generate_executive_dashboard_pdf(
     pdf.add_page()
     # ---------------- Executive Summary ----------------
     pdf.section_title(pdf_safe_text("Executive Summary"))
-    pdf.section_body(bout_report_text)
+    pdf.section_body(about_report_text)
 
     # ---------------- KPI Charts ----------------
     pdf.section_title(pdf_safe_text("Key Risk Indicators – Executive Dashboard"))
