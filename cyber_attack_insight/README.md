@@ -57,7 +57,7 @@ This solution is intentionally designed to align with how **financial institutio
 <div align="center">
 <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/core multiple attack simulation engine.png" 
        alt="Cyber Threat Detection Engine" 
-       style="width: 40%; height: Aoto;">
+       style="width: 100%; height: Aoto;">
 
 </div>
 
