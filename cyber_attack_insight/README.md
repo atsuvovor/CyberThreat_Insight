@@ -684,7 +684,30 @@ It bridges **cybersecurity, data science, and AI governance** into a single, aud
 
 ## Model Output Visualization 
 
+<div align="center">
+ <h3>Executive Summary Metrics</h3>
+<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/attack_executive_summary.png" 
+       alt="Attacks Architecture Diagram Governance" 
+       style="width: 100%; height: Aoto;">
 
+</div>
+
+<div align="center">
+ <h3>Key Risk Indicators – Executive Dashboard</h3>
+<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/attack_KRI_2.png" 
+       alt="Attacks Architecture Diagram Governance" 
+       style="width: 100%; height: Aoto;">
+
+</div>
+
+
+<div align="center">
+ <h3>Threat Distribution Overview</h3>
+<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/threat_distribution_overview.png" 
+       alt="Attacks Architecture Diagram Governance" 
+       style="width: 100%; height: Aoto;">
+
+</div>
 
 ##  Conclusion 
 
