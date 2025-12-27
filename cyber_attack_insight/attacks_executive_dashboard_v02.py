@@ -434,9 +434,28 @@ def generate_executive_dashboard_pdf(
     Generate full Executive Cybersecurity PDF with charts.
     """
 
+    #-----Constant------
+    about_report_text = pdf_safe_text(
+        "This executive report summarizes cybersecurity risk exposure, "
+        "attack patterns, response effectiveness, and financial impact "
+        "based on simulated attack scenarios and ML-based anomaly detection."
+    )
+    body_text = pdf_safe_text(
+        "All analytics are generated using validated simulation logic, "
+        "bounded stochastic modeling, and supervised ML classifiers. "
+        "Data sanitization, schema validation, and inference controls "
+        "ensure compliance with internal model risk standards."
+    )
+
+    print("\nExecutive Summary")
+    print("\n"+about_report_text+"\n")
+    print("\n"+body_text+"\n")
     report_data = generate_executive_report(df)
     report_summary_data_dic = report_data
+
+    print("\nKey Risk Indicators – Executive Dashboard")
     plot_executive_report_bars(report_summary_data_dic)
+    print("\nThreat Distribution Overview")
     plot_executive_report_donut_charts(report_summary_data_dic)
     
     # Temporary chart files
@@ -452,11 +471,7 @@ def generate_executive_dashboard_pdf(
     pdf.add_page()
     # ---------------- Executive Summary ----------------
     pdf.section_title(pdf_safe_text("Executive Summary"))
-    pdf.section_body(pdf_safe_text(
-        "This executive report summarizes cybersecurity risk exposure, "
-        "attack patterns, response effectiveness, and financial impact "
-        "based on simulated attack scenarios and ML-based anomaly detection."
-    ))
+    pdf.section_body(bout_report_text)
 
     # ---------------- KPI Charts ----------------
     pdf.section_title(pdf_safe_text("Key Risk Indicators – Executive Dashboard"))
@@ -494,12 +509,7 @@ def generate_executive_dashboard_pdf(
 
     # ---------------- Governance ----------------
     pdf.section_title(pdf_safe_text("Model Governance & Assurance"))
-    pdf.section_body(pdf_safe_text(
-        "All analytics are generated using validated simulation logic, "
-        "bounded stochastic modeling, and supervised ML classifiers. "
-        "Data sanitization, schema validation, and inference controls "
-        "ensure compliance with internal model risk standards."
-    ))
+    pdf.section_body(body_text)
 
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     pdf.output(output_path)
