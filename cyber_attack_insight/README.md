@@ -18,10 +18,14 @@
 
 ## ⚠️ Important Disclaimer (Demo & Simulation Use Only)
 
-This project is a **simulation-based demonstration created for a GitHub portfolio**.  
-All data, cyber-attack scenarios, threat metrics, and risk scores are **synthetic and non-operational**.
+This repository is a **simulation-based demonstration created for portfolio and educational purposes**.  
+All cyber-attack scenarios, datasets, threat metrics, and risk scores are **synthetic and non-operational**.
 
-This repository **does not analyze real systems, networks, or users** and **must not be interpreted as a production cybersecurity tool**.
+The project is intentionally designed to **encourage exploration, experimentation, and extension**.  
+Readers are welcome to **reuse, adapt, and improve** the modeling techniques, simulation logic, and analytics patterns presented here for learning, research, or prototype development.
+
+This work **does not analyze real systems, networks, or users** and should not be interpreted as a production cybersecurity solution or security advisory.
+
 
 
 ## Abstract
