@@ -11,9 +11,7 @@
 
   
 
-**Author:** Atsu Vovor  
-**Title:** Data & Analytics Consultant | Cybersecurity | AI Reporting  
-**Location:** Toronto, Canada  
+**Author:** Atsu Vovor    
 
 
 ## ⚠️ Important Disclaimer (Demo & Simulation Use Only)
