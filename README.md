@@ -237,9 +237,9 @@ These icons render correctly in GitHub, Markdown, Slack, Teams, Notion, and Stre
 
 This color based scenarios approach aligns urgency with the dual factors of **threat level** and **severity**, ensuring quick comprehension and appropriate prioritization.  
 
+---
 
-
-#### **2. Explanatory Data Analysis(EDA)**
+## ** Explanatory Data Analysis(EDA)**
 
 The following steps were implemented in the exploratory data analysis (EDA) pipeline to analyze the dataset's key features and distribution patterns:
 
@@ -268,9 +268,9 @@ The following steps were implemented in the exploratory data analysis (EDA) pipe
 
 This pipeline provides a detailed understanding of numerical and categorical feature behaviors while highlighting correlations and potential anomalies in the dataset.
 
-
+---
   
-#### **3. Features Engineering Pipeline**
+## ** Features Engineering Pipeline**
 
 The feature engineering pipeline was designed to simulate realistic cybersecurity scenarios, enhance anomaly detection, and prepare the dataset for effective model training. It involved the following key steps:
 
@@ -285,22 +285,23 @@ The feature engineering pipeline was designed to simulate realistic cybersecurit
 
 This workflow produced a clean, balanced, and interpretable feature set optimized for machine learning–based cyber threat classification.
 
-### **4. Nodel Developemnt - Cyber Threat Detection Engine**
+---
+## ** Nodel Developemnt - Cyber Threat Detection Engine**
 The **Cyber Threat Detection Engine** is a three-stage framework designed to identify security threats by evolving from simple baselines to a complex, stacked ensemble model.
 
-#### The Three-Stage Evolution
+### The Three-Stage Evolution
 
 * **Stage 1 (Baseline):** Established performance benchmarks using standard supervised and unsupervised algorithms like Random Forest and Isolation Forest.
 * **Stage 2 (Feature Engineering):** Converted unsupervised anomaly scores into new input features to help the model better recognize rare, high-severity attacks.
 * **Stage 3 (Stacking):** Created a two-layer hybrid ensemble combining **Random Forest** (base) and **Gradient Boosting** (meta-learner) for final classification.
 
-#### Key Outcomes
+### Key Outcomes
 
 * **Better Detection:** The stacked model achieved **88% accuracy**, specifically improving the detection of "Critical" (Class 3) threats compared to single-model approaches.
 * **Smart Augmentation:** Used **Generative AI (GANs)** and SMOTE to fix data imbalances and simulate realistic attack patterns.
 * **Deployment Ready:** The system is designed to integrate with SIEM platforms using serialized artifacts for real-time analytics.
-
-
+---
+## CyberAttack-Insight Simulation
 **CyberAttack-Insight** is a simulation-based cybersecurity analytics platform designed as a professional portfolio and educational demonstration. It showcases how **synthetic cyber-attack scenarios** and **stacked anomaly detection models** can be architected within a governance- and audit-aware framework. The platform simulates multiple MITRE ATT&CK–aligned attack types, applies a stacked ensemble of unsupervised and supervised machine learning models to generate anomaly scores and threat levels, and produces dashboard-ready outputs and executive reports. All data and attacks are intentionally synthetic and non-operational, emphasizing explainability, model risk management, and regulatory alignment rather than real-world deployment.
 The simulated attack types includes:
 
@@ -330,7 +331,7 @@ Here’s a summary of important files in the repository:
 
 ---
 
-## **Installation**
+## Installation
 To install the project, follow these steps:
 
 1. Clone the repository:
