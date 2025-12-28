@@ -232,14 +232,12 @@ These icons render correctly in GitHub, Markdown, Slack, Teams, Notion, and Stre
 | **15**       | Low              | Medium       | 💛 **Green-Yellow**  | Low threat, moderate impact. Routine monitoring.                                      |
 | **16**       | Low              | Low          | 🟩 **Green**         | Minimal risk. No immediate action required.                                           |
 
----
-
 
 This color based scenarios approach aligns urgency with the dual factors of **threat level** and **severity**, ensuring quick comprehension and appropriate prioritization.  
 
 ---
 
-## ** Explanatory Data Analysis(EDA)**
+## Explanatory Data Analysis(EDA)
 
 The following steps were implemented in the exploratory data analysis (EDA) pipeline to analyze the dataset's key features and distribution patterns:
 
@@ -270,7 +268,7 @@ This pipeline provides a detailed understanding of numerical and categorical fea
 
 ---
   
-## ** Features Engineering Pipeline**
+## Features Engineering Pipeline
 
 The feature engineering pipeline was designed to simulate realistic cybersecurity scenarios, enhance anomaly detection, and prepare the dataset for effective model training. It involved the following key steps:
 
@@ -286,7 +284,7 @@ The feature engineering pipeline was designed to simulate realistic cybersecurit
 This workflow produced a clean, balanced, and interpretable feature set optimized for machine learning–based cyber threat classification.
 
 ---
-## ** Nodel Developemnt - Cyber Threat Detection Engine**
+## Nodel Developemnt - Cyber Threat Detection Engine
 The **Cyber Threat Detection Engine** is a three-stage framework designed to identify security threats by evolving from simple baselines to a complex, stacked ensemble model.
 
 ### The Three-Stage Evolution
@@ -316,7 +314,7 @@ These attack types are simulated and detected through anomaly detection and clas
 
 ---
 
-## **Project Files**
+## Project Files
 Here’s a summary of important files in the repository:
 
 - **[`.gitignore`](./.gitignore)** - This file lists all the files and directories to be ignored by Git.
