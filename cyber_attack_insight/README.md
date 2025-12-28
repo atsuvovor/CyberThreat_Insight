@@ -376,7 +376,7 @@ $$
 \text{Threat} \sim \mathcal{N}(6, 3^2)
 $$
 
-**Where**
+**Where:**
 
 * $X_{\text{login}}$ — Number of login attempts generated during a phishing event
 * $\text{Poisson}(\lambda)$ — Poisson distribution with rate parameter $\lambda$, representing the expected number of attempts in a given period
@@ -688,6 +688,13 @@ Each attack:
        style="width: 100%; height: Aoto;">
 
 </div>
+
+
+<h3>
+  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/cyber_attack_insight/simulate_attack_scenarios_v02.ipynb">
+    🔄 Cyber Attack Simulation 👈click
+  </a>
+</h3>
 
 <details>
 
@@ -1139,6 +1146,13 @@ It bridges **cybersecurity, data science, and AI governance** into a single, aud
        style="width: 100%; height: Aoto;">
 
 </div>
+
+<h3>
+  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/cyber_attack_insight/attacks_executive_dashboard_v02.ipynb">
+    🔄 Cyber Attack Dashboard Simulation 👈click
+  </a>
+</h3>
+
 
 <details>
 
