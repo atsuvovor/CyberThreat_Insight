@@ -360,7 +360,7 @@ Each attack is governed by **explicit probabilistic models** to ensure realism, 
  **Purpose:**
  This appendix provides a formal mathematical description of the cyber-attack simulation logic, suitable for **academic review, regulator submission, or independent model validation**.
   
-
+```
 
 ### Phishing — Credential Abuse
 
@@ -387,7 +387,7 @@ $$
 *Login attempts follow a Poisson distribution* because phishing attacks generate **many small, repeated login attempts**.
 Impact and threat scores use a **normal distribution** to reflect moderate but consistent operational risk.
 
----
+
 
 ### Malware — System Enumeration
 
@@ -409,7 +409,7 @@ $$
 Malware tends to **scan files repeatedly**, which is well modeled by a Poisson process.
 Severity scores are centered higher than phishing, reflecting **greater system compromise risk**.
 
----
+
 
 ### DDoS — Resource Saturation
 
@@ -504,7 +504,7 @@ $$
 CPU and memory usage spike sharply during encryption.
 Severity scores are the highest, reflecting **business-critical impact and recovery cost**.
 
-
+```
 
 
 ## Notes for Reviewers & Regulators
