@@ -6,9 +6,6 @@
 
 **Toronto, November 01 2024**  
 **Autor : Atsu Vovor**
->Master of Management in Artificial Intelligence    
->Consultant Data Analytics Specialist | Machine Learning |  
-Data science | Quantitative Analysis | AI Reporting| French & English Bilingual  
 
 ---
 
