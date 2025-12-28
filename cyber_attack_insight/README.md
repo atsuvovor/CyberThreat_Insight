@@ -689,7 +689,345 @@ Each attack:
 
 </div>
 
+details>
 
+<summary>Click to view the attack simulation  code</summary>
+
+```python
+
+
+#attack_simulation_v02.py
+#Author: Atsu Vovor
+from datetime import datetime
+import numpy as np
+import pandas as pd
+import random
+import socket
+import struct
+
+from CyberThreat_Insight.utils.gdrive_utils import load_csv_from_gdrive_url, load_new_data
+from CyberThreat_Insight.production.stacked_ad_classifier_prod import predict_new_data
+
+
+MODEL_DIR = "CyberThreat_Insight/stacked_models_deployment"
+DATA_PATH =  "CyberThreat_Insight/cybersecurity_data"
+AUGMENTED_DATA_PATH = DATA_PATH + "/x_y_augmented_data_google_drive.csv"
+NEW_DATA_URL = "https://drive.google.com/file/d/1Nr9PymyvLfDh3qTfaeKNVbvLwt7lNX6l/view?usp=sharing"
+
+
+# -------------------- Base Attack --------------------
+
+class BaseAttack:
+    NUMERIC_COLS = [
+        "Login Attempts",
+        "Impact Score",
+        "Threat Score",
+        "Session Duration in Second",
+        "CPU Usage %",
+        "Memory Usage MB",
+        "Num Files Accessed",
+        "Data Transfer MB"
+    ]
+
+    LIMITS = {
+        "CPU Usage %": (0, 100),
+        "Memory Usage MB": (0, 256_000),       # 256 GB
+        "Data Transfer MB": (0, 1_000_000),    # 1 TB
+        "Session Duration in Second": (0, 86_400),
+        "Login Attempts": (0, 10_000),
+        "Num Files Accessed": (0, 100_000),
+        "Impact Score": (0, 100),
+        "Threat Score": (0, 100),
+    }
+
+    def __init__(self, df: pd.DataFrame):
+        self.df = df.copy()
+        self.ip_generator = IPAddressGenerator()
+        self._cast_numeric()
+
+    def _cast_numeric(self):
+        for col in self.NUMERIC_COLS:
+            if col in self.df.columns:
+                self.df[col] = pd.to_numeric(self.df[col], errors="coerce").astype("float64")
+
+    def _bounded_lognormal(self, base_mean, sigma, size):
+        """
+        Safe multiplicative noise generator
+        """
+        noise = np.random.lognormal(mean=0.0, sigma=sigma, size=size)
+        return base_mean * noise
+
+    def _clip_metrics(self):
+        for col, (lo, hi) in self.LIMITS.items():
+            if col in self.df.columns:
+                self.df[col] = self.df[col].clip(lo, hi)
+
+    def apply(self):
+        raise NotImplementedError
+
+class PhishingAttack(BaseAttack):
+    def apply(self):
+        targets = self.df[self.df["Category"] == "Access Control"].sample(frac=0.1, random_state=42)
+
+        self.df.loc[targets.index, "Login Attempts"] += np.random.poisson(
+            lam=self.df["Login Attempts"].mean(), size=len(targets)
+        )
+
+        self.df.loc[targets.index, "Impact Score"] += np.random.normal(5, 3, size=len(targets))
+        self.df.loc[targets.index, "Threat Score"] += np.random.normal(6, 3, size=len(targets))
+
+        self.df.loc[targets.index, "Attack Type"] = "Phishing"
+        self._clip_metrics()
+        return self.df
+
+class MalwareAttack(BaseAttack):
+    def apply(self):
+        targets = self.df[self.df["Category"] == "System Vulnerability"].sample(frac=0.1, random_state=42)
+
+        self.df.loc[targets.index, "Num Files Accessed"] += np.random.poisson(
+            lam=self.df["Num Files Accessed"].mean(), size=len(targets)
+        )
+
+        self.df.loc[targets.index, "Impact Score"] += np.random.normal(7, 4, size=len(targets))
+        self.df.loc[targets.index, "Threat Score"] += np.random.normal(7, 4, size=len(targets))
+
+        self.df.loc[targets.index, "Attack Type"] = "Malware"
+        self._clip_metrics()
+        return self.df
+
+class DDoSAttack(BaseAttack):
+    def apply(self):
+        targets = self.df[self.df["Category"] == "Network Security"].sample(frac=0.2, random_state=42)
+
+        self.df.loc[targets.index, "Session Duration in Second"] += np.random.exponential(
+            scale=self.df["Session Duration in Second"].mean(), size=len(targets)
+        )
+
+        self.df.loc[targets.index, "Login Attempts"] += np.random.poisson(
+            lam=self.df["Login Attempts"].mean(), size=len(targets)
+        )
+
+        self.df.loc[targets.index, "Impact Score"] += np.random.exponential(8, size=len(targets))
+        self.df.loc[targets.index, "Threat Score"] += np.random.exponential(8, size=len(targets))
+
+        self.df.loc[targets.index, "Attack Type"] = "DDoS"
+        self._clip_metrics()
+        return self.df
+
+class DataLeakAttack(BaseAttack):
+    def apply(self):
+        targets = self.df[self.df["Category"] == "Data Breach"].sample(frac=0.1, random_state=42)
+
+        mean_transfer = self.df["Data Transfer MB"].mean()
+        self.df.loc[targets.index, "Data Transfer MB"] += self._bounded_lognormal(
+            mean_transfer, sigma=0.4, size=len(targets)
+        )
+
+        self.df.loc[targets.index, "Impact Score"] += np.random.normal(12, 5, size=len(targets))
+        self.df.loc[targets.index, "Threat Score"] += np.random.normal(12, 5, size=len(targets))
+
+        self.df.loc[targets.index, "Attack Type"] = "Data Leak"
+        self._clip_metrics()
+        return self.df
+
+class RansomwareAttack(BaseAttack):
+    def apply(self):
+        targets = self.df[self.df["Category"] == "System Vulnerability"].sample(frac=0.02, random_state=42)
+
+        mean_mem = self.df["Memory Usage MB"].mean()
+        self.df.loc[targets.index, "Memory Usage MB"] += self._bounded_lognormal(
+            mean_mem, sigma=0.5, size=len(targets)
+        )
+
+        self.df.loc[targets.index, "CPU Usage %"] += np.random.normal(20, 10, size=len(targets))
+        self.df.loc[targets.index, "Num Files Accessed"] += np.random.poisson(
+            lam=self.df["Num Files Accessed"].mean(), size=len(targets)
+        )
+
+        self.df.loc[targets.index, "Threat Score"] += np.random.normal(15, 5, size=len(targets))
+        self.df.loc[targets.index, "Impact Score"] += np.random.normal(15, 5, size=len(targets))
+
+        self.df.loc[targets.index, "Attack Type"] = "Ransomware"
+        self._clip_metrics()
+        return self.df
+
+def sanitize_for_ml(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Cleans numeric features for ML inference while preserving metadata columns.
+    """
+
+    df_clean = df.copy()
+
+    # Select numeric columns only
+    numeric_cols = df_clean.select_dtypes(include=[np.number]).columns
+
+    # Replace inf / -inf
+    df_clean[numeric_cols] = df_clean[numeric_cols].replace(
+        [np.inf, -np.inf], np.nan
+    )
+
+    # Fill NaNs using column medians
+    df_clean[numeric_cols] = df_clean[numeric_cols].fillna(
+        df_clean[numeric_cols].median()
+    )
+
+    # Cast ONLY numeric columns to float32
+    df_clean[numeric_cols] = df_clean[numeric_cols].astype("float32")
+
+    return df_clean
+
+
+
+class InsiderThreatAttack(BaseAttack):
+    def apply(self):
+        self.df["hour"] = pd.to_datetime(self.df["Timestamps"], errors="coerce").dt.hour
+        late_hours = self.df[(self.df["hour"] < 6) | (self.df["hour"] > 23)]
+        targets = late_hours.sample(frac=0.1, random_state=42)
+
+        mean_transfer = self.df["Data Transfer MB"].mean()
+        self.df.loc[targets.index, "Access Restricted Files"] = True
+        self.df.loc[targets.index, "Data Transfer MB"] += self._bounded_lognormal(
+            mean_transfer, sigma=0.3, size=len(targets)
+        )
+
+        self.df.loc[targets.index, "Impact Score"] += np.random.normal(10, 4, size=len(targets))
+        self.df.loc[targets.index, "Threat Score"] += np.random.normal(10, 4, size=len(targets))
+
+        self.df.loc[targets.index, "Attack Type"] = "Insider Threat"
+        self._clip_metrics()
+        return self.df
+
+
+class IPAddressGenerator:
+    """A class for generating random IPv4 addresses and pairs."""
+    def __init__(self):
+        pass
+    def generate_random_ip(self):
+        """Generates a random IPv4 address."""
+        return socket.inet_ntoa(struct.pack('>I', random.randint(1, 0xffffffff)))
+
+    def generate_ip_pair(self):
+        """Generates a random source and destination IPv4 address pair."""
+        source_ip = self.generate_random_ip()
+        destination_ip = self.generate_random_ip()
+        return source_ip, destination_ip
+
+
+def run_selected_attacks(df, selected_attacks, verbose=True):
+    attack_map = {
+        "phishing": PhishingAttack,
+        "malware": MalwareAttack,
+        "ddos": DDoSAttack,
+        "data_leak": DataLeakAttack,
+        "insider": InsiderThreatAttack,
+        "ransomware": RansomwareAttack
+    }
+    if df is None:
+        raise ValueError("Input DataFrame is None at the start of attack simulation.")
+
+    for attack in selected_attacks:
+        if verbose: print(f"[+] Applying {attack.capitalize()} Attack")
+        attack_class = attack_map[attack]
+        df = attack_class(df).apply()
+        if df is None:
+            raise ValueError(f"Attack {attack} returned None. Ensure its `.apply()` method returns a DataFrame.")
+
+    return df
+
+
+#------------------------------Main attacks simulation pipeline----------------------------
+def main_attacks_simulation_pipeline(URL=None):
+    """
+    End-to-end attack simulation + stacked model inference pipeline
+    """
+
+    print("[INFO] Loading operational dataset from Google Drive ...")
+
+    ops_df = load_new_data(
+        URL,
+        output_dir=DATA_PATH,
+        filename="normal_and_anomalous_df.csv"
+    )
+
+    print(f"[INFO] Dataset loaded | shape={ops_df.shape}")
+
+    # ---------------- Attack Selection ----------------
+    selected_attacks = [
+        "phishing",
+        "malware",
+        "ddos",
+        "data_leak",
+        "insider",
+        "ransomware"
+    ]
+
+    print("[INFO] Running selected attack simulations ...")
+
+    simulated_attacks_df = run_selected_attacks(
+        ops_df,
+        selected_attacks,
+        verbose=True
+    )
+
+    print(f"[INFO] Simulation complete | shape={simulated_attacks_df.shape}")
+
+        # ---------------- ML SAFETY GATE ----------------
+    print("[INFO] Sanitizing simulated data for ML inference ...")
+
+    simulated_attacks_df = sanitize_for_ml(simulated_attacks_df)
+
+    # ---------------- SCHEMA VALIDATION ----------------
+    required_cols = ["Impact Score", "Threat Score", "Attack Type"]
+    missing = set(required_cols) - set(simulated_attacks_df.columns)
+
+    if missing:
+        raise ValueError(f"[ERROR] Missing required columns: {missing}")
+
+    print("[INFO] Schema validation passed")
+    simulated_attacks_df[["Impact Score", "Threat Score"]] = (
+    simulated_attacks_df[["Impact Score", "Threat Score"]]
+    .astype("float32")
+    )
+
+    # Save augmented dataset
+    output_path = (
+        f"{DATA_PATH}/simulated_with_predictions_"
+        f"{datetime.now():%Y%m%d_%H%M%S}.csv"
+    )
+    simulated_attacks_df.to_csv(output_path, index=False)
+    print(f"[INFO] Results saved to {output_path}")
+
+    # ---------------- Prediction ----------------
+    print("[INFO] Running stacked anomaly classifier ...")
+    predictions_df = predict_new_data(
+        NEW_DATA_URL = URL,
+        AUGMENTED_DATA_PATH=AUGMENTED_DATA_PATH,
+        model_dir=MODEL_DIR,
+        ops_df=simulated_attacks_df
+    )
+
+    print("[INFO] Prediction complete")
+
+    # ---------------- PERSIST RESULTS ----------------
+    output_path = (
+        f"{DATA_PATH}/simulated_with_predictions_"
+        f"{datetime.now():%Y%m%d_%H%M%S}.csv"
+    )
+
+    predictions_df.to_csv(output_path, index=False)
+    print(f"[INFO] Results saved to {output_path}")
+
+    display(predictions_df.head())
+
+    return predictions_df
+
+
+if __name__ == "__main__":
+    main_attacks_simulation_pipeline(NEW_DATA_URL)
+
+```
+
+</details>
 
 
 
@@ -794,7 +1132,6 @@ It bridges **cybersecurity, data science, and AI governance** into a single, aud
 
 </div>
 
-
 <div align="center">
  <h3>Threat Distribution Overview</h3>
 <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/threat_distribution_overview.png" 
@@ -803,7 +1140,601 @@ It bridges **cybersecurity, data science, and AI governance** into a single, aud
 
 </div>
 
+details>
 
+<summary>Click to view the dashboard code</summary>
+
+```python
+
+"""
+attacks_executive_dashboard_v02.py
+
+Author: Atsu Vovor
+Executive Cybersecurity Reporting Pipeline
+------------------------------------------
+This module generates executive-level cybersecurity reports including:
+- KPI aggregation and summaries
+- Visual analytics (bar charts, donut charts)
+- Incident and attack scenario analysis
+- Automated PDF executive reporting
+
+Author: Atsu Vovor
+"""
+
+# ============================
+# Required Libraries
+# ============================
+
+import os # Import the os module to create directories
+import pandas as pd
+import numpy as np
+
+import matplotlib.pyplot as plt
+from matplotlib.ticker import FuncFormatter
+
+from fpdf import FPDF
+
+from IPython.display import display
+from CyberThreat_Insight.cyber_attack_insight.attack_simulation_v02 import main_attacks_simulation_pipeline
+
+NEW_DATA_URL = "https://drive.google.com/file/d/1Nr9PymyvLfDh3qTfaeKNVbvLwt7lNX6l/view?usp=sharing"
+DATA_FOLDER_PATH =  "CyberThreat_Insight/cybersecurity_data"
+executive_cybersecurity_attack_report_on_drive = os.path.join(DATA_FOLDER_PATH, "Executive_Cybersecurity_Attack_Report.pdf")
+
+
+def pdf_safe_text(text: str) -> str:
+    """
+    Convert Unicode text to FPDF-safe Latin-1.
+    """
+    if not isinstance(text, str):
+        text = str(text)
+
+    replacements = {
+        "–": "-",   # en dash
+        "—": "-",   # em dash
+        "’": "'",
+        "‘": "'",
+        "“": '"',
+        "”": '"',
+        "•": "-",
+        "→": "->"
+    }
+
+    for k, v in replacements.items():
+        text = text.replace(k, v)
+
+    return text
+
+
+def normalize_threat_level(df, THREAT_LEVEL = "Threat Level"):
+    # Normalize Threat Level
+    THREAT_LEVEL_MAP = {
+        0: "Low",
+        1: "Medium",
+        2: "High",
+        3: "Critical"
+        }
+    df[THREAT_LEVEL] = (
+        df[THREAT_LEVEL]
+        .map(THREAT_LEVEL_MAP)
+        .fillna(df[THREAT_LEVEL])
+    )
+    return df
+    
+# ============================
+# Executive Report Aggregation
+# ============================
+
+def generate_executive_report(df: pd.DataFrame) -> dict:
+    """
+    Generate high-level executive metrics from cybersecurity incidents.
+
+    Parameters
+    ----------
+    df : pd.DataFrame
+        Cybersecurity incidents dataset
+
+    Returns
+    -------
+    dict
+        Dictionary containing aggregated metrics used for plotting
+    """
+
+    # ---- Threat and Severity Statistics ----
+    total_theats = df.groupby("Threat Level").size()
+    severity_stats = df.groupby("Severity").size()
+
+    # Total impact cost in millions
+    impact_cost_stats = round(df.groupby("Severity")["Cost"].sum() / 1_000_000)
+
+    # Resolved vs outstanding issues
+    resolved_stats = df[df["Status"].isin(["Resolved", "Closed"])].groupby("Threat Level").size()
+    out_standing_issues = df[df["Status"].isin(["Open", "In Progress"])].groupby("Threat Level").size()
+
+    # Average response times
+    outstanding_issues_avg_resp_time = round(
+        df[df["Status"].isin(["Open", "In Progress"])]
+        .groupby("Threat Level")["Issue Response Time Days"].mean()
+    )
+
+    solved_issues_avg_resp_time = round(
+        df[df["Status"].isin(["Resolved", "Closed"])]
+        .groupby("Threat Level")["Issue Response Time Days"].mean()
+    )
+
+    # ---- Top 5 Highest-Risk Issues ----
+    top_issues = df.nlargest(5, "Threat Score")
+
+    # ---- Overall KPI ----
+    overall_avg_response_time = df["Issue Response Time Days"].mean()
+
+    # ---- Consolidated Executive Dictionary ----
+    report_summary_data_dic = {
+        "Total Attack": total_theats,
+        "Attack Volume Severity": severity_stats,
+        "Impact in Cost(M$)": impact_cost_stats,
+        "Resolved Issues": resolved_stats,
+        "Outstanding Issues": out_standing_issues,
+        "Outstanding Issues Avg Response Time": outstanding_issues_avg_resp_time,
+        "Solved Issues Avg Response Time": solved_issues_avg_resp_time,
+        "Top 5 Issues": top_issues.to_dict(),
+        "Overall Average Response Time(days)": overall_avg_response_time
+    }
+
+    # ---- Top 5 Issues Table ----
+    top_five_issues_df = pd.DataFrame(report_summary_data_dic.pop("Top 5 Issues"))
+    top_five_issues_df["cost"] = top_five_issues_df["Cost"].apply(lambda x: round(x / 1_000_000))
+
+    # ---- Average Response Time Conversions ----
+    average_response_time_days = round(
+        report_summary_data_dic.pop("Overall Average Response Time(days)")
+    )
+
+    average_response_time = {
+        "Average Response Time in days": average_response_time_days,
+        "Average Response Time in hours": average_response_time_days * 24,
+        "Average Response Time in minutes": average_response_time_days * 1440
+    }
+
+    # ---- Create Executive Summary DataFrame ----
+    for col in [
+        "Impact in Cost(M$)",
+        "Outstanding Issues Avg Response Time",
+        "Solved Issues Avg Response Time"
+    ]:
+        report_summary_data_dic[col] = pd.to_numeric(
+            report_summary_data_dic[col], errors="coerce"
+        )
+
+    report_summary_df = pd.DataFrame(report_summary_data_dic)
+    report_summary_df = report_summary_df.apply(
+        lambda x: round(x) if x.dtype.kind in "biufc" else x
+    )
+
+    # ---- Executive Displays ----
+    print("\nExecutive Summary Metrics\n")
+    display(report_summary_df)
+
+    print("\nAverage Response Time\n")
+    display(pd.DataFrame(average_response_time, index=[0]))
+
+    print("\nTop 5 Issues Impact with Adaptive Defense Mechanism\n")
+    display(
+        top_five_issues_df[
+            [
+                "Issue ID", "Threat Level", "Severity",
+                "Issue Response Time Days", "Department Affected",
+                "Cost", "Defense Action"
+            ]
+        ]
+    )
+
+    return report_summary_data_dic
+
+
+# ==================================
+# Executive Report Visualization
+# ==================================
+
+def plot_executive_report_bars(data_dic: dict) -> None:
+    """
+    Plot horizontal bar charts for executive KPIs.
+
+    Parameters
+    ----------
+    data_dic : dict
+        Aggregated executive metrics
+    """
+
+    fig, axes = plt.subplots(2, 4, figsize=(20, 10), constrained_layout=True)
+    axes = axes.flatten()
+
+    colors = [
+        "#1f77b4", "#ff7f0e", "#2ca02c",
+        "#d62728", "#9467bd", "#8c564b", "#e377c2"
+    ]
+
+    for i, (title, data) in enumerate(data_dic.items()):
+        if i >= len(axes):
+            break
+
+        sorted_data = data.sort_values()
+        ax = axes[i]
+        ax.barh(sorted_data.index, sorted_data.values, color=colors[i % len(colors)])
+
+        ax.set_title(title, fontsize=14)
+        ax.set_facecolor("#f5f5f5")
+        ax.xaxis.set_visible(False)
+
+        for spine in ax.spines.values():
+            spine.set_visible(False)
+
+        for j, v in enumerate(sorted_data.values):
+            ax.text(v, j, str(v), va="center", fontsize=10)
+
+    # Remove extra subplots if fewer data points
+    for i in range(len(data_dic), len(axes)):
+        fig.delaxes(axes[i])
+
+    # Display the plots
+    plt.tight_layout()
+    
+    plt.show()
+
+
+def plot_executive_report_donut_charts(data_dic: dict) -> None:
+    """
+    Plot donut charts showing threat distribution by severity.
+
+    Parameters
+    ----------
+    data_dic : dict
+        Aggregated executive metrics
+    """
+
+    fig, axes = plt.subplots(2, 4, figsize=(20, 10), constrained_layout=True)
+    axes = axes.flatten()
+
+    color_map = {
+        "Critical": "darkred",
+        "High": "red",
+        "Medium": "orange",
+        "Low": "green"
+    }
+
+    handles = [
+        plt.Line2D([0], [0], marker="o", color="w",
+                   markerfacecolor=color, label=level)
+        for level, color in color_map.items()
+    ]
+
+    fig.legend(handles, color_map.keys(), loc="upper right", title="Threat Level")
+
+    for i, (title, data) in enumerate(data_dic.items()):
+        if i >= len(axes):
+            break
+
+        labels = data.index
+        values = data.values
+        colors = [color_map.get(label, "gray") for label in labels]
+        total = values.sum()
+
+        axes[i].pie(
+            values,
+            labels=[f"{l}\n{v} ({v/total:.0%})" for l, v in zip(labels, values)],
+            startangle=90,
+            colors=colors,
+            wedgeprops=dict(width=0.4)
+        )
+
+        axes[i].text(0, 0, str(total), ha="center", va="center", fontsize=14, fontweight="bold")
+        axes[i].set_title(title, fontsize=14)
+
+    # Remove extra subplots if fewer data points
+    for i in range(len(data_dic), len(axes)):
+        fig.delaxes(axes[i])
+
+    # Display the plots
+    plt.tight_layout()
+    
+    plt.show()
+
+
+# ============================
+# PDF Executive Report Class
+# ============================
+
+class ExecutiveReport(FPDF):
+    """
+    Custom PDF class for executive cybersecurity reporting.
+    """
+
+    def header(self):
+        self.set_font("Arial", "B", 12)
+        #self.cell(0, 10, "Executive Report: Cybersecurity Incident Analysis", align="C", ln=True)
+        self.cell(0, 10, pdf_safe_text("Executive Report: Cybersecurity Incident Analysis"), align="C", ln=True)
+
+        self.ln(10)
+
+    def footer(self):
+        self.set_y(-15)
+        self.set_font("Arial", "I", 8)
+        self.cell(0, 10, f"Page {self.page_no()}", align="C")
+
+    def section_title(self, title: str):
+        """Add a section title."""
+        self.set_font("Arial", "B", 12)
+        self.cell(0, 10, title, ln=True)
+        self.ln(5)
+
+    def section_body(self, body: str):
+        """Add a paragraph body."""
+        self.set_font("Arial", "", 11)
+        #self.multi_cell(0, 10, body)
+        self.multi_cell(0, 10, pdf_safe_text(body))
+
+        self.ln()
+
+    def add_table(self, headers, data, col_widths):
+        """Add a formatted table."""
+        self.set_font("Arial", "B", 10)
+        for i, header in enumerate(headers):
+            self.cell(col_widths[i], 10, header, border=1, align="C")
+        self.ln()
+
+        self.set_font("Arial", "", 10)
+        for row in data:
+            for i, item in enumerate(row):
+                self.cell(col_widths[i], 10, str(item), border=1, align="C")
+                self.cell(col_widths[i], 10, pdf_safe_text(item), border=1, align="C" )
+
+            self.ln()
+
+
+#-------------------------------
+# save_executive_bar_plot
+#------------------------------
+def save_executive_bar_plots(data_dic: dict, output_path: str) -> str:
+    """
+    Generate executive KPI bar charts and save as image.
+
+    Returns
+    -------
+    str : path to saved image
+    """
+
+    fig, axes = plt.subplots(2, 4, figsize=(20, 10), constrained_layout=True)
+    axes = axes.flatten()
+
+    for i, (title, data) in enumerate(data_dic.items()):
+        if i >= len(axes):
+            break
+
+        sorted_data = data.sort_values()
+        ax = axes[i]
+        ax.barh(sorted_data.index, sorted_data.values)
+        ax.set_title(title)
+        ax.xaxis.set_visible(False)
+
+        for spine in ax.spines.values():
+            spine.set_visible(False)
+
+    for i in range(len(data_dic), len(axes)):
+        fig.delaxes(axes[i])
+
+    plt.savefig(output_path, dpi=300, bbox_inches="tight")
+    plt.close()
+
+    return output_path
+
+#---------------------------------
+# save_executive_donut_plot
+#---------------------------------
+def save_executive_donut_plots(data_dic: dict, output_path: str) -> str:
+    """
+    Generate executive donut charts and save as image.
+
+    Returns
+    -------
+    str : path to saved image
+    """
+
+    fig, axes = plt.subplots(2, 4, figsize=(20, 10), constrained_layout=True)
+    axes = axes.flatten()
+
+    color_map = {
+        "Critical": "darkred",
+        "High": "red",
+        "Medium": "orange",
+        "Low": "green"
+    }
+
+    for i, (title, data) in enumerate(data_dic.items()):
+        if i >= len(axes):
+            break
+
+        labels = data.index
+        values = data.values
+        colors = [color_map.get(label, "gray") for label in labels]
+
+        axes[i].pie(
+            values,
+            labels=labels,
+            startangle=90,
+            colors=colors,
+            wedgeprops=dict(width=0.4)
+        )
+        axes[i].set_title(title)
+
+    for i in range(len(data_dic), len(axes)):
+        fig.delaxes(axes[i])
+
+    plt.savefig(output_path, dpi=300, bbox_inches="tight")
+    plt.close()
+
+    return output_path
+
+#-----------------------------------
+#generate_executive_dashboard_pdf
+#-----------------------------------
+def generate_executive_dashboard_pdf(
+    df: pd.DataFrame,
+    output_path: str = executive_cybersecurity_attack_report_on_drive
+) -> str:
+    """
+    Generate full Executive Cybersecurity PDF with charts.
+    """
+
+    #-----Constant------
+    about_report_text = pdf_safe_text(
+        "This executive report summarizes cybersecurity risk exposure, "
+        "attack patterns, response effectiveness, and financial impact "
+        "based on simulated attack scenarios and ML-based anomaly detection."
+    )
+    body_text = pdf_safe_text(
+        "All analytics are generated using validated simulation logic, "
+        "bounded stochastic modeling, and supervised ML classifiers. "
+        "Data sanitization, schema validation, and inference controls "
+        "ensure compliance with internal model risk standards."
+    )
+
+    report_data = generate_executive_report(df)
+    print("\nThis executive report summarizes cybersecurity risk exposure, ")
+    print("attack patterns, response effectiveness, and financial impact ")
+    print("based on simulated attack scenarios and ML-based anomaly detection.\n")
+    report_summary_data_dic = report_data
+
+    print("\nKey Risk Indicators – Executive Dashboard")
+    plot_executive_report_bars(report_summary_data_dic)
+    
+    print("\nThreat Distribution Overview")
+    plot_executive_report_donut_charts(report_summary_data_dic)
+
+    print("\nModel Governance & Assurance:")
+    print("All analytics are generated using validated simulation logic, ")
+    print("bounded stochastic modeling, and supervised ML classifiers. ")
+    print("Data sanitization, schema validation, and inference controls ")
+    print("ensure compliance with internal model risk standards.\n")
+    
+    # Temporary chart files
+    bar_chart_path = os.path.join(DATA_FOLDER_PATH, "exec_bar_charts.png")
+    donut_chart_path = os.path.join(DATA_FOLDER_PATH, "exec_donut_charts.png")
+
+    print(f"\n[INFO] Generatting Executive PDF report...")
+    save_executive_bar_plots(report_data, bar_chart_path)
+    save_executive_donut_plots(report_data, donut_chart_path)
+
+    pdf = ExecutiveReport()
+   
+    pdf.set_auto_page_break(auto=True, margin=15)
+    pdf.add_page()
+    # ---------------- Executive Summary ----------------
+    pdf.section_title(pdf_safe_text("Executive Summary"))
+    pdf.section_body(about_report_text)
+
+    # ---------------- KPI Charts ----------------
+    pdf.section_title(pdf_safe_text("Key Risk Indicators – Executive Dashboard"))
+    pdf.image(bar_chart_path, x=10, w=190)
+    pdf.ln(5)
+
+    pdf.section_title(pdf_safe_text("Threat Distribution Overview"))
+    pdf.image(donut_chart_path, x=10, w=190)
+    pdf.ln(5)
+
+    # ---------------- Top 5 Issues ----------------
+    pdf.section_title(pdf_safe_text("Top 5 Highest-Risk Cybersecurity Issues"))
+
+    top_issues_df = df.nlargest(5, "Threat Score")
+
+    headers = [
+        "Issue ID", "Threat Level", "Severity",
+        "Response Days", "Department", "Cost", "Defense"
+    ]
+
+    table_data = top_issues_df[
+        [
+            "Issue ID",
+            "Threat Level",
+            "Severity",
+            "Issue Response Time Days",
+            "Department Affected",
+            "Cost",
+            "Defense Action"
+        ]
+    ].values.tolist()
+
+    col_widths = [20, 20, 20, 28, 35, 22, 30]
+    pdf.add_table(headers, table_data, col_widths)
+
+    # ---------------- Governance ----------------
+    pdf.section_title(pdf_safe_text("Model Governance & Assurance"))
+    pdf.section_body(body_text)
+
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    pdf.output(output_path)
+
+    # Cleanup
+    for f in [bar_chart_path, donut_chart_path]:
+        if os.path.exists(f):
+            os.remove(f)
+
+    print(f"[INFO] Executive PDF report generated: {output_path}")
+    return output_path
+
+# =====================================================
+# Main Execution Pipelines (Dashboard & PDF)
+# =====================================================
+
+def main_executive_report_pipeline(df: pd.DataFrame) -> None:
+    """Run executive KPI aggregation and visualization."""
+    report_summary_data_dic = generate_executive_report(df)
+    plot_executive_report_bars(report_summary_data_dic)
+    plot_executive_report_donut_charts(report_summary_data_dic)
+
+
+#--------------------
+# Main Dashboard
+#--------------------
+def main_dashboard(NEW_DATA_URL = None,
+                   simulated_attacks_file_path = None) -> None:
+    #simulated_attacks_file_path: str =
+    #"CyberThreat_Insight/cybersecurity_data/combined_normal_and_simulated_attacks_class_df.csv"
+
+    """
+    Main dashboard execution entry point.
+
+    Parameters
+    ----------
+    NEW_DATA_URL: sty #  simulated= attacks file URL 
+    simulated_attacks_file_path: sty #  simulated= attacks file path
+    """
+
+    #attack_simulation_df = pd.read_csv(simulated_attacks_file_path)
+    #attack_simulation_df = main_attacks_simulation_pipeline(NEW_DATA_URL)
+    
+     #load attacks data 
+    if simulated_attacks_file_path is not None:
+        df = pd.read_csv(simulated_attacks_file_path)
+        attack_simulation_df = normalize_threat_level(df)
+    else:
+        df =  main_attacks_simulation_pipeline(NEW_DATA_URL)
+        attack_simulation_df = normalize_threat_level(df)
+                       
+    #print("\nDashboar main_attacks_executive_reporting_pipeline\n")
+    #main_executive_report_pipeline(attack_simulation_df)
+                       
+    #  Generate Executive PDF
+    generate_executive_dashboard_pdf(attack_simulation_df)   
+
+   
+
+if __name__ == "__main__":
+    main_dashboard(NEW_DATA_URL)
+
+
+```
+
+</details>
 ## Conclusion
 
 CyberAttack-Insight demonstrates how a **modern cybersecurity analytics platform could be architected**, governed, and communicated—**without using real data or operational systems**.
