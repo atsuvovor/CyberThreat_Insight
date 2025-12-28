@@ -360,7 +360,7 @@ Each attack is governed by **explicit probabilistic models** to ensure realism, 
  **Purpose:**
  This appendix provides a formal mathematical description of the cyber-attack simulation logic, suitable for **academic review, regulator submission, or independent model validation**.
   
-```
+
 
 ### Phishing — Credential Abuse
 
@@ -504,7 +504,7 @@ $$
 CPU and memory usage spike sharply during encryption.
 Severity scores are the highest, reflecting **business-critical impact and recovery cost**.
 
-```
+
 
 
 ## Notes for Reviewers & Regulators
