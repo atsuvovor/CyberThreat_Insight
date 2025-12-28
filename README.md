@@ -396,26 +396,27 @@ We will generate the following performance outputs and charts to interpret model
   
 Here’s an expanded and more detailed rewrite of your section on **Cyber Attack Simulation**:
 
-#### **9. Best model Improved**
+#### **9. Hybrid ML Cyber Threat Detection Engine**  
+A hybrid machine learning framework that combines unsupervised anomaly detection with supervised multiclass classification to detect both known and novel cyber threats. Unsupervised models generate severity-aware risk signals that are weakly aligned to threat labels and fed into supervised learners, enabling accurate, explainable classification across Low, Medium, High, and Critical threat levels.
 
-#### **10. Stacked Model**
-
-#### **11. Stacked Model Inference**
-
-#### **12. Stacked Model Production**
+#### **10. Stacked Supervised Model using Unsupervised Anomaly Features**
+This project implements a hybrid stacked machine learning framework for cybersecurity threat detection that combines unsupervised anomaly detection with supervised multi-class classification. Unsupervised models generate anomaly scores and behavioral signals that are used as features alongside original data. These features are learned by a Random Forest base model and a Gradient Boosting meta-learner to predict threat severity levels (Low, Medium, High, Critical). The pipeline includes preprocessing, model training, evaluation, and visualization. The approach delivers more accurate, explainable, and operationally useful cyber risk insights.
 
 #### **13. Cyber Attack Simulation**
 
-As part of the next phase of the project, we will extend the platform to simulate a range of high-impact cyber attacks. These simulations will provide a dynamic testing environment to evaluate detection capabilities, assess organizational vulnerabilities, and enhance the system’s AI-powered threat response mechanisms. The simulated attack types will include:
 
-* **Phishing Attacks:** Simulate social engineering campaigns to test user susceptibility to deceptive emails, credential harvesting, and fraudulent access attempts.
-* **Malware Attacks:** Model the behavior and spread of malicious software such as keyloggers, spyware, trojans, and worms to assess endpoint defenses and containment strategies.
-* **Distributed Denial-of-Service (DDoS) Attacks:** Emulate volumetric and application-layer attacks aimed at overwhelming network resources, disrupting services, and testing resilience under stress.
-* **Data Leak Attacks:** Mimic unauthorized data exfiltration scenarios, both accidental and malicious, to evaluate monitoring, detection, and containment protocols.
-* **Insider Threats:** Simulate misuse of access privileges by employees or contractors, focusing on the detection of anomalous behaviors within internal systems.
-* **Ransomware Attacks:** Recreate file encryption and ransom demand scenarios to test system backups, alerting systems, and recovery processes.  
+**CyberAttack-Insight** is a simulation-based cybersecurity analytics platform designed as a professional portfolio and educational demonstration. It showcases how **synthetic cyber-attack scenarios** and **stacked anomaly detection models** can be architected within a governance- and audit-aware framework. The platform simulates multiple MITRE ATT&CK–aligned attack types, applies a stacked ensemble of unsupervised and supervised machine learning models to generate anomaly scores and threat levels, and produces dashboard-ready outputs and executive reports. All data and attacks are intentionally synthetic and non-operational, emphasizing explainability, model risk management, and regulatory alignment rather than real-world deployment.
+The simulated attack types includes:
 
-####  Each simulation will be integrated into the platform’s AI analytics engine and risk dashboards, providing real-time threat scoring, response playbooks, and post-event analysis to support training, governance, and resilience planning.
+* **Denial of Service (DoS) / Distributed DoS (DDoS)** – traffic flooding to disrupt service availability
+* **Brute Force Attacks** – repeated credential attempts to gain unauthorized access
+* **Port Scanning / Reconnaissance** – probing systems to discover open ports and services
+* **Malware-related Attacks** – malicious activity indicative of trojans, worms, or infected hosts
+* **Privilege Escalation / Unauthorized Access Attempts** – abnormal access behavior beyond normal user roles
+* **Data Exfiltration / Suspicious Data Transfer** – unusually large or abnormal outbound data flows
+
+These attack types are simulated and detected through anomaly detection and classification models to support cybersecurity monitoring and executive reporting.
+
 ---
 
 ## **Project Files**
