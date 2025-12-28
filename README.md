@@ -339,7 +339,10 @@ To install the project, follow these steps:
    git clone https://github.com/atsuvovor/CyberThreat_Insight.git
    cd my-python-project
 
-
+## Next Step Improvement
+* AI Agent Orchestration: Validation Agent, Executive Insight delivery Agent, SOC Sopport AI Agent
+* Docker Hub Migration
+* Streamlit Dashboard 
 
 ## 🤝 Connect with me
 I am always open to collaboration and discussion about new projects or technical roles.
