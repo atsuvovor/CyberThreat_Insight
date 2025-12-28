@@ -430,7 +430,7 @@ $$
 Session durations follow an **exponential distribution**, capturing the fact that most attacks are short, but a few last a very long time.
 Severity escalates rapidly as resources are exhausted.
 
----
+
 
 ### Data Leak — Exfiltration
 
@@ -457,7 +457,7 @@ Data exfiltration follows a **lognormal distribution**, reflecting that:
 
 This aligns with real-world breach patterns.
 
----
+
 
 ### Insider Threat — Time-Based Abuse
 
@@ -478,7 +478,7 @@ $$
 Insider activity is flagged **outside normal business hours**.
 Data transfers follow a lognormal pattern, modeling **stealthy but potentially severe misuse**.
 
----
+
 
 ### Ransomware — Encryption Storms
 
@@ -689,7 +689,7 @@ Each attack:
 
 </div>
 
-details>
+<details>
 
 <summary>Click to view the attack simulation  code</summary>
 
@@ -1140,7 +1140,7 @@ It bridges **cybersecurity, data science, and AI governance** into a single, aud
 
 </div>
 
-details>
+<details>
 
 <summary>Click to view the dashboard code</summary>
 
