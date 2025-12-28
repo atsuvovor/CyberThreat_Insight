@@ -285,121 +285,20 @@ The feature engineering pipeline was designed to simulate realistic cybersecurit
 
 This workflow produced a clean, balanced, and interpretable feature set optimized for machine learning–based cyber threat classification.
 
+### **4. Nodel Developemnt - Cyber Threat Detection Engine**
+The **Cyber Threat Detection Engine** is a three-stage framework designed to identify security threats by evolving from simple baselines to a complex, stacked ensemble model.
 
+#### The Three-Stage Evolution
 
-#### **4. Train-Test Split**
-A function is defined to split the augmented feature matrix and target vector
-Assign the results to variables representing the training and testing data```
-Define a function for splitting the dataset into training and testing subsets
-Use train_test_split from sklearn to randomly split the data
-`test_size=0.2` specifies that 20% of the data will be allocated to the testing set.    
+* **Stage 1 (Baseline):** Established performance benchmarks using standard supervised and unsupervised algorithms like Random Forest and Isolation Forest.
+* **Stage 2 (Feature Engineering):** Converted unsupervised anomaly scores into new input features to help the model better recognize rare, high-severity attacks.
+* **Stage 3 (Stacking):** Created a two-layer hybrid ensemble combining **Random Forest** (base) and **Gradient Boosting** (meta-learner) for final classification.
 
+#### Key Outcomes
 
-#### **5. Anomaly Detection Models Developement**
-We implemented two supervised machine learning algorithms(Random Forest
-Gradient Boosting), six unsupervised machine learning algorithms(Isolation Forest
-One-Class SVM, DBSCAN, Autoencoder, K-means Clustering, Local Outlier Factor (LOF)) and one mixed superviced and unsupervised machine learning algorithm(LSTM (Long Short-Term Memory))  
-  
-
-#### **6. Best model Selection**  
-We chosed the most performing algorithm based on each model 'Overall Model Accuracy'.  
-
-
-#### **7. Best Model Deployment**  
-We deployed the winning medel to myGoogle drive.
-
-Through this systematic approach, CyberThreat Insight will contribute to a deeper understanding of behavioral anomalies, equipping organizations with the tools needed to anticipate and mitigate cybersecurity risks effectively.
-
-#### **8. Best Model Testing**
-As testing strategy, we will uploard the best model and run it with the inital synthetic data that serve as real time production data. The main reason of using the initial synthetic data is that the model was developed using augmented data. The purpuse of our testing strategy is to capture the model performance on the real data.   
-We will run the model performance visualization charts like:  
-- Squater Plot on y = Data Transfer, X = Session Duration  
-- ROC curve(Y=True Positive Rate, X= false positive rate)  
-- Precision recall curve(y= precition, X= recall)
-
-
-As part of our testing strategy, we will evaluate the best-performing model using the **initial synthetic dataset**. This dataset simulates real-time production environments and is independent of the augmented data used during training. This approach allows us to evaluate **how well the model generalizes to operational-like conditions** and to identify any overfitting to the augmented training data.
-
-##### **Evaluation Metrics**
-
-We will generate the following performance outputs and charts to interpret model behavior across all threat levels:
-
-#####  **1. Confusion Matrix**
-
-* **Purpose**: Visualize how well the model classifies each threat category (`Threat Level`).
-* **Interpretation**: Shows the counts of true vs. predicted labels.
-
-  * Diagonal values = correct classifications
-  * Off-diagonal values = misclassifications
-* **Helps Identify**:
-
-  * Whether the model is confusing *High* with *Medium* threats, etc.
-  * If there's any class imbalance affecting performance
-
-
-#####  **2. Classification Report**
-
-* **Includes**:
-
-  * **Precision**: How many predicted labels were actually correct?
-  * **Recall**: How many true labels were correctly predicted?
-  * **F1-score**: Harmonic mean of precision and recall
-  * **Support**: Number of actual instances per class
-* **Purpose**: Detailed per-class evaluation — crucial for **cybersecurity**, where missing a *high threat* is more costly than misclassifying a *low threat*.
-
-
-#####  **3. ROC Curve**
-
-* **X-axis**: False Positive Rate
-* **Y-axis**: True Positive Rate (Recall)
-* **Multiclass**: Will be plotted using a One-vs-Rest strategy
-* **Purpose**: Shows how well the model distinguishes between each threat level at different thresholds
-
-
-#####  **4. Precision-Recall Curve**
-
-* **X-axis**: Recall
-* **Y-axis**: Precision
-* **Multiclass**: One-vs-Rest approach
-* **Purpose**: Ideal for **imbalanced classes** (e.g., rare high-risk attacks)
-* **Key Insight**: Focus on how well the model maintains precision as it tries to improve recall
-
-
-
-#####  **5. Scatter Plot**
-
-* **X-axis**: `Session Duration in Second`
-* **Y-axis**: `Data Transfer MB`
-* **Color**: Model-predicted `Threat Level`
-* **Purpose**: Visual exploratory view to see how predicted threat levels distribute across session metrics
-
-
-  
-#####  **Feature Set Used**
-
-| Feature                      | Description                                       |
-| ---------------------------- | ------------------------------------------------- |
-| `Issue Response Time Days`   | How long it took to respond to the issue          |
-| `Impact Score`               | Estimated impact of the session                   |
-| `Cost`                       | Operational or financial impact                   |
-| `Session Duration in Second` | Length of the session                             |
-| `Num Files Accessed`         | Number of files accessed during session           |
-| `Login Attempts`             | Count of login attempts                           |
-| `Data Transfer MB`           | Volume of data moved                              |
-| `CPU Usage %`                | Average CPU usage during session                  |
-| `Memory Usage MB`            | RAM usage in megabytes                            |
-| `Threat Score`               | Model-assigned risk score based on prior analysis |  
-
-  
-Here’s an expanded and more detailed rewrite of your section on **Cyber Attack Simulation**:
-
-#### **9. Hybrid ML Cyber Threat Detection Engine**  
-A hybrid machine learning framework that combines unsupervised anomaly detection with supervised multiclass classification to detect both known and novel cyber threats. Unsupervised models generate severity-aware risk signals that are weakly aligned to threat labels and fed into supervised learners, enabling accurate, explainable classification across Low, Medium, High, and Critical threat levels.
-
-#### **10. Stacked Supervised Model using Unsupervised Anomaly Features**
-This project implements a hybrid stacked machine learning framework for cybersecurity threat detection that combines unsupervised anomaly detection with supervised multi-class classification. Unsupervised models generate anomaly scores and behavioral signals that are used as features alongside original data. These features are learned by a Random Forest base model and a Gradient Boosting meta-learner to predict threat severity levels (Low, Medium, High, Critical). The pipeline includes preprocessing, model training, evaluation, and visualization. The approach delivers more accurate, explainable, and operationally useful cyber risk insights.
-
-#### **13. Cyber Attack Simulation**
+* **Better Detection:** The stacked model achieved **88% accuracy**, specifically improving the detection of "Critical" (Class 3) threats compared to single-model approaches.
+* **Smart Augmentation:** Used **Generative AI (GANs)** and SMOTE to fix data imbalances and simulate realistic attack patterns.
+* **Deployment Ready:** The system is designed to integrate with SIEM platforms using serialized artifacts for real-time analytics.
 
 
 **CyberAttack-Insight** is a simulation-based cybersecurity analytics platform designed as a professional portfolio and educational demonstration. It showcases how **synthetic cyber-attack scenarios** and **stacked anomaly detection models** can be architected within a governance- and audit-aware framework. The platform simulates multiple MITRE ATT&CK–aligned attack types, applies a stacked ensemble of unsupervised and supervised machine learning models to generate anomaly scores and threat levels, and produces dashboard-ready outputs and executive reports. All data and attacks are intentionally synthetic and non-operational, emphasizing explainability, model risk management, and regulatory alignment rather than real-world deployment.
