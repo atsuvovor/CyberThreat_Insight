@@ -355,21 +355,11 @@ End-to-end **production attack simulation and ML inference pipeline**.
 
 Each attack is governed by **explicit probabilistic models** to ensure realism, explainability, and repeatability.  
   
-> **Audience:** Executives, Audit, Risk Committees, non-technical stakeholders  
+ **Audience:** Executives, Audit, Risk Committees, non-technical stakeholders  
 
-> **Purpose:**
-> This appendix provides a formal mathematical description of the cyber-attack simulation logic, suitable for **academic review, regulator submission, or independent model validation**.
-> No narrative interpretation is included in this section.  
-
-Below is a **clean, regulator- and academic-friendly enhancement** of your section.
-I’ve **added a concise “Notation & Symbols” explanation under each attack type**, written in **plain English**, without overloading the math.
-
-You can paste this directly into your `README.md`.
-
-
-
-## Mathematical Foundations of Attack Simulation (with Notation)
-
+ **Purpose:**
+ This appendix provides a formal mathematical description of the cyber-attack simulation logic, suitable for **academic review, regulator submission, or independent model validation**.
+  
 
 
 ### Phishing — Credential Abuse
