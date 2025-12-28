@@ -34,7 +34,9 @@ The **CyberThreat Insight** project will focus on the following key areas to bui
 
 5. **Continuous Model Improvement**: Feedback from detection results and analysts’ input will be incorporated to refine models, ensuring that they adapt to emerging threat patterns and reduce false positives.
 
-6. **Project Outcome and Impact**: The final deliverable will be an anomaly detection framework capable of analyzing user behaviors and system interactions, alerting security teams to potentially malicious activities. By proactively identifying threats, the CyberThreat Insight project will help organizations enhance their
+6.  **Cyber Attacks Insight Simulation**:CyberAttack-Insight is a simulation platform that demonstrates how synthetic, MITRE ATT&CK–aligned scenarios can be used to train and test cybersecurity analytics. The engine applies a stacked ensemble of machine learning models to detect threats like DDoS, malware, and data exfiltration through advanced anomaly scoring. Designed for educational and portfolio purposes, it emphasizes model explainability and regulatory alignment by producing dashboard-ready executive reports.
+
+7. **Project Outcome and Impact**: The final deliverable will be an anomaly detection framework capable of analyzing user behaviors and system interactions, alerting security teams to potentially malicious activities. By proactively identifying threats, the CyberThreat Insight project will help organizations enhance their
  cybersecurity resilience, gaining valuable insights for future threat prevention.
 
 
