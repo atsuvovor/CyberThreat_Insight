@@ -13,6 +13,12 @@
 Data science | Quantitative Analysis | AI Reporting| French & English Bilingual  
 
 
+<a 
+  href="https://github.com/atsuvovor/CyberThreat_Insight/tree/main/explanatory_data_analysis#readme"
+  target="_parent">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
+
 ## Overview
 
 The `eda.py` script in the **CyberThreat_Insight** repository automates **Explanatory Data Analysis (EDA)** by combining traditional **pandas/numpy-based data inspection** with **AI-powered summarization**. It is designed for portability across **Google Colab**, **Jupyter Notebook**, and **local Python environments**, enabling cybersecurity analysts and data scientists to quickly understand datasets and generate insights.
