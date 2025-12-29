@@ -14,7 +14,7 @@ Data science | Quantitative Analysis | AI Reporting| French & English Bilingual
 
 
 <a 
-  href="https://github.com/atsuvovor/CyberThreat_Insight/tree/main/explanatory_data_analysis#readme"
+  href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/explanatory_data_analysis/run_eda.ipynb"
   target="_parent">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
