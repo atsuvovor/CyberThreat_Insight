@@ -43,7 +43,7 @@ The **CyberThreat Insight** project will focus on the following key areas to bui
 ---
 ## **Scope of the Project**  
 
-#### **1.Data Preparation( Data synthetization & Preprocessing)**    
+#### **1.Data Preparation( Data synthetization & Preprocessing)**  
 🔄 👉Run the Model 
 
 <a 
