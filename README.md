@@ -116,7 +116,6 @@ Which is closer to real-world threats — abnormal behavior typically starts fro
 - **Adressing class imbalance in datasets**:Using SMOTE (Synthetic Minority Over-sampling Technique) we make sure that class imbalance in the dataset is resolved.  
 all the data files are saves on google drive  
 
-  
 **User Activities Generation Metrics Formula**  
 
 The expression:  base_value + base_value * volatility * (np.random.randn()) * (1.2 if severity in ['High', 'Critical'] else 1)
@@ -162,8 +161,6 @@ For each KTI we will define the acriteria to be used to assigne a score
 | Login Attempts    | >5 = 5, 3-5 = 3, <3 = 1                        | 1 - 5   |
 | Num Files Accessed| >10 = 5, 5-10 = 3, <5 = 1                      | 1 - 5   |
 | Data Transfer MB  | >100 MB = 5, 50-100 MB = 3, <50 MB = 1         | 1 - 5   |  
-
-  
 
 
 **Threat Score Calculation**
@@ -211,9 +208,10 @@ Here we will add logic that monitors specific threat conditions in real-time and
 Here is the table **with colored emoji icons added** beside each color name in **Suggested Color**.
 These icons render correctly in GitHub, Markdown, Slack, Teams, Notion, and Streamlit.
 
----
 
-## **Scenarios with Colors**
+
+#### **Scenarios with Colors**
+
 
 | **Scenario** | **Threat Level** | **Severity** | **Suggested Color**  | **Rationale**                                                                         |
 | ------------ | ---------------- | ------------ | -------------------- | ------------------------------------------------------------------------------------- |
@@ -237,9 +235,8 @@ These icons render correctly in GitHub, Markdown, Slack, Teams, Notion, and Stre
 
 This color based scenarios approach aligns urgency with the dual factors of **threat level** and **severity**, ensuring quick comprehension and appropriate prioritization.  
 
----
 
-## Explanatory Data Analysis(EDA)
+#### **2.Explanatory Data Analysis(EDA)**  
 
 The following steps were implemented in the exploratory data analysis (EDA) pipeline to analyze the dataset's key features and distribution patterns:
 
@@ -268,9 +265,9 @@ The following steps were implemented in the exploratory data analysis (EDA) pipe
 
 This pipeline provides a detailed understanding of numerical and categorical feature behaviors while highlighting correlations and potential anomalies in the dataset.
 
----
+
   
-## Features Engineering Pipeline
+### 3.**Features Engineering Pipeline**
 
 The feature engineering pipeline was designed to simulate realistic cybersecurity scenarios, enhance anomaly detection, and prepare the dataset for effective model training. It involved the following key steps:
 
@@ -285,23 +282,25 @@ The feature engineering pipeline was designed to simulate realistic cybersecurit
 
 This workflow produced a clean, balanced, and interpretable feature set optimized for machine learning–based cyber threat classification.
 
----
-## Nodel Developemnt - Cyber Threat Detection Engine
+
+### 4.**Nodel Developemnt - Cyber Threat Detection Engine**  
+
 The **Cyber Threat Detection Engine** is a three-stage framework designed to identify security threats by evolving from simple baselines to a complex, stacked ensemble model.
 
-### The Three-Stage Evolution
+#### The Three-Stage Evolution
 
 * **Stage 1 (Baseline):** Established performance benchmarks using standard supervised and unsupervised algorithms like Random Forest and Isolation Forest.
 * **Stage 2 (Feature Engineering):** Converted unsupervised anomaly scores into new input features to help the model better recognize rare, high-severity attacks.
 * **Stage 3 (Stacking):** Created a two-layer hybrid ensemble combining **Random Forest** (base) and **Gradient Boosting** (meta-learner) for final classification.
 
-### Key Outcomes
+#### Key Outcomes
 
 * **Better Detection:** The stacked model achieved **88% accuracy**, specifically improving the detection of "Critical" (Class 3) threats compared to single-model approaches.
 * **Smart Augmentation:** Used **Generative AI (GANs)** and SMOTE to fix data imbalances and simulate realistic attack patterns.
 * **Deployment Ready:** The system is designed to integrate with SIEM platforms using serialized artifacts for real-time analytics.
----
-## CyberAttack-Insight Simulation
+
+### 5.**CyberAttack-Insight Simulation**  
+
 **CyberAttack-Insight** is a simulation-based cybersecurity analytics platform designed as a professional portfolio and educational demonstration. It showcases how **synthetic cyber-attack scenarios** and **stacked anomaly detection models** can be architected within a governance- and audit-aware framework. The platform simulates multiple MITRE ATT&CK–aligned attack types, applies a stacked ensemble of unsupervised and supervised machine learning models to generate anomaly scores and threat levels, and produces dashboard-ready outputs and executive reports. All data and attacks are intentionally synthetic and non-operational, emphasizing explainability, model risk management, and regulatory alignment rather than real-world deployment.
 The simulated attack types includes:
 
@@ -316,7 +315,7 @@ These attack types are simulated and detected through anomaly detection and clas
 
 ---
 
-## Project Files
+## **Project Files**
 Here’s a summary of important files in the repository:
 
 - **[`.gitignore`](./.gitignore)** - This file lists all the files and directories to be ignored by Git.
@@ -331,7 +330,7 @@ Here’s a summary of important files in the repository:
 
 ---
 
-## Installation
+## **Installation**
 To install the project, follow these steps:
 
 1. Clone the repository:
@@ -339,11 +338,13 @@ To install the project, follow these steps:
    git clone https://github.com/atsuvovor/CyberThreat_Insight.git
    cd my-python-project
 
-## Next Step Improvement
+---
+## **Next Step Improvement**
 * AI Agent Orchestration: Validation Agent, Executive Insight delivery Agent, SOC Sopport AI Agent
 * Docker Hub Migration
 * Streamlit Dashboard 
 
+---
 ## 🤝 Connect with me
 I am always open to collaboration and discussion about new projects or technical roles.
 
