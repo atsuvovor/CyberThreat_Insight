@@ -44,6 +44,14 @@ The **CyberThreat Insight** project will focus on the following key areas to bui
 ## **Scope of the Project**  
 
 #### **1.Data Preparation( Data synthetization & Preprocessing)**    
+🔄 👉Run the Model 
+
+<a 
+  href="https://github.com/atsuvovor/CyberThreat_Insight/tree/main/datagen" 
+  target="_parent">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
+
 In this section, we will use data augmentation techniques (SMOTE, GAN, label shuffling or permutation, time series variability, and noise addition) to generate a synthetic cybersecurity issues dataset   that will include month-to-month volatility and significant anomalies (such as high login attempts, unusual session durations, or high data transfer volumes). The goal here is to reduce the umbalance of data classes.  
 
 shouldn't it be better to generate  # Create anomalous issues dataset
