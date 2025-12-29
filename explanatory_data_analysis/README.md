@@ -1,4 +1,10 @@
-## Cyber Threat Unsight -  Explanatory Data Analysis (EDA) with AI-Powered Summarization  
+<h3 align="center">Cyber Threat Unsight -  Explanatory Data Analysis (EDA) with AI-Powered Summarization  </h3>
+<p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/lagacy_model_dev_github.png" 
+       alt="Centered Image" 
+       style="width: 800px; height: 40%;">
+</p>  
+
 
 **Toronto, November 01 2024**  
 **Autor : Atsu Vovor**
