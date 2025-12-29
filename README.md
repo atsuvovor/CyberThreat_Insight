@@ -243,6 +243,12 @@ This color based scenarios approach aligns urgency with the dual factors of **th
 
 
 #### **2.Explanatory Data Analysis(EDA)**  
+🔄 👉Run the Model
+<a 
+  href="https://github.com/atsuvovor/CyberThreat_Insight/tree/main/feature_engineering" 
+  target="_parent">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
 
 The following steps were implemented in the exploratory data analysis (EDA) pipeline to analyze the dataset's key features and distribution patterns:
 
