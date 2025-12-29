@@ -245,7 +245,7 @@ This color based scenarios approach aligns urgency with the dual factors of **th
 #### **2.Explanatory Data Analysis(EDA)**  
 🔄 👉Run the Model
 <a 
-  href="https://github.com/atsuvovor/CyberThreat_Insight/tree/main/feature_engineering" 
+  href="https://github.com/atsuvovor/CyberThreat_Insight/tree/main/explanatory_data_analysis" 
   target="_parent">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
@@ -280,6 +280,12 @@ This pipeline provides a detailed understanding of numerical and categorical fea
 
   
 ### 3.**Features Engineering Pipeline**
+🔄 👉Run the Model
+<a 
+  href="https://github.com/atsuvovor/CyberThreat_Insight/tree/main/feature_engineering" 
+  target="_parent">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a
 
 The feature engineering pipeline was designed to simulate realistic cybersecurity scenarios, enhance anomaly detection, and prepare the dataset for effective model training. It involved the following key steps:
 
