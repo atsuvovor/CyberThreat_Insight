@@ -21,7 +21,7 @@ This module focuses on **model development, benchmarking, performance visualizat
 
 ---
 
-## 📍 Project Context
+##  Project Context
 
 * **Project:** CyberThreat-Insight – Anomalous Behavior Detection
 * **Location:** Toronto, Canada
@@ -32,7 +32,7 @@ This module focuses on **model development, benchmarking, performance visualizat
 
 ---
 
-## 🎯 Objectives
+##  Objectives
 
 * Detect anomalous and malicious cybersecurity events
 * Compare **supervised vs. unsupervised anomaly detection approaches**
@@ -42,7 +42,22 @@ This module focuses on **model development, benchmarking, performance visualizat
 
 ---
 
-## 🧠 Models Implemented
+##  Models Implemented
+
+
+
+| Algorithm                   | Type           | Description                                                                                          |
+|-----------------------------|----------------|------------------------------------------------------------------------------------------------------|
+| **Isolation Forest**        | Unsupervised   | Anomaly detection by isolating outliers through random partitioning of data.                         |
+| **One-Class SVM**           | Unsupervised   | Anomaly detection by identifying a region containing normal data points without labeled data.        |
+| **Local Outlier Factor (LOF)** | Unsupervised   | Detects outliers by comparing local data density with that of neighboring points.                     |
+| **DBSCAN**                  | Unsupervised   | Density-based clustering, also identifies outliers as noise.                                         |
+| **Autoencoder**             | Unsupervised   | A neural network used to learn compressed representations, often for anomaly detection.              |
+| **K-means Clustering**      | Unsupervised   | Clustering algorithm that partitions data into clusters without labels based on distance metrics.    |
+| **Random Forest**           | Supervised     | An ensemble of decision trees used for classification or regression with labeled data.               |
+| **Gradient Boosting**       | Supervised     | An ensemble method that builds sequential trees to improve prediction accuracy in classification or regression. |
+| **LSTM (Long Short-Term Memory)** | Supervised/Unsupervised | Typically supervised for sequence prediction tasks, but can also be used in unsupervised anomaly detection. |
+
 
 ### **Supervised Learning (Multiclass Classification)**
 
@@ -107,7 +122,7 @@ Anomaly detection introduces a **fundamental challenge**: the goal is not to cla
 
 ---
 
-## 🔍 Model-Specific Evaluation Logic
+##  Model-Specific Evaluation Logic
 
 ### Isolation Forest, One-Class SVM, LOF, DBSCAN
 
@@ -135,9 +150,9 @@ Anomaly detection introduces a **fundamental challenge**: the goal is not to cla
 
 ---
 
-## ❓ What Are the Models Actually Predicting?
+##  What Are the Models Actually Predicting?
 
-### ✅ Supervised Models (Multiclass)
+###  Supervised Models (Multiclass)
 
 **Objective:**
 Predict **Threat Level (Risk Level: 0–3)** directly from labeled data.
@@ -162,7 +177,7 @@ Predict **Threat Level (Risk Level: 0–3)** directly from labeled data.
 
 ---
 
-### ⚠️ Unsupervised Models (Binary Anomaly Detection)
+###  Unsupervised Models (Binary Anomaly Detection)
 
 **Objective:**
 Detect deviations from normal behavior **without class labels**.
@@ -186,7 +201,7 @@ Detect deviations from normal behavior **without class labels**.
 
 ---
 
-## 🚨 Class Prediction Gaps in Unsupervised Models
+##  Class Prediction Gaps in Unsupervised Models
 
 ### Key Observation
 
@@ -211,7 +226,7 @@ Threat Levels 2 and 3 are often misclassified as either:
 
 ---
 
-## 🧩 Model Architecture
+##  Model Architecture
 
 ### High-Level Pipeline
 
@@ -238,7 +253,7 @@ RF / GB   IF / SVM / LOF   AE / LSTM
 
 ---
 
-## 🧠 Autoencoder Architecture (Dense)
+##  Autoencoder Architecture (Dense)
 
 ```
 Input (n features)
@@ -255,7 +270,7 @@ Input (n features)
 
 ---
 
-## 🧠 LSTM Autoencoder Architecture
+##  LSTM Autoencoder Architecture
 
 ```
 Input Sequence (t=1, n features)
@@ -269,7 +284,7 @@ Input Sequence (t=1, n features)
 
 ---
 
-## 🏆 Model Selection Strategy
+##  Model Selection Strategy
 
 * Identical train/test splits across models
 * Standardized evaluation metrics
@@ -282,7 +297,7 @@ Input Sequence (t=1, n features)
 
 ---
 
-## 🚀 Future Enhancements
+##  Future Enhancements
 
 * Multiclass anomaly severity modeling
 * Hybrid supervised + anomaly ensembles
@@ -293,7 +308,7 @@ Input Sequence (t=1, n features)
 
 ---
 
-## 📜 License
+##  License
 
 Provided for **educational and research purposes**.
 Commercial usage requires author approval.
@@ -324,20 +339,6 @@ If you want next, I can:
 
 
 
-## Models Implemented  
-
-
-| Algorithm                   | Type           | Description                                                                                          |
-|-----------------------------|----------------|------------------------------------------------------------------------------------------------------|
-| **Isolation Forest**        | Unsupervised   | Anomaly detection by isolating outliers through random partitioning of data.                         |
-| **One-Class SVM**           | Unsupervised   | Anomaly detection by identifying a region containing normal data points without labeled data.        |
-| **Local Outlier Factor (LOF)** | Unsupervised   | Detects outliers by comparing local data density with that of neighboring points.                     |
-| **DBSCAN**                  | Unsupervised   | Density-based clustering, also identifies outliers as noise.                                         |
-| **Autoencoder**             | Unsupervised   | A neural network used to learn compressed representations, often for anomaly detection.              |
-| **K-means Clustering**      | Unsupervised   | Clustering algorithm that partitions data into clusters without labels based on distance metrics.    |
-| **Random Forest**           | Supervised     | An ensemble of decision trees used for classification or regression with labeled data.               |
-| **Gradient Boosting**       | Supervised     | An ensemble method that builds sequential trees to improve prediction accuracy in classification or regression. |
-| **LSTM (Long Short-Term Memory)** | Supervised/Unsupervised | Typically supervised for sequence prediction tasks, but can also be used in unsupervised anomaly detection. |
 
   
 
