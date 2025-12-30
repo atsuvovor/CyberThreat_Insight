@@ -81,7 +81,14 @@ RF / GB   IF / SVM / LOF   AE / LSTM
               │
         Model Deployment
 ```
-
+<h3 align="center">
+  High-Level Pipeline
+</h3> 
+<p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/baseline_Multi_Classifier_architecture" 
+       alt="Centered Image" 
+       style="width: 1000px; height: Auto;">
+</p> 
 
 
 ##  Autoencoder Architecture (Dense)
