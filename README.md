@@ -338,7 +338,7 @@ The feature engineering pipeline was designed to simulate realistic cybersecurit
 This workflow produced a clean, balanced, and interpretable feature set optimized for machine learning–based cyber threat classification.
 
 
-### 4.**Nodel Developemnt - Cyber Threat Detection Engine**  
+### 4.**Model Developemnt - Cyber Threat Detection Engine**  
 🔄 👉Run the Model
 <a 
   href="https://github.com/atsuvovor/CyberThreat_Insight/tree/main/model_dev" 
@@ -352,8 +352,36 @@ The **Cyber Threat Detection Engine** is a three-stage framework designed to ide
 #### The Three-Stage Evolution
 
 * **Stage 1 (Baseline):** Established performance benchmarks using standard supervised and unsupervised algorithms like Random Forest and Isolation Forest.
+  <h3 align="center">
+  High-Level Pipeline
+</h3> 
+<p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/baseline_Multi_Classifier_architecture.png" 
+       alt="Centered Image" 
+       style="width: 50%; height: Auto;">
+</p> 
+
 * **Stage 2 (Feature Engineering):** Converted unsupervised anomaly scores into new input features to help the model better recognize rare, high-severity attacks.
+
+  <p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/hybrid_cyber_threat_severity_classification_pipeline.png" 
+       alt="Centered Image" 
+       style="width: 60%; height: Auto;">
+</p>
+
 * **Stage 3 (Stacking):** Created a two-layer hybrid ensemble combining **Random Forest** (base) and **Gradient Boosting** (meta-learner) for final classification.
+
+<h1 align="center">
+Stacked Supervised Model using Unsupervised Anomaly Features
+</h1> 
+
+
+<p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_model_classifier2.png" 
+       alt="Centered Image" 
+       style="width: 50%; height: Auto;">
+</p>  
+
 
 #### Key Outcomes
 
