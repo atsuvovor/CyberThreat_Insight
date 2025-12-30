@@ -120,6 +120,10 @@ Input Sequence (t=1, n features)
 * Identical train/test splits across models
 * Standardized evaluation metrics
 * **Winning model selected by overall accuracy**
+
+> *"The winning model was selected based on Overall Accuracy. For a detailed breakdown of how we adapted standard metrics for the unsupervised benchmarking phase, see [Appendix A: Applicable Metrics](Appendix A: Applicable Metrics for Anomaly Detection)."*
+
+
 * Framework easily extensible to:
 
   * Cost-sensitive metrics
@@ -165,7 +169,7 @@ Input Sequence (t=1, n features)
 
 
 
-## ⚙️ Core Capabilities
+##  Core Capabilities
 
 * Unified **training & evaluation pipeline**
 * Automated **hyperparameter optimization**
@@ -177,7 +181,7 @@ Input Sequence (t=1, n features)
 
 
 
-## 📊 Evaluation Metrics & Anomaly Detection Considerations
+##  Evaluation Metrics & Anomaly Detection Considerations
 
 Traditional classification metrics—**Accuracy, Precision, Recall, F1-Score, ROC-AUC, and PR-AUC**—are primarily designed for **binary or multiclass classification**.
 Anomaly detection introduces a **fundamental challenge**: the goal is not to classify predefined categories, but to **identify deviations from normal behavior**.
@@ -1278,22 +1282,72 @@ levels, they mostly capture only class 0 or 1.
 * **Output**: Binary anomaly scores (0 = normal, 1 = anomaly), not multiclass predictions
 
 
+### Appendix E: Technical Analysis of the Multiclass Prediction Gap
 
-### Appendix E: Class Prediction Gaps in Unsupervised Models
+In this framework, a significant performance divergence was observed between supervised and unsupervised paradigms. While supervised models (Random Forest, Gradient Boosting) successfully mapped features to four distinct threat levels, unsupervised models primarily defaulted to **Class 0 (Normal)** for high-severity incidents (Classes 2 and 3).
 
-### Observation:
+#### 1. Dimensionality and Manifold Collapse
 
-All unsupervised models **fail to distinguish between threat levels (Class 1, 2, 3)**. Most anomaly detection models only predict **Class 0** or flag minority of samples as "anomalies", making it difficult to classify **subtle threat patterns**.
+Unsupervised models like **Isolation Forest** and **One-Class SVM** are designed to find a hypersphere or boundary that encompasses "normal" data.
 
-### Why Do Unsupervised Models Predict Only Class 0 for Class 2 and 3?
+* These models perform a binary partition: data is either "inside" the normal manifold or "outside" as an outlier.
+* Because these models lack a label-guided objective function, they cannot "see" the boundaries between different types of outliers, effectively collapsing the multi-level threat spectrum (Low, Medium, High) into a single, undifferentiated anomaly class.
 
-Unsupervised anomaly models fail to predict higher threat levels because:
-- They are not trained with class labels and cannot distinguish among multiple classes.
-- Anomalies are rare, and severe anomalies (high threat) are even rarer.
-- These models generalize outliers as a single anomaly class (often mapped to class 1), unable to differentiate between moderate and critical threats.
+#### 2. Signal-to-Noise Ratio in Feature Space
+
+The features used in the `model_dev.py` script—such as session duration and data transfer volume—may show high variance even in normal traffic.
+
+* **Unsupervised models** rely on statistical rarity. If a "Critical" threat (Class 3) shares similar data-transfer volumes with a "Medium" threat (Class 2), an unsupervised model will treat them as identical deviations from the norm.
+* **Supervised models**, conversely, use the provided labels during the `rf_grid.fit` or `gb_grid.fit` processes to identify subtle, non-linear correlations that distinguish severity, even when the raw feature values overlap.
+
+#### 3. Threshold Sensitivity and Severity Masking
+
+The current implementation uses a percentile-based threshold (e.g., the 95th percentile for **Autoencoders** and **K-Means**) to flag anomalies.
+
+* This approach assumes that all threats are equally "rare.".
+* In reality, a "Medium" threat may occur more frequently than a "High" threat. A static threshold often captures the most extreme outliers (Class 3) but misses the more frequent, subtle threats (Class 1 or 2), or vice versa, leading to the observed "Class 0" misclassification for moderate threats.
 
 
 
+## Appendix F: Hyperparameter Configurations & Optimization Logic
+
+To ensure a fair benchmark between the various modeling paradigms, the following configurations were utilized during the `models_training_and_evaluation` phase:
+
+### 1. Supervised Learning Grids (GridSearchCV)
+
+The supervised models utilized `GridSearchCV` with 5-fold cross-validation to optimize for accuracy:
+
+| Model | Hyperparameters Tuned | Fixed Parameters |
+| --- | --- | --- |
+| **Random Forest** | `n_estimators`: [100, 200] <br>
+
+<br> `max_depth`: [10, 15, None] | `random_state`: 42 |
+| **Gradient Boosting** | `n_estimators`: [100, 200] <br>
+
+<br> `learning_rate`: [0.01, 0.1] | `random_state`: 42 |
+
+### 2. Unsupervised Anomaly Detection Settings
+
+Unsupervised models were configured with specific "contamination" rates—the expected proportion of outliers in the data:
+
+* **Isolation Forest:** Set with `n_estimators=100` and a `contamination=0.05`.
+* **One-Class SVM:** Utilized an `RBF` kernel with `gamma=0.001` and `nu=0.05`.
+* **Local Outlier Factor (LOF):** Configured with `n_neighbors=20` and `contamination=0.1`.
+* **DBSCAN:** Defined with `eps=0.5` and `min_samples=5`.
+
+### 3. Deep Learning Architectures
+
+The neural network models relied on reconstruction error thresholds set at the **95th percentile** of the test set's Mean Squared Error (MSE):
+
+* **Dense Autoencoder:** A 6-layer symmetric bottleneck architecture (16  8  4  8  16  Input Dim) using `ReLU` activations and an `Adam` optimizer.
+* **LSTM Autoencoder:** A temporal architecture featuring an initial `LSTM` layer of 64 units, followed by `Dropout(0.2)` and a second `LSTM` layer of 32 units to capture session-based sequences.
+
+
+### 4. Selection Logic
+
+The `select_best_model` function programmatically identifies the winning algorithm by comparing the `Overall Model Accuracy` across the `model_metrics_results_dic`. This ensures that the deployment-ready model (`.pkl`) represents the peak baseline performance for this specific dataset.
+
+---
 
 ## 🤝 Connect with me
 I am always open to collaboration and discussion about new projects or technical roles.
