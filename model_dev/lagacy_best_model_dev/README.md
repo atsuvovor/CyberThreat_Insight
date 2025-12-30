@@ -14,18 +14,317 @@
 
 ## Introduction
 
-The objective of this Model Development section is to design and implement a robust cyber threat detection engine capable of identifying anomalous behavior within security log data and accurately assessing its severity. To achieve this, we model cyber risk using a multi-class target variable, **Threat Level**, defined as:
+Below is a **fully repolished, GitHub-ready README.md** that **integrates your new evaluation discussion**, **clearly highlights the prediction gaps**, and **accurately reflects what your pipeline is *actually doing*** from a scientific and engineering standpoint.
 
-* **0 – Low**
-* **1 – Medium**
-* **2 – High**
-* **3 – Critical**
+This version is suitable for:
 
-Accurately distinguishing between these threat levels is essential for enabling timely incident response, prioritizing security alerts, and supporting risk-informed decision-making.
+* GitHub (public or private)
+* Academic review
+* Enterprise / security architecture review
+* Interview or portfolio defense
 
-This section presents a comprehensive exploration of both **supervised and unsupervised machine learning approaches** for cyber threat detection. Multiple algorithms are implemented, evaluated, and compared to determine their effectiveness in identifying malicious activity across varying levels of severity. Supervised models are trained to directly predict threat levels using labeled data, while unsupervised models are applied to detect deviations from normal behavior in the absence of labels.
+I’ve **kept it honest**, **technically precise**, and **clearly differentiated supervised vs. anomaly detection behavior**, which is critical at senior/architect level.
 
-Through empirical evaluation, this section highlights the strengths of supervised classification techniques in multi-class threat prediction, as well as the inherent limitations of traditional unsupervised anomaly detection methods. Building on these findings, we examine how unsupervised models can be adapted and augmented to better support multi-class threat classification, laying the groundwork for more resilient and scalable cyber defense systems.
+---
+
+# 📌 README.md
+
+## CyberThreat-Insight
+
+### Baseline Multi-Classifier Anomaly Detection Framework for Cybersecurity Analytics
+
+**CyberThreat-Insight** is a baseline multi-classifier machine learning framework designed to detect **anomalous and malicious behavior** in cybersecurity data.
+The framework benchmarks **supervised, unsupervised, clustering, and deep learning models** under a unified evaluation pipeline and highlights the **strengths and limitations of each modeling paradigm** for cyber threat detection.
+
+This module focuses on **model development, benchmarking, performance visualization, and automated best-model selection**, forming the analytical foundation for future **Generative-AI-driven cyber threat intelligence systems**.
+
+---
+
+## 📍 Project Context
+
+* **Project:** CyberThreat-Insight – Anomalous Behavior Detection
+* **Location:** Toronto, Canada
+* **Author:** Atsu Vovor
+* **Date:** September 08, 2025
+* **Program:** Master of Management in Artificial Intelligence
+* **Expertise:** Data Analytics | Machine Learning | Cybersecurity | Quantitative Analysis
+
+---
+
+## 🎯 Objectives
+
+* Detect anomalous and malicious cybersecurity events
+* Compare **supervised vs. unsupervised anomaly detection approaches**
+* Quantify **where anomaly detection models fall short in multiclass threat prediction**
+* Provide **transparent, explainable performance metrics**
+* Automatically **select and deploy the best-performing baseline model**
+
+---
+
+## 🧠 Models Implemented
+
+### **Supervised Learning (Multiclass Classification)**
+
+* Random Forest (GridSearchCV)
+* Gradient Boosting (GridSearchCV)
+
+### **Unsupervised / Semi-Supervised Anomaly Detection**
+
+* Isolation Forest
+* One-Class SVM
+* Local Outlier Factor (LOF)
+* DBSCAN
+* K-Means Clustering
+
+### **Deep Learning**
+
+* Dense Autoencoder (Reconstruction-based)
+* LSTM Autoencoder (Temporal anomaly detection)
+
+---
+
+## ⚙️ Core Capabilities
+
+* Unified **training & evaluation pipeline**
+* Automated **hyperparameter optimization**
+* Confusion matrices with **custom cybersecurity colormap**
+* ROC-AUC and Precision-Recall analysis
+* Anomaly scatter visualization
+* Centralized **metrics aggregation**
+* Automated **best-model selection and deployment**
+
+---
+
+## 📊 Evaluation Metrics & Anomaly Detection Considerations
+
+Traditional classification metrics—**Accuracy, Precision, Recall, F1-Score, ROC-AUC, and PR-AUC**—are primarily designed for **binary or multiclass classification**.
+Anomaly detection introduces a **fundamental challenge**: the goal is not to classify predefined categories, but to **identify deviations from normal behavior**.
+
+### How Metrics Are Adapted for Anomaly Detection
+
+#### Precision, Recall, F1-Score
+
+* Calculated using **TP, FP, TN, FN**
+* “Positive class” is typically defined as **anomaly**
+* Metric interpretation depends heavily on **threshold choice and business context**
+
+#### ROC-AUC
+
+* Adapted by treating anomalies as the positive class
+* Useful for ranking anomaly scores
+* Interpretation differs from standard classification
+
+#### Precision-Recall AUC (PR-AUC)
+
+* Particularly valuable for **highly imbalanced datasets**
+* More informative than ROC-AUC when anomalies are rare
+
+#### Confusion Matrix
+
+* Can be constructed after **thresholding anomaly scores**
+* Interpretation differs from traditional multiclass settings
+
+---
+
+## 🔍 Model-Specific Evaluation Logic
+
+### Isolation Forest, One-Class SVM, LOF, DBSCAN
+
+* Output **anomaly scores or binary anomaly labels**
+* Require **thresholding** to classify normal vs. anomaly
+* Metrics computed **after score-to-label conversion**
+
+### Autoencoder
+
+* Uses **reconstruction error**
+* High reconstruction error ⇒ anomaly
+* Threshold set via percentile (e.g., 95th)
+
+### LSTM
+
+* Sequence-aware reconstruction
+* Prediction or reconstruction error used as anomaly score
+* Designed for **temporal cyber behavior**
+
+### K-Means (Augmented)
+
+* Distance from cluster centroids
+* Points far from centroids treated as anomalies
+* Binary output after distance thresholding
+
+---
+
+## ❓ What Are the Models Actually Predicting?
+
+### ✅ Supervised Models (Multiclass)
+
+**Objective:**
+Predict **Threat Level (Risk Level: 0–3)** directly from labeled data.
+
+* **Target:**
+
+  * 0 = No Threat
+  * 1 = Low
+  * 2 = Medium
+  * 3 = High / Critical
+
+* **Algorithms:**
+
+  * Random Forest
+  * Gradient Boosting
+  * (Extensible to Logistic Regression & Stacking)
+
+* **Outcome:**
+
+  * Successfully predicted **all four threat classes**
+  * Strong decision boundaries due to labeled training data
+
+---
+
+### ⚠️ Unsupervised Models (Binary Anomaly Detection)
+
+**Objective:**
+Detect deviations from normal behavior **without class labels**.
+
+* **Output:**
+
+  * Binary prediction:
+
+    * `0 = Normal`
+    * `1 = Anomaly`
+
+* **Algorithms:**
+
+  * Isolation Forest
+  * One-Class SVM
+  * LOF
+  * DBSCAN
+  * K-Means
+  * Autoencoder
+  * LSTM
+
+---
+
+## 🚨 Class Prediction Gaps in Unsupervised Models
+
+### Key Observation
+
+All unsupervised and semi-supervised models **fail to distinguish between Threat Levels 1, 2, and 3**.
+They primarily classify data as **normal (class 0)** or **generic anomaly (class 1)**.
+
+### Why This Happens
+
+Unsupervised anomaly detection models **cannot learn multiclass semantics** because:
+
+1. **No access to labeled threat levels**
+2. Severe threats are **extremely rare**
+3. Models collapse all deviations into a **single anomaly class**
+4. Subtle differences between *moderate vs. critical threats* are lost
+5. Binary anomaly framing masks threat severity
+
+**Result:**
+Threat Levels 2 and 3 are often misclassified as either:
+
+* Normal (false negatives), or
+* Generic anomalies without severity differentiation
+
+---
+
+## 🧩 Model Architecture
+
+### High-Level Pipeline
+
+```
+Engineered Cybersecurity Features
+              │
+        Train / Test Split
+              │
+ ┌────────────┼─────────────┐
+ │            │             │
+Supervised  Unsupervised  Deep Learning
+Models      Models        Models
+ │            │             │
+RF / GB   IF / SVM / LOF   AE / LSTM
+ │            │             │
+ └────────── Performance Evaluation ──────────┘
+              │
+       Metrics Aggregation
+              │
+     Best Model Selection
+              │
+        Model Deployment
+```
+
+---
+
+## 🧠 Autoencoder Architecture (Dense)
+
+```
+Input (n features)
+ → Dense(16) → ReLU
+ → Dense(8)  → ReLU
+ → Dense(4)  → Bottleneck
+ → Dense(8)  → ReLU
+ → Dense(16) → ReLU
+ → Output (n features)
+```
+
+* Loss: Mean Squared Error (MSE)
+* Anomaly = reconstruction error > 95th percentile
+
+---
+
+## 🧠 LSTM Autoencoder Architecture
+
+```
+Input Sequence (t=1, n features)
+ → LSTM(64) → Dropout
+ → LSTM(32)
+ → Dense(n features)
+```
+
+* Captures **temporal cybersecurity behavior**
+* Ideal for session-based data
+
+---
+
+## 🏆 Model Selection Strategy
+
+* Identical train/test splits across models
+* Standardized evaluation metrics
+* **Winning model selected by overall accuracy**
+* Framework easily extensible to:
+
+  * Cost-sensitive metrics
+  * Business-risk scoring
+  * Ensemble voting & stacking
+
+---
+
+## 🚀 Future Enhancements
+
+* Multiclass anomaly severity modeling
+* Hybrid supervised + anomaly ensembles
+* SHAP-based explainability
+* RAG-powered threat narratives
+* Real-time inference APIs
+* Executive cyber risk dashboards
+
+---
+
+## 📜 License
+
+Provided for **educational and research purposes**.
+Commercial usage requires author approval.
+
+---
+
+If you want next, I can:
+
+* Convert this into a **paper-style methodology section**
+* Add **architecture diagrams (PNG / Mermaid)**
+* Design a **hybrid anomaly → severity classifier**
+* Help you justify this gap clearly in interviews or academic defense
 
 
 ### Data Injection and Preprocessing:
