@@ -41,8 +41,26 @@ This module focuses on **model development, benchmarking, performance visualizat
 * Automatically **select and deploy the best-performing baseline model**
 
 ---
+## Data origination and Feature Analysis
 
-##  Models Implemented
+### Data Injection and Preprocessing:
+<a 
+  href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/datagen/README.md"
+  target="_parent">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
+
+### Feature Engineering:
+<a 
+  href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/feature_engineering/README.md"
+  target="_parent">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
+
+
+## Model Developement  
+
+###  Models Implemented Overview
 
 
 
@@ -224,6 +242,12 @@ Threat Levels 2 and 3 are often misclassified as either:
 * Normal (false negatives), or
 * Generic anomalies without severity differentiation
 
+
+<p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/models_confusion_matrix.png" 
+       alt="Centered Image" 
+       style="width: 100%; height: Auto;">
+</p>  
 ---
 
 ##  Model Architecture
@@ -313,36 +337,7 @@ Input Sequence (t=1, n features)
 Provided for **educational and research purposes**.
 Commercial usage requires author approval.
 
----
 
-If you want next, I can:
-
-* Convert this into a **paper-style methodology section**
-* Add **architecture diagrams (PNG / Mermaid)**
-* Design a **hybrid anomaly → severity classifier**
-* Help you justify this gap clearly in interviews or academic defense
-
-
-### Data Injection and Preprocessing:
-<a 
-  href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/datagen/README.md"
-  target="_parent">
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
-</a>
-
-### Feature Engineering:
-<a 
-  href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/feature_engineering/README.md"
-  target="_parent">
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
-</a>
-
-
-
-
-  
-
-## Model Evaluation
 **Run the code:**
 <a 
   href="https://colab.research.google.com/github/atsuvovor/CyberThreat_Insight/blob/main/model_dev/lagacy_best_model_dev/lagacy_model_dev_github.ipynb"
@@ -1181,11 +1176,31 @@ if __name__ == "__main__":
 
 </details>
 
+
+## Conclusion
+
+This Model Development effort demonstrates that **supervised learning models**—particularly ensemble-based methods such as Random Forest and Gradient Boosting—are highly effective at predicting multi-class cyber threat levels when labeled data is available. These models successfully learn complex decision boundaries and consistently differentiate between low, medium, high, and critical threats, making them well-suited for operational security environments where historical labels exist.
+
+In contrast, **unsupervised anomaly detection models** excel at identifying deviations from normal behavior but are fundamentally limited to **binary outcomes** (normal vs. anomalous). As observed, models such as Isolation Forest, One-Class SVM, LOF, DBSCAN, Autoencoders, and LSTM-based detectors are unable to distinguish between higher-severity threat classes. This limitation stems from their design, which treats all anomalies as a single category without contextual or severity-based differentiation.
+
+These findings underscore a critical insight: while unsupervised models are valuable for early anomaly detection and zero-day threat discovery, they are insufficient on their own for nuanced, multi-level threat classification. Effective cyber threat intelligence systems must therefore either rely on supervised learning where labels exist or incorporate **hybrid and adaptive strategies** that combine anomaly detection with downstream classification, clustering, or risk-scoring mechanisms.
+
+Overall, this section establishes a clear, evidence-based framework for selecting and adapting machine learning models in cybersecurity analytics, bridging the gap between anomaly detection and actionable threat severity classification.  
+
+As next step, we will work to improve the this model.
+ Click here to check the next step:
+<a 
+  href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/lagacy_best_model_dev_improved/README.md"
+  target="_parent">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
+
+## Appendix
 While traditional classification metrics like accuracy, precision, recall, F1-score, ROC-AUC, and PR-AUC are primarily designed for binary classification problems, anomaly detection presents a unique challenge. In anomaly detection, the goal is to identify instances that deviate significantly from the normal pattern, rather than classifying them into predefined categories.
 
 **That said, we can adapt some of these metrics to evaluate anomaly detection models**  
 
-#### Applicable Metrics for Anomaly Detection
+#### Appendix A: Applicable Metrics for Anomaly Detection
 
 1. **Precision, Recall, and F1-Score:**
    - These metrics can be calculated by considering the true positive (TP), false positive (FP), true negative (TN), and false negative (FN) rates.
@@ -1226,13 +1241,13 @@ While traditional classification metrics like accuracy, precision, recall, F1-sc
    - You can set a distance threshold to classify instances.
    - Once you have the predicted labels, you can calculate the standard metrics.
 
-## What Are the Models Predicting?  
+### Appendix B: What Are the Models Predicting?  
 
 Supervised models were evaluated using classification metrics: accuracy, precision, recall, F1-score, and confusion matrices. We noticed that Random Forest and Gradient Boosting both predicted all 4 classes accurately.  
 Unsupervised models were originally evaluated by converting anomaly scores into binary labels (normal vs anomaly). However, they were only able to predict binary classes (typically class 0), failing to capture nuanced threat levels (2 and 3).  
 
 
-### Supervised Models  
+### Appendix C: Supervised Models  
 
 The supervised models directly predict the 'Threat Level' label and were able to classify all four
 categories correctly. Their success is due to the availability of labeled training data and the ability to
@@ -1248,7 +1263,7 @@ learn decision boundaries across classes.
 * **Target**: `Risk Level` (0: No Threat → 3: High Threat)
 * **Input**: Normalized features (numeric behavioral and system indicators)
 
-### Unsupervised Models  
+### Appendix D: Unsupervised Models  
 
 Unsupervised models like Isolation Forest, One-Class SVM, LOF, and DBSCAN are designed to distinguish anomalies from normal observations but not multiclass labels. These models predict binary labels (0 or 1). Class 0 indicates normal, class 1 indicates anomaly. When mapped against the threat
 levels, they mostly capture only class 0 or 1.
@@ -1267,7 +1282,7 @@ levels, they mostly capture only class 0 or 1.
 
 ---
 
-## Class Prediction Gaps in Unsupervised Models
+### Appendix E: Class Prediction Gaps in Unsupervised Models
 
 ### Observation:
 
@@ -1280,32 +1295,6 @@ Unsupervised anomaly models fail to predict higher threat levels because:
 - Anomalies are rare, and severe anomalies (high threat) are even rarer.
 - These models generalize outliers as a single anomaly class (often mapped to class 1), unable to differentiate between moderate and critical threats.
 
-
-<p align="center">
-  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/models_confusion_matrix.png" 
-       alt="Centered Image" 
-       style="width: 100%; height: Auto;">
-</p>  
-
-
-
-## Conclusion
-
-This Model Development effort demonstrates that **supervised learning models**—particularly ensemble-based methods such as Random Forest and Gradient Boosting—are highly effective at predicting multi-class cyber threat levels when labeled data is available. These models successfully learn complex decision boundaries and consistently differentiate between low, medium, high, and critical threats, making them well-suited for operational security environments where historical labels exist.
-
-In contrast, **unsupervised anomaly detection models** excel at identifying deviations from normal behavior but are fundamentally limited to **binary outcomes** (normal vs. anomalous). As observed, models such as Isolation Forest, One-Class SVM, LOF, DBSCAN, Autoencoders, and LSTM-based detectors are unable to distinguish between higher-severity threat classes. This limitation stems from their design, which treats all anomalies as a single category without contextual or severity-based differentiation.
-
-These findings underscore a critical insight: while unsupervised models are valuable for early anomaly detection and zero-day threat discovery, they are insufficient on their own for nuanced, multi-level threat classification. Effective cyber threat intelligence systems must therefore either rely on supervised learning where labels exist or incorporate **hybrid and adaptive strategies** that combine anomaly detection with downstream classification, clustering, or risk-scoring mechanisms.
-
-Overall, this section establishes a clear, evidence-based framework for selecting and adapting machine learning models in cybersecurity analytics, bridging the gap between anomaly detection and actionable threat severity classification.  
-
-As next step, we will work to improve the this model.
- Click here to check the next step:
-<a 
-  href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/lagacy_best_model_dev_improved/README.md"
-  target="_parent">
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
-</a>
 
 ---
 
