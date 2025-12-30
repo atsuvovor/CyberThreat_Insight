@@ -1,5 +1,5 @@
 <h2 align="center">
-  Multi-Model Threat Detection Baseline
+  Baseline Multi-Classifier Anomaly Detection Framework for Cybersecurity Analytics
 </h2> 
 <p align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/lagacy_model_dev_github.png" 
@@ -12,27 +12,8 @@
 </p> 
 
 
+
 ## Introduction
-
-Below is a **fully repolished, GitHub-ready README.md** that **integrates your new evaluation discussion**, **clearly highlights the prediction gaps**, and **accurately reflects what your pipeline is *actually doing*** from a scientific and engineering standpoint.
-
-This version is suitable for:
-
-* GitHub (public or private)
-* Academic review
-* Enterprise / security architecture review
-* Interview or portfolio defense
-
-I’ve **kept it honest**, **technically precise**, and **clearly differentiated supervised vs. anomaly detection behavior**, which is critical at senior/architect level.
-
----
-
-# 📌 README.md
-
-## CyberThreat-Insight
-
-### Baseline Multi-Classifier Anomaly Detection Framework for Cybersecurity Analytics
-
 **CyberThreat-Insight** is a baseline multi-classifier machine learning framework designed to detect **anomalous and malicious behavior** in cybersecurity data.
 The framework benchmarks **supervised, unsupervised, clustering, and deep learning models** under a unified evaluation pipeline and highlights the **strengths and limitations of each modeling paradigm** for cyber threat detection.
 
