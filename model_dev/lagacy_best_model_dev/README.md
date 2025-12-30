@@ -59,28 +59,6 @@ This module focuses on **model development, benchmarking, performance visualizat
 
 ##  Model Architecture
 
-### High-Level Pipeline
-
-```
-Engineered Cybersecurity Features
-              │
-        Train / Test Split
-              │
- ┌────────────┼─────────────┐
- │            │             │
-Supervised  Unsupervised  Deep Learning
-Models      Models        Models
- │            │             │
-RF / GB   IF / SVM / LOF   AE / LSTM
- │            │             │
- └────────── Performance Evaluation ──────────┘
-              │
-       Metrics Aggregation
-              │
-     Best Model Selection
-              │
-        Model Deployment
-```
 <h3 align="center">
   High-Level Pipeline
 </h3> 
