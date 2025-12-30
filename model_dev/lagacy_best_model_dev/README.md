@@ -19,7 +19,7 @@ The framework benchmarks **supervised, unsupervised, clustering, and deep learni
 
 This module focuses on **model development, benchmarking, performance visualization, and automated best-model selection**, forming the analytical foundation for future **Generative-AI-driven cyber threat intelligence systems**.
 
----
+
 
 ##  Project Context
 
@@ -57,6 +57,74 @@ This module focuses on **model development, benchmarking, performance visualizat
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
+##  Model Architecture
+
+### High-Level Pipeline
+
+```
+Engineered Cybersecurity Features
+              │
+        Train / Test Split
+              │
+ ┌────────────┼─────────────┐
+ │            │             │
+Supervised  Unsupervised  Deep Learning
+Models      Models        Models
+ │            │             │
+RF / GB   IF / SVM / LOF   AE / LSTM
+ │            │             │
+ └────────── Performance Evaluation ──────────┘
+              │
+       Metrics Aggregation
+              │
+     Best Model Selection
+              │
+        Model Deployment
+```
+
+
+
+##  Autoencoder Architecture (Dense)
+
+```
+Input (n features)
+ → Dense(16) → ReLU
+ → Dense(8)  → ReLU
+ → Dense(4)  → Bottleneck
+ → Dense(8)  → ReLU
+ → Dense(16) → ReLU
+ → Output (n features)
+```
+
+* Loss: Mean Squared Error (MSE)
+* Anomaly = reconstruction error > 95th percentile
+
+
+
+##  LSTM Autoencoder Architecture
+
+```
+Input Sequence (t=1, n features)
+ → LSTM(64) → Dropout
+ → LSTM(32)
+ → Dense(n features)
+```
+
+* Captures **temporal cybersecurity behavior**
+* Ideal for session-based data
+
+
+
+##  Model Selection Strategy
+
+* Identical train/test splits across models
+* Standardized evaluation metrics
+* **Winning model selected by overall accuracy**
+* Framework easily extensible to:
+
+  * Cost-sensitive metrics
+  * Business-risk scoring
+  * Ensemble voting & stacking
 
 ## Model Developement  
 
@@ -95,7 +163,7 @@ This module focuses on **model development, benchmarking, performance visualizat
 * Dense Autoencoder (Reconstruction-based)
 * LSTM Autoencoder (Temporal anomaly detection)
 
----
+
 
 ## ⚙️ Core Capabilities
 
@@ -107,7 +175,7 @@ This module focuses on **model development, benchmarking, performance visualizat
 * Centralized **metrics aggregation**
 * Automated **best-model selection and deployment**
 
----
+
 
 ## 📊 Evaluation Metrics & Anomaly Detection Considerations
 
@@ -138,7 +206,7 @@ Anomaly detection introduces a **fundamental challenge**: the goal is not to cla
 * Can be constructed after **thresholding anomaly scores**
 * Interpretation differs from traditional multiclass settings
 
----
+
 
 ##  Model-Specific Evaluation Logic
 
@@ -166,7 +234,7 @@ Anomaly detection introduces a **fundamental challenge**: the goal is not to cla
 * Points far from centroids treated as anomalies
 * Binary output after distance thresholding
 
----
+
 
 ##  What Are the Models Actually Predicting?
 
@@ -193,7 +261,7 @@ Predict **Threat Level (Risk Level: 0–3)** directly from labeled data.
   * Successfully predicted **all four threat classes**
   * Strong decision boundaries due to labeled training data
 
----
+
 
 ###  Unsupervised Models (Binary Anomaly Detection)
 
@@ -217,7 +285,7 @@ Detect deviations from normal behavior **without class labels**.
   * Autoencoder
   * LSTM
 
----
+
 
 ##  Class Prediction Gaps in Unsupervised Models
 
@@ -248,78 +316,7 @@ Threat Levels 2 and 3 are often misclassified as either:
        alt="Centered Image" 
        style="width: 100%; height: Auto;">
 </p>  
----
 
-##  Model Architecture
-
-### High-Level Pipeline
-
-```
-Engineered Cybersecurity Features
-              │
-        Train / Test Split
-              │
- ┌────────────┼─────────────┐
- │            │             │
-Supervised  Unsupervised  Deep Learning
-Models      Models        Models
- │            │             │
-RF / GB   IF / SVM / LOF   AE / LSTM
- │            │             │
- └────────── Performance Evaluation ──────────┘
-              │
-       Metrics Aggregation
-              │
-     Best Model Selection
-              │
-        Model Deployment
-```
-
----
-
-##  Autoencoder Architecture (Dense)
-
-```
-Input (n features)
- → Dense(16) → ReLU
- → Dense(8)  → ReLU
- → Dense(4)  → Bottleneck
- → Dense(8)  → ReLU
- → Dense(16) → ReLU
- → Output (n features)
-```
-
-* Loss: Mean Squared Error (MSE)
-* Anomaly = reconstruction error > 95th percentile
-
----
-
-##  LSTM Autoencoder Architecture
-
-```
-Input Sequence (t=1, n features)
- → LSTM(64) → Dropout
- → LSTM(32)
- → Dense(n features)
-```
-
-* Captures **temporal cybersecurity behavior**
-* Ideal for session-based data
-
----
-
-##  Model Selection Strategy
-
-* Identical train/test splits across models
-* Standardized evaluation metrics
-* **Winning model selected by overall accuracy**
-* Framework easily extensible to:
-
-  * Cost-sensitive metrics
-  * Business-risk scoring
-  * Ensemble voting & stacking
-
----
 
 ##  Future Enhancements
 
@@ -330,7 +327,7 @@ Input Sequence (t=1, n features)
 * Real-time inference APIs
 * Executive cyber risk dashboards
 
----
+
 
 ##  License
 
@@ -1280,7 +1277,7 @@ levels, they mostly capture only class 0 or 1.
   * LSTM (for sequential anomaly detection)
 * **Output**: Binary anomaly scores (0 = normal, 1 = anomaly), not multiclass predictions
 
----
+
 
 ### Appendix E: Class Prediction Gaps in Unsupervised Models
 
@@ -1296,7 +1293,7 @@ Unsupervised anomaly models fail to predict higher threat levels because:
 - These models generalize outliers as a single anomaly class (often mapped to class 1), unable to differentiate between moderate and critical threats.
 
 
----
+
 
 ## 🤝 Connect with me
 I am always open to collaboration and discussion about new projects or technical roles.
