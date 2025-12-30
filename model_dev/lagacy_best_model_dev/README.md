@@ -87,7 +87,7 @@ RF / GB   IF / SVM / LOF   AE / LSTM
 <p align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/baseline_Multi_Classifier_architecture.png" 
        alt="Centered Image" 
-       style="width: 1000px; height: Auto;">
+       style="width: 50%; height: Auto;">
 </p> 
 
 
