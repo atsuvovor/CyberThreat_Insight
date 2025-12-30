@@ -298,6 +298,37 @@ The feature engineering pipeline was designed to simulate realistic cybersecurit
 * **Dimensionality Reduction (PCA)**: Principal Component Analysis reduced noise while preserving important behavioral patterns.
 * **Data Augmentation (SMOTE + GANs)**: Oversampling techniques balanced the dataset by generating synthetic threat instances.
 
+<p align="center">
+  <img src="images/feature_engineering_flowwwchart.png" 
+       alt="Centered Image" 
+       style="width: 250px; height: auto;">
+</p>
+
+
+<p align="center">
+  <img src="images/feature plots.png" 
+       alt="Centered Image" 
+       style="width: 1500px; height: auto;">
+</p>
+
+<p align="center">
+  <img src="images/Shap.png" 
+       alt="Centered Image" 
+       style="width: 500px; height: auto;">
+</p>  
+
+
+<p align="center">
+  <img src="images/SMOT-GAN performance plots.png" 
+       alt="Centered Image" 
+       style="width: 1500px; height: auto;">
+</p>
+
+<p align="center">
+  <img src="images/SMOT - GAN performance plots 3D.png" 
+       alt="Centered Image" 
+       style="width: 1500px; height: auto;">
+</p>
 This workflow produced a clean, balanced, and interpretable feature set optimized for machine learning–based cyber threat classification.
 
 
