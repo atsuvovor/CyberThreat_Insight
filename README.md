@@ -379,7 +379,7 @@ Stacked Supervised Model using Unsupervised Anomaly Features
 <p align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_model_classifier2.png" 
        alt="Centered Image" 
-       style="width: 50%; height: Auto;">
+       style="width: 80%; height: Auto;">
 </p>  
 
 
@@ -398,6 +398,23 @@ Stacked Supervised Model using Unsupervised Anomaly Features
 </a>
 
 
+<div align="center">
+<h3>CyberAttack-Insight - Attack Simulation & Stacked Anomaly Detection Platform</h3>
+ <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/cyber_attack_simulation_engine2.png" 
+       alt="Cyber Attack symulation Engine" 
+       style="width: 600px; height: 40%;">
+
+</div
+
+ ## Platform Capabilities at a Glance & High-Level Architecture  
+
+<div align="center">
+ <h3>Platform Capabilities at a Glance & High-Level Architecture</h3>
+<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/high_level_cyber_threat_architecture_file_path.png" 
+       alt="Cyber Threat Detection Engine" 
+       style="width: 40%; height: Aoto;">
+
+</div
 **CyberAttack-Insight** is a simulation-based cybersecurity analytics platform designed as a professional portfolio and educational demonstration. It showcases how **synthetic cyber-attack scenarios** and **stacked anomaly detection models** can be architected within a governance- and audit-aware framework. The platform simulates multiple MITRE ATT&CK–aligned attack types, applies a stacked ensemble of unsupervised and supervised machine learning models to generate anomaly scores and threat levels, and produces dashboard-ready outputs and executive reports. All data and attacks are intentionally synthetic and non-operational, emphasizing explainability, model risk management, and regulatory alignment rather than real-world deployment.
 The simulated attack types includes:
 
