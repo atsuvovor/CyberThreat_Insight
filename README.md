@@ -285,7 +285,7 @@ This pipeline provides a detailed understanding of numerical and categorical fea
   href="https://github.com/atsuvovor/CyberThreat_Insight/tree/main/feature_engineering" 
   target="_parent">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
-</a
+</a>
 
 The feature engineering pipeline was designed to simulate realistic cybersecurity scenarios, enhance anomaly detection, and prepare the dataset for effective model training. It involved the following key steps:
 
@@ -302,6 +302,13 @@ This workflow produced a clean, balanced, and interpretable feature set optimize
 
 
 ### 4.**Nodel Developemnt - Cyber Threat Detection Engine**  
+🔄 👉Run the Model
+<a 
+  href="https://github.com/atsuvovor/CyberThreat_Insight/tree/main/model_dev" 
+  target="_parent">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
+
 
 The **Cyber Threat Detection Engine** is a three-stage framework designed to identify security threats by evolving from simple baselines to a complex, stacked ensemble model.
 
@@ -318,6 +325,13 @@ The **Cyber Threat Detection Engine** is a three-stage framework designed to ide
 * **Deployment Ready:** The system is designed to integrate with SIEM platforms using serialized artifacts for real-time analytics.
 
 ### 5.**CyberAttack-Insight Simulation**  
+🔄 👉Run the Model
+<a 
+  href="https://github.com/atsuvovor/CyberThreat_Insight/tree/main/cyber_attack_insight" 
+  target="_parent">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
+
 
 **CyberAttack-Insight** is a simulation-based cybersecurity analytics platform designed as a professional portfolio and educational demonstration. It showcases how **synthetic cyber-attack scenarios** and **stacked anomaly detection models** can be architected within a governance- and audit-aware framework. The platform simulates multiple MITRE ATT&CK–aligned attack types, applies a stacked ensemble of unsupervised and supervised machine learning models to generate anomaly scores and threat levels, and produces dashboard-ready outputs and executive reports. All data and attacks are intentionally synthetic and non-operational, emphasizing explainability, model risk management, and regulatory alignment rather than real-world deployment.
 The simulated attack types includes:
