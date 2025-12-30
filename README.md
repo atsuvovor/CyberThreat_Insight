@@ -414,9 +414,12 @@ Stacked Supervised Model using Unsupervised Anomaly Features
        alt="Cyber Threat Detection Engine" 
        style="width: 40%; height: Aoto;">
 
-</div
-**CyberAttack-Insight** is a simulation-based cybersecurity analytics platform designed as a professional portfolio and educational demonstration. It showcases how **synthetic cyber-attack scenarios** and **stacked anomaly detection models** can be architected within a governance- and audit-aware framework. The platform simulates multiple MITRE ATT&CK–aligned attack types, applies a stacked ensemble of unsupervised and supervised machine learning models to generate anomaly scores and threat levels, and produces dashboard-ready outputs and executive reports. All data and attacks are intentionally synthetic and non-operational, emphasizing explainability, model risk management, and regulatory alignment rather than real-world deployment.
-The simulated attack types includes:
+</div>
+
+
+**CyberAttack-Insight** is a simulation-based cybersecurity analytics platform designed as a professional portfolio and educational demonstration. It showcases how **synthetic cyber-attack scenarios** and **stacked anomaly detection models** can be architected within a governance- and audit-aware framework. The platform simulates multiple MITRE ATT&CK–aligned attack types, applies a stacked ensemble of unsupervised and supervised machine learning models to generate anomaly scores and threat levels, and produces dashboard-ready outputs and executive reports. All data and attacks are intentionally synthetic and non-operational, emphasizing explainability, model risk management, and regulatory alignment rather than real-world deployment.  
+
+The simulated attack types includes:  
 
 * **Denial of Service (DoS) / Distributed DoS (DDoS)** – traffic flooding to disrupt service availability
 * **Brute Force Attacks** – repeated credential attempts to gain unauthorized access
