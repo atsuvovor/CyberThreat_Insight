@@ -85,7 +85,7 @@ RF / GB   IF / SVM / LOF   AE / LSTM
   High-Level Pipeline
 </h3> 
 <p align="center">
-  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/baseline_Multi_Classifier_architecture" 
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/baseline_Multi_Classifier_architecture.png" 
        alt="Centered Image" 
        style="width: 1000px; height: Auto;">
 </p> 
