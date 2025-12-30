@@ -121,7 +121,7 @@ Input Sequence (t=1, n features)
 * Standardized evaluation metrics
 * **Winning model selected by overall accuracy**
 
-> *"The winning model was selected based on Overall Accuracy. For a detailed breakdown of how we adapted standard metrics for the unsupervised benchmarking phase, see [Appendix A: Applicable Metrics](Appendix A: Applicable Metrics for Anomaly Detection)."*
+> *"The winning model was selected based on Overall Accuracy. For a detailed breakdown of how we adapted standard metrics for the unsupervised benchmarking phase, see [Appendix A: Applicable Metrics](#appendix-a-applicable-metrics-for-anomaly-detection)*
 
 
 * Framework easily extensible to:
