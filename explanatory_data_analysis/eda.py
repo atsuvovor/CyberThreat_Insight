@@ -474,7 +474,7 @@ EXPECTED_SCHEMA: Dict[str, str] = {
     "Issue Response Time Days": "int64",
     "Defense Action": "object",
     "Remediation Steps": "object",
-    "Is Anomaly": "int64",
+    #"Is Anomaly": "int64",
     "Assignees": "object",
     "Severity": "object",
     "Session Duration in Second": "int64",
