@@ -32,7 +32,15 @@ Data analysis is an essential step in cybersecurity threat modeling and anomaly 
 This approach reduces manual effort and accelerates reporting, making it valuable for executive-level presentations and real-time simulation environments.
 
 
-## Code Structure & Commentary
+## System Specifications
+
+* **Python version:** 3.8+
+* **Libraries:** pandas, numpy, matplotlib, seaborn, transformers (Hugging Face)
+* **Hardware:** Runs on CPU (GPU optional for faster inference).
+* **Memory:** ≥4 GB RAM recommended for medium datasets.
+
+
+## Code Structure
 
 ### 1. Imports and Environment Setup
 
@@ -77,11 +85,17 @@ This approach reduces manual effort and accelerates reporting, making it valuabl
 * Summarizes dataset insights: e.g., trends, anomalies, correlations.
 * Outputs **natural language explanations** for decision-makers.
 
-📌 The innovative part—LLMs transform raw statistics into **narrative insights**.
+📌 The innovative part—LLMs transform raw statistics into **narrative insights**.  
+
+### 6. Weaknesses of LLMs in EDA
+
+* **Context length limits** → Summarization may miss details in large datasets.
+* **Hallucinations** → AI may infer non-existent relationships.
+* **Performance overhead** → Hugging Face models can be slow on CPU.
+* **Data sensitivity** → LLM summaries may not be suitable for confidential datasets without governance.
 
 
-
-### 6. Execution Flow
+### 7. Execution Flow
 
 When run, the script:
 
@@ -1849,23 +1863,6 @@ cd CyberThreat_Insight/explanatory_data_analysis
 python eda.py
 ```
 
-
-## System Specifications
-
-* **Python version:** 3.8+
-* **Libraries:** pandas, numpy, matplotlib, seaborn, transformers (Hugging Face)
-* **Hardware:** Runs on CPU (GPU optional for faster inference).
-* **Memory:** ≥4 GB RAM recommended for medium datasets.
-
-
-## Weaknesses of LLMs in EDA
-
-* **Context length limits** → Summarization may miss details in large datasets.
-* **Hallucinations** → AI may infer non-existent relationships.
-* **Performance overhead** → Hugging Face models can be slow on CPU.
-* **Data sensitivity** → LLM summaries may not be suitable for confidential datasets without governance.
-
-
 ## Next Steps to Improve
 
 1. **Model Upgrades:** Replace `distilgpt2` with **Mistral 7B**, **Mixtral 8x7B**, or **LLaMA 3-8B-Instruct** for better summarization.
@@ -1877,53 +1874,17 @@ python eda.py
 
 ## Conclusion
 
-The `eda.py` script provides a **scalable, portable, and AI-augmented** approach to exploratory data analysis in cybersecurity. By merging **traditional statistical techniques** with **AI-powered summarization**, it accelerates insight generation and supports both technical and executive stakeholders. While LLMs introduce challenges like hallucination and performance overhead, future improvements (stronger models, chunking, governance) will make this tool an indispensable part of the data analysis pipeline.
+The `eda.py` script provides a **scalable, portable, and AI-augmented** approach to exploratory data analysis in cybersecurity. By merging **traditional statistical techniques** with **AI-powered summarization**, it accelerates insight generation and supports both technical and executive stakeholders. While LLMs introduce challenges like hallucination and performance overhead, future improvements (stronger models, chunking, governance) will make this tool an indispensable part of the data analysis pipeline.  
 
 ---
+## 🤝 Connect with me
+I am always open to collaboration and discussion about new projects or technical roles.
 
-### 🔹 In Jupyter Notebook
+Atsu Vovor  
+Consultant, Data & Analytics    
+Ph: 416-795-8246 | ✉️ atsu.vovor@bell.net    
+🔗 <a href="https://www.linkedin.com/in/atsu-vovor-mmai-9188326/" target="_blank">LinkedIn</a> | <a href="https://atsuvovor.github.io/projects_portfolio.github.io/" target="_blank">GitHub</a> | <a href="https://public.tableau.com/app/profile/atsu.vovor8645/vizzes" target="_blank">Tableau Portfolio</a>    
+📍 Mississauga ON      
 
-```bash
-!git clone https://github.com/atsuvovor/CyberThreat_Insight.git
-%cd CyberThreat_Insight/explanatory_data_analysis
-%run eda.py
-```
+### Thank you for visiting!🙏
 
-
-### 🔹 Locally
-
-```bash
-git clone https://github.com/atsuvovor/CyberThreat_Insight.git
-cd CyberThreat_Insight/explanatory_data_analysis
-python eda.py
-```
-
-
-## System Specifications
-
-* **Python version:** 3.8+
-* **Libraries:** pandas, numpy, matplotlib, seaborn, transformers (Hugging Face)
-* **Hardware:** Runs on CPU (GPU optional for faster inference).
-* **Memory:** ≥4 GB RAM recommended for medium datasets.
-
-
-## Weaknesses of LLMs in EDA
-
-* **Context length limits** → Summarization may miss details in large datasets.
-* **Hallucinations** → AI may infer non-existent relationships.
-* **Performance overhead** → Hugging Face models can be slow on CPU.
-* **Data sensitivity** → LLM summaries may not be suitable for confidential datasets without governance.
-
-
-## Next Steps to Improve
-
-1. **Model Upgrades:** Replace `distilgpt2` with **Mistral 7B**, **Mixtral 8x7B**, or **LLaMA 3-8B-Instruct** for better summarization.
-2. **Chunked Summarization:** Break large datasets into sections to fit within context limits.
-3. **Interactive Dashboards:** Integrate with **Streamlit** or **Plotly Dash** for real-time EDA.
-4. **Governance Layer:** Add data masking, compliance checks, and audit trails for regulatory use.
-5. **Explainability:** Pair LLM summaries with **statistical justifications** (e.g., "95% of variance explained by top 3 features").
-
-
-## Conclusion
-
-The `eda.py` script provides a **scalable, portable, and AI-augmented** approach to exploratory data analysis in cybersecurity. By merging **traditional statistical techniques** with **AI-powered summarization**, it accelerates insight generation and supports both technical and executive stakeholders. While LLMs introduce challenges like hallucination and performance overhead, future improvements (stronger models, chunking, governance) will make this tool an indispensable part of the data analysis pipeline.
