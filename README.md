@@ -329,6 +329,12 @@ The feature engineering pipeline was designed to simulate realistic cybersecurit
        alt="Centered Image" 
        style="width: 1500px; height: auto;">
 </p>
+
+<p align="center">
+  <img src="images/GANs_performance.png" 
+       alt="Centered Image" 
+       style="width: 1500px; height: auto;">
+</p>
 This workflow produced a clean, balanced, and interpretable feature set optimized for machine learning–based cyber threat classification.
 
 
