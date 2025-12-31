@@ -360,14 +360,15 @@ The **Cyber Threat Detection Engine** is a three-stage framework designed to ide
   <img src="images/baseline_Multi_Classifier_architecture.png" 
        alt="Centered Image" 
        style="width: 60%; height: Auto;">
-</div
+</div>
 
-* **Stage 2 (Feature Engineering):** Converted unsupervised anomaly scores into new input features to help the model better recognize rare, high-severity attacks.
+* **Stage 2 (Feature Engineering):** Converted unsupervised anomaly scores into new input features to help the model better recognize rare, high-severity attacks.  
   <div align="center">
-  <img src="images/hybrid_cyber_threat_severity_classification_pipeline.png" 
+   <h3 align="center">Hybrid ML Approach for Cyber Threat Classification  </h3> 
+    <img src="images/hybrid_cyber_threat_severity_classification_pipeline.png" 
        alt="Centered Image" 
        style="width: 60%; height: Auto;">
-</div
+</div>
 
 * **Stage 3 (Stacking):** Created a two-layer hybrid ensemble combining **Random Forest** (base) and **Gradient Boosting** (meta-learner) for final classification.  
 <div align="center">
@@ -375,7 +376,7 @@ The **Cyber Threat Detection Engine** is a three-stage framework designed to ide
   <img src="images/stacked_model_classifier2.png" 
        alt="Centered Image" 
        style="width: 80%; height: Auto;">
-</div
+</div>
 
 
 #### Key Outcomes
