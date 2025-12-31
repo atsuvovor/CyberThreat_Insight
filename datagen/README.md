@@ -1060,7 +1060,7 @@ The following features are used to define rule-based conditions for identifying 
 **Adaptive Defense Mechanism**
 The system responds dynamically by applying flags and assigning customized defensive actions based on rule evaluations and scenario classifications. Each issue is assigned an adaptive `Defense Action` aligned with its assessed threat conditions, providing an additional layer of automated response across varying threat levels and behavioral patterns.
 
-To enhance interpretability and prioritization, threat conditions are visualized using color-coded cybersecurity scenarios. This approach enables rapid risk assessment and effective communication by mapping threat severity and urgency to intuitive color intensities—**red, orange, yellow, and green**—with increasing severity represented by deeper color intensity.  
+To enhance interpretability and prioritization, threat conditions are visualized using color-coded cybersecurity scenarios. This approach enables rapid risk assessment and effective communication by mapping threat severity and urgency to intuitive color intensities, **red, orange, yellow, and green**, with increasing severity represented by deeper color intensity.  
 
 **Color Scheme**
 - **Critical Threat & Severity**: **Dark Red** – Highest urgency.
