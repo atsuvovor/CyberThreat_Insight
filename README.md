@@ -67,31 +67,18 @@ The **CyberThreat Insight** project is designed as a comprehensive research and 
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
-In this section, we will use data augmentation techniques (SMOTE, GAN, label shuffling or permutation, time series variability, and noise addition) to generate a synthetic cybersecurity issues dataset   that will include month-to-month volatility and significant anomalies (such as high login attempts, unusual session durations, or high data transfer volumes). The goal here is to reduce the umbalance of data classes.  
+This phase focuses on constructing a realistic, fully synthetic cybersecurity dataset that captures normal operational behavior, controlled anomalies, and temporal volatility. The process begins with the generation of a baseline *normal issues* dataset, which serves as the foundation for all subsequent anomaly modeling.
 
-shouldn't it be better to generate  # Create anomalous issues dataset
-def generate_anomalous_issues_df(p_anomalous_issue_ids, p_anomalous_issue_keys) module based on the generate_normal_issues_df output( generate_normal_issues_df output to be used as imput to generate anomalous issues dataset)? I think this will help to customize or ajuste the anomalous or update the columns included in the anomalous when there is not enougt anomalous.
+Using this baseline, a dedicated anomaly generation module `generate_anomalous_issues_df()` derives anomalous records directly from the normal dataset by selectively perturbing key attributes (e.g., login attempts, session duration, data transfer volume, and severity indicators). This approach ensures schema consistency, improves maintainability, and enables flexible control over anomaly density and feature composition when anomalous samples are scarce.
 
-absolutely. That’s a great idea, and it’ll give you more flexibility and realism in your dataset. By basing the anomalous issues generation on the normal issues dataset, you:
+To enhance realism and temporal dynamics, synthetic data generation incorporates controlled techniques such as label permutation, time-series variability, and noise injection to introduce month-over-month volatility and behavioral deviations. These methods simulate real-world cybersecurity conditions, including bursts of abnormal activity and gradual shifts in risk profiles.
 
-Benefits
-Ensure Column Consistency
-Any schema changes to the normal dataset automatically propagate.
+While advanced augmentation techniques such as **SMOTE** and **Generative Adversarial Networks (GANs)** are referenced at this stage for conceptual completeness, they are applied primarily during the **feature engineering phase** to address class imbalance and enrich minority threat representations. This clear separation ensures that data preparation establishes a coherent behavioral baseline, while feature engineering focuses on model-ready balancing and representational enhancement.
 
-Simplify Maintenance
-No need to manage column lists or logic redundantly in two places.
 
-Customizable Anomalies
-You can select rows from the normal set and tweak them (e.g., elevate threat metrics, distort values).
-
-Guarantee Coverage
-Especially useful when you don’t have enough anomalies — you can "morph" some normal rows into anomalies.
-
-Support Semi-Synthetic Modeling
-Which is closer to real-world threats — abnormal behavior typically starts from a normal baseline.
 
  **Core Data Schema**:
-   Each column will be structured to simulate real-world attributes.  
+   Each column is structured to simulate real-world attributes.  
 
   
    - `Issue ID`, `Issue Key`: Unique identifiers.
