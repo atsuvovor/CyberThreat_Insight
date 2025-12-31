@@ -360,10 +360,7 @@ The **Cyber Threat Detection Engine** is a three-stage framework designed to ide
   <img src="images/baseline_Multi_Classifier_architecture.png" 
        alt="Centered Image" 
        style="width: 70%; height: Auto;">
-</div>
-
-
----
+</div>  
 
 * **Stage 2 (Feature Engineering):** Converted unsupervised anomaly scores into new input features to help the model better recognize rare, high-severity attacks.  
   <div align="center">
