@@ -442,9 +442,12 @@ To install the project, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/atsuvovor/CyberThreat_Insight.git
+   #git clone https://github.com/atsuvovor/CyberThreat_Insight.git
+   !git clone https://github.com/atsuvovor/CyberThreat_Insight.git 2>/dev/null
+   !pip install -r /content/CyberThreat_Insight/requirements.txt -q
+   #  then   
    cd my-python-project
-
+```
 ---
 ## **Next Step Improvement**
 * AI Agent Orchestration: Validation Agent, Executive Insight delivery Agent, SOC Sopport AI Agent
