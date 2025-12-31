@@ -297,7 +297,8 @@ The feature engineering pipeline was designed to simulate realistic cybersecurit
 * **Model Explainability (SHAP)**: SHAP values provided interpretability for each prediction, essential for SOC analysts.
 * **Dimensionality Reduction (PCA)**: Principal Component Analysis reduced noise while preserving important behavioral patterns.
 * **Data Augmentation (SMOTE + GANs)**: Oversampling techniques balanced the dataset by generating synthetic threat instances.
-
+  
+<div align="center">
 <p align="center">
   <img src="images/feature_engineering_flowwwchart.png" 
        alt="Centered Image" 
@@ -335,6 +336,8 @@ The feature engineering pipeline was designed to simulate realistic cybersecurit
        alt="Centered Image" 
        style="width: 1500px; height: auto;">
 </p>
+
+</div  
 This workflow produced a clean, balanced, and interpretable feature set optimized for machine learning–based cyber threat classification.
 
 
@@ -394,7 +397,7 @@ The **Cyber Threat Detection Engine** is a three-stage framework designed to ide
 <h3>CyberAttack-Insight - Attack Simulation & Stacked Anomaly Detection Platform</h3>
  <img src="images/cyber_attack_simulation_engine2.png" 
        alt="Cyber Attack symulation Engine" 
-       style="width: 600px; height: 40%;">
+       style="width: 60%; height: Auto;">
 
 </div
 
@@ -406,7 +409,8 @@ The **Cyber Threat Detection Engine** is a three-stage framework designed to ide
        alt="Cyber Threat Detection Engine" 
        style="width: 40%; height: Aoto;">
 
-</div>
+</div>   
+  
   
 **CyberAttack-Insight** is a simulation-based cybersecurity analytics platform designed as a professional portfolio and educational demonstration. It showcases how **synthetic cyber-attack scenarios** and **stacked anomaly detection models** can be architected within a governance- and audit-aware framework. The platform simulates multiple MITRE ATT&CK–aligned attack types, applies a stacked ensemble of unsupervised and supervised machine learning models to generate anomaly scores and threat levels, and produces dashboard-ready outputs and executive reports. All data and attacks are intentionally synthetic and non-operational, emphasizing explainability, model risk management, and regulatory alignment rather than real-world deployment.  
 
