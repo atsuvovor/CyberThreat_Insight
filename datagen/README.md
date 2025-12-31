@@ -942,12 +942,14 @@ The script generates data with a variety of attributes, including issue details,
 
 **Monthly Volatility**:  
   - **Impact Score**, **Cost**, and **data_transfer_MB** We use synthetic techniques to create spikes or drops in activity between months, simulating the volatility in issues or user activity.
-  - For example, we use random walks to vary values in a non-linear fashion to capture realistic volatility.
+  - For example, we use random walks to vary values in a non-linear fashion to capture realistic volatility.  
 
 **Data Augmentation**:
-   - **Scaling Up Data Points**: We will use SMOTE or random sampling for categorical columns to add diversity.
-   - **Label Swapping for `Assignees`, `Departments`**: Here, we randomly reassign categories periodically to simulate changing roles.
-   - **Time-Series Variability**: We use simulated timestamps within and across sessions to show login attempts, data transfer spikes, and session durations.
+
+* **Scaling Data Points**: During the early stages of feature engineering, SMOTE and controlled random sampling are applied particularly to categorical features to increase data diversity and address class imbalance.
+* **Label Perturbation for `Assignees` and `Departments`**: Categorical labels are periodically reassigned to simulate organizational role changes and dynamic team structures commonly observed in real-world environments.
+* **Time-Series Variability Injection**: Synthetic timestamps are generated both within and across sessions to model realistic behavioral dynamics, including bursts in login attempts, spikes in data transfer activity, and variations in session duration.
+
 
 **User activity features:**  
 
@@ -971,9 +973,8 @@ The script generates data with a variety of attributes, including issue details,
 
 - **Generate normal issues dataset**: First, we a normal issue dataset with almost no data anomaly
 - **Generate anomalous issues dataset**: The we introduce anomaly to the detaset
-- **Combine normal and anomalous data**: We combine both normal and anomalous datasets  
-- **Adressing class imbalance in datasets**:Using SMOTE (Synthetic Minority Over-sampling Technique) we make sure that class imbalance in the dataset is resolved.  
-all the data files are saves on google drive  
+- **Combine normal and anomalous data**: We combine both normal and anomalous datasets
+- * **Addressing Class Imbalance**: During the feature analysis stage, the **Synthetic Minority Over-sampling Technique (SMOTE)** is applied to mitigate class imbalance and ensure that minority threat classes are adequately represented in the dataset.  
 
   
 **User Activities Generation Metrics Formula**  
