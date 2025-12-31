@@ -364,7 +364,6 @@ The **Cyber Threat Detection Engine** is a three-stage framework designed to ide
 
 * **Stage 2 (Feature Engineering):** Converted unsupervised anomaly scores into new input features to help the model better recognize rare, high-severity attacks.  
   <div align="center">
-   <h3 align="center">Hybrid ML Approach for Cyber Threat Classification  </h3> 
     <img src="images/hybrid_cyber_threat_severity_classification_pipeline.png" 
        alt="Centered Image" 
        style="width: 70%; height: Auto;">
