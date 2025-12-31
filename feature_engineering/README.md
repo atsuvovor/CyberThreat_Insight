@@ -783,7 +783,7 @@ if __name__ == "__main__":
 ## **Feature Engineering – Advanced Data Augmentation using SMOTE and GANs**  
 🔗 Run the code:
 <a 
-  href="https://colab.research.google.com/github/atsuvovor/CyberThreat_Insight/blob/main/feature_engeneering/data_augmentation_smote_gans.ipynb"
+  href="https://colab.research.google.com/github/atsuvovor/CyberThreat_Insight/blob/main/feature_engineering/data_augmentation_smote_gans.ipynb"
   target="_parent">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>   
