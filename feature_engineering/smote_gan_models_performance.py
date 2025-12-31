@@ -283,7 +283,7 @@ def SMOTE_GANs_evaluation_pipeline():
 
     #print("\nApplying Custom Matplotlib Style\n")
     apply_custom_matplotlib_style()
-    plot_combined_analysis_2d_3d(fe_processed_df, X_augmented, y_augmented, features_engineering_columns)
+    #plot_combined_analysis_2d_3d(fe_processed_df, X_augmented, y_augmented, features_engineering_columns)
 
     #print("\n plotting gan_training_metrics\n")
     plot_gan_training_metrics(d_loss_real_list, d_loss_fake_list, g_loss_list,
