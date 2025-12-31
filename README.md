@@ -447,8 +447,36 @@ To install the project, follow these steps:
    !pip install -r /content/CyberThreat_Insight/requirements.txt -q
    #  then   
    cd my-python-project
+
+
+
+## **Google Colab Environnement**
+
+```bash
+#pipeline
+!git clone https://github.com/atsuvovor/CyberThreat_Insight.git 2>/dev/null
+!pip install -r /content/CyberThreat_Insight/requirements.txt -q
+
+#dev
+%run /content/CyberThreat_Insight/model_dev/stacked_model/stacked_anomaly_detection_classifier.py
+
+#inference
+%run /content/CyberThreat_Insight/model_inference/model_inference.py
+
+#production simulation"
+%run /content/CyberThreat_Insight/production/stacked_ad_classifier_prod.py
+
+#attack
+%run /content/CyberThreat_Insight/cyber_attack_insight/attack_simulation_v02.py
+
+#Vidualization(Dashboard)
+%run /content/CyberThreat_Insight/cyber_attack_insight/attacks_executive_dashboard_v02.py
+
 ```
+
 ---
+
+
 ## **Next Step Improvement**
 * AI Agent Orchestration: Validation Agent, Executive Insight delivery Agent, SOC Sopport AI Agent
 * Docker Hub Migration
