@@ -992,11 +992,11 @@ So, if severity is "High" or "Critical," the result is a base value adjusted for
 
 **Treat level Identification and Adaptive Defense Systems Setting**
 
-We will set up a threat level based our cybersecurity dataset generated. We will create a threat scoring model that combines multiple relevant features.  
+Threat levels are derived from the generated cybersecurity dataset using a composite threat scoring model. This model integrates multiple relevant features to quantitatively assess risk and dynamically support adaptive defense and response mechanisms.
 
 **Key Threat Indicators (KTIs) Definition**  
 
-The following columns will be uses as key threat indicators (KTIs):  
+The following columns are used as key threat indicators (KTIs):  
 
    - **Severity**: Indicates the criticality of the issue.
    - **Impact Score**: Represents the potential damage if the threat is realized.
@@ -1009,7 +1009,7 @@ The following columns will be uses as key threat indicators (KTIs):
 
 **KTIs based Scoring**
   
-For each KTI we will define the acriteria to be used to assigne a score  
+For each KTI we define the acriteria to be used to assigne a score  
 
 | KTI               | Condition                                      | Score   |
 |-------------------|------------------------------------------------|---------|
@@ -1051,16 +1051,16 @@ This method provides a structured and quantifiable approach to assessing the thr
 
 **Rule-based Adaptive Defense Mechanism**  
 
-Here we will add logic that monitors specific threat conditions in real-time and adapt responses based on defined rules. This will include automatic flagging of high-threat issues, increasing logging frequency for suspicious activities, and assigning specific mitigation actions based on the threat level and activity context.
+The system incorporates a rule-based defense layer that evaluates threat conditions against defined control thresholds and response policies. High-risk scenarios trigger automated flags, enhanced audit logging, and prescribed mitigation actions, ensuring consistent and traceable responses. This approach supports governance objectives by promoting transparency, repeatability, and alignment with risk management and compliance requirements.
 
-**Rules Definition**  
- We will use the following features to define rules that will be applied to identify potential threats and recommend defensive actions: `Threat Level`, `Severity`, `Impact Score`, `Login Attempts`, `Risk Level`, `Issue Response Time Days`, `Num Files Accessed`,`Data Transfer MB`.   
 
-**Defense Mechanism**: The system will respond adaptively by adding flags and assigning custom actions based on the rule evaluations and scenarios colors
+**Rules Definition**
+The following features are used to define rule-based conditions for identifying potential threats and recommending appropriate defensive actions: `Threat Level`, `Severity`, `Impact Score`, `Login Attempts`, `Risk Level`, `Issue Response Time (Days)`, `Num Files Accessed`, and `Data Transfer (MB)`.
 
-   
- The defense mechanism assigns an adaptive `Defense Action` to each issue based on threat conditions, adding an extra layer of automated response for varying threat levels and behaviors.
- The treat conditions are implemented by Color-coding cybersecurity scenarios, we bealieve, is a helpful way to quickly communicate risk levels and prioritize response actions. Here's a suggested approach to buld the scenarios, where we use **intensity of red, orange, yellow, and green** to represent risk:
+**Adaptive Defense Mechanism**
+The system responds dynamically by applying flags and assigning customized defensive actions based on rule evaluations and scenario classifications. Each issue is assigned an adaptive `Defense Action` aligned with its assessed threat conditions, providing an additional layer of automated response across varying threat levels and behavioral patterns.
+
+To enhance interpretability and prioritization, threat conditions are visualized using color-coded cybersecurity scenarios. This approach enables rapid risk assessment and effective communication by mapping threat severity and urgency to intuitive color intensities—**red, orange, yellow, and green**—with increasing severity represented by deeper color intensity.  
 
 **Color Scheme**
 - **Critical Threat & Severity**: **Dark Red** – Highest urgency.
