@@ -369,14 +369,9 @@ The **Cyber Threat Detection Engine** is a three-stage framework designed to ide
        style="width: 60%; height: Auto;">
 </p>
 
-* **Stage 3 (Stacking):** Created a two-layer hybrid ensemble combining **Random Forest** (base) and **Gradient Boosting** (meta-learner) for final classification.
-
-<h1 align="center">
-Stacked Supervised Model using Unsupervised Anomaly Features
-</h1> 
-
-
+* **Stage 3 (Stacking):** Created a two-layer hybrid ensemble combining **Random Forest** (base) and **Gradient Boosting** (meta-learner) for final classification.  
 <p align="center">
+ <h1 align="center"> Stacked Supervised Model using Unsupervised Anomaly Features </h1> 
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/stacked_model_classifier2.png" 
        alt="Centered Image" 
        style="width: 80%; height: Auto;">
