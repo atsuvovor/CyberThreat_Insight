@@ -352,14 +352,14 @@ The **Cyber Threat Detection Engine** is a three-stage framework designed to ide
 #### The Three-Stage Evolution
 
 * **Stage 1 (Baseline):** Established performance benchmarks using standard supervised and unsupervised algorithms like Random Forest and Isolation Forest.
-  <h3 align="center">
-  High-Level Pipeline
-</h3> 
+
 <p align="center">
+ <h3 align="center">High-Level Pipeline</h3> 
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/baseline_Multi_Classifier_architecture.png" 
        alt="Centered Image" 
        style="width: 50%; height: Auto;">
 </p> 
+
 
 * **Stage 2 (Feature Engineering):** Converted unsupervised anomaly scores into new input features to help the model better recognize rare, high-severity attacks.
 
