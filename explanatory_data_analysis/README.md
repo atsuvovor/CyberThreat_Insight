@@ -1843,10 +1843,11 @@ if __name__ == "__main__":
 
 ---
 
-### 🔹 In Jupyter Notebook
+### 🔹 In Jupyter Notebook/Google Colab
 
 ```bash
 !git clone https://github.com/atsuvovor/CyberThreat_Insight.git
+!pip install -r /content/CyberThreat_Insight/requirements.txt -q
 %cd CyberThreat_Insight/explanatory_data_analysis
 %run eda.py
 ```
@@ -1856,6 +1857,7 @@ if __name__ == "__main__":
 
 ```bash
 git clone https://github.com/atsuvovor/CyberThreat_Insight.git
+pip install -r /content/CyberThreat_Insight/requirements.txt -q
 cd CyberThreat_Insight/explanatory_data_analysis
 python eda.py
 ```
