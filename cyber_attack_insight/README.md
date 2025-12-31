@@ -1124,31 +1124,7 @@ It bridges **cybersecurity, data science, and AI governance** into a single, aud
 * Insider logic is heuristic, not behavioral profiling
 
 
-## Model Output Visualization 
-
-<div align="center">
- <h3>Executive Summary Metrics</h3>
-<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/attack_executive_summary.png" 
-       alt="Attacks Architecture Diagram Governance" 
-       style="width: 100%; height: Aoto;">
-
-</div>
-
-<div align="center">
- <h3>Key Risk Indicators – Executive Dashboard</h3>
-<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/attack_KRI_2.png" 
-       alt="Attacks Architecture Diagram Governance" 
-       style="width: 100%; height: Aoto;">
-
-</div>
-
-<div align="center">
- <h3>Threat Distribution Overview</h3>
-<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/threat_distribution_overview.png" 
-       alt="Attacks Architecture Diagram Governance" 
-       style="width: 100%; height: Aoto;">
-
-</div>
+## Model Output Visualization(Dashboards)  
 
 <h3>
   <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/cyber_attack_insight/attacks_executive_dashboard_v02.ipynb">
@@ -1752,6 +1728,32 @@ if __name__ == "__main__":
 ```
 
 </details>
+
+<div align="center">
+ <h3>Executive Summary Metrics</h3>
+<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/attack_executive_summary.png" 
+       alt="Attacks Architecture Diagram Governance" 
+       style="width: 100%; height: Aoto;">
+
+</div>
+
+<div align="center">
+ <h3>Key Risk Indicators – Executive Dashboard</h3>
+<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/attack_KRI_2.png" 
+       alt="Attacks Architecture Diagram Governance" 
+       style="width: 100%; height: Aoto;">
+
+</div>
+
+<div align="center">
+ <h3>Threat Distribution Overview</h3>
+<img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/threat_distribution_overview.png" 
+       alt="Attacks Architecture Diagram Governance" 
+       style="width: 100%; height: Aoto;">
+
+</div>
+
+
 ## Conclusion
 
 CyberAttack-Insight demonstrates how a **modern cybersecurity analytics platform could be architected**, governed, and communicated—**without using real data or operational systems**.
