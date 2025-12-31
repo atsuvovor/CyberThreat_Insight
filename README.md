@@ -352,27 +352,27 @@ The **Cyber Threat Detection Engine** is a three-stage framework designed to ide
 #### The Three-Stage Evolution
 
 * **Stage 1 (Baseline):** Established performance benchmarks using standard supervised and unsupervised algorithms like Random Forest and Isolation Forest.
-<p align="center">
+<div align="center">
  <h3 align="center">High-Level Pipeline</h3> 
   <img src="images/baseline_Multi_Classifier_architecture.png" 
        alt="Centered Image" 
-       style="width: 50%; height: Auto;">
-</p> 
+       style="width: 60%; height: Auto;">
+</div
 
 * **Stage 2 (Feature Engineering):** Converted unsupervised anomaly scores into new input features to help the model better recognize rare, high-severity attacks.
-  <p align="center">
+  <div align="center">
   <img src="images/hybrid_cyber_threat_severity_classification_pipeline.png" 
        alt="Centered Image" 
        style="width: 60%; height: Auto;">
-</p>
+</div
 
 * **Stage 3 (Stacking):** Created a two-layer hybrid ensemble combining **Random Forest** (base) and **Gradient Boosting** (meta-learner) for final classification.  
-<p align="center">
+<div align="center">
  <h3 align="center"> Stacked Supervised Model using Unsupervised Anomaly Features </h3> 
   <img src="images/stacked_model_classifier2.png" 
        alt="Centered Image" 
        style="width: 80%; height: Auto;">
-</p>  
+</div
 
 
 #### Key Outcomes
@@ -407,8 +407,7 @@ The **Cyber Threat Detection Engine** is a three-stage framework designed to ide
        style="width: 40%; height: Aoto;">
 
 </div>
-
-
+  
 **CyberAttack-Insight** is a simulation-based cybersecurity analytics platform designed as a professional portfolio and educational demonstration. It showcases how **synthetic cyber-attack scenarios** and **stacked anomaly detection models** can be architected within a governance- and audit-aware framework. The platform simulates multiple MITRE ATT&CK–aligned attack types, applies a stacked ensemble of unsupervised and supervised machine learning models to generate anomaly scores and threat levels, and produces dashboard-ready outputs and executive reports. All data and attacks are intentionally synthetic and non-operational, emphasizing explainability, model risk management, and regulatory alignment rather than real-world deployment.  
 
 The simulated attack types includes:  
