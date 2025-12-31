@@ -400,11 +400,6 @@ The **Cyber Threat Detection Engine** is a three-stage framework designed to ide
        alt="Cyber Attack symulation Engine" 
        style="width: 60%; height: Auto;">
 
-</div
-
- ## Platform Capabilities at a Glance & High-Level Architecture  
-
-<div align="center">
  <h3>Platform Capabilities at a Glance & High-Level Architecture</h3>
 <img src="images/high_level_cyber_threat_architecture_file_path.png" 
        alt="Cyber Threat Detection Engine" 
