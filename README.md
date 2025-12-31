@@ -4,7 +4,7 @@
 **Detecting Anomalous Behavior in Cybersecurity Analytics with Generative AI**
 </div>
 
-**Toronto, November 01 2025**  
+**Toronto, November 01 2024**  
 **Autor : Atsu Vovor**
 
 ---
