@@ -281,7 +281,29 @@ The following steps were implemented in the exploratory data analysis (EDA) pipe
 
 This pipeline provides a detailed understanding of numerical and categorical feature behaviors while highlighting correlations and potential anomalies in the dataset.
 
+<p align="center">
+  <img src="images/explanatory_DA.png" 
+       alt="Centered Image" 
+       style="width: 1500px; height: auto;">
+</p>
 
+<p align="center">
+  <img src="images/explanatory_DA2.png" 
+       alt="Centered Image" 
+       style="width: 1500px; height: auto;">
+</p
+
+<p align="center">
+  <img src="images/explanatory_DA4.png" 
+       alt="Centered Image" 
+       style="width: 1500px; height: auto;">
+</p
+
+<p align="center">
+  <img src="images/explanatory_DA.png" 
+       alt="Centered Image" 
+       style="width: 1500px; height: auto;">
+</p
   
 ### 3.**Features Engineering Pipeline**
 🔄 👉Run the Model
