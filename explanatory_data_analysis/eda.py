@@ -88,6 +88,23 @@ except ImportError:
 warnings.filterwarnings('ignore')
 
 
+def coerce_safe_dtypes(df):
+    safe_casts = {
+        "Login Attempts": "float64",
+        "Memory Usage MB": "float64",
+        "Impact Score": "int64"
+    }
+
+    for col, target_type in safe_casts.items():
+        if col in df.columns:
+            try:
+                df[col] = df[col].astype(target_type)
+            except Exception:
+                pass  # Leave as-is if unsafe
+
+    return df
+
+
 # Function to normalize numerical features using Min-Max Scaling
 def normalize_numerical_features(p_df):
     scaler = MinMaxScaler()
@@ -1667,7 +1684,9 @@ def analysis_sub_pipeline(df, agent):
 
 def eda_main_pipeline():
     agent_validator = AIValidatorAgent(expected_schema=EXPECTED_SCHEMA, knowledge_base=prepare_rag_documents())
-    df = agent_validator.load_data()
+    df_ = agent_validator.load_data()
+
+    df = coerce_safe_dtypes(df_)
 
     extended_knowledge_base = prepare_rag_documents(df)
     agent = AIValidatorAgent(expected_schema=EXPECTED_SCHEMA, knowledge_base=extended_knowledge_base)
