@@ -1025,30 +1025,50 @@ class AIValidatorAgent:
         )
         return report
 
+    #def validation_errors(self, report):
+    #    # align names with validate_dataset output
+    #    type_mismatches = report.get("type_mismatches")
+    #    missing_columns = report.get("missing_columns")
+    #    extra_cols = report.get("extra_cols")
+    #    null_values = report.get("missing_values")
+    #    duplicate_rows = report.get("duplicates")
+
+    #    validation_errors = []
+    #    if type_mismatches:
+    #        validation_errors.append("Type mismatches: " + str(type_mismatches))
+    #    if missing_columns:
+    #        validation_errors.append("Missing columns: " + str(missing_columns))
+    #    if extra_cols:
+    #        validation_errors.append("Extra columns: " + str(extra_cols))
+    #    if null_values:
+    #        validation_errors.append("Null values: " + str(null_values))
+    #    if duplicate_rows:
+    #        validation_errors.append("Duplicate rows: " + str(duplicate_rows))
+    #    if validation_errors:
+    #        return "\n".join(validation_errors)
+    #    # return None if no errors
+    #    return None
+
     def validation_errors(self, report):
-        # align names with validate_dataset output
-        type_mismatches = report.get("type_mismatches")
-        missing_columns = report.get("missing_columns")
-        extra_cols = report.get("extra_cols")
-        null_values = report.get("missing_values")
-        duplicate_rows = report.get("duplicates")
+        fatal_errors = []
+        # Only fail on structural problems
+    
+        if report.get("missing_columns"):
+            fatal_errors.append(f"Missing columns: {report['missing_columns']}")
 
-        validation_errors = []
-        if type_mismatches:
-            validation_errors.append("Type mismatches: " + str(type_mismatches))
-        if missing_columns:
-            validation_errors.append("Missing columns: " + str(missing_columns))
-        if extra_cols:
-            validation_errors.append("Extra columns: " + str(extra_cols))
-        if null_values:
-            validation_errors.append("Null values: " + str(null_values))
-        if duplicate_rows:
-            validation_errors.append("Duplicate rows: " + str(duplicate_rows))
-        if validation_errors:
-            return "\n".join(validation_errors)
-        # return None if no errors
-        return None
+        if report.get("extra_columns"):
+            fatal_errors.append(f"Extra columns: {report['extra_columns']}")
 
+        if report.get("missing_values"):
+            fatal_errors.append(f"Null values: {report['missing_values']}")
+
+        if report.get("duplicates", 0) > 0:
+            fatal_errors.append(f"Duplicate rows: {report['duplicates']}")
+
+        # Type mismatches are NOT fatal if coercible
+        return "\n".join(fatal_errors) if fatal_errors else None
+
+    
     def _dtype_string(self, s: pd.Series) -> str:
         """Normalize dtype str for comparison (pandas often returns e.g., 'int64')."""
         return str(s.dtype)
