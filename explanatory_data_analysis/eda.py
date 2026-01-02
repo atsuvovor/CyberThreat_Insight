@@ -1018,11 +1018,20 @@ class AIValidatorAgent:
         self.validation_report = report
         self.initial_summary = self._compose_initial_summary(report)
 
-        # refine with LLM (if available), using retrieved knowledge
-        self.refined_summary = self.refine_summary_with_llm(
+        # refine with LLM (if available), using retrieved knowledge(this is generatig allucination)
+        #self.refined_summary = self.refine_summary_with_llm(
+        #    initial_summary=self.initial_summary,
+        #    validation_report=report
+        #)
+
+        if self.sdk_mode == "huggingface-local":
+            self.refined_summary = self.initial_summary
+        else:
+            self.refined_summary = self.refine_summary_with_llm(
             initial_summary=self.initial_summary,
             validation_report=report
-        )
+            )
+
         return report
 
     #def validation_errors(self, report):
