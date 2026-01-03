@@ -9,8 +9,6 @@
 #Consultant Data Analytics Specialist | Machine Learning |
 #Data science | Quantitative Analysis | AI REporting | French & English Bilingual
 #--------------------------------------------
-
-#----------------------------------------------
 #Exploratory Data Analysis (EDA) Code
 # --------------------------
 #   Necessary Imports
