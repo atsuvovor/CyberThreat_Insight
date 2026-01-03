@@ -18,20 +18,6 @@
 import os
 import sys
 import subprocess
-
-
-from insights.chart_insights import CHART_INSIGHT_MAP
-from insights.executive_facts import build_executive_facts
-from prompts.executive_prompt import executive_summary_prompt
-
-from datetime import datetime, timedelta
-from IPython.display import display
-from typing import List, Dict, Optional, Tuple, Any
-from pathlib import Path
-
-
-
-
 import io
 import re
 import pandas as pd
@@ -49,6 +35,16 @@ from google.colab.userdata import SecretNotFoundError
 #-----
 import re
 from rapidfuzz import fuzz
+
+
+from insights.chart_insights import CHART_INSIGHT_MAP
+from insights.executive_facts import build_executive_facts
+from prompts.executive_prompt import executive_summary_prompt
+
+from datetime import datetime, timedelta
+from IPython.display import display
+from typing import List, Dict, Optional, Tuple, Any
+from pathlib import Path
 import warnings
 
 # ---- Safe FAISS import ----
