@@ -245,7 +245,7 @@ async function loadDocumentation(url) {
 
     let mdText = await (await fetch(url)).text();
 
-    const base = "https://raw.githubusercontent.com/atsuvovor/power_bi_projects/main/docs/cyber_attack_insight/";
+    const base = "https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/tree/main/images/";
 
     mdText = mdText.replace(/!\[(.*?)\]\((images\/.*?)\)/g, (match, alt, relPath) =>
         `![${alt}](${base}${relPath.replace(/^\.\//, "")})`
