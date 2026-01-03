@@ -35,7 +35,8 @@ import re
 from rapidfuzz import fuzz
 
 
-from insights.chart_insights import CHART_INSIGHT_MAP
+from insights.chart_insights import eda.py
+CHART_INSIGHT_MAP
 from insights.executive_facts import build_executive_facts
 from prompts.executive_prompt import executive_summary_prompt
 
