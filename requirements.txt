@@ -16,3 +16,6 @@ ipython 	           # For IPython.display (used to display DataFrames nicely)
 google-colab 	       # Optional: provides google.colab.files for ZIP download when running in Colab
 		               # (Safe to include; GitHub Actions won't use it since COLAB=False)
 fpdf		           # For pgf reporting
+llama-cpp-python       #
+accelerate             #
+torch                  #
