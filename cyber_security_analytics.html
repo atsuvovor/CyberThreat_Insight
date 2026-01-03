@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cyber Security Analytics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Marked.js for Markdown → HTML -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+            background: #f4f6f9;
+            color: #222;
+        }
+
+        /* Layout */
+        .container {
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        #sidebar {
+            width: 280px;
+            background: #0b1c2d;
+            color: #fff;
+            transition: width 0.3s ease;
+            overflow-y: auto;
+        }
+
+        #sidebar.collapsed {
+            width: 70px;
+        }
+
+        .sidebar-header {
+            padding: 15px;
+            background: #081523;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .sidebar-header h2 {
+            font-size: 16px;
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        .toggle-btn {
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        /* Menu */
+        .menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu li {
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .menu a {
+            display: block;
+            padding: 12px 18px;
+            color: #cfd8dc;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .menu a:hover {
+            background: #132f4c;
+            color: #fff;
+        }
+
+        /* Submenu */
+        .submenu {
+            background: #10283f;
+            display: none;
+        }
+
+        .submenu a {
+            padding-left: 35px;
+            font-size: 14px;
+        }
+
+        .menu li.open .submenu {
+            display: block;
+        }
+
+        /* Content */
+        .content {
+            flex: 1;
+            overflow-y: auto;
+            background: #f4f6f9;
+        }
+
+        .content-header {
+            background: #ffffff;
+            padding: 15px 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .content-header h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        #display-card {
+            padding: 20px;
+        }
+
+        /* Markdown Styling */
+        #display-card h1, 
+        #display-card h2, 
+        #display-card h3 {
+            color: #0b1c2d;
+        }
+
+        #display-card img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 15px auto;
+        }
+
+        #display-card pre {
+            background: #0b1c2d;
+            color: #f1f1f1;
+            padding: 12px;
+            overflow-x: auto;
+            border-radius: 4px;
+        }
+
+        #display-card code {
+            background: #eef1f5;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <div class="sidebar-header">
+            <h2>Cyber Analytics</h2>
+            <span class="toggle-btn" onclick="toggleSidebar()">☰</span>
+        </div>
+
+        <ul class="menu">
+
+            <li>
+                <a onclick="loadDocumentation('https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/datagen/README.md')">
+                    Data Generator
+                </a>
+            </li>
+
+            <li>
+                <a onclick="loadDocumentation('https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/explanatory_data_analysis/README.md')">
+                    Explanatory Data Analysis
+                </a>
+            </li>
+
+            <li>
+                <a onclick="loadDocumentation('https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/feature_engineering/README.md')">
+                    Feature Engineering
+                </a>
+            </li>
+
+            <li>
+                <a onclick="this.parentElement.classList.toggle('open')">
+                    Model Development ▸
+                </a>
+                <ul class="submenu">
+                    <li>
+                        <a onclick="loadDocumentation('https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/model_dev/lagacy_best_model_dev/README.md')">
+                            Baseline Multi-Classifier
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="loadDocumentation('https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/model_dev/lagacy_best_model_dev/README.md')">
+                            Hybrid ML Approach
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="loadDocumentation('https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/model_dev/stacked_model/README.md')">
+                            Stacked Supervised Model
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a onclick="loadDocumentation('https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/model_inference/README.md')">
+                    Model Inference Simulation
+                </a>
+            </li>
+
+            <li>
+                <a onclick="loadDocumentation('https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/production/README.md')">
+                    Production Simulation
+                </a>
+            </li>
+
+            <li>
+                <a onclick="loadDocumentation('https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/cyber_attack_insight/README.md')">
+                    Attack Analytics Simulation
+                </a>
+            </li>
+
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <div class="content-header">
+            <h1>Cyber Security Analytics Dashboard</h1>
+        </div>
+
+        <div id="display-card">
+            <p style="text-align:center; color:#555;">
+                Select a module from the left menu to load documentation.
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<script>
+function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle("collapsed");
+}
+
+async function loadDocumentation(url) {
+
+    let mdText = await (await fetch(url)).text();
+
+    const base = "https://raw.githubusercontent.com/atsuvovor/power_bi_projects/main/docs/cyber_attack_insight/";
+
+    mdText = mdText.replace(/!\[(.*?)\]\((images\/.*?)\)/g, (match, alt, relPath) =>
+        `![${alt}](${base}${relPath.replace(/^\.\//, "")})`
+    );
+
+    mdText = mdText.replace(/<img\s+([^>]*?)src=["']([^"']+)["']([^>]*)>/gi,
+        (match, pre, path, post) => {
+            if (path.startsWith("http")) return match;
+            const newPath = base + path.replace(/^\.\//, "");
+            post = post.replace(/width=["']\d+["']/gi, '');
+            post = post.replace(/height=["']\d+["']/gi, '');
+
+            if (path.includes("vulnerability_scorecard_3D.png")) {
+                post += ' style="max-width:100%; height:800px; object-fit:contain;"';
+            } else if (!/style=/i.test(post)) {
+                post += ' style="max-width:100%; height:auto;"';
+            }
+            return `<img ${pre}src="${newPath}"${post}>`;
+        }
+    );
+
+    const html = marked.parse(mdText);
+
+    document.getElementById("display-card").innerHTML = `
+        <div style="padding: 10px; max-width: 1000px; margin: auto;">
+            ${html}
+        </div>
+    `;
+}
+</script>
+
+</body>
+</html>
