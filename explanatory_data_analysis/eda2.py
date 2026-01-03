@@ -1,4 +1,4 @@
-
+#eda.py
 #CyberThreat-Insight
 #Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI
 #  ---------------------Model Development---------------------
@@ -18,37 +18,11 @@
 import os
 import sys
 import subprocess
-from ai_agent.validator_agent import ValidatorAgent
 
-# ---- Helper: Safe import with auto-install ----
-def safe_import(pkg, import_name=None, pip_name=None):
-    """
-    Try to import a package, install it if missing, and then re-import.
-    :param pkg: module name for import
-    :param import_name: optional alias if import name differs from pip package
-    :param pip_name: package name for pip install (defaults to pkg)
-    """
-    import importlib
-    if import_name is None:
-        import_name = pkg
-    if pip_name is None:
-        pip_name = pkg
 
-    try:
-        return importlib.import_module(import_name)
-    except ImportError:
-        print(f"⚠️ {import_name} not found. Installing {pip_name}...")
-        subprocess.check_call([sys.executable, "-m", "pip", "install", pip_name])
-        return importlib.import_module(import_name)
-
-                                       
-np = safe_import("numpy")
-pd = safe_import("pandas")
-faiss = safe_import("faiss", pip_name="faiss-cpu")
-fuzz = safe_import("rapidfuzz")
-warnings = safe_import("warnings")
-json = safe_import("json")
-re = safe_import("re")
+from insights.chart_insights import CHART_INSIGHT_MAP
+from insights.executive_facts import build_executive_facts
+from prompts.executive_prompt import executive_summary_prompt
 
 from datetime import datetime, timedelta
 from IPython.display import display
@@ -84,7 +58,36 @@ except ImportError:
     print("⚠️ faiss not found. Installing faiss-cpu...")
     subprocess.check_call([sys.executable, "-m", "pip", "install", "faiss-cpu"])
     import faiss
-    
+
+# ---- Helper: Safe import with auto-install ----
+def safe_import(pkg, import_name=None, pip_name=None):
+    """
+    Try to import a package, install it if missing, and then re-import.
+    :param pkg: module name for import
+    :param import_name: optional alias if import name differs from pip package
+    :param pip_name: package name for pip install (defaults to pkg)
+    """
+    import importlib
+    if import_name is None:
+        import_name = pkg
+    if pip_name is None:
+        pip_name = pkg
+
+    try:
+        return importlib.import_module(import_name)
+    except ImportError:
+        print(f"⚠️ {import_name} not found. Installing {pip_name}...")
+        subprocess.check_call([sys.executable, "-m", "pip", "install", pip_name])
+        return importlib.import_module(import_name)
+
+                                       
+np = safe_import("numpy")
+pd = safe_import("pandas")
+faiss = safe_import("faiss", pip_name="faiss-cpu")
+fuzz = safe_import("rapidfuzz")
+warnings = safe_import("warnings")
+json = safe_import("json")
+re = safe_import("re")
 # Ignore specific warnings from libraries
 warnings.filterwarnings('ignore')
 
