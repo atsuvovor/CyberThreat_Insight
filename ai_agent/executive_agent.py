@@ -1,4 +1,4 @@
-from llm.interface import LocalLLM
+from llms_models.interface import LocalLLM
 from utils.cleaner import clean_output
 
 class ExecutiveAgent:
