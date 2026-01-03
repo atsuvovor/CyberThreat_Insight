@@ -861,7 +861,7 @@ class AIValidatorAgent:
     # Source-specific loaders
     # --------------------------
 
-    from pathlib import Path
+   
 
     def resolve_repo_data_path(self, folder: str, file_name: str) -> Path:
         """
@@ -1032,29 +1032,6 @@ class AIValidatorAgent:
 
         return report
 
-    #def validation_errors(self, report):
-    #    # align names with validate_dataset output
-    #    type_mismatches = report.get("type_mismatches")
-    #    missing_columns = report.get("missing_columns")
-    #    extra_cols = report.get("extra_cols")
-    #    null_values = report.get("missing_values")
-    #    duplicate_rows = report.get("duplicates")
-
-    #    validation_errors = []
-    #    if type_mismatches:
-    #        validation_errors.append("Type mismatches: " + str(type_mismatches))
-    #    if missing_columns:
-    #        validation_errors.append("Missing columns: " + str(missing_columns))
-    #    if extra_cols:
-    #        validation_errors.append("Extra columns: " + str(extra_cols))
-    #    if null_values:
-    #        validation_errors.append("Null values: " + str(null_values))
-    #    if duplicate_rows:
-    #        validation_errors.append("Duplicate rows: " + str(duplicate_rows))
-    #    if validation_errors:
-    #        return "\n".join(validation_errors)
-    #    # return None if no errors
-    #    return None
 
     def validation_errors(self, report):
         fatal_errors = []
