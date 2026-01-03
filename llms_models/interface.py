@@ -1,28 +1,22 @@
-from llm.runtime import detect_environment, detect_gpu
-from llm.backends.mistral_gguf import load as load_mistral
-from llm.backends.tinyllama import load as load_tinyllama
+from llms_models.runtime import select_backend
+from llms_models.backends import mistral_gguf, tinyllama
 
 
 class LocalLLM:
+    """
+    Unified interface for all local LLM backends.
+    """
+
     def __init__(self):
-        self.env = detect_environment()
-        self.has_gpu = detect_gpu()
+        self.backend = select_backend()
 
-        if not self.has_gpu:
-            try:
-                self.llm = load_mistral()
-                self.mode = "mistral-gguf"
-            except Exception:
-                self.llm = load_tinyllama()
-                self.mode = "tinyllama"
-        else:
-            self.llm = load_tinyllama()
-            self.mode = "tinyllama"
+        if self.backend == "mistral-gguf":
+            self.model = mistral_gguf.load()
+            self.generator = mistral_gguf.generate
 
-    def generate(self, prompt, max_tokens=300):
-        if self.mode == "mistral-gguf":
-            output = self.llm(prompt, max_tokens=max_tokens)
-            return output["choices"][0]["text"].strip()
+        elif self.backend == "tinyllama":
+            self.model = tinyllama.load()
+            self.generator = tinyllama.generate
 
-        result = self.llm(prompt)
-        return result[0]["generated_text"].strip()
+    def generate(self, prompt: str, max_tokens: int = 300) -> str:
+        return self.generator(self.model, prompt, max_tokens).strip()
