@@ -18,6 +18,7 @@
 import os
 import sys
 import subprocess
+from ai_agent.validator_agent import ValidatorAgent
 
 # ---- Helper: Safe import with auto-install ----
 def safe_import(pkg, import_name=None, pip_name=None):
