@@ -7,6 +7,19 @@
 
     <!-- Marked.js for Markdown → HTML -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- MathJax for LaTeX rendering -->
+    <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
 
 <style>
 body {
@@ -413,10 +426,16 @@ async function loadDocumentation(url, el = null) {
        Render Markdown
     ------------------------------------------------- */
     document.getElementById("display-card").innerHTML = `
-        <div style="padding:10px; max-width:1100px; margin:auto;">
-            ${marked.parse(mdText)}
-        </div>
-    `;
+  <div style="padding:10px; max-width:1100px; margin:auto;">
+      ${marked.parse(mdText)}
+  </div>
+ `;
+
+    /* Render LaTeX math */
+    if (window.MathJax) {
+        MathJax.typesetPromise();
+    }
+
 
     /* -------------------------------------------------
        Active menu highlight
