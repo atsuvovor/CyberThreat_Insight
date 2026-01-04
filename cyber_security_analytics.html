@@ -358,6 +358,32 @@ async function loadDocumentation(url, el = null) {
     );
 
     mdText = mdText.replace(
+    /!\[(.*?)\]\((images\/[^)]+)\)/g,
+    (_, alt, relPath) =>
+        `![${alt}](${base}${relPath.replace("images/", "")})`
+    );
+
+   mdText = mdText.replace(
+    /<img\s+([^>]*?)src=["'](images\/[^"']+)["']([^>]*)>/gi,
+    (match, pre, path, post) => {
+
+        const newPath = base + path.replace("images/", "");
+
+        post = post
+            .replace(/width=["'][^"']+["']/gi, '')
+            .replace(/height=["'][^"']+["']/gi, '');
+
+        if (!/style=/i.test(post)) {
+            post += ' style="max-width:100%; height:auto;"';
+        }
+
+        return `<img ${pre}src="${newPath}"${post}>`;
+     }
+    );
+    /* Fix broken </p tags */
+        mdText = mdText.replace(/<\/p\s*(?=<)/gi, "</p>");
+
+    mdText = mdText.replace(
         /<img\s+([^>]*?)src=["']([^"']+)["']([^>]*)>/gi,
         (match, pre, path, post) => {
             if (path.startsWith("http")) return match;
