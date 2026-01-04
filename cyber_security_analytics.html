@@ -351,29 +351,39 @@ function toggleSidebar() {
 async function loadDocumentation(url, el = null) {
 
     let mdText = await (await fetch(url)).text();
+    const base = "https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/main/images/";
 
-    const base =
-        "https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/main/images/";
-
-     mdText = mdText.replace(/!\[(.*?)\]\((images\/.*?)\)/g,
+    mdText = mdText.replace(/!\[(.*?)\]\((images\/.*?)\)/g,
         (_, alt, relPath) => `![${alt}](${base}${relPath.replace(/^\.\//, "")})`
     );
 
-    
-    /* Fix malformed </p tags */
-    mdText = mdText.replace(/<\/p\s*(?=<)/gi, "</p>");
-
-    /* Markdown images */
     mdText = mdText.replace(
-        /!\[(.*?)\]\((images\/[^)]+)\)/g,
-        (_, alt, relPath) =>
-            `![${alt}](${base}${relPath.replace("images/", "")})`
+    /!\[(.*?)\]\((images\/[^)]+)\)/g,
+    (_, alt, relPath) =>
+        `![${alt}](${base}${relPath.replace("images/", "")})`
     );
-     /* Fix broken </p tags */
+
+   mdText = mdText.replace(
+    /<img\s+([^>]*?)src=["'](images\/[^"']+)["']([^>]*)>/gi,
+    (match, pre, path, post) => {
+
+        const newPath = base + path.replace("images/", "");
+
+        post = post
+            .replace(/width=["'][^"']+["']/gi, '')
+            .replace(/height=["'][^"']+["']/gi, '');
+
+        if (!/style=/i.test(post)) {
+            post += ' style="max-width:100%; height:auto;"';
+        }
+
+        return `<img ${pre}src="${newPath}"${post}>`;
+     }
+    );
+    /* Fix broken </p tags */
         mdText = mdText.replace(/<\/p\s*(?=<)/gi, "</p>");
-    
-    /* HTML images */
-     mdText = mdText.replace(
+
+    mdText = mdText.replace(
         /<img\s+([^>]*?)src=["']([^"']+)["']([^>]*)>/gi,
         (match, pre, path, post) => {
             if (path.startsWith("http")) return match;
@@ -390,31 +400,13 @@ async function loadDocumentation(url, el = null) {
         }
     );
 
-    
-    mdText = mdText.replace(
-        /<img\s+([^>]*?)src=["'](images\/[^"']+)["']([^>]*)>/gi,
-        (match, pre, path, post) => {
-
-            const newPath = base + path.replace("images/", "");
-
-            post = post
-                .replace(/width=["'][^"']+["']/gi, '')
-                .replace(/height=["'][^"']+["']/gi, '');
-
-            if (!/style=/i.test(post)) {
-                post += ' style="max-width:100%; height:auto;"';
-            }
-
-            return `<img ${pre}src="${newPath}"${post}>`;
-        }
-    );
-
     document.getElementById("display-card").innerHTML = `
-        <div style="padding:10px; max-width:1100px; margin:auto;">
+        <div style="padding: 10px; max-width: 1000px; margin: auto;">
             ${marked.parse(mdText)}
         </div>
     `;
 
+    /* Active menu highlight */
     document.querySelectorAll(".menu a").forEach(a => a.classList.remove("active"));
     if (el) el.classList.add("active");
 }
