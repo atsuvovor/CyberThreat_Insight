@@ -765,13 +765,13 @@ if __name__ == "__main__":
 
 
 <p align="center">
-  <img src="feature plots.png" 
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/feature plots.png" 
        alt="Centered Image" 
        style="width: 1500px; height: auto;">
 </p>
 
 <p align="center">
-  <img src="Shap.png" 
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/Shap.png" 
        alt="Centered Image" 
        style="width: 500px; height: auto;">
 </p>
@@ -1165,13 +1165,13 @@ if __name__ == "__main__":
 </details>
 
 <p align="center">
-  <img src="SMOT-GAN performance plots.png" 
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/SMOT-GAN performance plots.png" 
        alt="Centered Image" 
        style="width: 1500px; height: auto;">
 </p>
 
 <p align="center">
-  <img src="SMOT - GAN performance plots 3D.png" 
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/SMOT - GAN performance plots 3D.png" 
        alt="Centered Image" 
        style="width: 1500px; height: auto;">
 </p>
@@ -1568,7 +1568,7 @@ if __name__ == "__main__":
 </details>
 
 <p align="center">
-  <img src="GANs_performance.png" 
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/GANs_performance.png" 
        alt="Centered Image" 
        style="width: 1500px; height: auto;">
 </p>
