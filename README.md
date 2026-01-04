@@ -7,12 +7,7 @@
 **Toronto, November 08, 2025**  
 **Autor : Atsu Vovor**  
 
----
 
-Below is a **polished, professional rewrite** of the **Abstract**, **Introduction**, and **Project Description** sections.
-I’ve kept your **technical intent, research framing, and portfolio positioning**, while improving clarity, flow, precision, and executive readability—aligned with how this would be reviewed by **security leaders, hiring managers, or academic audiences**.
-
----
 
 ## **Abstract**
 
