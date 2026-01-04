@@ -121,7 +121,7 @@ if __name__ == "__main__":
 </details>
 
 <p align="center">
-  <img src="feature_engineering_flowwwchart.png" 
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/feature_engineering_flowwwchart.png" 
        alt="Centered Image" 
        style="width: 250px; height: auto;">
 </p>
