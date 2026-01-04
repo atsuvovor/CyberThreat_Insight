@@ -5,8 +5,6 @@
        style="width: 800px; height: 40%;">
 </p>  
 
-
-**Toronto, November 01 2025**  
 **Autor : Atsu Vovor**
 >Master of Management in Artificial Intelligence    
 >Consultant Data Analytics Specialist | Machine Learning |  
