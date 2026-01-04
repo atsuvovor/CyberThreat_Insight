@@ -285,7 +285,7 @@ body {
                     </li>
                     <li>
                         <a onclick="loadDocumentation(
-                            'https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/model_dev/lagacy_best_model_dev/README.md',
+                            'https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/model_dev/lagacy_best_model_dev_improved/README.md',
                             this
                         )">
                             Hybrid ML Approach
@@ -355,6 +355,11 @@ async function loadDocumentation(url, el = null) {
     const base =
         "https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/main/images/";
 
+     mdText = mdText.replace(/!\[(.*?)\]\((images\/.*?)\)/g,
+        (_, alt, relPath) => `![${alt}](${base}${relPath.replace(/^\.\//, "")})`
+    );
+
+    
     /* Fix malformed </p tags */
     mdText = mdText.replace(/<\/p\s*(?=<)/gi, "</p>");
 
@@ -364,8 +369,28 @@ async function loadDocumentation(url, el = null) {
         (_, alt, relPath) =>
             `![${alt}](${base}${relPath.replace("images/", "")})`
     );
-
+     /* Fix broken </p tags */
+        mdText = mdText.replace(/<\/p\s*(?=<)/gi, "</p>");
+    
     /* HTML images */
+     mdText = mdText.replace(
+        /<img\s+([^>]*?)src=["']([^"']+)["']([^>]*)>/gi,
+        (match, pre, path, post) => {
+            if (path.startsWith("http")) return match;
+            const newPath = base + path.replace(/^\.\//, "");
+            post = post.replace(/width=["']\d+["']/gi, '')
+                       .replace(/height=["']\d+["']/gi, '');
+
+            if (path.includes("vulnerability_scorecard_3D.png")) {
+                post += ' style="max-width:100%; height:800px; object-fit:contain;"';
+            } else if (!/style=/i.test(post)) {
+                post += ' style="max-width:100%; height:auto;"';
+            }
+            return `<img ${pre}src="${newPath}"${post}>`;
+        }
+    );
+
+    
     mdText = mdText.replace(
         /<img\s+([^>]*?)src=["'](images\/[^"']+)["']([^>]*)>/gi,
         (match, pre, path, post) => {
