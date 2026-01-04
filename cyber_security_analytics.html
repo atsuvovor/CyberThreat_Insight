@@ -361,6 +361,23 @@ async function loadDocumentation(url, el = null) {
     mdText = mdText.replace(/<\/p\s*(?=<)/gi, "</p>");
 
     /* -------------------------------------------------
+      Convert GitHub blob URLs → raw URLs
+     ------------------------------------------------- */
+    mdText = mdText.replace(
+       /https:\/\/github\.com\/([^\/]+)\/([^\/]+)\/blob\/([^\/]+)\/images\/([^"'\s]+)/gi,
+       (_, user, repo, branch, file) =>
+        `https://raw.githubusercontent.com/${user}/${repo}/${branch}/images/${file}`
+    );
+
+     /* ------------------------------------------------
+          Force any GitHub image to raw
+    --------------------------------------------------- */
+    mdText = mdText.replace(
+       /src=["']https:\/\/github\.com\/([^"']+)\/blob\/([^"']+)["']/gi,
+       'src="https://raw.githubusercontent.com/$1/$2"'
+    );
+
+    /* -------------------------------------------------
        Markdown images: ![alt](images/file.png)
     ------------------------------------------------- */
     mdText = mdText.replace(
