@@ -112,6 +112,17 @@ body {
     padding-left: 35px;
     font-size: 14px;
 }
+/* Arrow indicator */
+.menu .arrow {
+    display: inline-block;
+    transition: transform 0.25s ease;
+}
+
+/* When submenu is open, rotate arrow down */
+.menu li.open > a .arrow {
+    transform: rotate(90deg);
+}
+
 .submenu a:hover {
     background: #eef5ff;
     color: #000066;
@@ -219,7 +230,7 @@ body {
 
             <li>
                 <a onclick="this.parentElement.classList.toggle('open')">
-                    Model Development ▸
+                    Model Development <span class="arrow">▸</span>
                 </a>
                 <ul class="submenu">
                     <li>
