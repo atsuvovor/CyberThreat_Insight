@@ -15,7 +15,6 @@ The **CyberThreat Insight** project applies advanced data analytics and machine 
 
 This initiative is research-driven and educational in nature, focusing on the application of generative algorithms and anomaly detection models within cybersecurity analytics. All data used in the project is intentionally synthetic, designed to emulate real-world cyberattack conditions without relying on externally sourced or sensitive datasets. The resulting framework demonstrates how organizations can extract actionable intelligence from behavioral data to enhance threat awareness, risk mitigation, and decision-making capabilities.
 
----
 
 ## **Introduction**
 
