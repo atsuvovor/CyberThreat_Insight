@@ -55,7 +55,7 @@ The **Cyber Threat Analytics & Insight** project is designed as a comprehensive 
 🔄 👉Run the Model
 <a 
   href="https://github.com/atsuvovor/CyberThreat_Insight/tree/main/datagen" 
-  target="_parent">
+  target="_blank">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
@@ -242,7 +242,7 @@ This color based scenarios approach aligns urgency with the dual factors of **th
 🔄 👉Run the Model
 <a 
   href="https://github.com/atsuvovor/CyberThreat_Insight/tree/main/explanatory_data_analysis" 
-  target="_parent">
+  target="_blank">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
@@ -301,7 +301,7 @@ This pipeline provides a detailed understanding of numerical and categorical fea
 🔄 👉Run the Model
 <a 
   href="https://github.com/atsuvovor/CyberThreat_Insight/tree/main/feature_engineering" 
-  target="_parent">
+  target="_blank">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
@@ -363,7 +363,7 @@ This workflow produced a clean, balanced, and interpretable feature set optimize
 🔄 👉Run the Model
 <a 
   href="https://github.com/atsuvovor/CyberThreat_Insight/tree/main/model_dev" 
-  target="_parent">
+  target="_blank">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
@@ -406,7 +406,7 @@ The **Cyber Threat Detection Engine** is a three-stage framework designed to ide
 🔄 👉Run the Model
 <a 
   href="https://github.com/atsuvovor/CyberThreat_Insight/tree/main/cyber_attack_insight" 
-  target="_parent">
+  target="_blank">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
