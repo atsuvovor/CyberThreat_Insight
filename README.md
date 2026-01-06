@@ -1,4 +1,4 @@
- ![Project Header Image](images/cyberThreat-Insight.png)  
+ ![Project Header Image](images/Cyber_threat_Analytics_and_Insight.png)  
  <div align="center">
   
 **Detecting Anomalous Behavior in Cyber security Analytics with Generative AI**
