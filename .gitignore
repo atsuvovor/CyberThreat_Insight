@@ -1,0 +1,62 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Virtual environments
+venv/
+.env/
+.env.*
+
+# =========================
+# Jupyter / Notebooks
+# =========================
+.ipynb_checkpoints/
+*.nbconvert.ipynb
+
+# =========================
+# ML / Data Artifacts
+# =========================
+data/raw/
+data/interim/
+data/processed/
+models/
+*.pkl
+*.joblib
+*.h5
+
+# =========================
+# Logs & Outputs
+# =========================
+logs/
+outputs/
+results/
+reports/
+
+# =========================
+# OS / Editor
+# =========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# =========================
+# Streamlit / Dash (future)
+# =========================
+.streamlit/
+.cache/
+
+# =========================
+# Secrets
+# =========================
+*.env
+*.key
+*.pem
