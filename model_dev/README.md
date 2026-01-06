@@ -2,7 +2,7 @@
 
  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/cyber_threat_detection_engine4.png" 
        alt="Cyber Threat Detection Engine" 
-       style="width: 600px; height: 40%;">
+       style="width: 100%; height: Auto;">
 
 **Anomalous Behavior Detection in Cybersecurity Analytics using Generative AI & Stacked Generalization**
 
