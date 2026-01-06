@@ -1,4 +1,4 @@
-<h3 align-"center">CyberThreat Insight - Feature Engineering Using Cholesky-Based Perturbation, SHAP, PCA, SMOTE and GANs</h3>
+<h3 align-"center">Cyber Threat Analytics & Insight - Feature Engineering Using Cholesky-Based Perturbation, SHAP, PCA, SMOTE and GANs</h3>
 <p align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/feature_engineering2.png" 
        alt="Centered Image" 
@@ -183,7 +183,7 @@ Through this comprehensive workflow, we generated a clean, balanced, and interpr
 ```python
 #!/usr/bin/env python3
 # --------------------------------------------------------------
-# CyberThreat Insight – Cholesky-Based Perturbation
+# Cyber Threat Analytics & Insight – Cholesky-Based Perturbation
 # SHAP, PCA, Data Augmentation (SMOTE + GAN)
 # Author: Atsu Vovor
 # --------------------------------------------------------------
@@ -928,7 +928,7 @@ This hybrid augmentation pipeline significantly improves the reliability and rob
 ```python
 #!/usr/bin/env python3
 # --------------------------------------------------------------
-# CyberThreat Insight – Data Augmentation (SMOTE + GAN)
+# Cyber Threat Analytics & Insight – Data Augmentation (SMOTE + GAN)
 # 
 # Author: Atsu Vovor
 # --------------------------------------------------------------
@@ -1268,7 +1268,7 @@ This augmentation pipeline plays a **critical role** in enabling our models to d
 ```python
 #!/usr/bin/env python3
 # --------------------------------------------------------------
-# CyberThreat Insight – smote_gan_models_performance.
+# Cyber Threat Analytics & Insight – smote_gan_models_performance.
 # Author: Atsu Vovor
 # --------------------------------------------------------------
 
