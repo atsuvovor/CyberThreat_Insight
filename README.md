@@ -10,7 +10,9 @@
 <a 
   href="https://atsuvovor.github.io/CyberThreat_Insight/cyber_security_analytics.html" 
   target="_blank">
-  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/open_in_the_browser.png" alt="Open in the browser"/>
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/open_in_the_browser.png" 
+       alt="Open in the browser" 
+       style="width: 1%; height: Aoto;">
 </a>
 
 
