@@ -470,10 +470,26 @@ To install the project, follow these steps:
    !pip install -r /content/CyberThreat_Insight/requirements.txt -q
    #  then   
    cd my-python-project
+--
+
+## ▶️ How to Use (Local / CI / Demo)
+
+### Run full pipeline
+
+```bash
+python main.py
+```
+
+### Run a single stage
+
+```bash
+python main.py --stage inference
+python main.py --stage dashboard
+```
 
 
 
-## **Google Colab Environnement**
+## **Example: Google Colab Environnement**
 
 ```bash
 #pipeline
@@ -501,10 +517,13 @@ To install the project, follow these steps:
 
 
 ## **Next Step Improvement**
+*Add logging + timing metrics
+*Introduce YAML config for paths
+*Add error recovery / retry logic
+*Convert this to Makefile / Airflow DAG
 * AI Agent Orchestration: Validation Agent, Executive Insight delivery Agent, SOC Sopport AI Agent
-* Docker Hub Migration
-* Streamlit Dashboard 
-
+* Containerization (Docker → Docker Hub
+* Streamlit Dashboard as a backend
 ---
 ## 🤝 Connect with me
 I am always open to collaboration and discussion about new projects or technical roles.
