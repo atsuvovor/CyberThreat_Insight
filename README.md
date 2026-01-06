@@ -10,7 +10,7 @@
 <a 
   href="https://atsuvovor.github.io/CyberThreat_Insight/cyber_security_analytics.html" 
   target="_blank">
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/open_in_the_browser.png" alt="Open in the browser"/>
 </a>
 
 
