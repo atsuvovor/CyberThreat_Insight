@@ -12,7 +12,7 @@
   target="_blank">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/open_in_the_browser.png" 
        alt="Open in the browser" 
-       style="width: 10%; height: Aoto;">
+       style="width: 20%; height: Aoto;">
 </a>
 
 
