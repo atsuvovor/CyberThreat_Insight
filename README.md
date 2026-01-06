@@ -453,12 +453,10 @@ Here’s a summary of important files in the repository:
 - **[`.gitignore`](./.gitignore)** - This file lists all the files and directories to be ignored by Git.
 - **[`requirements.txt`](./requirements.txt)** - Contains the dependencies required to run the project.
 - **[`setup.py`](./setup.py)** - Setup script for packaging and distributing the project.
-- **[`src/`](./src)** - Contains the main Python source code files for the project.
-  - **[`main.py`](./src/main.py)** - Entry point for the project.
-- **[`tests/`](./tests)** - Includes the unit tests for the project.
-  - **[`test_main.py`](./tests/test_main.py)** - Unit tests for the `main.py` script.
-- **[`notebooks/`](./notebooks)** - Contains Jupyter Notebooks for data analysis and modeling.
-  - **[`example_notebook.ipynb`](./notebooks/example_notebook.ipynb)** - Example of how the data is analyzed.
+- **.py files** - Contains the main Python source code files for the project.
+  - **[`main.py`](main.py)** - Entry point for the project.
+- **[``](notebooks)** - the **.ipynb files** Contain Jupyter Notebooks for data analysis and modeling.
+ 
 
 ---
 
