@@ -1,13 +1,13 @@
 
 <p align="center">
-  <img src="https://github.com/atsuvovor/Cybersecurity-Data-Generator/blob/main/cybersecurity_data_generator2.png" 
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/cybersecurity_data_generator2.png" 
        alt="Centered Image" 
        style="width: 600px; height: auto;">
 </p>
 🔗 Live Dashboard:
 <a 
   href="https://colab.research.google.com/github/atsuvovor/Cybersecurity-Data-Generator/blob/main/CyberInsightDataGenerator.ipynb" 
-  target="_parent"
+  target="_blank"
 >
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
@@ -1214,7 +1214,7 @@ Potential future enhancements for this project include:
 ## Next Step: Feature Engineering
 <a 
   href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/feature_engineering/README.md"
-  target="_parent">
+  target="_blank">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
