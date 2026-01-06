@@ -1,10 +1,10 @@
-<p align="center">
+<div align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/feature_engineering2.png" 
        alt="Centered Image" 
        style="width: 100%; height: Auto;">
   
-  <h3 align-"center">Advanced Feature Engineering with Cholesky Perturbation, SHAP, PCA, SMOTE, and GANs</h3>
-</p>  
+  <h3>Advanced Feature Engineering with Cholesky Perturbation, SHAP, PCA, SMOTE, and GANs</h3>
+</div>  
 ## **Overview**   
 The feature engineering process in our *Cyber Threat Insight* project was strategically designed to simulate realistic cyber activity, enhance anomaly visibility, and prepare a high-quality dataset for training robust threat classification models. Given the natural rarity and imbalance of cybersecurity anomalies, we adopted a multi-step workflow combining statistical simulation, normalization, feature selection, explainability, and data augmentation.
 
