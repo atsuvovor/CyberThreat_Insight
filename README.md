@@ -522,7 +522,7 @@ python main.py --stage dashboard
 * Add error recovery / retry logic  
 * Convert this to Makefile / Airflow DAG  
 * AI Agent Orchestration: Validation Agent, Executive Insight delivery Agent, SOC Sopport AI Agent  
-* Containerization (Docker → Docker Hub  
+* Containerization (Docker → Docker Hub)  
 * Streamlit Dashboard as a backend  
 ---
 ## 🤝 Connect with me
