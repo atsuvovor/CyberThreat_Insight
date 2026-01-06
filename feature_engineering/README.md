@@ -1575,7 +1575,7 @@ if __name__ == "__main__":
 
 
 
-## 🤝 Connect With Me
+## 🤝 Connect with me
 I am always open to collaboration and discussion about new projects or technical roles.
 
 Atsu Vovor  
