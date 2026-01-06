@@ -7,6 +7,11 @@
 **Toronto, November 01, 2024**  
 **Autor : Atsu Vovor**  
 
+<a 
+  href="https://atsuvovor.github.io/CyberThreat_Insight/cyber_security_analytics.html" 
+  target="_blank">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
 
 
 ## **Abstract**
