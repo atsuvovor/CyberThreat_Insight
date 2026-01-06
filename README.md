@@ -436,12 +436,12 @@ The **Cyber Threat Detection Engine** is a three-stage framework designed to ide
 
 The simulated attack types includes:  
 
-* **Denial of Service (DoS) / Distributed DoS (DDoS)** – traffic flooding to disrupt service availability
-* **Brute Force Attacks** – repeated credential attempts to gain unauthorized access
-* **Port Scanning / Reconnaissance** – probing systems to discover open ports and services
-* **Malware-related Attacks** – malicious activity indicative of trojans, worms, or infected hosts
-* **Privilege Escalation / Unauthorized Access Attempts** – abnormal access behavior beyond normal user roles
-* **Data Exfiltration / Suspicious Data Transfer** – unusually large or abnormal outbound data flows
+* **Denial of Service (DoS) / Distributed DoS (DDoS)** – traffic flooding to disrupt service availability  
+* **Brute Force Attacks** – repeated credential attempts to gain unauthorized access  
+* **Port Scanning / Reconnaissance** – probing systems to discover open ports and services  
+* **Malware-related Attacks** – malicious activity indicative of trojans, worms, or infected hosts  
+* **Privilege Escalation / Unauthorized Access Attempts** – abnormal access behavior beyond normal user roles  
+* **Data Exfiltration / Suspicious Data Transfer** – unusually large or abnormal outbound data flows  
 
 These attack types are simulated and detected through anomaly detection and classification models to support cybersecurity monitoring and executive reporting.
 
@@ -516,14 +516,14 @@ python main.py --stage dashboard
 ---
 
 
-## **Next Step Improvement**
-*Add logging + timing metrics
-*Introduce YAML config for paths
-*Add error recovery / retry logic
-*Convert this to Makefile / Airflow DAG
-* AI Agent Orchestration: Validation Agent, Executive Insight delivery Agent, SOC Sopport AI Agent
-* Containerization (Docker → Docker Hub
-* Streamlit Dashboard as a backend
+## **Next Step Improvement**  
+*Add logging + timing metrics  
+*Introduce YAML config for paths  
+*Add error recovery / retry logic  
+*Convert this to Makefile / Airflow DAG  
+* AI Agent Orchestration: Validation Agent, Executive Insight delivery Agent, SOC Sopport AI Agent  
+* Containerization (Docker → Docker Hub  
+* Streamlit Dashboard as a backend  
 ---
 ## 🤝 Connect with me
 I am always open to collaboration and discussion about new projects or technical roles.
