@@ -470,7 +470,7 @@ To install the project, follow these steps:
    !pip install -r /content/CyberThreat_Insight/requirements.txt -q
    #  then   
    cd my-python-project
---
+
 
 ## ▶️ How to Use (Local / CI / Demo)
 
@@ -517,10 +517,10 @@ python main.py --stage dashboard
 
 
 ## **Next Step Improvement**  
-*Add logging + timing metrics  
-*Introduce YAML config for paths  
-*Add error recovery / retry logic  
-*Convert this to Makefile / Airflow DAG  
+* Add logging + timing metrics  
+* Introduce YAML config for paths  
+* Add error recovery / retry logic  
+* Convert this to Makefile / Airflow DAG  
 * AI Agent Orchestration: Validation Agent, Executive Insight delivery Agent, SOC Sopport AI Agent  
 * Containerization (Docker → Docker Hub  
 * Streamlit Dashboard as a backend  
