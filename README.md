@@ -455,7 +455,7 @@ Here’s a summary of important files in the repository:
 - **[`setup.py`](./setup.py)** - Setup script for packaging and distributing the project.
 - **.py files** - Contains the main Python source code files for the project.
   - **[`main.py`](main.py)** - Entry point for the project.
-- **[``](notebooks)** - the **.ipynb files** Contain Jupyter Notebooks for data analysis and modeling.
+- **notebooks** - the **.ipynb files** Contain Jupyter Notebooks for data analysis and modeling.
  
 
 ---
