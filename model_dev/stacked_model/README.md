@@ -28,7 +28,7 @@ The scope of this project includes:
 1.  **Data Processing:** Loading, splitting, and scaling a provided augmented cybersecurity dataset (`x_y_augmented_data_google_drive.csv`).  
      <a 
       href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/datagen/README.md"
-      target="_parent">
+      target="_blank">
       <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
     </a>
 
@@ -36,7 +36,7 @@ The scope of this project includes:
 3.  **Unsupervised Anomaly Feature Engineering:** Applying and training various unsupervised anomaly detection models (Isolation Forest, One-Class SVM, Local Outlier Factor, DBSCAN, KMeans, Dense Autoencoder, LSTM Autoencoder) on the training data to generate anomaly scores and flags as new features.
      <a 
         href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/feature_engineering/README.md"
-        target="_parent">
+        target="_blank">
         <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
       </a>
    
@@ -226,7 +226,7 @@ This project successfully developed and evaluated a stacked anomaly detection cl
 **Run the code:**
 <a 
   href="https://colab.research.google.com/github/atsuvovor/CyberThreat_Insight/blob/main/model_dev/stacked_model/Stacked_Anomaly_Detection_Classifier_GitHub.ipynb"
-  target="_parent">
+  target="_blank">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
