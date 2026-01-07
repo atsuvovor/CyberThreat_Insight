@@ -49,7 +49,9 @@ This paper provides **comprehensive documentation**, including dataset preparati
 ## Data Preparation and Augmentation
 
 <h3>
-  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/datagen/README.md">
+  <a 
+    href="https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/datagen/README.md" 
+    target="_blank">
     🔄 Data Generation 👈click
   </a>
 </h3>
@@ -64,7 +66,9 @@ The dataset consists of synthetic cybersecurity event logs with a target variabl
 
 
 <h3>
-  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/feature_engineering/README.md">
+  <a 
+   href="https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/feature_engineering/README.md" 
+  target="_blank">
     🔄 Feature Engineering - Data Augmentation  👈click
   </a>
 </h3>
@@ -103,7 +107,9 @@ def data_splitting(X_augmented, y_augmented, p_features_engineering_columns, tar
 ## 🧠 Model Development - Detection Engine Stages  
 
 <h3>
-  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/lagacy_best_model_dev/README.md">
+  <a 
+   href="https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/model_dev/lagacy_best_model_dev/README.md" 
+  target="_blank">
     🤖 Stage 1 – Baseline Models  👈click
   </a>
 </h3>
@@ -138,7 +144,9 @@ def data_splitting(X_augmented, y_augmented, p_features_engineering_columns, tar
 
 
 <h3>
-  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/lagacy_best_model_dev_improved/README.md">
+  <a 
+   href="https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/model_dev/lagacy_best_model_dev_improved/README.md" 
+  target="_blank">
     🤖 Stage 2 – Unsupervised Models as Feature Generator  👈click
   </a>
 </h3>
@@ -206,7 +214,10 @@ Unsupervised models alone cannot classify multiple threat levels. Stage 2 adapts
 ---
 
 <h3>
-  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/stacked_model/README.md">
+  <a 
+   href="https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/model_dev/stacked_model/README.md" 
+  target="_blank">
+
     🤖 Stage 3 – Stacked Hybrid Ensemble  👈click
   </a>
 </h3>
