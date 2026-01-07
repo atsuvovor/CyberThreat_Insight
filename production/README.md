@@ -21,7 +21,7 @@
 🔄 👉Run Model in Production
 <a 
   href="https://colab.research.google.com/github/atsuvovor/CyberThreat_Insight/blob/main/production/stacked_ad_classifier_prod01.ipynb" 
-  target="_parent">
+  target="_blank">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 ### Project Overview
