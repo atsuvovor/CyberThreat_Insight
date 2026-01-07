@@ -5,7 +5,7 @@
        style="width: 100%; height: Auto;">
 </p>  
 
-**Autor : Atsu Vovor**
+**Author : Atsu Vovor**
 
 ## Overview
 
