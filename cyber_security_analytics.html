@@ -55,6 +55,25 @@ body {
     margin: 0;
 }
 
+.topbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #0b1c2d;
+}
+
+.topbar-brand img {
+    height: 36px;
+    width: auto;
+}
+
+.topbar-brand span {
+    font-size: 16px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
 /* ===== Layout ===== */
 .container {
     display: flex;
@@ -257,8 +276,16 @@ body {
 <!-- ===== Top Bar ===== -->
 <div class="topbar">
     <span class="menu-btn" onclick="toggleSidebar()">☰</span>
-    <h1>Cybersecurity Analytics</h1>
+
+    <a href="cyber_security_analytics.html" class="topbar-brand">
+        <img 
+            src="https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/main/images/cyber_Threat_Analytics_and_Insight_logo.png"
+            alt="Cyber Threat Analytics & Insight"
+        />
+        <span>Cyber Threat Analytics & Insight</span>
+    </a>
 </div>
+
 
 <div class="container">
 
