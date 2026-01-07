@@ -46,14 +46,14 @@ This module focuses on **model development, benchmarking, performance visualizat
 ### Data Injection and Preprocessing:
 <a 
   href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/datagen/README.md"
-  target="_parent">
+  target="_blank">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
 ### Feature Engineering:
 <a 
   href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/feature_engineering/README.md"
-  target="_parent">
+  target="_blank">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
@@ -327,7 +327,7 @@ Commercial usage requires author approval.
 **Run the code:**
 <a 
   href="https://colab.research.google.com/github/atsuvovor/CyberThreat_Insight/blob/main/model_dev/lagacy_best_model_dev/lagacy_model_dev_github.ipynb"
-  target="_parent">
+  target="_blank">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
@@ -1177,7 +1177,7 @@ As next step, we will work to improve the this model.
  Click here to check the next step:
 <a 
   href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/lagacy_best_model_dev_improved/README.md"
-  target="_parent">
+  target="_blank">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
