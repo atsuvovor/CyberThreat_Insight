@@ -50,7 +50,7 @@ This paper provides **comprehensive documentation**, including dataset preparati
 
 <h3>
   <a 
-    href="https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/datagen/README.md" 
+    href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/datagen/README.md" 
     target="_blank">
     🔄 Data Generation 👈click
   </a>
@@ -67,7 +67,7 @@ The dataset consists of synthetic cybersecurity event logs with a target variabl
 
 <h3>
   <a 
-   href="https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/feature_engineering/README.md" 
+   href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/feature_engineering/README.md" 
   target="_blank">
     🔄 Feature Engineering - Data Augmentation  👈click
   </a>
@@ -108,7 +108,7 @@ def data_splitting(X_augmented, y_augmented, p_features_engineering_columns, tar
 
 <h3>
   <a 
-   href="https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/model_dev/lagacy_best_model_dev/README.md" 
+   href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/lagacy_best_model_dev/README.md" 
   target="_blank">
     🤖 Stage 1 – Baseline Models  👈click
   </a>
@@ -145,7 +145,7 @@ def data_splitting(X_augmented, y_augmented, p_features_engineering_columns, tar
 
 <h3>
   <a 
-   href="https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/model_dev/lagacy_best_model_dev_improved/README.md" 
+   href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/lagacy_best_model_dev_improved/README.md" 
   target="_blank">
     🤖 Stage 2 – Unsupervised Models as Feature Generator  👈click
   </a>
@@ -215,7 +215,7 @@ Unsupervised models alone cannot classify multiple threat levels. Stage 2 adapts
 
 <h3>
   <a 
-   href="https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/model_dev/stacked_model/README.md" 
+   href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/model_dev/stacked_model/README.md" 
   target="_blank">
 
     🤖 Stage 3 – Stacked Hybrid Ensemble  👈click
