@@ -7,9 +7,7 @@
 
 
 **Toronto, Sept 17 2025**  
-
 **Model Name:** Stacked Anomaly Detection Classifier
-
 **Model Type:** Stacked Ensemble Model
 
 
