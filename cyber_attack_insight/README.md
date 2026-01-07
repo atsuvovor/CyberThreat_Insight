@@ -14,7 +14,9 @@
 **Author:** Atsu Vovor    
 
 <h3>
-  <a href="https://colab.research.google.com/github/atsuvovor/CyberThreat_Insight/blob/main/cyber_attack_insight/simulate_attack_analytics_pipeline.ipynb">
+  <a 
+   href="https://colab.research.google.com/github/atsuvovor/CyberThreat_Insight/blob/main/cyber_attack_insight/simulate_attack_analytics_pipeline.ipynb" 
+   target="_blank">
     🔄 Run Cyber Attack Analytics Pipeline👈click
   </a>
 </h3>  
