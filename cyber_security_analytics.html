@@ -671,29 +671,32 @@ async function loadDocumentation(url, el = null) {
     if (el) el.classList.add("active");
 }
 
-
-/* Default landing page */
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("year").textContent = new Date().getFullYear();
+    // Set current year
+    const yearSpan = document.getElementById("year");
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
+
+    // Default landing page
     const mainLink = document.querySelector(".menu a");
     loadDocumentation(
         "https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/README.md",
         mainLink
     );
-});
 
-
-document.addEventListener("DOMContentLoaded", () => {
+    // Show support sidebar after 2.5s
     if (!sessionStorage.getItem("supportShown")) {
         setTimeout(() => {
             supportSidebar.classList.add("open");
             sessionStorage.setItem("supportShown", "true");
-        }, 2500); // delay for better UX
+        }, 2500);
     }
 
     // Add pulse effect
     supportBtn.classList.add("pulse");
 });
+
 
 
 </script>
