@@ -527,9 +527,11 @@ body {
 
 <script>
 
+/* Toggle support card */
+    
 const supportSidebar = document.getElementById("support-sidebar");
 const supportBtn = document.querySelector(".support-btn");
-#-------
+
 
 function trackSupportClick() {
     if (window.plausible) {
@@ -537,9 +539,6 @@ function trackSupportClick() {
     }
 }
 
-
-#------
-/* Toggle support card */
 function toggleSupport(forceClose = false) {
     if (forceClose) {
         supportSidebar.classList.remove("open");
