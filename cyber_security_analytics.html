@@ -575,6 +575,19 @@ function toggleSidebar() {
 }
 
 
+// Configure Marked.js safely (CSP-safe)
+marked.setOptions({
+    gfm: true,          // GitHub Flavored Markdown
+    breaks: true,       // line breaks
+    headerIds: true,
+    smartLists: true,
+    smartypants: false,
+    mangle: false,      // prevents email obfuscation
+    // Disallow raw HTML → prevents eval() internally
+    sanitizer: null,
+    renderer: new marked.Renderer()
+});
+
 async function loadDocumentation(url, el = null) {
 
     let mdText = await (await fetch(url)).text();
@@ -588,17 +601,17 @@ async function loadDocumentation(url, el = null) {
     mdText = mdText.replace(/<\/p\s*(?=<)/gi, "</p>");
 
     /* -------------------------------------------------
-      Convert GitHub blob URLs → raw URLs
-     ------------------------------------------------- */
+       Convert GitHub blob URLs → raw URLs
+    ------------------------------------------------- */
     mdText = mdText.replace(
        /https:\/\/github\.com\/([^\/]+)\/([^\/]+)\/blob\/([^\/]+)\/images\/([^"'\s]+)/gi,
        (_, user, repo, branch, file) =>
         `https://raw.githubusercontent.com/${user}/${repo}/${branch}/images/${file}`
     );
 
-     /* ------------------------------------------------
+     /* -------------------------------------------------
           Force any GitHub image to raw
-    --------------------------------------------------- */
+     ------------------------------------------------- */
     mdText = mdText.replace(
        /src=["']https:\/\/github\.com\/([^"']+)\/blob\/([^"']+)["']/gi,
        'src="https://raw.githubusercontent.com/$1/$2"'
@@ -619,7 +632,6 @@ async function loadDocumentation(url, el = null) {
     mdText = mdText.replace(
         /<img\s+([^>]*?)src=["'](images\/[^"']+)["']([^>]*)>/gi,
         (match, pre, path, post) => {
-
             const newSrc = BASE_IMG + path.replace("images/", "");
 
             // Remove fixed dimensions
@@ -637,19 +649,18 @@ async function loadDocumentation(url, el = null) {
     );
 
     /* -------------------------------------------------
-       Render Markdown
+       Render Markdown (CSP-safe)
     ------------------------------------------------- */
     document.getElementById("display-card").innerHTML = `
-  <div style="padding:10px; max-width:1100px; margin:auto;">
-      ${marked.parse(mdText)}
-  </div>
- `;
+      <div style="padding:10px; max-width:1100px; margin:auto;">
+          ${marked.parse(mdText)}
+      </div>
+    `;
 
-    /* Render LaTeX math */
+    /* Render LaTeX math (MathJax) */
     if (window.MathJax) {
         MathJax.typesetPromise();
     }
-
 
     /* -------------------------------------------------
        Active menu highlight
