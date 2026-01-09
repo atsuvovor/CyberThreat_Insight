@@ -663,6 +663,7 @@ async function loadDocumentation(url, el = null) {
 
 /* Default landing page */
 document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("year").textContent = new Date().getFullYear();
     const mainLink = document.querySelector(".menu a");
     loadDocumentation(
         "https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/README.md",
@@ -670,7 +671,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 });
 
-document.getElementById("year").textContent = new Date().getFullYear();
+
 document.addEventListener("DOMContentLoaded", () => {
     if (!sessionStorage.getItem("supportShown")) {
         setTimeout(() => {
