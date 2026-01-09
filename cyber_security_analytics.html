@@ -143,6 +143,16 @@ body {
 @media screen and (max-width: 900px){
   #support-sidebar { display:none; }
 }
+/* ===== Pulse animation for support button ===== */
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(11,94,215,0.4); }
+  70%  { box-shadow: 0 0 0 12px rgba(11,94,215,0); }
+  100% { box-shadow: 0 0 0 0 rgba(11,94,215,0); }
+}
+
+.support-btn.pulse {
+  animation: pulse 2.5s infinite;
+}
 
 /* ===== Layout ===== */
 .container {
@@ -517,14 +527,54 @@ body {
 
 <script>
 
-function toggleSupport() {
-    document.getElementById("support-sidebar")
-        .classList.toggle("open");
+const supportSidebar = document.getElementById("support-sidebar");
+const supportBtn = document.querySelector(".support-btn");
+#-------
+
+function trackSupportClick() {
+    if (window.plausible) {
+        plausible("Support Click");
+    }
 }
+
+
+#------
+/* Toggle support card */
+function toggleSupport(forceClose = false) {
+    if (forceClose) {
+        supportSidebar.classList.remove("open");
+        return;
+    }
+    supportSidebar.classList.toggle("open");
+
+    // Analytics tracking
+    trackSupportClick();
+    supportBtn.classList.remove("pulse");
+
+}
+
+/* ESC key closes support card */
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        toggleSupport(true);
+    }
+});
+
+/* Click outside closes support card */
+document.addEventListener("click", (e) => {
+    if (
+        supportSidebar.classList.contains("open") &&
+        !supportSidebar.contains(e.target) &&
+        !supportBtn.contains(e.target)
+    ) {
+        toggleSupport(true);
+    }
+});
 
 function toggleSidebar() {
     document.getElementById("sidebar").classList.toggle("collapsed");
 }
+
 
 async function loadDocumentation(url, el = null) {
 
@@ -622,6 +672,18 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.getElementById("year").textContent = new Date().getFullYear();
+document.addEventListener("DOMContentLoaded", () => {
+    if (!sessionStorage.getItem("supportShown")) {
+        setTimeout(() => {
+            supportSidebar.classList.add("open");
+            sessionStorage.setItem("supportShown", "true");
+        }, 2500); // delay for better UX
+    }
+
+    // Add pulse effect
+    supportBtn.classList.add("pulse");
+});
+
 
 </script>
 
