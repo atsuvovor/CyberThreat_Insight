@@ -341,24 +341,24 @@ body {
 
 <body>
 
-<!-- ===== Top Bar ===== -->
-<div class="topbar">
-    <span class="menu-btn" onclick="toggleSidebar()">☰</span>
+    <!-- ===== Top Bar ===== -->
+    <div class="topbar">
+        <span class="menu-btn" onclick="toggleSidebar()">☰</span>
 
-    <a href="cyber_security_analytics.html" class="topbar-brand">
-      <span>Cyber Threat Analytics & Insight</span>
-    </a>
+        <a href="cyber_security_analytics.html" class="topbar-brand">
+          <span>Cyber Threat Analytics & Insight</span>
+        </a>
 
-    <!-- Support Button -->
-    <span class="support-btn"
-          title="Support Cyber Threat Insight"
-          onclick="toggleSupport()">
-        💙☕
-    </span>
-</div>
+        <!-- Support Button -->
+        <span class="support-btn"
+              title="Support Cyber Threat Insight"
+              onclick="toggleSupport()">
+            💙☕
+        </span>
+    </div>
 
 
-<div class="container">
+ <div class="container">
 
     <!-- ===== Sidebar ===== -->
     <div id="sidebar">
@@ -483,10 +483,43 @@ body {
             </p>
         </div>
     </div>
+    <!-- ===== Support Cyber Threat Insight Card ===== -->
+<div id="support-sidebar">
+  <h3>💙 Support Cyber Threat Insight</h3>
+  <p>Keep this open-source project thriving!</p>
+
+  <a href="https://www.paypal.me/atsuvovor" target="_blank">
+    PayPal (International)
+  </a>
+
+  <a href="mailto:atsu.vovor@bell.net?subject=CyberThreat%20Insight%20Support">
+    Interac e-Transfer (Canada)
+  </a>
+
+  <p style="font-size:12px; color:#555; margin-top:8px;">
+    Auto-deposit enabled — no security question required
+  </p>
+
+  <p style="font-size:12px; color:#555; margin-top:12px;">
+    Secure bank-to-bank transfer • No platform fees • Ideal for Canadian supporters
+  </p>
+
+  <p>
+    <img src="https://img.shields.io/badge/Open%20Source-Supported-brightgreen" />
+    <img src="https://img.shields.io/badge/Cybersecurity-Research-blue" />
+    <img src="https://img.shields.io/badge/Enterprise-Interview%20Ready-success" />
+  </p>
+</div>
 
 </div>
 
 <script>
+
+function toggleSupport() {
+    document.getElementById("support-sidebar")
+        .classList.toggle("open");
+}
+
 function toggleSidebar() {
     document.getElementById("sidebar").classList.toggle("collapsed");
 }
