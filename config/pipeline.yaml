@@ -1,4 +1,3 @@
-# config/pipeline.yaml
 pipeline:
   dev: model_dev/stacked_model/stacked_anomaly_detection_classifier.py
   inference: model_inference/model_inference.py
