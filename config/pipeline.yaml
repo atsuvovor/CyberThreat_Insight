@@ -1,0 +1,7 @@
+# config/pipeline.yaml
+stages:
+  dev: model_dev/stacked_model/stacked_anomaly_detection_classifier.py
+  inference: model_inference/model_inference.py
+  production: production/stacked_ad_classifier_prod.py
+  attack: cyber_attack_insight/attack_simulation_v02.py
+  dashboard: cyber_attack_insight/attacks_executive_dashboard_v02.py
