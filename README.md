@@ -488,7 +488,7 @@ CyberThreat_Insight/
 ├── requirements.txt
 ├── setup.py
 ├── README.md
-└── docs/                         # Optional architectural docs
+└── docs/                         # architectural docs
 
 ```
 
