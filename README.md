@@ -446,7 +446,50 @@ The simulated attack types includes:
 These attack types are simulated and detected through anomaly detection and classification models to support cybersecurity monitoring and executive reporting.
 
 ---
+## Project Structure  
 
+
+CyberThreat_Insight/
+├── .github/
+│   └── workflows/                # CI/CD (Docker, tests)
+├── ai_agent/
+│   ├── __init__.py
+│   ├── validation_agent.py
+│   ├── exec_insight_agent.py
+│   ├── soc_support_agent.py
+│   └── orchestrator.py           # AI orchestration logic
+├── airflow/
+│   └── dags/
+│       └── pipeline_dag.py        # Airflow DAG orchestration
+├── config/
+│   └── pipeline.yaml              # Pipeline paths + retry config
+├── cyber_attack_insight/
+├── cybersecurity_data/
+├── datagen/
+├── explanatory_data_analysis/
+├── feature_engineering/
+├── insights/
+├── llms_models/
+├── model_deployment/
+├── model_dev/
+├── model_inference/
+├── production/
+├── prompts/
+├── stacked_models_deployment/
+├── utils/
+│   ├── logger.py                  # Centralized logging & timing
+│   └── retry.py                   # Retry logic
+├── .dockerignore
+├── .gitignore
+├── Dockerfile                     # Docker build file
+├── Makefile                      # Pipeline helpers
+├── app.py                        # Streamlit dashboard
+├── main.py                       # Pipeline entry point
+├── requirements.txt
+├── setup.py
+├── README.md
+└── docs/                         # Optional architectural docs
+---
 ## **Project Files**
 Here’s a summary of important files in the repository:
 
@@ -455,7 +498,7 @@ Here’s a summary of important files in the repository:
 - **[`setup.py`](./setup.py)** - Setup script for packaging and distributing the project.
 - **.py files** - Contains the main Python source code files for the project.
   - **[`main.py`](main.py)** - Entry point for the project.
-- **notebooks** - the **.ipynb files** Contain Jupyter Notebooks for data analysis and modeling.
+- **multiple notebooks and HTML/MD docs** - the **.ipynb files** Contain Jupyter Notebooks for data analysis and modeling.
  
 
 ---
