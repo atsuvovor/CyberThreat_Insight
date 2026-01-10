@@ -445,7 +445,6 @@ The simulated attack types includes:
 
 These attack types are simulated and detected through anomaly detection and classification models to support cybersecurity monitoring and executive reporting.
 
----  
 
 ## Project Structure
 
@@ -492,7 +491,6 @@ CyberThreat_Insight/
 └── docs/                         # Optional architectural docs
 
 ```
----  
 
 ## **Project Files**
 Here’s a summary of important files in the repository:
