@@ -449,6 +449,7 @@ These attack types are simulated and detected through anomaly detection and clas
 
 ## Project Structure
 
+```ruby
 CyberThreat_Insight/
 ├── .github/
 │   └── workflows/                # CI/CD (Docker, tests)
@@ -490,7 +491,7 @@ CyberThreat_Insight/
 ├── README.md
 └── docs/                         # Optional architectural docs
 
-
+```
 ---  
 
 ## **Project Files**
