@@ -447,7 +447,7 @@ These attack types are simulated and detected through anomaly detection and clas
 
 ---  
 
-## Project Structure  
+## Project Structure
 
 CyberThreat_Insight/
 ├── .github/
@@ -489,6 +489,8 @@ CyberThreat_Insight/
 ├── setup.py
 ├── README.md
 └── docs/                         # Optional architectural docs
+
+
 ---  
 
 ## **Project Files**
