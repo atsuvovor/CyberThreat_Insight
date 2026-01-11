@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Cybersecurity Analytics</title>
@@ -5,243 +7,394 @@
 
     <!-- Marked.js for Markdown → HTML -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
     <!-- MathJax for LaTeX rendering -->
     <script>
-      window.MathJax = {
-        tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']],
-          displayMath: [['$$', '$$'], ['\\[', '\\]']]
-        },
-        svg: { fontCache: 'global' }
-      };
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
     </script>
+
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
-    <style>
-    :root {
-        --topbar-height: 100px;
-        --footer-height: 40px;
-    }
 
-    body {
-        margin: 0;
-        font-family: "Segoe UI", Roboto, Arial, sans-serif;
-        background: #ffffff;
-        color: #222;
-    }
+<style>
+body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background:  #ffffff;
+    color: #222;
+}
 
-    /* ===== Top Bar ===== */
-    .topbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: var(--topbar-height);
-        background: #ffffff;
-        border-bottom: 1px solid #d1d9e6;
-        display: flex;
-        align-items: center;
-        padding: 0 15px;
-        z-index: 1000;
-    }
+/* ===== Top Bar ===== */
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: #ffffff;
+    border-bottom: 1px solid #d1d9e6;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    z-index: 1000;
+}
 
-    .topbar .menu-btn {
-        font-size: 22px;
-        cursor: pointer;
-        margin-right: 15px;
-    }
+.topbar .menu-btn {
+    font-size: 22px;
+    cursor: pointer;
+    margin-right: 15px;
+}
 
-    .topbar-brand {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        text-decoration: none;
-        color: #0b1c2d;
-    }
+.topbar h1 {
+    font-size: 18px;
+    margin: 0;
+}
 
-    .topbar-brand img {
-        height: 78px;
-        width: 78px;
-        object-fit: contain;
-        padding: 4px;
-        background: #ffffff;
-        border-radius: 50%;
-        box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
-    }
+.topbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #0b1c2d;
+}
 
-    .topbar-brand span {
-        font-size: 16px;
-        font-weight: 600;
-        white-space: nowrap;
-    }
+/* ===== Round Logo in Top Bar ===== */
+.topbar-brand img {
+    height: 78px;
+    width: 78px;                  /* force perfect circle */
+    object-fit: contain;
+    padding: 4px;
+    background: #ffffff;
+    border-radius: 48%;           /* makes it round */
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
+}
 
-    /* ===== Top Right Buttons ===== */
-    .github-btn {
-        margin-left: auto;
-        background: #418df0;
-        color: #ffffff;
-        font-size: 14px;
-        font-weight: 600;
-        padding: 8px 12px;
-        border-radius: 6px;
-        text-decoration: none;
-        white-space: nowrap;
-    }
 
-    .github-btn:hover {
-        background: #084298;
-    }
 
-    .powerbi-btn {
-        margin-left: 10px;
-        background: #0b5ed7;
-        color: #ffffff;
-        font-size: 14px;
-        font-weight: 600;
-        padding: 8px 12px;
-        border-radius: 6px;
-        text-decoration: none;
-        white-space: nowrap;
-    }
+.topbar-brand span {
+    font-size: 16px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+/* ===== Support Button (Top Right) ===== */
+.support-btn 
+    {
+    background:#d5e6ff;
+    margin-left: 6px;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+}
 
-    .powerbi-btn:hover {
-        background: #084298;
-    }
+.support-btn:hover {
+    background: #eef5ff;
+}
 
-    .support-btn {
-        background: #d5e6ff;
-        margin-left: 6px;
-        font-size: 20px;
-        cursor: pointer;
-        padding: 6px 10px;
-        border-radius: 6px;
-    }
+/* ===== Power BI Button (Top Right) ===== */
+.powerbi-btn {
+    margin-left: 10px;
+    background: #0b5ed7;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+    white-space: nowrap;
+}
 
-    .support-btn:hover {
-        background: #eef5ff;
-    }
+.powerbi-btn:hover {
+    background: #084298;
+}
 
-    /* ===== Layout ===== */
-    .container {
-        display: flex;
-        margin-top: var(--topbar-height);
-        height: calc(100vh - var(--topbar-height) - var(--footer-height));
-        overflow: hidden;
-    }
+/* ===== GitHub Button (Top Right) ===== */
+.github-btn {
+    margin-left: auto;
+    background: #418df0;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+    white-space: nowrap;
+}
 
-    /* ===== Sidebar ===== */
-    #sidebar {
-        width: 280px;
-        background: #ffffff;
-        border-right: 1px solid #d1d9e6;
-        box-shadow: 2px 0 6px rgba(0,0,0,0.08);
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        transition: width 0.3s ease;
-    }
+.github-btn:hover {
+    background: #084298;
+}
 
-    #sidebar.collapsed {
-        width: 60px;
-        border: none;
-        box-shadow: none;
-    }
+/* ===== Support Sidebar ===== */
+#support-sidebar {
+  position: fixed;
+  top: 120px; /* below top bar */
+  right: -400px; /* hidden by default */
+  width: 260px;
+  background: #f4f8fb;
+  border-left: 4px solid #0b5ed7;
+  padding: 20px;
+  z-index: 1200;
+  font-family: Arial, sans-serif;
+  box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+  transition: right 0.3s ease;
+}
 
-    .sidebar-header {
-        padding: 15px;
-        border-bottom: 1px solid #eee;
-        text-align: center;
-    }
+/* Visible state */
+#support-sidebar.open {
+  right: 0;
+}
 
-    .sidebar-header h2 {
-        font-size: 16px;
-        margin: 0;
-        white-space: nowrap;
-    }
+#support-sidebar h4 {
+  color: #0b5ed7;
+  margin-bottom: 10px;
+}
 
-    /* ===== Menu ===== */
-    .menu {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        flex: 1;
-        overflow-y: auto;
-    }
+#support-sidebar p {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.4;
+  margin: 4px 0;
+}
 
-    .menu li {
-        border-bottom: 1px solid #f0f0f0;
-    }
+#support-sidebar a {
+  display: block;
+  margin: 10px 0;
+  padding: 12px 0;
+  background: #003087;
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+}
 
-    .menu a {
-        display: block;
-        padding: 12px 18px;
-        color: #0b1c2d;
-        text-decoration: none;
-        cursor: pointer;
-    }
+#support-sidebar a:hover {
+  background: #001f5b;
+  transform: translateY(-2px);
+  transition: 0.2s ease;
+}
 
-    .menu a:hover,
-    .menu a.active {
-        background: #eef5ff;
-        color: #000066;
-        font-weight: 600;
-    }
+/* Mobile: hide support card */
+@media screen and (max-width: 900px){
+  #support-sidebar { display:none; }
+}
+/* ===== Pulse animation for support button ===== */
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(11,94,215,0.4); }
+  70%  { box-shadow: 0 0 0 12px rgba(11,94,215,0); }
+  100% { box-shadow: 0 0 0 0 rgba(11,94,215,0); }
+}
 
-    /* ===== Submenu ===== */
-    .submenu {
-        display: none;
-        background: #ffffff;
-    }
+.support-btn.pulse {
+  animation: pulse 2.5s infinite;
+}
 
-    .submenu a {
-        padding-left: 35px;
-        font-size: 14px;
-    }
+/* ===== Layout ===== */
+.container {
+    display: flex;
+    margin-top: 120px; /* pushes layout below top bar */
+    height: calc(100vh - 100px);
+    overflow: hidden;
+}
 
-    .menu .arrow {
-        display: inline-block;
-        transition: transform 0.25s ease;
-    }
+/* ===== Sidebar ===== */
+#sidebar {
+    top: 120px; /* below top bar */
+    width: 280px;
+    background: #ffffff;
+    border-right: 1px solid #d1d9e6;
+    box-shadow: 2px 0 6px rgba(0,0,0,0.08);
+    transition: width 0.3s;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+/* Chrome, Safari, Edge */
+#sidebar::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
 
-    .menu li.open > a .arrow {
-        transform: rotate(90deg);
-    }
+#sidebar.collapsed {
+    width: 0;
+    border: none;
+    box-shadow: none;
+}
 
-    .menu li.open .submenu {
-        display: block;
-    }
+/* Sidebar header (title only now) */
+.sidebar-header {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
 
-    /* ===== Content ===== */
-    .content {
-        flex: 1;
-        overflow-y: auto;
-        background: #ffffff;
-    }
+.sidebar-header h2 {
+    font-size: 16px;
+    margin: 0;
+    white-space: nowrap;
+}
 
-    #display-card {
-        padding: 20px;
-    }
+/* ===== Menu ===== */
+.menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 
-    #display-card img {
-        max-width: 100%;
-        height: auto;
-    }
+.menu li {
+    border-bottom: 1px solid #f0f0f0;
+}
 
-    /* ===== Footer ===== */
-    .footer {
-        height: var(--footer-height);
-        background: #ffffff;
-        border-top: 1px solid #d1d9e6;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 13px;
-        color: #555;
-    }
-    </style>
+.menu a {
+    display: block;
+    padding: 12px 18px;
+    color: #0b1c2d;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.menu a:hover {
+    background: #eef5ff;
+    color: #000066;
+}
+
+/* ===== Submenu ===== */
+.submenu {
+    background: #ffffff;
+    display: none;
+}
+
+.submenu a {
+    padding-left: 35px;
+    font-size: 14px;
+}
+/* Arrow indicator */
+.menu .arrow {
+    display: inline-block;
+    transition: transform 0.25s ease;
+}
+
+/* When submenu is open, rotate arrow down */
+.menu li.open > a .arrow {
+    transform: rotate(90deg);
+}
+
+.submenu a:hover {
+    background: #eef5ff;
+    color: #000066;
+}
+.menu li.open .submenu {
+    display: block;
+}
+.menu a.active {
+    background: #eef5ff;
+    color: #000066;
+    font-weight: 600;
+}
+/* ===== Content ===== */
+.content {
+    flex: 1;
+    overflow-y: auto;
+    background: #ffffff;
+}
+
+.content-header {
+    background: #ffffff;
+    padding: 15px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+#display-card {
+    padding: 20px;
+}
+
+/* Markdown styling */
+#display-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* ===== Code Pad (Markdown) ===== */
+
+#display-card pre {
+    background: #dee4ec;
+    color: #060606;
+    padding: 12px;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+#display-card code {
+    background: #dee4ec;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+#display-card pre::before {
+    content: "Code";
+    display: block;
+    font-size: 12px;
+    color: #9fb3c8;
+    margin-bottom: 6px;
+}
+
+#display-card pre {
+    background: #dee4ec;          /* editor-style background */
+    color: #060606;
+    padding: 16px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-family: Consolas, Monaco, "Courier New", monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+/* Inline code */
+#display-card code {
+    background: #e9eef5;
+    color: #0b1c2d;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: Consolas, Monaco, "Courier New", monospace;
+    font-size: 0.95em;
+}
+
+/* Ensure block code doesn't double-style */
+#display-card pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+}
+
+
+/* ===== Footer ===== */
+.footer {
+    height: 40px;
+    background: #ffffff;
+    border-top: 1px solid #d1d9e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: #555;
+}
+
+/* Adjust layout height to account for footer */
+.container {
+    height: calc(100vh - 100px - 40px);
+}
+
+    
+</style>
+
 </head>
-
 
 <body>
 
