@@ -28,6 +28,6 @@ If you would like to discuss a project, collaboration, or tailored use case, fee
 |---------|------|
 | 💙 GitHub Sponsors | https://github.com/sponsors/atsuvovor |
 | 💳 PayPal (International) | https://www.paypal.me/atsuvovor |
-| 🇨🇦 Interac e-Transfer (Canada) | mail to: atsu.vovor@bell.net  subject=Cyber Threat Insight Support |
+| ✉️ 🇨🇦 Interac e-Transfer (Canada) | mail to: atsu.vovor@bell.net  subject=Cyber Threat Insight Support |
 
 🙏 Thank you for supporting open cybersecurity research and tooling!
