@@ -63,14 +63,17 @@ body {
     color: #0b1c2d;
 }
 
+/* ===== Round Logo in Top Bar ===== */
 .topbar-brand img {
-    height: 42px;                 /* increase size */
-    width: auto;
-    padding: 4px;                 /* breathing space */
-    background: #ffffff;          /* ensures contrast */
-    border-radius: 6px;
-    box-shadow: 0 0 0 1px rgba(0,0,0,0.06);
+    height: 42px;
+    width: 42px;                  /* force perfect circle */
+    object-fit: contain;
+    padding: 4px;
+    background: #ffffff;
+    border-radius: 50%;           /* makes it round */
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
 }
+
 
 
 .topbar-brand span {
