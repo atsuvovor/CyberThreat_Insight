@@ -91,7 +91,7 @@ body {
 
 /* ===== Power BI Button (Top Right) ===== */
 .powerbi-btn {
-    margin-left: auto;
+    margin-left: 10px;
     background: #0b5ed7;
     color: #ffffff;
     font-size: 14px;
@@ -104,6 +104,24 @@ body {
 }
 
 .powerbi-btn:hover {
+    background: #084298;
+}
+
+/* ===== GitHub Button (Top Right) ===== */
+.github-btn {
+    margin-left: auto;
+    background: #418df0;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+    white-space: nowrap;
+}
+
+.github-btn:hover {
     background: #084298;
 }
 
@@ -379,7 +397,17 @@ body {
       <span>Cyber Threat Analytics & Insight</span>
     </a>
 
-    <!-- Power BI Button (FIRST on the right) -->
+
+
+       <!-- GitHub Button (FIRST on the right) -->
+    <a class="github-btn"
+       href="https://github.com/atsuvovor/CyberThreat_Insight/tree/main"
+       target="_blank"
+       title="Open Cyber Attack Insight Dashboard">
+        📂 GitHub Repo
+    </a>
+    
+    <!-- Power BI Button (second on the right) -->
     <a class="powerbi-btn"
        href="https://atsuvovor.github.io/power_bi_projects/cyber_attack_insight_dashboard.html"
        target="_blank"
