@@ -91,7 +91,7 @@ body {
 
 /* ===== Power BI Button (Top Right) ===== */
 .powerbi-btn {
-    margin-left: Auto;
+    margin-left: 10px;
     background: #0b5ed7;
     color: #ffffff;
     font-size: 14px;
@@ -371,28 +371,29 @@ body {
 
 <body>
 
-    <!-- ===== Top Bar ===== -->
-    <div class="topbar">
-        <span class="menu-btn" onclick="toggleSidebar()">☰</span>
+<!-- ===== Top Bar ===== -->
+ <div class="topbar">
+    <span class="menu-btn" onclick="toggleSidebar()">☰</span>
 
-        <a href="cyber_security_analytics.html" class="topbar-brand">
-          <span>Cyber Threat Analytics & Insight</span>
-        </a>
+    <a href="cyber_security_analytics.html" class="topbar-brand">
+      <span>Cyber Threat Analytics & Insight</span>
+    </a>
 
-        <a class="powerbi-btn"
-           href="https://atsuvovor.github.io/power_bi_projects/cyber_attack_insight_dashboard.html"
-           target="_blank"
-           title="Open Cyber Attack Insight Dashboard">
-            📊 Power BI Dashboard
-        </a>
+    <!-- Support Button -->
+    <span class="support-btn"
+          title="Support Cyber Threat Insight"
+          onclick="toggleSupport()">
+        💙☕
+    </span>
 
-        <!-- Support Button -->
-        <span class="support-btn"
-              title="Support Cyber Threat Insight"
-              onclick="toggleSupport()">
-            💙☕
-        </span>
-    </div>
+    <!-- Power BI Button -->
+    <a class="powerbi-btn"
+       href="https://atsuvovor.github.io/power_bi_projects/cyber_attack_insight_dashboard.html"
+       target="_blank"
+       title="Open Cyber Attack Insight Dashboard">
+        📊 Power BI Dashboard
+    </a>
+</div>
 
 
  <div class="container">
