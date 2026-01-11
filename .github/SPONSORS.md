@@ -20,7 +20,6 @@ If you would like to discuss a project, collaboration, or tailored use case, fee
 
 📧 **Contact:** atsu.vovor@bell.net
 
----
 
 ### Sponsor or Support
 
