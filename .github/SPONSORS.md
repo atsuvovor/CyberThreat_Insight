@@ -1,6 +1,6 @@
-## 💙 Support CyberThreat_Insight
+## 💙 Support CyberThreat Insight
 
-**CyberThreat_Insight** is an independent, open-source project focused on
+**Cyber Threat Insight** is an independent, open-source project focused on
 cybersecurity analytics, threat detection pipelines, and executive-level
 dashboards grounded in both research and practical application.
 
