@@ -5,12 +5,12 @@
 </div>
 
 **Toronto, January 06, 2026**  
-**Author : Atsu Vovor**  
+**Author : Atsu Vovor**    
+
 ![Contributors](https://img.shields.io/github/contributors/atsuvovor/CyberThreat_Insight)
 ![Last Commit](https://img.shields.io/github/last-commit/atsuvovor/CyberThreat_Insight)
 ![Issues](https://img.shields.io/github/issues/atsuvovor/CyberThreat_Insight)
 ![License](https://img.shields.io/github/license/atsuvovor/CyberThreat_Insight)
-
 <a 
   href="https://atsuvovor.github.io/CyberThreat_Insight/cyber_security_analytics.html" 
   target="_blank">
