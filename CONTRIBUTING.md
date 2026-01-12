@@ -5,7 +5,7 @@ This project is developed as an **open, research-driven cybersecurity analytics 
 
 Please read this document carefully before opening an issue or submitting a contribution.
 
----
+
 
 ## 🎯 Project Scope & Philosophy
 
@@ -22,7 +22,7 @@ The project prioritizes:
 - **Reproducibility over novelty**
 - **Explainability over black-box solutions**
 
----
+
 
 ## 🤝 Ways to Contribute
 
@@ -50,7 +50,7 @@ You can contribute in several meaningful ways:
 - UX clarity for executive views
 - Performance or readability enhancements
 
----
+
 
 ## 🚫 What This Project Does NOT Accept (By Default)
 
@@ -64,7 +64,7 @@ To keep the project coherent and maintainable, the following are **not accepted 
 
 If you believe your idea falls into one of these categories, **open a discussion first**.
 
----
+
 
 ## 🧩 Contribution Workflow
 
@@ -84,7 +84,7 @@ If you believe your idea falls into one of these categories, **open a discussion
    - Keep PRs focused and reasonably sized
    - Include documentation updates where applicable
 
----
+
 
 ## 🧪 Code & Quality Guidelines
 
@@ -94,7 +94,7 @@ If you believe your idea falls into one of these categories, **open a discussion
 - Ensure changes do not break existing workflows  
 - Test dashboards and pipelines locally before submitting  
 
----
+
 
 ## 📊 Data & Security Considerations
 
@@ -106,7 +106,7 @@ Security-related findings should be reported responsibly via **private email**, 
 
 📧 **Security contact:** atsu.vovor@bell.net
 
----
+
 
 ## 🧠 Research & Collaboration Proposals
 
@@ -121,7 +121,7 @@ Instead, initiate a discussion or reach out via email to align expectations.
 
 📧 **Contact:** atsu.vovor@bell.net
 
----
+
 
 ## 💙 Sponsorship vs Contribution
 
@@ -131,7 +131,7 @@ Sponsorship helps sustain development but **does not grant special privileges**,
 For support and sponsorship details, see:
 👉 `.github/SPONSORS.md`
 
----
+
 
 ## 📬 Communication Channels
 
