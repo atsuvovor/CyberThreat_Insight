@@ -58,4 +58,4 @@ feel free to reach out directly.
 - **Sponsors:** GitHub Sponsors messages or email  
 - **Collaboration / research / industry:** Email contact above  
 
-🙏 Thank you for supporting open cybersecurity research and tooling!
+Thank you for supporting open cybersecurity research and tooling! 🙏
