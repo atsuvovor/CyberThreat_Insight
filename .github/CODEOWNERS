@@ -1,0 +1,15 @@
+# Default code owner
+* @atsuvovor
+
+# Model development
+/model_dev/ @atsuvovor
+
+# Inference & production
+/model_inference/ @atsuvovor
+/production/ @atsuvovor
+
+# Dashboards & visualization
+/cyber_attack_insight/ @atsuvovor
+
+# Community & governance
+/.github/ @atsuvovor
