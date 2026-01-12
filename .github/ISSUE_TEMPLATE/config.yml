@@ -1,0 +1,9 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security Vulnerability
+    url: mailto:atsu.vovor@bell.net
+    about: Please report security issues privately.
+  - name: General Questions / Ideas
+    url: https://github.com/atsuvovor/CyberThreat_Insight/discussions
+    about: Use GitHub Discussions for questions or ideas.
+
