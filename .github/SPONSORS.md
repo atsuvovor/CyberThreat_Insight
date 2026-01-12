@@ -10,7 +10,7 @@ The project is developed and maintained openly to support:
 - Reproducible ML-based threat detection
 - Executive and operational security insights
 
----
+
 
 ## 🤝 Why Support This Project
 
@@ -24,7 +24,7 @@ Your support helps to:
 Support does **not** imply ownership, priority access, or exclusive features.
 The project remains open and community-driven.
 
----
+
 
 ## 🧠 Collaboration & Custom Engagements
 
@@ -40,7 +40,7 @@ feel free to reach out directly.
 
 📧 **Contact:** atsu.vovor@bell.net
 
----
+
 
 ## 💳 Ways to Support
 
@@ -50,7 +50,7 @@ feel free to reach out directly.
 | 💳 PayPal (International) | https://www.paypal.me/atsuvovor |
 | ✉️ 🇨🇦 Interac e-Transfer (Canada) | mailto:atsu.vovor@bell.net?subject=CyberThreat%20Insight%20Support |
 
----
+
 
 ## 📬 Communication Channels
 
