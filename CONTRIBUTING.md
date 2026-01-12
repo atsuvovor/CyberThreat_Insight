@@ -139,6 +139,6 @@ For support and sponsorship details, see:
 - **Security concerns:** Private email  
 - **Research / industry collaboration:** Email contact above  
 
----
 
-Thank you for contributing responsibly and helping advance open cybersecurity research.
+
+Thank you for contributing responsibly and helping advance open cybersecurity research. 🙏
