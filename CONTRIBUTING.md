@@ -14,7 +14,7 @@ Cyber Threat Insight focuses on:
 - Cybersecurity analytics and threat detection pipelines  
 - Applied machine learning for SOC and security operations  
 - Reproducible experiments and data workflows  
-- Executive-level dashboards using Dash and Plotly  
+- Executive-level dashboards using Streamlit / Dash / Plotly / Power BI/ Tableau   
 - Research-informed, practical implementations  
 
 The project prioritizes:
@@ -46,7 +46,7 @@ You can contribute in several meaningful ways:
 - References to academic literature
 
 ### 4️⃣ Dashboard & Visualization Enhancements
-- Plotly / Dash improvements
+- Plotly / Dash /  Streamlit / Power BI/ Tableau  improvements
 - UX clarity for executive views
 - Performance or readability enhancements
 
