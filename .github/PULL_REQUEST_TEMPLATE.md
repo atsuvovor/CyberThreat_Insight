@@ -2,7 +2,7 @@
 
 Briefly describe what this pull request does and why it is needed.
 
----
+
 
 ## 🔗 Related Issue / Discussion
 
@@ -10,7 +10,7 @@ Link to the relevant issue or discussion:
 - Fixes #
 - Related to #
 
----
+
 
 ## 🧪 Changes Introduced
 
@@ -21,7 +21,7 @@ Link to the relevant issue or discussion:
 - [ ] Research or methodology improvement
 - [ ] Dashboard / visualization enhancement
 
----
+
 
 ## 📊 Scope & Impact
 
@@ -30,7 +30,7 @@ Describe:
 - Whether this is experimental or production-facing
 - Any potential downstream impact
 
----
+
 
 ## 🧪 Testing & Validation
 
@@ -40,7 +40,7 @@ Describe how you tested your changes:
 - [ ] Dashboard rendered successfully
 - [ ] Not applicable (explain why)
 
----
+
 
 ## ✅ Checklist
 
@@ -50,7 +50,7 @@ Describe how you tested your changes:
 - [ ] No sensitive data or credentials are included
 - [ ] Documentation was updated if needed
 
----
+
 
 ## 📝 Additional Notes
 
