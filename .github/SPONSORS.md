@@ -1,32 +1,61 @@
-## 💙 Support the Project
+## 💙 Support CyberThreat_Insight
 
-This project is developed independently and shared openly with the community to advance practical cybersecurity analytics, threat detection, and research-driven insights.
+**CyberThreat_Insight** is an independent, open-source project focused on
+cybersecurity analytics, threat detection pipelines, and executive-level
+dashboards grounded in both research and practical application.
+
+The project is developed and maintained openly to support:
+- Applied cybersecurity research
+- SOC analytics and experimentation
+- Reproducible ML-based threat detection
+- Executive and operational security insights
+
+---
+
+## 🤝 Why Support This Project
 
 Your support helps to:
 
-- Maintain and evolve core analytics and detection pipelines  
-- Expand dashboards and executive-level visualizations  
-- Improve documentation, tutorials, and onboarding materials  
-- Support collaborative research, experimentation, and engineering  
+- Maintain and evolve detection models and analytics pipelines  
+- Expand Dash / Plotly executive dashboards  
+- Improve documentation, tutorials, and reproducibility  
+- Support research, experimentation, and engineering collaboration  
 
-In addition to sponsorship, I welcome **direct conversations** with individuals, research groups, and organizations who have:
+Support does **not** imply ownership, priority access, or exclusive features.
+The project remains open and community-driven.
 
-- Specific cybersecurity analytics needs  
-- Custom threat modeling or dashboard requirements  
-- Interest in collaborative research or applied projects  
-- Ideas for extending or integrating this platform  
+---
 
-If you would like to discuss a project, collaboration, or tailored use case, feel free to reach out directly.
+## 🧠 Collaboration & Custom Engagements
+
+Beyond sponsorship, I welcome **direct conversations** with:
+
+- Researchers and academic groups  
+- Security teams and practitioners  
+- Organizations exploring applied cybersecurity analytics  
+- Contributors interested in extending the platform  
+
+If you have a specific use case, research idea, or collaboration proposal,
+feel free to reach out directly.
 
 📧 **Contact:** atsu.vovor@bell.net
 
+---
 
-### Sponsor or Support
+## 💳 Ways to Support
 
 | Platform | Link |
 |---------|------|
 | 💙 GitHub Sponsors | https://github.com/sponsors/atsuvovor |
 | 💳 PayPal (International) | https://www.paypal.me/atsuvovor |
-| ✉️ 🇨🇦 Interac e-Transfer (Canada) | mail to: atsu.vovor@bell.net  subject=Cyber Threat Insight Support |
+| ✉️ 🇨🇦 Interac e-Transfer (Canada) | mailto:atsu.vovor@bell.net?subject=CyberThreat%20Insight%20Support |
+
+---
+
+## 📬 Communication Channels
+
+- **Contributors & issues:** GitHub Issues and Discussions  
+- **Sponsors:** GitHub Sponsors messages or email  
+- **Collaboration / research / industry:** Email contact above  
 
 🙏 Thank you for supporting open cybersecurity research and tooling!
