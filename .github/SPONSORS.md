@@ -17,7 +17,7 @@ The project is developed and maintained openly to support:
 Your support helps to:
 
 - Maintain and evolve detection models and analytics pipelines  
-- Expand Dash / Plotly executive dashboards  
+- Expand Streamlit / Dash / Plotly / Power BI/ Tableau executive dashboards  
 - Improve documentation, tutorials, and reproducibility  
 - Support research, experimentation, and engineering collaboration  
 
