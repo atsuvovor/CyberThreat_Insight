@@ -451,6 +451,11 @@ These attack types are simulated and detected through anomaly detection and clas
 ```ruby
 CyberThreat_Insight/
 ├── .github/
+│   ├── FUNDING.yml
+│   ├── SPONSORS.md
+│   ├── CODEOWNERS
+│   ├── ISSUE_TEMPLATE/
+│   ├── PULL_REQUEST_TEMPLATE.md
 │   └── workflows/                # CI/CD (Docker, tests)
 ├── ai_agent/
 │   ├── __init__.py
@@ -488,6 +493,7 @@ CyberThreat_Insight/
 ├── requirements.txt
 ├── setup.py
 ├── README.md
+├── CONTRIBUTING.md 
 └── docs/                         # architectural docs
 
 ```
@@ -503,7 +509,14 @@ Here’s a summary of important files in the repository:
 - **multiple notebooks and HTML/MD docs** - the **.ipynb files** Contain Jupyter Notebooks for data analysis and modeling.
  
 
----
+## 📂 Repository Structure (Contributor Guide)
+
+- `model_dev/` — Model development and experimentation
+- `model_inference/` — Inference and evaluation pipelines
+- `production/` — Production and simulation workflows
+- `cyber_attack_insight/` — Dash / Plotly dashboards and attack simulations
+- `.github/` — Community, funding, and contribution guidelines
+
 
 ## **Installation**
 To install the project, follow these steps:
