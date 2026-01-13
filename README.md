@@ -7,10 +7,18 @@
 **Toronto, January 06, 2026**  
 **Author : Atsu Vovor**    
 
+![Maintainer](https://img.shields.io/badge/Maintainer-Atsu%20Vovor-blue)
 ![Contributors](https://img.shields.io/github/contributors/atsuvovor/CyberThreat_Insight)
 ![Last Commit](https://img.shields.io/github/last-commit/atsuvovor/CyberThreat_Insight)
-![Issues](https://img.shields.io/github/issues/atsuvovor/CyberThreat_Insight)
-![License](https://img.shields.io/github/license/atsuvovor/CyberThreat_Insight)  
+![Open Issues](https://img.shields.io/github/issues/atsuvovor/CyberThreat_Insight)
+![License](https://img.shields.io/github/license/atsuvovor/CyberThreat_Insight)
+![CI](https://img.shields.io/github/actions/workflow/status/atsuvovor/CyberThreat_Insight/ci.yml)
+
+![Governance](https://img.shields.io/badge/Governance-CODEOWNERS-green)
+![Security](https://img.shields.io/badge/Security-Responsible%20Disclosure-red)
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.YOUR_DOI_HERE.svg)](https://doi.org/10.5281/zenodo.YOUR_DOI_HERE)
+
 
 <a 
   href="https://atsuvovor.github.io/CyberThreat_Insight/cyber_security_analytics.html" 
