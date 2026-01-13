@@ -100,7 +100,7 @@ If your idea falls into one of these categories, **open a discussion first**.
 <p align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/contributors_ombording.png" 
        alt="Centered Image" 
-       style="width: 100%; height: auto;">
+       style="width: 50%; height: auto;">
 </p
 
 
