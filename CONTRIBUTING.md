@@ -1,15 +1,3 @@
-Below is a **cleaned, tightened, and professionally structured update** of your **`CONTRIBUTING.md`**, preserving **all your intent**, while improving:
-
-* Flow & hierarchy
-* Academic / industry tone
-* Redundancy reduction
-* Clear contributor expectations
-* Alignment with your `.github/` setup
-
-You can **replace your existing `CONTRIBUTING.md` entirely** with this version.
-
----
-
 # Contributing to Cyber Threat Insight
 
 Thank you for your interest in contributing to **Cyber Threat Insight**.
@@ -18,7 +6,7 @@ This project is an **open, research-driven cybersecurity analytics platform** de
 
 Please read this document carefully before opening an issue, discussion, or pull request.
 
----
+
 
 ## 🎯 Project Scope & Philosophy
 
@@ -38,7 +26,7 @@ This project prioritizes:
 * **Reproducibility over novelty**
 * **Explainability over black-box solutions**
 
----
+
 
 ## 🤝 Ways to Contribute
 
@@ -70,7 +58,7 @@ You can contribute in several meaningful ways:
 * Executive dashboard clarity
 * Performance and usability enhancements
 
----
+
 
 ## 🚫 What This Project Does *Not* Accept by Default
 
@@ -84,7 +72,7 @@ To keep the project coherent and maintainable, the following are **not accepted 
 
 If your idea falls into one of these categories, **open a discussion first**.
 
----
+
 
 ## 🧩 Contribution Workflow
 
@@ -108,7 +96,7 @@ If your idea falls into one of these categories, **open a discussion first**.
    * Keep PRs focused and reasonably sized
    * Include documentation updates where applicable
 
----
+
 
 ## 🧪 Code & Quality Guidelines
 
@@ -118,7 +106,7 @@ If your idea falls into one of these categories, **open a discussion first**.
 * Ensure changes do not break existing workflows
 * Test dashboards and pipelines locally before submitting
 
----
+
 
 ## 📊 Data & Security Considerations
 
@@ -133,7 +121,7 @@ Security-related findings must be reported **privately**, not via public issues.
 📧 **Security contact:**
 [atsu.vovor@bell.net](mailto:atsu.vovor@bell.net)
 
----
+
 
 ## 🧠 Research & Collaboration Proposals
 
@@ -154,7 +142,7 @@ Instead:
 📧 **Contact:**
 [atsu.vovor@bell.net](mailto:atsu.vovor@bell.net)
 
----
+
 
 ## 💙 Sponsorship vs Contribution
 
@@ -169,7 +157,7 @@ Sponsorship:
 For support options, see:
 👉 `.github/SPONSORS.md`
 
----
+
 
 ## 📬 Communication Channels
 
@@ -177,7 +165,7 @@ For support options, see:
 * **Security concerns:** Private email
 * **Research / industry collaboration:** Email contact above
 
----
+
 
 ## 📘 Contributor Guide: Using `.github/` Files
 
@@ -186,7 +174,7 @@ It does **not** contain application logic.
 
 Understanding these files ensures smooth collaboration and review.
 
----
+
 
 ## 🐞 Reporting Bugs
 
@@ -207,7 +195,7 @@ Understanding these files ensures smooth collaboration and review.
 * Reference commit hashes when relevant
 * **Do not include sensitive information**
 
----
+
 
 ## 💡 Feature Requests
 
@@ -223,7 +211,7 @@ Understanding these files ensures smooth collaboration and review.
 
 Feature requests help shape the roadmap but **do not guarantee implementation**.
 
----
+
 
 ## 🧠 Research / Collaboration Issues
 
@@ -244,7 +232,7 @@ Feature requests help shape the roadmap but **do not guarantee implementation**.
 * Discussion may move to GitHub Discussions or email
 * A contribution path is agreed upon before any PR
 
----
+
 
 ## 🔄 How to Open a Pull Request (PR)
 
@@ -257,21 +245,21 @@ Open a PR **only after**:
 
 ### Step-by-Step
 
-1️⃣ Fork the repository
-2️⃣ Create a feature branch
-3️⃣ Implement your changes
-4️⃣ Commit clearly
-5️⃣ Push to your fork
-6️⃣ Open a PR (template auto-loads)
+1️⃣ Fork the repository  
+2️⃣ Create a feature branch  
+3️⃣ Implement your changes  
+4️⃣ Commit clearly  
+5️⃣ Push to your fork  
+6️⃣ Open a PR (template auto-loads)  
 
-The PR must include:
+The PR must include:  
 
-* Summary of changes
-* Linked issues or discussions
-* Testing notes
-* Impact assessment
+* Summary of changes  
+* Linked issues or discussions  
+* Testing notes  
+* Impact assessment  
 
----
+
 
 ## 🔐 Review & Approval
 
@@ -279,7 +267,7 @@ The PR must include:
 * CI checks must pass
 * Maintainer approval is required before merge
 
----
+
 
 ## 🧪 Continuous Integration (CI)
 
@@ -295,7 +283,7 @@ If CI fails:
 * Update your branch
 * Push fixes (CI reruns automatically)
 
----
+
 
 ## 🛡️ What Not to Do
 
@@ -306,7 +294,7 @@ If CI fails:
 * Bypass review processes
 * Modify `.github/` workflows without approval
 
----
+
 
 ## 🙏 Final Note
 
