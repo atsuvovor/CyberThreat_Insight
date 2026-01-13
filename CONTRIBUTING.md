@@ -104,8 +104,6 @@ If your idea falls into one of these categories, **open a discussion first**.
        style="width: 50%; height: auto;">
 </p  
 
-
-
 ## 🧪 Code & Quality Guidelines
 
 * Follow existing coding style and structure
