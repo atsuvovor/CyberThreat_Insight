@@ -525,7 +525,13 @@ Here’s a summary of important files in the repository:
 - **multiple notebooks and HTML/MD docs** - the **.ipynb files** Contain Jupyter Notebooks for data analysis and modeling.
  
 
-## 📂 Repository Structure ([Read our Contributor Guide](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/CONTRIBUTING.md))
+## 📂 Repository Structure
+
+<a 
+  href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/CONTRIBUTING.md"
+  target="_blank">
+  <h3>(Read our Contributor Guide)</h3>
+</a>
 
 - `model_dev/` — Model development and experimentation
 - `model_inference/` — Inference and evaluation pipelines
