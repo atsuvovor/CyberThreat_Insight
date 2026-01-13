@@ -96,6 +96,7 @@ If your idea falls into one of these categories, **open a discussion first**.
    * Keep PRs focused and reasonably sized
    * Include documentation updates where applicable
 
+## Contributor Onboarding Diagram  
 
 <p align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/contributors_ombording.png" 
