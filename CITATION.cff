@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this software in academic work, please cite it as below."
 title: "CyberThreat Insight: Research-Driven Cybersecurity Analytics and Threat Detection"
 version: "0.1.0"
-date-released: 2026-01-01
+date-released: 2026-01-13
 
 authors:
   - family-names: Vovor
@@ -28,9 +28,12 @@ keywords:
 
 preferred-citation:
   type: software
-  authors:
+  author:
     - family-names: Vovor
       given-names: Atsu
-  title: "CyberThreat Insight"
+  title: "Cyber Threat Insight: Research-Driven Cybersecurity Analytics and Threat Detection"
   year: 2026
+  version: "0.1.0"
+  doi: 10.5281/zenodo.18230447
   url: "https://github.com/atsuvovor/CyberThreat_Insight"
+
