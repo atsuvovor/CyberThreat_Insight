@@ -147,7 +147,7 @@ It does **not** contain application logic.
 
 Understanding these files will help you contribute efficiently and correctly.
 
----
+
 
 ## 🐞 Reporting Bugs
 
@@ -179,7 +179,7 @@ To report reproducible issues in:
 
 ✔ Structured bug reports speed up fixes and reviews
 
----
+
 
 ## 💡 Feature Requests
 
@@ -205,7 +205,7 @@ To suggest:
 ✔ Feature requests inform the roadmap
 ✔ They do not guarantee implementation
 
----
+
 
 ## 🧠 Research / Collaboration Proposals
 
@@ -245,7 +245,7 @@ This template is designed for:
 📧 You may also contact the maintainer directly:
 **[atsu.vovor@bell.net](mailto:atsu.vovor@bell.net)**
 
----
+
 
 ## 🔄 How to Open a Pull Request (PR)
 
@@ -256,7 +256,7 @@ Open a PR **only after**:
 * A related issue exists **OR**
 * A collaboration discussion is approved
 
----
+
 
 ### Step-by-Step PR Process
 
@@ -270,7 +270,7 @@ git clone https://github.com/<your-username>/CyberThreat_Insight.git
 cd CyberThreat_Insight
 ```
 
----
+
 
 #### 2️⃣ Create a Feature Branch
 
@@ -281,7 +281,7 @@ git checkout -b feature/your-change-name
 ✔ One logical change per branch
 ✔ Keep branches focused
 
----
+
 
 #### 3️⃣ Make Your Changes
 
@@ -293,7 +293,7 @@ git checkout -b feature/your-change-name
   * Security logic
     **unless discussed beforehand**
 
----
+
 
 #### 4️⃣ Commit Clearly
 
@@ -303,7 +303,7 @@ git commit -m "Add: descriptive summary of change"
 
 ✔ Clear commit messages help reviewers
 
----
+
 
 #### 5️⃣ Push to Your Fork
 
@@ -311,7 +311,7 @@ git commit -m "Add: descriptive summary of change"
 git push origin feature/your-change-name
 ```
 
----
+
 
 #### 6️⃣ Open the Pull Request
 
@@ -325,7 +325,7 @@ git push origin feature/your-change-name
    * Testing notes
    * Impact assessment
 
----
+
 
 ### 🔐 Review & Approval
 
@@ -336,7 +336,7 @@ git push origin feature/your-change-name
 ✔ Ensures stability
 ✔ Maintains research integrity
 
----
+
 
 ## 🧪 Continuous Integration (CI)
 
@@ -352,7 +352,7 @@ If CI fails:
 * Update your branch
 * Push fixes (CI reruns automatically)
 
----
+
 
 ## 🛡️ What Not to Do
 
@@ -363,7 +363,7 @@ If CI fails:
 * Bypass review requests
 * Modify `.github/` workflows without approval
 
----
+
 
 ## 🙏 Final Note to Contributors
 
@@ -381,6 +381,6 @@ Whether you are:
 * An industry collaborator
 
 Your contributions are welcome — **when aligned and well-documented**.
----
+
 
 Thank you for contributing responsibly and helping advance open cybersecurity research. 🙏
