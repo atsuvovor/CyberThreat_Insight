@@ -526,12 +526,10 @@ Here’s a summary of important files in the repository:
  
 
 ## 📂 Repository Structure
-
-<a 
-  href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/CONTRIBUTING.md"
-  target="_blank">
-  <h3>(Read our Contributor Guide)</h3>
+<a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/CONTRIBUTING.md" target="_blank" style="text-decoration:none; color:#2c3e50;">
+  <h3>Read our Contributor Guide</h3>
 </a>
+
 
 - `model_dev/` — Model development and experimentation
 - `model_inference/` — Inference and evaluation pipelines
