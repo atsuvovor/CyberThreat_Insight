@@ -454,17 +454,17 @@ These attack types are simulated and detected through anomaly detection and clas
 
 ```ruby
 CyberThreat_Insight/
-├── .github/
-│   ├── FUNDING.yml
-│   ├── SPONSORS.md
-│   ├── CODEOWNERS
-│   ├── ISSUE_TEMPLATE/
-│   │   ├── validation_agent.py
-│   │   ├── exec_insight_agent.py
-│   │   ├── soc_support_agent.py
-│   │   └── orchestrator.py  
-│   ├── PULL_REQUEST_TEMPLATE.md
-│   └── workflows/                # CI/CD (Docker, tests)
+├── .github/ 
+│    ├── FUNDING.yml                # Sponsor button
+│    ├── CODEOWNERS                 # Review control
+│    ├── PULL_REQUEST_TEMPLATE.md   # PR guidance
+│    ├── ISSUE_TEMPLATE/
+│    │   ├── bug_report.yml
+│    │   ├── feature_request.yml
+│    │   ├── research_collaboration.yml
+│    │   └── config.yml
+│    ├── workflows/                 # CI/CD (Docker, tests)
+│    └── ci.yml                     # (optional) tests / lint             
 ├── ai_agent/
 │   ├── __init__.py
 │   ├── validation_agent.py
