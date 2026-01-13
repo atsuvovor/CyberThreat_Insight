@@ -1,168 +1,198 @@
+Below is a **cleaned, tightened, and professionally structured update** of your **`CONTRIBUTING.md`**, preserving **all your intent**, while improving:
+
+* Flow & hierarchy
+* Academic / industry tone
+* Redundancy reduction
+* Clear contributor expectations
+* Alignment with your `.github/` setup
+
+You can **replace your existing `CONTRIBUTING.md` entirely** with this version.
+
+---
+
 # Contributing to Cyber Threat Insight
 
-Thank you for your interest in contributing to **Cyber Threat Insight**.  
-This project is developed as an **open, research-driven cybersecurity analytics platform**, and contributions are welcome when they align with its goals, structure, and quality standards.
+Thank you for your interest in contributing to **Cyber Threat Insight**.
 
-Please read this document carefully before opening an issue or submitting a contribution.
+This project is an **open, research-driven cybersecurity analytics platform** designed to support applied research, experimentation, and practical security insights. Contributions are welcome when they align with the project’s scope, structure, and quality standards.
 
+Please read this document carefully before opening an issue, discussion, or pull request.
 
+---
 
 ## 🎯 Project Scope & Philosophy
 
-Cyber Threat Insight focuses on:
+**Cyber Threat Insight** focuses on:
 
-- Cybersecurity analytics and threat detection pipelines  
-- Applied machine learning for SOC and security operations  
-- Reproducible experiments and data workflows  
-- Executive-level dashboards using Streamlit / Dash / Plotly / Power BI/ Tableau   
-- Research-informed, practical implementations  
+* Cybersecurity analytics and threat detection pipelines
+* Applied machine learning for SOC and security operations
+* Reproducible experiments and data workflows
+* Executive-level dashboards using **Dash, Plotly, Streamlit, Power BI, and Tableau**
+* Research-informed, practical implementations
 
-The project prioritizes:
-- **Clarity over complexity**
-- **Reproducibility over novelty**
-- **Explainability over black-box solutions**
+### Guiding Principles
 
+This project prioritizes:
 
+* **Clarity over complexity**
+* **Reproducibility over novelty**
+* **Explainability over black-box solutions**
+
+---
 
 ## 🤝 Ways to Contribute
 
 You can contribute in several meaningful ways:
 
 ### 1️⃣ Report Issues or Bugs
-- Use **GitHub Issues**
-- Provide clear reproduction steps
-- Include environment details when relevant (Python version, OS, library versions)
+
+* Use **GitHub Issues**
+* Provide clear reproduction steps
+* Include environment details when relevant (OS, Python version, library versions)
 
 ### 2️⃣ Improve Documentation
-- README clarifications
-- Usage examples
-- Architecture explanations
-- Comments and docstrings
+
+* README clarifications
+* Architecture explanations
+* Usage examples
+* Code comments and docstrings
 
 ### 3️⃣ Research & Methodology Contributions
-- Model evaluation improvements
-- Feature engineering ideas
-- Statistical validation techniques
-- References to academic literature
+
+* Model evaluation and benchmarking
+* Feature engineering ideas
+* Statistical validation techniques
+* References to academic literature
 
 ### 4️⃣ Dashboard & Visualization Enhancements
-- Plotly / Dash /  Streamlit / Power BI/ Tableau  improvements
-- UX clarity for executive views
-- Performance or readability enhancements
 
+* Dash / Plotly / Streamlit improvements
+* Executive dashboard clarity
+* Performance and usability enhancements
 
+---
 
-## 🚫 What This Project Does NOT Accept (By Default)
+## 🚫 What This Project Does *Not* Accept by Default
 
 To keep the project coherent and maintainable, the following are **not accepted without prior discussion**:
 
-- Large architectural refactors  
-- New frameworks or major dependency changes  
-- Breaking changes to existing pipelines  
-- Opinionated rewrites or style overhauls  
-- Direct commits without review  
+* Large architectural refactors
+* New frameworks or major dependency changes
+* Breaking changes to existing pipelines
+* Opinionated rewrites or style overhauls
+* Direct commits without review
 
-If you believe your idea falls into one of these categories, **open a discussion first**.
+If your idea falls into one of these categories, **open a discussion first**.
 
-
+---
 
 ## 🧩 Contribution Workflow
 
 1. **Open an Issue or Discussion**
-   - Describe the problem or proposal clearly
-   - Explain the motivation and expected impact
+
+   * Clearly describe the problem or proposal
+   * Explain motivation and expected impact
 
 2. **Wait for Maintainer Feedback**
-   - Not all proposals will be accepted
-   - Feedback will focus on scope and alignment
+
+   * Not all proposals will be accepted
+   * Feedback focuses on scope, alignment, and feasibility
 
 3. **Fork the Repository**
-   - Work in a feature-specific branch
+
+   * Work in a feature-specific branch
 
 4. **Submit a Pull Request**
-   - Reference the related issue/discussion
-   - Keep PRs focused and reasonably sized
-   - Include documentation updates where applicable
 
+   * Reference the related issue or discussion
+   * Keep PRs focused and reasonably sized
+   * Include documentation updates where applicable
 
+---
 
 ## 🧪 Code & Quality Guidelines
 
-- Follow existing coding style and structure  
-- Write readable, well-commented code  
-- Prefer explicit logic over clever tricks  
-- Ensure changes do not break existing workflows  
-- Test dashboards and pipelines locally before submitting  
+* Follow existing coding style and structure
+* Write readable, well-commented code
+* Prefer explicit logic over clever tricks
+* Ensure changes do not break existing workflows
+* Test dashboards and pipelines locally before submitting
 
-
+---
 
 ## 📊 Data & Security Considerations
 
-- Do **not** submit sensitive, proprietary, or real-world confidential data  
-- Use synthetic or anonymized datasets only  
-- Avoid embedding credentials, secrets, or access keys  
+* **Do not submit sensitive, proprietary, or real-world confidential data**
+* Use synthetic or anonymized datasets only
+* Never embed credentials, secrets, or access keys
 
-Security-related findings should be reported responsibly via **private email**, not public issues.
+### Security Issues
 
-📧 **Security contact:** atsu.vovor@bell.net
+Security-related findings must be reported **privately**, not via public issues.
 
+📧 **Security contact:**
+[atsu.vovor@bell.net](mailto:atsu.vovor@bell.net)
 
+---
 
 ## 🧠 Research & Collaboration Proposals
 
 If you are interested in:
-- Academic collaboration  
-- Applied research projects  
-- Custom analytics or dashboards  
-- Industry or organizational use cases  
 
-Please **do not open a pull request directly**.  
-Instead, initiate a discussion or reach out via email to align expectations.
+* Academic collaboration
+* Applied research projects
+* Custom analytics or dashboards
+* Industry or organizational use cases
 
-📧 **Contact:** atsu.vovor@bell.net
+Please **do not open a pull request directly**.
 
+Instead:
 
+* Open a **Research Collaboration** issue **or**
+* Contact the maintainer directly to align expectations
+
+📧 **Contact:**
+[atsu.vovor@bell.net](mailto:atsu.vovor@bell.net)
+
+---
 
 ## 💙 Sponsorship vs Contribution
 
-Contributions are welcome **regardless of sponsorship**.  
-Sponsorship helps sustain development but **does not grant special privileges**, priority merging, or decision-making authority.
+Contributions are welcome **regardless of sponsorship**.
 
-For support and sponsorship details, see:
+Sponsorship:
+
+* Helps sustain development
+* Supports documentation and tooling
+* Does **not** grant priority merging, special privileges, or decision-making authority
+
+For support options, see:
 👉 `.github/SPONSORS.md`
 
-
+---
 
 ## 📬 Communication Channels
 
-- **General contributions:** GitHub Issues & Discussions  
-- **Security concerns:** Private email  
-- **Research / industry collaboration:** Email contact above  
+* **General contributions:** GitHub Issues & Discussions
+* **Security concerns:** Private email
+* **Research / industry collaboration:** Email contact above
 
---- 
-## 📘 Contributor Guide: How to Use `.github/` Files
+---
+
+## 📘 Contributor Guide: Using `.github/` Files
 
 The `.github/` directory defines **how contributors, reviewers, and collaborators interact with this repository on GitHub**.
 It does **not** contain application logic.
 
-Understanding these files will help you contribute efficiently and correctly.
+Understanding these files ensures smooth collaboration and review.
 
-
+---
 
 ## 🐞 Reporting Bugs
 
-### Purpose
+### How to Submit
 
-To report reproducible issues in:
-
-* Pipelines
-* Models
-* Dashboards
-* Documentation
-
-### Steps
-
-1. Navigate to **Issues → New Issue**
+1. Go to **Issues → New Issue**
 2. Select **🐞 Bug Report**
 3. Complete all required fields:
 
@@ -174,25 +204,14 @@ To report reproducible issues in:
 ### Best Practices
 
 * Include logs or stack traces if available
-* Reference commit hashes if relevant
-* Do **not** include sensitive security details
+* Reference commit hashes when relevant
+* **Do not include sensitive information**
 
-✔ Structured bug reports speed up fixes and reviews
-
-
+---
 
 ## 💡 Feature Requests
 
-### Purpose
-
-To suggest:
-
-* New analytics
-* Dashboard enhancements
-* Pipeline extensions
-* Documentation improvements
-
-### Steps
+### How to Submit
 
 1. Open **Issues → New Issue**
 2. Choose **✨ Feature Request**
@@ -200,25 +219,15 @@ To suggest:
 
    * The problem or gap
    * Your proposed solution
-   * Intended users (research, SOC, exec)
+   * Intended users (research, SOC, executive)
 
-✔ Feature requests inform the roadmap
-✔ They do not guarantee implementation
+Feature requests help shape the roadmap but **do not guarantee implementation**.
 
+---
 
+## 🧠 Research / Collaboration Issues
 
-## 🧠 Research / Collaboration Proposals
-
-### Purpose
-
-This template is designed for:
-
-* Academic research collaboration
-* Industry experimentation
-* Joint publications or pilots
-* Advanced analytics extensions
-
-### Steps
+### How to Submit
 
 1. Go to **Issues → New Issue**
 2. Select **🧠 Research Collaboration**
@@ -229,23 +238,13 @@ This template is designed for:
    * Expected outcomes
    * Timeline (if applicable)
 
-### What Happens Next
+### Review Process
 
 * Maintainer reviews the proposal
-* Discussion may move to:
+* Discussion may move to GitHub Discussions or email
+* A contribution path is agreed upon before any PR
 
-  * GitHub Discussions
-  * Email (for sensitive or scoped projects)
-* A contribution path is defined before any PR
-
-✔ Ensures alignment
-✔ Prevents wasted work
-✔ Supports serious collaboration
-
-📧 You may also contact the maintainer directly:
-**[atsu.vovor@bell.net](mailto:atsu.vovor@bell.net)**
-
-
+---
 
 ## 🔄 How to Open a Pull Request (PR)
 
@@ -253,94 +252,38 @@ This template is designed for:
 
 Open a PR **only after**:
 
-* A related issue exists **OR**
-* A collaboration discussion is approved
+* A related issue exists **or**
+* A collaboration discussion has been approved
 
+### Step-by-Step
 
+1️⃣ Fork the repository
+2️⃣ Create a feature branch
+3️⃣ Implement your changes
+4️⃣ Commit clearly
+5️⃣ Push to your fork
+6️⃣ Open a PR (template auto-loads)
 
-### Step-by-Step PR Process
+The PR must include:
 
-#### 1️⃣ Fork the Repository
+* Summary of changes
+* Linked issues or discussions
+* Testing notes
+* Impact assessment
 
-* Click **Fork** (top-right of GitHub page)
-* Clone your fork locally
+---
 
-```bash
-git clone https://github.com/<your-username>/CyberThreat_Insight.git
-cd CyberThreat_Insight
-```
-
-
-
-#### 2️⃣ Create a Feature Branch
-
-```bash
-git checkout -b feature/your-change-name
-```
-
-✔ One logical change per branch
-✔ Keep branches focused
-
-
-
-#### 3️⃣ Make Your Changes
-
-* Follow existing code style
-* Avoid modifying:
-
-  * Core pipelines
-  * Production simulation
-  * Security logic
-    **unless discussed beforehand**
-
-
-
-#### 4️⃣ Commit Clearly
-
-```bash
-git commit -m "Add: descriptive summary of change"
-```
-
-✔ Clear commit messages help reviewers
-
-
-
-#### 5️⃣ Push to Your Fork
-
-```bash
-git push origin feature/your-change-name
-```
-
-
-
-#### 6️⃣ Open the Pull Request
-
-1. Go to your fork on GitHub
-2. Click **Compare & Pull Request**
-3. The **PR template will auto-load**
-4. Fill out:
-
-   * Summary of changes
-   * Linked issues
-   * Testing notes
-   * Impact assessment
-
-
-
-### 🔐 Review & Approval
+## 🔐 Review & Approval
 
 * CODEOWNERS automatically assigns reviewers
 * CI checks must pass
 * Maintainer approval is required before merge
 
-✔ Ensures stability
-✔ Maintains research integrity
-
-
+---
 
 ## 🧪 Continuous Integration (CI)
 
-Every PR automatically triggers:
+Each PR triggers:
 
 * Dependency installation
 * Python version checks
@@ -348,11 +291,11 @@ Every PR automatically triggers:
 
 If CI fails:
 
-* Review the logs
+* Review logs
 * Update your branch
 * Push fixes (CI reruns automatically)
 
-
+---
 
 ## 🛡️ What Not to Do
 
@@ -360,12 +303,12 @@ If CI fails:
 
 * Commit secrets or credentials
 * Run destructive simulations in CI
-* Bypass review requests
+* Bypass review processes
 * Modify `.github/` workflows without approval
 
+---
 
-
-## 🙏 Final Note to Contributors
+## 🙏 Final Note
 
 This project values:
 
@@ -373,14 +316,7 @@ This project values:
 * Reproducibility
 * Respect for research and security practices
 
-Whether you are:
+Whether you are a **student, researcher, practitioner, or industry collaborator**, your contributions are welcome — **when aligned, scoped, and well-documented**.
 
-* A student
-* A researcher
-* A practitioner
-* An industry collaborator
+Thank you for helping advance open cybersecurity research. 🙏
 
-Your contributions are welcome — **when aligned and well-documented**.
-
-
-Thank you for contributing responsibly and helping advance open cybersecurity research. 🙏
