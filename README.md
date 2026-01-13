@@ -7,6 +7,8 @@
 **Toronto, January 06, 2026**  
 **Author : Atsu Vovor**    
 
+# Cyber Threat Insight ⚡
+
 ![Maintainer](https://img.shields.io/badge/Maintainer-Atsu%20Vovor-blue)
 ![Contributors](https://img.shields.io/github/contributors/atsuvovor/CyberThreat_Insight)
 ![Last Commit](https://img.shields.io/github/last-commit/atsuvovor/CyberThreat_Insight)
@@ -16,7 +18,6 @@
 
 ![Governance](https://img.shields.io/badge/Governance-CODEOWNERS-green)
 ![Security](https://img.shields.io/badge/Security-Responsible%20Disclosure-red)
-
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.YOUR_DOI_HERE.svg)](https://doi.org/10.5281/zenodo.YOUR_DOI_HERE)
 
 
@@ -525,18 +526,23 @@ Here’s a summary of important files in the repository:
 - **multiple notebooks and HTML/MD docs** - the **.ipynb files** Contain Jupyter Notebooks for data analysis and modeling.
  
 
-## 📂 Repository Structure
+## 📂 Contributors & Repository Structure
+
 <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/CONTRIBUTING.md" target="_blank" style="text-decoration:none; color:#2c3e50;">
-  <h3>Read our Contributor Guide</h3>
+  <h3>📖 Read our Contributor Guide</h3>
 </a>
 
+<a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/.github/SPONSORS.md" target="_blank" style="text-decoration:none; color:#2c3e50;">
+  <h3>💙 View Sponsor & Support Options</h3>
+</a>
 
-- `model_dev/` — Model development and experimentation
-- `model_inference/` — Inference and evaluation pipelines
-- `production/` — Production and simulation workflows
-- `cyber_attack_insight/` — Dash / Plotly dashboards and attack simulations
-- `.github/` — Community, funding, and contribution guidelines
+This repository is organized to make contributions, experimentation, and collaboration easier:
 
+- `model_dev/` — Model development and experimentation  
+- `model_inference/` — Inference and evaluation pipelines  
+- `production/` — Production and simulation workflows  
+- `cyber_attack_insight/` — Dash / Plotly dashboards and attack simulations  
+- `.github/` — Community, funding, contribution guidelines, and CI/CD workflows
 
 
 ## **Installation**
