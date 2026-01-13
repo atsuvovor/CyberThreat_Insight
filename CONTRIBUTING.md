@@ -97,6 +97,12 @@ If your idea falls into one of these categories, **open a discussion first**.
    * Include documentation updates where applicable
 
 
+<p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/contributors_ombording.png" 
+       alt="Centered Image" 
+       style="width: 1500px; height: auto;">
+</p
+
 
 ## 🧪 Code & Quality Guidelines
 
