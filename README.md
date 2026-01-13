@@ -18,7 +18,7 @@
 
 ![Governance](https://img.shields.io/badge/Governance-CODEOWNERS-green)
 ![Security](https://img.shields.io/badge/Security-Responsible%20Disclosure-red)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.YOUR_DOI_HERE.svg)](https://doi.org/10.5281/zenodo.YOUR_DOI_HERE)
+[![DOI](https://zenodo.org/badge/959534994.svg)](https://doi.org/10.5281/zenodo.18230446)
 
 
 <a 
