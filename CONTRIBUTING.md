@@ -185,11 +185,10 @@ Understanding these files ensures smooth collaboration and review.
 
 
 ## 🐞 Reporting Bugs  👉 
-<p>
   <a href="https://github.com/atsuvovor/CyberThreat_Insight/issues/new?template=bug_report.md" target="_blank">
     <img src="https://img.shields.io/badge/Report-Bug-red" alt="Report a Bug" />
   </a>
-</p>
+
 ### How to Submit
 
 1. Go to **Issues → New Issue**
