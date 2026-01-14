@@ -26,22 +26,28 @@
 
 <p>
   <!-- Maintainer -->
-  <img src="https://img.shields.io/badge/Maintainer-Atsu%20Vovor-blue"
+  <a>
+    <img src="https://img.shields.io/badge/Maintainer-Atsu%20Vovor-blue"
        alt="Maintainer: Atsu Vovor" />
-
+    </a>
+ 
   <!-- Contributors -->
-  <img src="https://img.shields.io/github/contributors/atsuvovor/CyberThreat_Insight"
+  <a>
+    <img src="https://img.shields.io/github/contributors/atsuvovor/CyberThreat_Insight"
        alt="Contributors" />
-
+   </a>
   <!-- Last Commit -->
-  <img src="https://img.shields.io/github/last-commit/atsuvovor/CyberThreat_Insight"
+  <a>
+    <img src="https://img.shields.io/github/last-commit/atsuvovor/CyberThreat_Insight"
        alt="Last Commit" />
-
+  </a>
   <!-- Open Issues -->
-  <img src="https://img.shields.io/github/issues/atsuvovor/CyberThreat_Insight"
+  <a>
+    <img src="https://img.shields.io/github/issues/atsuvovor/CyberThreat_Insight"
        alt="Open Issues" />
-
-  <!-- License -->
+   </a>
+   
+   <!-- License -->
   <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/LICENSE"
      target="_blank">
     <img src="https://img.shields.io/github/license/atsuvovor/CyberThreat_Insight"
@@ -49,8 +55,10 @@
   </a>
 
   <!-- CI -->
-  <img src="https://img.shields.io/github/actions/workflow/status/atsuvovor/CyberThreat_Insight/ci.yml"
+  <a>
+    <img src="https://img.shields.io/github/actions/workflow/status/atsuvovor/CyberThreat_Insight/ci.yml"
        alt="CI Status" />
+  </a>
 </p>
 
 ---
