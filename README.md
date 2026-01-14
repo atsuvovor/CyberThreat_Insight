@@ -82,32 +82,6 @@
     <img src="https://zenodo.org/badge/959534994.svg" alt="DOI" />
   </a>
 </p>
-<img src="https://img.shields.io/badge/Maintainer-Atsu%20Vovor-blue" alt="Maintainer: Atsu Vovor" />
-
----  
-
-<p>
-  <!-- Maintainer -->
-  <a>
-    <img src="https://img.shields.io/badge/Maintainer-Atsu%20Vovor-blue" alt="Maintainer: Atsu Vovor" />
-  </a>
-
-  <!-- PR Template -->
-  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/.github/PULL_REQUEST_TEMPLATE.md"
-     target="_blank">
-    <img src="https://img.shields.io/badge/PR-Template-blue"
-         alt="Pull Request Template" />
-  </a>
-
-  <!-- Sponsors -->
-  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/.github/SPONSORS.md"
-     target="_blank">
-    <img src="https://img.shields.io/badge/Support-Sponsors-ff69b4"
-         alt="Sponsors" />
-  </a>
-</p>
-
----
 
 ---
 
