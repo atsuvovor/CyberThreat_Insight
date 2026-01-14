@@ -77,16 +77,15 @@
          alt="DOI" />
   </a>
 </p>
-
+<img src="https://img.shields.io/badge/Maintainer-Atsu%20Vovor-blue"
+       alt="Maintainer: Atsu Vovor" />
 
 ---  
 
 <p>
-  <!-- Contributing -->
-  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/CONTRIBUTING.md"
-     target="_blank">
-    <img src="https://img.shields.io/badge/Contributing-Guide-green"
-         alt="Contributing Guide" />
+  <!-- Maintainer -->
+    <img src="https://img.shields.io/badge/Maintainer-Atsu%20Vovor-blue"
+         alt="Maintainer: Atsu Vovor" />
   </a>
 
   <!-- PR Template -->
@@ -110,8 +109,8 @@
 
 <p>
   <!-- Contributing -->
-  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/CONTRIBUTING.md" target="_blank">
-    <img src="https://img.shields.io/badge/Contributing-Guide-brightgreen" />
+  <a>
+    <img src="https://img.shields.io/github/contributors/atsuvovor/CyberThreat_Insight"  alt="Contributors" />
   </a>
 
   <!-- PR Template -->
