@@ -132,6 +132,12 @@ Security-related findings must be reported **privately**, not via public issues.
 
 
 ## 🧠 Research & Collaboration Proposals
+👉
+<a 
+  href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/.github/ISSUE_TEMPLATE/research_collaboration.md" 
+  target="_blank">
+  <img src="https://img.shields.io/badge/Research-Proposal-purple" />
+</a>
 
 If you are interested in:
 
@@ -184,7 +190,8 @@ Understanding these files ensures smooth collaboration and review.
 
 
 
-## 🐞 **Reporting Bugs** 👉
+## 🐞 **Reporting Bugs** 
+👉
 <a 
   href="https://github.com/atsuvovor/CyberThreat_Insight/issues/new?template=bug_report.md" 
   target="_blank">
