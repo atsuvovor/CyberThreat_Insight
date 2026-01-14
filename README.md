@@ -91,13 +91,6 @@
     <img src="https://img.shields.io/badge/Support-Sponsors-ff69b4" />
   </a>
 
-  <!-- Security -->
-  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/SECURITY.md" target="_blank">
-    <img src="https://img.shields.io/badge/Security-Responsible%20Disclosure-critical" />
-  </a>
-</p>
-
----
 <a 
   href="https://atsuvovor.github.io/CyberThreat_Insight/cyber_security_analytics.html" 
   target="_blank">
