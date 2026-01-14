@@ -184,10 +184,10 @@ Understanding these files ensures smooth collaboration and review.
 
 
 
-## 🐞 Reporting Bugs  👉 
-  <a href="https://github.com/atsuvovor/CyberThreat_Insight/issues/new?template=bug_report.md" target="_blank">
+## 🐞 Reporting Bugs  👉
+<a href="https://github.com/atsuvovor/CyberThreat_Insight/issues/new?template=bug_report.md" target="_blank">
     <img src="https://img.shields.io/badge/Report-Bug-red" alt="Report a Bug" />
-  </a>
+</a>
 
 ### How to Submit
 
