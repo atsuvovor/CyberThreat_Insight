@@ -23,6 +23,47 @@
 [![Sponsors](https://img.shields.io/badge/Support-Sponsors-ff69b4)](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/.github/SPONSORS.md)
 
 
+
+---
+
+<p>
+  <!-- Contributing -->
+  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/CONTRIBUTING.md" target="_blank">
+    <img src="https://img.shields.io/badge/Contributing-Guide-brightgreen" />
+  </a>
+
+  <!-- PR Template -->
+  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/.github/PULL_REQUEST_TEMPLATE.md" target="_blank">
+    <img src="https://img.shields.io/badge/PR-Template-blue" />
+  </a>
+
+  <!-- Bug Report -->
+  <a href="https://github.com/atsuvovor/CyberThreat_Insight/issues/new?template=bug_report.md" target="_blank">
+    <img src="https://img.shields.io/badge/Report-Bug-red" />
+  </a>
+
+  <!-- Feature Request -->
+  <a href="https://github.com/atsuvovor/CyberThreat_Insight/issues/new?template=feature_request.yml" target="_blank">
+    <img src="https://img.shields.io/badge/Request-Feature-orange" />
+  </a>
+
+  <!-- Research Collaboration -->
+  <a href="https://github.com/atsuvovor/CyberThreat_Insight/issues/new?template=research_collaboration.md" target="_blank">
+    <img src="https://img.shields.io/badge/Research-Collaboration-purple" />
+  </a>
+
+  <!-- Sponsors -->
+  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/.github/SPONSORS.md" target="_blank">
+    <img src="https://img.shields.io/badge/Support-Sponsors-ff69b4" />
+  </a>
+
+  <!-- Security -->
+  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/SECURITY.md" target="_blank">
+    <img src="https://img.shields.io/badge/Security-Responsible%20Disclosure-critical" />
+  </a>
+</p>
+
+---
 <a 
   href="https://atsuvovor.github.io/CyberThreat_Insight/cyber_security_analytics.html" 
   target="_blank">
