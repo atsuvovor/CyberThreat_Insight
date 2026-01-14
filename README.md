@@ -63,28 +63,21 @@
 
 <p>
   <!-- Governance / CODEOWNERS -->
-  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/.github/CODEOWNERS"
-     target="_blank">
-    <img src="https://img.shields.io/badge/Governance-CODEOWNERS-green"
-         alt="CODEOWNERS Governance" />
+  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/.github/CODEOWNERS" target="_blank">
+    <img src="https://img.shields.io/badge/Governance-CODEOWNERS-green" alt="CODEOWNERS Governance" />
   </a>
 
   <!-- Security -->
-  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/SECURITY.md"
-     target="_blank">
-    <img src="https://img.shields.io/badge/Security-Responsible%20Disclosure-red"
-         alt="Responsible Disclosure" />
+  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/SECURITY.md" target="_blank">
+    <img src="https://img.shields.io/badge/Security-Responsible%20Disclosure-red" alt="Responsible Disclosure" />
   </a>
 
   <!-- DOI -->
-  <a href="https://doi.org/10.5281/zenodo.18230446"
-     target="_blank">
-    <img src="https://zenodo.org/badge/959534994.svg"
-         alt="DOI" />
+  <a href="https://doi.org/10.5281/zenodo.18230446" target="_blank">
+    <img src="https://zenodo.org/badge/959534994.svg" alt="DOI" />
   </a>
 </p>
-<img src="https://img.shields.io/badge/Maintainer-Atsu%20Vovor-blue"
-       alt="Maintainer: Atsu Vovor" />
+<img src="https://img.shields.io/badge/Maintainer-Atsu%20Vovor-blue" alt="Maintainer: Atsu Vovor" />
 
 ---  
 
