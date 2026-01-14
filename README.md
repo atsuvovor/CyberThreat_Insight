@@ -51,7 +51,7 @@
   <img src="https://img.shields.io/github/actions/workflow/status/atsuvovor/CyberThreat_Insight/ci.yml"
        alt="CI Status" />
 </p>
-
+---
 <p>
   <!-- Governance / CODEOWNERS -->
   <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/.github/CODEOWNERS"
@@ -74,7 +74,7 @@
          alt="DOI" />
   </a>
 </p>
-
+---
 <p>
   <!-- Contributing -->
   <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/CONTRIBUTING.md"
