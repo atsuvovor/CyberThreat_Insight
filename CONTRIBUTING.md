@@ -184,8 +184,7 @@ Understanding these files ensures smooth collaboration and review.
 
 
 
-## 🐞 **Reporting Bugs**  
- 👉Run the Model
+## 🐞 **Reporting Bugs** 👉
 <a 
   href="https://github.com/atsuvovor/CyberThreat_Insight/issues/new?template=bug_report.md" 
   target="_blank">
