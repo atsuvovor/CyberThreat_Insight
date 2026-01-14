@@ -18,6 +18,9 @@
 [![Security](https://img.shields.io/badge/Security-Responsible%20Disclosure-red)](SECURITY.md)
 [![DOI](https://zenodo.org/badge/959534994.svg)](https://doi.org/10.5281/zenodo.18230446)
 
+[![Contributing](https://img.shields.io/badge/Contributing-Guide-green)](CONTRIBUTING.md)
+[![PR Template](https://img.shields.io/badge/PR-Template-blue)](.github/PULL_REQUEST_TEMPLATE.md)
+[![Sponsors](https://img.shields.io/badge/Support-Sponsors-ff69b4)](.github/SPONSORS.md)
 
 
 <a 
