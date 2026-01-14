@@ -19,8 +19,8 @@
 [![DOI](https://zenodo.org/badge/959534994.svg)](https://doi.org/10.5281/zenodo.18230446)
 
 [![Contributing](https://img.shields.io/badge/Contributing-Guide-green)](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/CONTRIBUTING.md)
-[![PR Template](https://img.shields.io/badge/PR-Template-blue)](.github/https://github.com/atsuvovor/CyberThreat_Insight/blob/main/.github/PULL_REQUEST_TEMPLATE.md)
-[![Sponsors](https://img.shields.io/badge/Support-Sponsors-ff69b4)](.github/https://github.com/atsuvovor/CyberThreat_Insight/blob/main/.github/SPONSORS.md)
+[![PR Template](https://img.shields.io/badge/PR-Template-blue)](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/.github/PULL_REQUEST_TEMPLATE.md)
+[![Sponsors](https://img.shields.io/badge/Support-Sponsors-ff69b4)](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/.github/SPONSORS.md)
 
 
 <a 
