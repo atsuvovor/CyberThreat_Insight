@@ -22,6 +22,81 @@
 [![PR Template](https://img.shields.io/badge/PR-Template-blue)](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/.github/PULL_REQUEST_TEMPLATE.md)
 [![Sponsors](https://img.shields.io/badge/Support-Sponsors-ff69b4)](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/.github/SPONSORS.md)
 
+---
+<p>
+  <!-- Maintainer -->
+  <img src="https://img.shields.io/badge/Maintainer-Atsu%20Vovor-blue"
+       alt="Maintainer: Atsu Vovor" />
+
+  <!-- Contributors -->
+  <img src="https://img.shields.io/github/contributors/atsuvovor/CyberThreat_Insight"
+       alt="Contributors" />
+
+  <!-- Last Commit -->
+  <img src="https://img.shields.io/github/last-commit/atsuvovor/CyberThreat_Insight"
+       alt="Last Commit" />
+
+  <!-- Open Issues -->
+  <img src="https://img.shields.io/github/issues/atsuvovor/CyberThreat_Insight"
+       alt="Open Issues" />
+
+  <!-- License -->
+  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/LICENSE"
+     target="_blank">
+    <img src="https://img.shields.io/github/license/atsuvovor/CyberThreat_Insight"
+         alt="MIT License" />
+  </a>
+
+  <!-- CI -->
+  <img src="https://img.shields.io/github/actions/workflow/status/atsuvovor/CyberThreat_Insight/ci.yml"
+       alt="CI Status" />
+</p>
+
+<p>
+  <!-- Governance / CODEOWNERS -->
+  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/.github/CODEOWNERS"
+     target="_blank">
+    <img src="https://img.shields.io/badge/Governance-CODEOWNERS-green"
+         alt="CODEOWNERS Governance" />
+  </a>
+
+  <!-- Security -->
+  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/SECURITY.md"
+     target="_blank">
+    <img src="https://img.shields.io/badge/Security-Responsible%20Disclosure-red"
+         alt="Responsible Disclosure" />
+  </a>
+
+  <!-- DOI -->
+  <a href="https://doi.org/10.5281/zenodo.18230446"
+     target="_blank">
+    <img src="https://zenodo.org/badge/959534994.svg"
+         alt="DOI" />
+  </a>
+</p>
+
+<p>
+  <!-- Contributing -->
+  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/CONTRIBUTING.md"
+     target="_blank">
+    <img src="https://img.shields.io/badge/Contributing-Guide-green"
+         alt="Contributing Guide" />
+  </a>
+
+  <!-- PR Template -->
+  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/.github/PULL_REQUEST_TEMPLATE.md"
+     target="_blank">
+    <img src="https://img.shields.io/badge/PR-Template-blue"
+         alt="Pull Request Template" />
+  </a>
+
+  <!-- Sponsors -->
+  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/.github/SPONSORS.md"
+     target="_blank">
+    <img src="https://img.shields.io/badge/Support-Sponsors-ff69b4"
+         alt="Sponsors" />
+  </a>
+</p>
 
 
 ---
