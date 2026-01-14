@@ -72,6 +72,11 @@
     <img src="https://img.shields.io/badge/Security-Responsible%20Disclosure-red" alt="Responsible Disclosure" />
   </a>
 
+    <!-- Maintainer -->
+  <a>
+    <img src="https://img.shields.io/badge/Maintainer-Atsu%20Vovor-blue" alt="Maintainer: Atsu Vovor" />
+  </a>
+  
   <!-- DOI -->
   <a href="https://doi.org/10.5281/zenodo.18230446" target="_blank">
     <img src="https://zenodo.org/badge/959534994.svg" alt="DOI" />
@@ -83,8 +88,8 @@
 
 <p>
   <!-- Maintainer -->
-    <img src="https://img.shields.io/badge/Maintainer-Atsu%20Vovor-blue"
-         alt="Maintainer: Atsu Vovor" />
+  <a>
+    <img src="https://img.shields.io/badge/Maintainer-Atsu%20Vovor-blue" alt="Maintainer: Atsu Vovor" />
   </a>
 
   <!-- PR Template -->
