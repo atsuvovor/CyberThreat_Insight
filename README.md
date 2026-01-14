@@ -48,10 +48,8 @@
    </a>
    
    <!-- License -->
-  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/LICENSE"
-     target="_blank">
-    <img src="https://img.shields.io/github/license/atsuvovor/CyberThreat_Insight"
-         alt="MIT License" />
+  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/LICENSE" target="_blank">
+    <img src="https://img.shields.io/github/license/atsuvovor/CyberThreat_Insight" alt="MIT License" />
   </a>
 
   <!-- CI -->
