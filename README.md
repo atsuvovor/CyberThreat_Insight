@@ -7,22 +7,6 @@
 **Toronto, January 06, 2026**  
 **Author : Atsu Vovor**    
 
-![Maintainer](https://img.shields.io/badge/Maintainer-Atsu%20Vovor-blue)
-![Contributors](https://img.shields.io/github/contributors/atsuvovor/CyberThreat_Insight)
-![Last Commit](https://img.shields.io/github/last-commit/atsuvovor/CyberThreat_Insight)
-![Open Issues](https://img.shields.io/github/issues/atsuvovor/CyberThreat_Insight)
-[![License](https://img.shields.io/github/license/atsuvovor/CyberThreat_Insight)](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/LICENSE)
-![CI](https://img.shields.io/github/actions/workflow/status/atsuvovor/CyberThreat_Insight/ci.yml)
-
-[![Governance](https://img.shields.io/badge/Governance-CODEOWNERS-green)](.github/CODEOWNERS)
-[![Security](https://img.shields.io/badge/Security-Responsible%20Disclosure-red)](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/SECURITY.md)
-[![DOI](https://zenodo.org/badge/959534994.svg)](https://doi.org/10.5281/zenodo.18230446)
-
-[![Contributing](https://img.shields.io/badge/Contributing-Guide-green)](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/CONTRIBUTING.md)
-[![PR Template](https://img.shields.io/badge/PR-Template-blue)](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/.github/PULL_REQUEST_TEMPLATE.md)
-[![Sponsors](https://img.shields.io/badge/Support-Sponsors-ff69b4)](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/.github/SPONSORS.md)
-
----
 
 <p>
   <!-- Maintainer -->
@@ -69,11 +53,6 @@
   <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/SECURITY.md" target="_blank">
     <img src="https://img.shields.io/badge/Security-Responsible%20Disclosure-red" alt="Responsible Disclosure" />
   </a>
-
-   <!-- Maintainer -->
-   <a>
-     <img src="https://img.shields.io/badge/Maintainer-Atsu%20Vovor-blue" alt="Maintainer: Atsu Vovor" />
-   </a>
   
   <!-- DOI -->
   <a href="https://doi.org/10.5281/zenodo.18230446" target="_blank">
