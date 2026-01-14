@@ -7,8 +7,6 @@
 **Toronto, January 06, 2026**  
 **Author : Atsu Vovor**    
 
-# Cyber Threat Insight ⚡
-
 ![Maintainer](https://img.shields.io/badge/Maintainer-Atsu%20Vovor-blue)
 ![Contributors](https://img.shields.io/github/contributors/atsuvovor/CyberThreat_Insight)
 ![Last Commit](https://img.shields.io/github/last-commit/atsuvovor/CyberThreat_Insight)
