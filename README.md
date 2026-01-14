@@ -23,6 +23,7 @@
 [![Sponsors](https://img.shields.io/badge/Support-Sponsors-ff69b4)](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/.github/SPONSORS.md)
 
 ---
+
 <p>
   <!-- Maintainer -->
   <img src="https://img.shields.io/badge/Maintainer-Atsu%20Vovor-blue"
@@ -51,7 +52,9 @@
   <img src="https://img.shields.io/github/actions/workflow/status/atsuvovor/CyberThreat_Insight/ci.yml"
        alt="CI Status" />
 </p>
+
 ---
+
 <p>
   <!-- Governance / CODEOWNERS -->
   <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/.github/CODEOWNERS"
@@ -74,7 +77,10 @@
          alt="DOI" />
   </a>
 </p>
----
+
+
+---  
+
 <p>
   <!-- Contributing -->
   <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/CONTRIBUTING.md"
