@@ -11,7 +11,7 @@
 ![Contributors](https://img.shields.io/github/contributors/atsuvovor/CyberThreat_Insight)
 ![Last Commit](https://img.shields.io/github/last-commit/atsuvovor/CyberThreat_Insight)
 ![Open Issues](https://img.shields.io/github/issues/atsuvovor/CyberThreat_Insight)
-![License](https://img.shields.io/github/license/atsuvovor/CyberThreat_Insight)
+![License](https://img.shields.io/github/license/atsuvovor/CyberThreat_Insight/LICENSE)
 ![CI](https://img.shields.io/github/actions/workflow/status/atsuvovor/CyberThreat_Insight/ci.yml)
 
 [![Governance](https://img.shields.io/badge/Governance-CODEOWNERS-green)](.github/CODEOWNERS)
