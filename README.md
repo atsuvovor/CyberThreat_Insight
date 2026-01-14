@@ -15,7 +15,7 @@
 ![CI](https://img.shields.io/github/actions/workflow/status/atsuvovor/CyberThreat_Insight/ci.yml)
 
 [![Governance](https://img.shields.io/badge/Governance-CODEOWNERS-green)](.github/CODEOWNERS)
-[![Security](https://img.shields.io/badge/Security-Responsible%20Disclosure-red)](SECURITY.md)
+[![Security](https://img.shields.io/badge/Security-Responsible%20Disclosure-red)](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/SECURITY.md)
 [![DOI](https://zenodo.org/badge/959534994.svg)](https://doi.org/10.5281/zenodo.18230446)
 
 [![Contributing](https://img.shields.io/badge/Contributing-Guide-green)](https://github.com/atsuvovor/CyberThreat_Insight/blob/main/CONTRIBUTING.md)
