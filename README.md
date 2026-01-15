@@ -172,23 +172,137 @@ While advanced augmentation techniques such as **SMOTE** and **Generative Advers
 
 
 
- **Core Data Schema**:
-   Each column is structured to simulate real-world attributes.  
+ ## 🧩 Core Data Schema
 
-  
-   - `Issue ID`, `Issue Key`: Unique identifiers.
-   - `Issue Name`, `Category`, `Severity`: Descriptive issue metadata with categorical values.
-   - `Status`, `Reporters`, `Assignees`: Status categories and personnel involved.
-   - `Date Reported`, `Date Resolved`: Randomized dates across a timeline.
-   - `Impact Score`, `Risk Level`: Randomized scores to reflect varying severity.
-   - `Cost`: Randomized to reflect the volatility in month-over-month impact.  
+The dataset is designed to simulate **real-world cybersecurity operations**, blending **issue management**, **user behavior analytics**, **system telemetry**, and **threat intelligence** into a unified schema. It intentionally combines **normal and anomalous events** to support analytics, detection models, and executive reporting.
 
-**User Activity Columns**:
-   Columns like `user_id`, `timestamp`, `activity_type`, `location`, `session_duration`, and `data_transfer_MB` will be generated to simulate behavioral patterns.
+### 1. Issue & Incident Management Attributes
 
-**Monthly Volatility**:  
-  - **Impact Score**, **Cost**, and **data_transfer_MB** We use synthetic techniques to create spikes or drops in activity between months, simulating the volatility in issues or user activity.
-  - For example, we use random walks to vary values in a non-linear fashion to capture realistic volatility.
+These columns represent structured security issues, incidents, or operational findings commonly found in ticketing and SOC workflows.
+
+* **Issue ID, Issue Key**
+  Unique identifiers for each issue or incident record.
+
+* **Issue Name**
+  Human-readable description of the issue.
+
+* **Issue Volume**
+  Quantifies recurrence or frequency of the issue within a given period.
+
+* **Category**
+  Issue classification (e.g., Network, Application, Access Control, Malware).
+
+* **Severity**
+  Categorical severity level (e.g., Low, Medium, High, Critical).
+
+* **Status**
+  Lifecycle state of the issue (e.g., Open, In Progress, Resolved, Closed).
+
+* **Reporters, Assignees**
+  Individuals or roles responsible for reporting and remediation.
+
+* **Date Reported, Date Resolved**
+  Timestamped lifecycle events, randomized across a realistic timeline.
+
+* **Issue Response Time (Days)**
+  Time-to-response metric derived from reported and resolved dates.
+
+* **Impact Score**
+  Numeric score reflecting business, operational, or security impact.
+
+* **Risk Level**
+  Aggregated risk classification derived from severity and impact.
+
+* **Department Affected**
+  Business unit or operational domain impacted by the issue.
+
+* **Remediation Steps**
+  Textual representation of corrective or preventive actions taken.
+
+* **Cost**
+  Estimated financial impact, randomized to reflect month-over-month volatility.
+
+* **KPI / KRI**
+  Mapping of issues to operational KPIs or risk indicators.
+
+
+
+### 2. User Behavior & Activity Simulation
+
+These attributes model **user-driven activity patterns** to support behavioral analytics and anomaly detection.
+
+* **User ID**
+  Unique identifier representing individual users or service accounts.
+
+* **Timestamps**
+  Event-level timestamps capturing activity sequences.
+
+* **Activity Type**
+  Type of user action (e.g., Login, File Access, Data Download).
+
+* **User Location, IP Location**
+  Logical and network-based geolocation attributes.
+
+* **Session Duration (Seconds)**
+  Length of user session activity.
+
+* **Num Files Accessed**
+  Count of files accessed during a session.
+
+* **Login Attempts**
+  Number of login attempts within a session window.
+
+* **Data Transfer (MB)**
+  Volume of data transferred, supporting exfiltration scenarios.
+
+
+
+### 3. System & Resource Telemetry
+
+These columns simulate infrastructure-level metrics commonly monitored by SOC and IT operations.
+
+* **CPU Usage (%)**
+  Resource utilization percentage.
+
+* **Memory Usage (MB)**
+  Memory consumption during user or system activity.
+
+
+
+### 4. Threat Intelligence & Defense Signals
+
+These attributes are designed to support **threat scoring, anomaly labeling, and response analytics**.
+
+* **Threat Score**
+  Continuous score indicating likelihood or intensity of malicious behavior.
+
+* **Threat Level**
+  Categorical abstraction of the threat score (e.g., Low, Medium, High).
+
+* **Defense Action**
+  Automated or manual response taken (e.g., Alert, Block, Monitor).
+
+* **Is Anomaly**
+  Binary label indicating normal (0) or anomalous (1) behavior.
+
+* **Color**
+  Visualization aid for dashboards and reporting (e.g., risk heatmaps).
+
+
+
+### 🔍 Design Intent
+
+This schema enables:
+
+* **End-to-end SOC analytics**
+* **Rare-event and anomaly detection**
+* **Behavioral and system correlation**
+* **Executive-level KPI/KRI reporting**
+* **AI/ML-driven threat modeling and simulations**
+
+The unified structure ensures seamless integration across **data generation, feature engineering, modeling, visualization, and executive insight delivery**.
+
+
 
 **Data Augmentation**:
    - **Scaling Up Data Points**: We will use SMOTE or random sampling for categorical columns to add diversity.
