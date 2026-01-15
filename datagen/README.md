@@ -925,28 +925,414 @@ This project provides a Python script designed to generate synthetic cybersecuri
 The script generates data with a variety of attributes, including issue details, user activity, system metrics, and threat indicators. It also incorporates a simple adaptive defense mechanism based on the calculated threat level and severity.  
 
 
+## 🧩 Core Data Schema
 
-**Core Data Schema**:
-   Each column will be structured to simulate real-world attributes.  
+The dataset is designed to simulate **real-world cybersecurity operations**, blending **issue management**, **user behavior analytics**, **system telemetry**, and **threat intelligence** into a unified schema. It intentionally combines **normal and anomalous events** to support analytics, detection models, and executive reporting.
 
+### 1. Issue & Incident Management Attributes
+
+These columns represent structured security issues, incidents, or operational findings commonly found in ticketing and SOC workflows.
+
+* **Issue ID, Issue Key**
+  Unique identifiers for each issue or incident record.
+
+* **Issue Name**
+  Human-readable description of the issue.
+
+* **Issue Volume**
+  Quantifies recurrence or frequency of the issue within a given period.
+
+* **Category**
+  Issue classification (e.g., Network, Application, Access Control, Malware).
+
+* **Severity**
+  Categorical severity level (e.g., Low, Medium, High, Critical).
+
+* **Status**
+  Lifecycle state of the issue (e.g., Open, In Progress, Resolved, Closed).
+
+* **Reporters, Assignees**
+  Individuals or roles responsible for reporting and remediation.
+
+* **Date Reported, Date Resolved**
+  Timestamped lifecycle events, randomized across a realistic timeline.
+
+* **Issue Response Time (Days)**
+  Time-to-response metric derived from reported and resolved dates.
+
+* **Impact Score**
+  Numeric score reflecting business, operational, or security impact.
+
+* **Risk Level**
+  Aggregated risk classification derived from severity and impact.
+
+* **Department Affected**
+  Business unit or operational domain impacted by the issue.
+
+* **Remediation Steps**
+  Textual representation of corrective or preventive actions taken.
+
+* **Cost**
+  Estimated financial impact, randomized to reflect month-over-month volatility.
+
+* **KPI / KRI**
+  Mapping of issues to operational KPIs or risk indicators.
+
+
+
+### 2. User Behavior & Activity Simulation
+
+These attributes model **user-driven activity patterns** to support behavioral analytics and anomaly detection.
+
+* **User ID**
+  Unique identifier representing individual users or service accounts.
+
+* **Timestamps**
+  Event-level timestamps capturing activity sequences.
+
+* **Activity Type**
+  Type of user action (e.g., Login, File Access, Data Download).
+
+* **User Location, IP Location**
+  Logical and network-based geolocation attributes.
+
+* **Session Duration (Seconds)**
+  Length of user session activity.
+
+* **Num Files Accessed**
+  Count of files accessed during a session.
+
+* **Login Attempts**
+  Number of login attempts within a session window.
+
+* **Data Transfer (MB)**
+  Volume of data transferred, supporting exfiltration scenarios.
+
+
+
+### 3. System & Resource Telemetry
+
+These columns simulate infrastructure-level metrics commonly monitored by SOC and IT operations.
+
+* **CPU Usage (%)**
+  Resource utilization percentage.
+
+* **Memory Usage (MB)**
+  Memory consumption during user or system activity.
+
+
+
+### 4. Threat Intelligence & Defense Signals
+
+These attributes are designed to support **threat scoring, anomaly labeling, and response analytics**.
+
+* **Threat Score**
+  Continuous score indicating likelihood or intensity of malicious behavior.
+
+* **Threat Level**
+  Categorical abstraction of the threat score (e.g., Low, Medium, High).
+
+* **Defense Action**
+  Automated or manual response taken (e.g., Alert, Block, Monitor).
+
+* **Is Anomaly**
+  Binary label indicating normal (0) or anomalous (1) behavior.
+
+* **Color**
+  Visualization aid for dashboards and reporting (e.g., risk heatmaps).
+
+
+
+### 🔍 Design Intent
+
+This schema enables:
+
+* **End-to-end SOC analytics**
+* **Rare-event and anomaly detection**
+* **Behavioral and system correlation**
+* **Executive-level KPI/KRI reporting**
+* **AI/ML-driven threat modeling and simulations**
+
+The unified structure ensures seamless integration across **data generation, feature engineering, modeling, visualization, and executive insight delivery**.
+
+
+> ### 📐 Mathematical Foundations of Synthetic Normal and Anomalous Cybersecurity Data Generation
+
+### 1. Problem Formulation
+
+Let each cybersecurity event be represented as a random vector:
+
+$$
+\mathbf{X}_i = {X_i^{(1)}, X_i^{(2)}, \dots, X_i^{(p)}}
+$$
+
+$where ( p ) denotes the number of observable attributes (issue metadata, user behavior, system telemetry, and threat signals).$
+
+$he dataset is constructed as a **mixture distribution**:$
+
+$$
+\mathcal{D} = (1 - \pi)\mathcal{D}*{normal} + \pi\mathcal{D}*{anomaly}
+$$
+
+where:
+
+* $( \mathcal{D}_{normal} ) models benign operational behavior$
+* $( \mathcal{D}_{anomaly} ) models rare, malicious, or high-risk behavior$
+* $( \pi \in (0,1) ) is the anomaly rate (≈ 0.2 in the implementation)$
+
+This formulation supports **rare-event learning**, a known challenge in cybersecurity and anomaly detection.
+
+
+
+### 2. Latent User and Department Profiles
+
+Each user $( u )$ and department $( d $) is assigned latent parameters:
+
+$$
+\theta_u = (\alpha_u, \rho_u), \quad \theta_d = (\beta_d, \gamma_d)
+$$
+
+where:
+
+
+* $( \alpha_u \sim \mathcal{U}(0.5, 1.5) ): baseline activity intensity$
+* $( \rho_u \sim \mathcal{U}(0.8, 1.2) ): risk tolerance$
+* $( \beta_d \sim \mathcal{U}(0.5, 1.5) ): baseline departmental risk$
+* $( \gamma_d \sim \mathcal{U}(0.8, 1.2) ): activity amplification factor$
+
+These latent variables introduce **heterogeneity and correlation** across events, reflecting real enterprise environments .
+
+
+
+### 3. Temporal Event Modeling
+
+#### 3.1 Normal Temporal Patterns
+
+Event timestamps follow a structured process:
+
+$$
+T_i = T_0 + \left\lfloor \frac{i}{\kappa} \right\rfloor + \epsilon_i
+$$
+
+where:
+
+* $( \kappa ) controls issue density per day$
+* $( \epsilon_i \sim \text{Uniform}(0, 24\text{h}) )$
+* $Weekend and morning-hour boosts are applied$
+
+This produces **diurnal and weekly seasonality**, consistent with SOC ticket data.
+
+
+
+#### 3.2 Anomalous Temporal Deviations
+
+For anomalous events:
+
+$$
+T_i^{(a)} = \text{Uniform}(T_{start}, T_{end})
+$$
+
+with probability ( p_{off} = 0.4 )$ of forcing timestamps into **off-hours**, simulating insider threats or automated attacks.
+
+
+
+### 4. Behavioral Feature Distributions
+
+#### 4.1 Session Duration
+
+$Session duration ( S ) is modeled using an **exponential distribution**:$
+
+$$
+S \sim \text{Exponential}(\lambda^{-1})
+$$
+
+$$
+\lambda^{-1} = \mu_0 \cdot m_{activity} \cdot \alpha_u
+$$
+
+* $Normal data: lower scale parameters$
+* $Anomalies: scale inflated by factor ( > 1.5 )$
+
+This choice captures **memoryless session behavior**, common in authentication and file access logs.
+
+
+
+#### 4.2 File Access Counts
+
+File access counts follow a **Poisson or Negative Binomial process**:
+
+$$
+N_f \sim \text{Poisson}(\lambda_f) \quad \text{(normal)}
+$$
+
+$$
+N_f^{(a)} \sim \text{NegBin}(n, p) \quad \text{(anomalous)}
+$$
+
+Negative binomial modeling introduces **over-dispersion**, characteristic of bursty exfiltration events.
+
+
+
+#### 4.3 Login Attempts
+
+Login attempts are modeled as:
+
+$$
+N_l \sim \text{NegBin}(n, p)
+$$
+
+Anomalies scale the mean:
+
+$$
+\mathbb{E}[N_l^{(a)}] \approx 3 \times \mathbb{E}[N_l]
+$$
+
+capturing brute-force and credential-stuffing behaviors.
+
+
+
+#### 4.4 Data Transfer Volume
+
+Data transfer volume follows a **Pareto distribution**:
+
+$$
+X \sim \text{Pareto}(\alpha, x_m)
+$$
+
+* $Normal: ( \alpha = 2.0 ) (lighter tail)$
+* $Anomalous: ( \alpha = 1.5 ) (heavier tail)$
+
+This reflects the empirical observation that **most sessions transfer little data, but a few transfer massive volumes**.
+
+
+
+### 5. System Telemetry Modeling
+
+CPU and memory utilization are conditionally dependent on session duration:
+
+$$
+CPU \sim \mathcal{N}(\mu_{cpu} + c_1 S, \sigma^2)
+$$
+
+$$
+MEM \sim \mathcal{N}(\mu_{mem} + c_2 S, \sigma^2)
+$$
+
+Anomalous samples shift both the mean and variance upward, simulating cryptomining, lateral movement, or malware execution .
+
+
+
+### 6. Impact, Cost, and Risk Modeling
+
+#### 6.1 Impact Score
+
+Impact scores are generated via a truncated Gaussian:
+
+$$
+I \sim \mathcal{N}\left(\mu_I \cdot \eta_{severity} \cdot \eta_{category} \cdot \rho_u,; \sigma_I^2\right)
+$$
+
+$with bounds ( I \in [1,10] ).$
+
+
+
+#### 6.2 Financial Cost
+
+Costs are similarly modeled:
+
+$$
+C \sim \mathcal{N}\left(\mu_C \cdot \eta_{severity} \cdot \eta_{category} \cdot \beta_d,; \sigma_C^2\right)
+$$
+
+Anomalies inflate both the mean and variance to simulate regulatory fines, breach response costs, and downtime.
+
+
+
+### 7. Threat Score Construction (Core Model)
+
+The **Threat Score** is a weighted linear combination:
+
+$$
+\begin{aligned}
+\text{ThreatScore} &= 0.25 \cdot S_{sev}
+\end{aligned}
+$$
+
+
+* $0.20 \cdot I$
+* $0.15 \cdot S_{risk}$
+* $0.10 \cdot S_{resp} \&+ 0.05 \cdot S_{login}$
+* $0.05 \cdot S_{files}$
+* $0.05 \cdot S_{data}$
+* $0.075 \cdot S_{cpu}$
+* $0.075 \cdot S_{mem} \ end{aligned}$
   
-   - `Issue ID`, `Issue Key`: Unique identifiers.
-   - `Issue Name`, `Category`, `Severity`: Descriptive issue metadata with categorical values.
-   - `Status`, `Reporters`, `Assignees`: Status categories and personnel involved.
-   - `Date Reported`, `Date Resolved`: Randomized dates across a timeline.
-   - `Impact Score`, `Risk Level`: Randomized scores to reflect varying severity.
-   - `Cost`: Randomized to reflect the volatility in month-over-month impact.  
 
-**User Activity Columns**:
-   Columns like `user_id`, `timestamp`, `activity_type`, `location`, `session_duration`, and `data_transfer_MB` will be generated to simulate behavioral patterns.
+This formulation approximates a **linear risk aggregation model**, commonly used in operational risk and SOC scoring systems .
 
-**Monthly Volatility**:  
-  - **Impact Score**, **Cost**, and **data_transfer_MB** We use synthetic techniques to create spikes or drops in activity between months, simulating the volatility in issues or user activity.
-  - For example, we use random walks to vary values in a non-linear fashion to capture realistic volatility.  
+
+
+### 8. Threat Level Classification
+
+Threat levels are derived by thresholding:
+
+$
+\text{ThreatLevel} =
+\begin{cases}
+\text{Critical}, & \text{ThreatScore} \ge 9 \
+\text{High}, & 7 \le \text{ThreatScore} < 9 \
+\text{Medium}, & 4 \le \text{ThreatScore} < 7 \
+\text{Low}, & \text{otherwise}
+\end{cases}
+$
+
+This discretization supports **rule-based SOC workflows** and **supervised ML labeling**.
+
+
+
+### 9. Anomaly Injection Mechanisms
+
+Beyond distributional shifts, **combinatorial anomalies** are injected:
+
+$$
+\text{High } X_{data} \land \text{Low } S_{session}
+$$
+
+$$
+\text{FileAccess} \land \text{IP}_{foreign}
+$$
+
+Such feature conjunctions are known to evade naïve univariate detectors and are critical for benchmarking modern ML methods.
+
+
+
+### 10. Theoretical Significance
+
+This generator implements:
+
+* **Heterogeneous mixture modeling**
+* **Heavy-tailed distributions**
+* **Latent risk conditioning**
+* **Structured temporal deviation**
+* **Label-aware threat scoring**
+
+Collectively, this makes the dataset suitable for:
+
+* Rare-event detection research
+* SOC simulation benchmarking
+* Explainable AI in cybersecurity
+* Executive risk modeling
+
+
+
+#### Citation Note
+
+All formulations are derived from and faithfully represent the attached implementation .
+ 
 
 **Data Augmentation**:
 
-* **Scaling Data Points**: During the early stages of feature engineering, SMOTE and controlled random sampling are applied particularly to categorical features to increase data diversity and address class imbalance.
+* **Scaling Data Points**: During the early stages of feature engineering, SMOTE and controlled random samling are applied particularly to categorical features to increase data diversity and address class imbalance.
 * **Label Perturbation for `Assignees` and `Departments`**: Categorical labels are periodically reassigned to simulate organizational role changes and dynamic team structures commonly observed in real-world environments.
 * **Time-Series Variability Injection**: Synthetic timestamps are generated both within and across sessions to model realistic behavioral dynamics, including bursts in login attempts, spikes in data transfer activity, and variations in session duration.
 
