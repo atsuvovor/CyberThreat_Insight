@@ -1276,15 +1276,16 @@ This formulation approximates a **linear risk aggregation model**, commonly used
 
 Threat levels are derived by thresholding:
 
-$
+$$
 \text{ThreatLevel} =
 \begin{cases}
-\text{Critical}, & \text{ThreatScore} \ge 9 \
-\text{High}, & 7 \le \text{ThreatScore} < 9 \
-\text{Medium}, & 4 \le \text{ThreatScore} < 7 \
+\text{Critical}, & \text{ThreatScore} \ge 9 \\
+\text{High}, & 7 \le \text{ThreatScore} < 9 \\
+\text{Medium}, & 4 \le \text{ThreatScore} < 7 \\
 \text{Low}, & \text{otherwise}
 \end{cases}
-$
+$$
+
 
 This discretization supports **rule-based SOC workflows** and **supervised ML labeling**.
 
