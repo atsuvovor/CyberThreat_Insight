@@ -12,7 +12,7 @@
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
-<details>
+<details id="datagen-code">
 
 <summary>Click to view the code</summary>
 
@@ -924,6 +924,137 @@ This project provides a Python script designed to generate synthetic cybersecuri
 
 The script generates data with a variety of attributes, including issue details, user activity, system metrics, and threat indicators. It also incorporates a simple adaptive defense mechanism based on the calculated threat level and severity.  
 
+## 1️⃣ Data Generation Process — Algorithmic Breakdown
+
+The `cyberdatagen.py` file implements a **synthetic cybersecurity event generator** focused on **rare-event imbalance**, **temporal behavior**, and **attack labeling**.
+
+### **Step-by-Step Pipeline**
+
+<p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/data_generation process.png" 
+       alt="Centered Image" 
+       style="width: 100%; height: auto;">
+</p>
+
+### **1. Configuration & Initialization**
+
+* Define:
+
+  * Number of samples
+  * Time range
+  * Attack probability (rare events)
+  * Feature distributions
+* Initialize random seeds for reproducibility
+
+
+
+### **2. Timestamp & Session Simulation**
+
+* Generate sequential timestamps
+* Simulate:
+
+  * Session duration
+  * Event frequency per session
+* Preserves **temporal realism** for SOC analytics
+
+
+
+### **3. Normal Traffic Generation**
+
+For each event:
+
+* Sample baseline features such as:
+
+  * `bytes_sent`
+  * `bytes_received`
+  * `packet_count`
+  * `protocol`
+  * `port`
+* Assign **benign behavior label**
+
+---
+
+### **4. Rare Attack Injection (Core Logic)**
+
+With low probability (`p_attack`):
+
+* Override normal behavior
+* Inject attack-specific patterns:
+
+  * Port scanning behavior
+  * Data exfiltration spikes
+  * Brute-force login bursts
+* Label event with:
+
+  * `attack_type`
+  * `severity`
+  * `is_anomaly = 1`
+
+✔ This is **algorithmic anomaly injection**, not random noise
+
+---
+
+### **5. Feature Perturbation & Noise**
+
+* Add stochastic variation:
+
+  * Gaussian noise
+  * Discrete jitter
+* Prevents overfitting
+* Mimics real-world sensor inconsistencies
+
+
+
+### **6. Label Encoding & Ground Truth**
+
+Each record contains:
+
+* Binary anomaly label
+* Multi-class attack type
+* Severity score
+* Time-aligned metadata
+
+
+
+### **7. Dataset Assembly**
+
+* Combine normal + attack events
+* Maintain class imbalance
+* Output as:
+
+  * Pandas DataFrame
+  * CSV file for downstream ML
+
+
+
+### **8. Output for ML & Analytics**
+
+Generated dataset feeds directly into:
+
+* Feature engineering
+* Anomaly detection models
+* Risk scoring
+* Alert evaluation (MTTD / MTTR)
+
+
+
+## 3️⃣ How This Fits the **CyberThreat_Insight** Architecture
+
+| Component           | Repository Folder |
+| ------------------- | ----------------- |
+| Data Generation     | `datagen/`        |
+| Synthetic Scenarios | `notebooks/`      |
+| ML Training         | `model_dev/`      |
+| Evaluation          | `evaluation/`     |
+| SOC Reporting       | `llms_models/`    |
+
+This process **directly supports**:
+
+* Rare-event anomaly detection
+* Precision @ low false-positive rates
+* SOC-ready analytics
+* Executive risk summaries
+
 
 ## 🧩 Core Data Schema
 
@@ -1328,8 +1459,8 @@ Collectively, this makes the dataset suitable for:
 
 #### Citation Note
 
-All formulations are derived from and faithfully represent the attached implementation .
- 
+All formulations are derived from and faithfully represent the [attached implementation](#datagen-code) .
+
 
 **Data Augmentation**:
 
