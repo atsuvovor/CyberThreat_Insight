@@ -933,7 +933,7 @@ The `cyberdatagen.py` file implements a **synthetic cybersecurity event generato
 <p align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/data_generation process.png" 
        alt="Centered Image" 
-       style="width: 100%; height: auto;">
+       style="width: 50%; height: auto;">
 </p>
 
 ### **1. Configuration & Initialization**
