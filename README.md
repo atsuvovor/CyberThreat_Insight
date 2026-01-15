@@ -118,7 +118,7 @@ By analyzing synthetic data that closely mirrors real-world user and system acti
 <p align="center">
   <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/cyber_threat_insight_flowchart.png" 
        alt="Centered Image" 
-       style="width: 50%; height: auto;">
+       style="width: 70%; height: auto;">
 </p>
 
 
