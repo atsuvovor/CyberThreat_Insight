@@ -1261,7 +1261,7 @@ $$
 
 * $0.20 \cdot I$
 * $0.15 \cdot S_{risk}$
-* $0.10 \cdot S_{resp} \&+ 0.05 \cdot S_{login}$
+* $0.10 \cdot S_{\text{resp}} + 0.05 \cdot S_{\text{login}}$
 * $0.05 \cdot S_{files}$
 * $0.05 \cdot S_{data}$
 * $0.075 \cdot S_{cpu}$
