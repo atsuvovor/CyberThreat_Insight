@@ -115,6 +115,13 @@ By analyzing synthetic data that closely mirrors real-world user and system acti
 
 ## **Project Description**
 
+<p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/cyber_threat_insight_flowchart.png" 
+       alt="Centered Image" 
+       style="width: 50%; height: auto;">
+</p>
+
+
 The **Cyber Threat Analytics & Insight** project is designed as a comprehensive research and simulation framework for anomaly detection in cybersecurity analytics. It focuses on the following core components:
 
 1. **Research and Analytical Objectives**
@@ -148,6 +155,12 @@ The **Cyber Threat Analytics & Insight** project is designed as a comprehensive 
   target="_blank">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
+
+<p align="center">
+  <img src="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/images/data_generation process.png" 
+       alt="Centered Image" 
+       style="width: 50%; height: auto;">
+</p>
 
 This phase focuses on constructing a realistic, fully synthetic cybersecurity dataset that captures normal operational behavior, controlled anomalies, and temporal volatility. The process begins with the generation of a baseline *normal issues* dataset, which serves as the foundation for all subsequent anomaly modeling.
 
