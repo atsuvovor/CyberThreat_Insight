@@ -1720,8 +1720,11 @@ def analysis_sub_pipeline(df, agent):
 def eda_main_pipeline():
     agent_validator = AIValidatorAgent(expected_schema=EXPECTED_SCHEMA, knowledge_base=prepare_rag_documents())
     df_ = agent_validator.load_data()
-
+    print("df_\n")
+    display(df_)
     df = coerce_safe_dtypes(df_)
+    print("df\n")
+    display(df)
 
     extended_knowledge_base = prepare_rag_documents(df)
     agent = AIValidatorAgent(expected_schema=EXPECTED_SCHEMA, knowledge_base=extended_knowledge_base)
