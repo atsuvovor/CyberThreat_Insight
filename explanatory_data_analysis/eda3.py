@@ -84,6 +84,7 @@ except ImportError:
     subprocess.check_call([sys.executable, "-m", "pip", "install", "faiss-cpu"])
     import faiss
     
+from CyberThreat_Insight.utils.gdrive_utils import load_csv_from_gdrive_url    
 # Ignore specific warnings from libraries
 warnings.filterwarnings('ignore')
 
@@ -891,7 +892,7 @@ class AIValidatorAgent:
 
     
     def load_from_drive(self,
-                       URL=https://drive.google.com/file/d/1Nr9PymyvLfDh3qTfaeKNVbvLwt7lNX6l/view?usp=sharing) -> pd.DataFrame:
+                       URL="https://drive.google.com/file/d/1Nr9PymyvLfDh3qTfaeKNVbvLwt7lNX6l/view?usp=sharing") -> pd.DataFrame:
         if not IN_COLAB:
             raise RuntimeError("Google Drive option requires Google Colab.")
         #from google.colab import drive
