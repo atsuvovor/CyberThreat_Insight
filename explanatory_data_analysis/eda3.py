@@ -901,7 +901,7 @@ class AIValidatorAgent:
         folder = "CyberThreat_Insight/cybersecurity_data"
         #file_name = "normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb2.csv"
         file_name = "cybersecurity_dataset_combined.csv"
-        path = self.resolve_repo_data_path(folder, file_name)
+        #path = self.resolve_repo_data_path(folder, file_name)
         path  = load_csv_from_gdrive_url( gdrive_url= URL,
                                           output_dir = folder,
                                           filename = file_name)
