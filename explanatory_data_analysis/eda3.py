@@ -890,7 +890,8 @@ class AIValidatorAgent:
         return (final_folder / file_name).resolve()
 
     
-    def load_from_drive(self) -> pd.DataFrame:
+    def load_from_drive(self,
+                       URL=https://drive.google.com/file/d/1Nr9PymyvLfDh3qTfaeKNVbvLwt7lNX6l/view?usp=sharing) -> pd.DataFrame:
         if not IN_COLAB:
             raise RuntimeError("Google Drive option requires Google Colab.")
         #from google.colab import drive
@@ -900,6 +901,10 @@ class AIValidatorAgent:
         #file_name = "normal_and_anomalous_cybersecurity_dataset_for_google_drive_kb2.csv"
         file_name = "cybersecurity_dataset_combined.csv"
         path = self.resolve_repo_data_path(folder, file_name)
+        path  = load_csv_from_gdrive_url( gdrive_url= URL,
+                                          output_dir = folder,
+                                          filename = file_name)
+
         if not path.exists():
             raise FileNotFoundError(f"❌ File not found in: {path}")
         df = pd.read_csv(path)
