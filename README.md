@@ -750,15 +750,22 @@ Here’s a summary of important files in the repository:
 - **multiple notebooks and HTML/MD docs** - the **.ipynb files** Contain Jupyter Notebooks for data analysis and modeling.
  
 
-## 📂 Contributors & Repository Structure
+## 📂 Contributors
 
-<a href="https://github.com/atsuvovor/CyberThreat-Insight/blob/main/CONTRIBUTING.md" target="_blank" style="text-decoration:none; color:#2c3e50;">
-  <h3>📖 Read our Contributor Guide</h3>
-</a>
+<h3>📖 Read our Contributor Guide</h3>  
+<a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/CONTRIBUTING.md" target="_blank">
+    <img src="https://img.shields.io/badge/Contributing-Guide-brightgreen" />
+  </a>
 
-<a href="https://github.com/atsuvovor/CyberThreat-Insight/blob/main/.github/SPONSORS.md" target="_blank" style="text-decoration:none; color:#2c3e50;">
-  <h3>💙 View Sponsor & Support Options</h3>
-</a>
+ <!-- Research Collaboration -->
+  <a href="https://github.com/atsuvovor/CyberThreat_Insight/issues/new?template=research_collaboration.md" target="_blank">
+    <img src="https://img.shields.io/badge/Research-Collaboration-purple" />
+  </a>
+ <!-- Sponsors -->
+  <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/.github/SPONSORS.md" target="_blank">
+    <img src="https://img.shields.io/badge/Support-Sponsors-ff69b4" />
+   <h3>💙 View Sponsor & Support Options</h3>
+  </a>
 
 
 This repository is organized to make contributions, experimentation, and collaboration easier:
