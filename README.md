@@ -752,7 +752,7 @@ Here’s a summary of important files in the repository:
 
 ## 📂 Contributors
 
-<h3>📖 Read our Contributor Guide</h3>  
+<h3>📖 Read our Contributor Guide - 💙 View Sponsor & Support Options<</h3>  
 <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/CONTRIBUTING.md" target="_blank">
     <img src="https://img.shields.io/badge/Contributing-Guide-brightgreen" />
   </a>
@@ -764,7 +764,6 @@ Here’s a summary of important files in the repository:
  <!-- Sponsors -->
   <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/.github/SPONSORS.md" target="_blank">
     <img src="https://img.shields.io/badge/Support-Sponsors-ff69b4" />
-   <h3>💙 View Sponsor & Support Options</h3>
   </a>
 
 
