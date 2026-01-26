@@ -752,13 +752,14 @@ Here’s a summary of important files in the repository:
 
 ## 📂 Contributors & Repository Structure
 
-<a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/CONTRIBUTING.md" target="_blank" style="text-decoration:none; color:#2c3e50;">
+<a href="https://github.com/atsuvovor/CyberThreat-Insight/blob/main/CONTRIBUTING.md" target="_blank" style="text-decoration:none; color:#2c3e50;">
   <h3>📖 Read our Contributor Guide</h3>
 </a>
 
-<a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/.github/SPONSORS.md" target="_blank" style="text-decoration:none; color:#2c3e50;">
+<a href="https://github.com/atsuvovor/CyberThreat-Insight/blob/main/.github/SPONSORS.md" target="_blank" style="text-decoration:none; color:#2c3e50;">
   <h3>💙 View Sponsor & Support Options</h3>
 </a>
+
 
 This repository is organized to make contributions, experimentation, and collaboration easier:
 
