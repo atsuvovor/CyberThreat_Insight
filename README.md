@@ -750,7 +750,7 @@ Here’s a summary of important files in the repository:
 - **multiple notebooks and HTML/MD docs** - the **.ipynb files** Contain Jupyter Notebooks for data analysis and modeling.
  
 
-## 📂 Contributors
+## 📂 Contributors & Repository
 
 <h3>📖 Read our Contributor Guide - 💙 View Sponsor & Support Options<</h3>  
 <a href="https://github.com/atsuvovor/CyberThreat_Insight/blob/main/CONTRIBUTING.md" target="_blank">
