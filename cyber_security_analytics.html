@@ -10,9 +10,7 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Marked.js for Markdown → HTML -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <!-- MathJax for LaTeX rendering -->
     <script>
     window.MathJax = {
       tex: {
@@ -25,13 +23,14 @@
 
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
-
 <style>
 body {
     margin: 0;
     font-family: "Segoe UI", Roboto, Arial, sans-serif;
-    background:  #ffffff;
+    background: #ffffff;
     color: #222;
+    height: 100vh;       
+    overflow: hidden;    
 }
 
 /* ===== Top Bar ===== */
@@ -39,7 +38,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
+    right: 15px;
     height: 100px;
     background: #ffffff;
     border-bottom: 1px solid #d1d9e6;
@@ -71,25 +70,23 @@ body {
 /* ===== Round Logo in Top Bar ===== */
 .topbar-brand img {
     height: 78px;
-    width: 78px;                  /* force perfect circle */
+    width: 78px;                  
     object-fit: contain;
     padding: 4px;
     background: #01168b;
-    border-radius: 48%;           /* makes it round */
+    border-radius: 48%;           
     box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
 }
-
-
 
 .topbar-brand span {
     font-size: 16px;
     font-weight: 600;
     white-space: nowrap;
 }
-/* ===== Support Button (Top Right) ===== */
-.support-btn 
-    {
-    background:#d5e6ff;
+
+/* ===== Buttons ===== */
+.support-btn {
+    background: #d5e6ff;
     margin-left: 6px;
     font-size: 20px;
     cursor: pointer;
@@ -98,11 +95,8 @@ body {
     transition: background 0.2s ease;
 }
 
-.support-btn:hover {
-    background: #eef5ff;
-}
+.support-btn:hover { background: #eef5ff; }
 
-/* ===== Power BI Button (Top Right) ===== */
 .powerbi-btn {
     margin-left: 10px;
     background: #0b5ed7;
@@ -116,11 +110,8 @@ body {
     white-space: nowrap;
 }
 
-.powerbi-btn:hover {
-    background: #084298;
-}
+.powerbi-btn:hover { background: #084298; }
 
-/* ===== GitHub Button (Top Right) ===== */
 .github-btn {
     margin-left: auto;
     background: #418df0;
@@ -134,86 +125,54 @@ body {
     white-space: nowrap;
 }
 
-.github-btn:hover {
-    background: #084298;
-}
+.github-btn:hover { background: #084298; }
 
 /* ===== Support Sidebar ===== */
 #support-sidebar {
-  position: fixed;
-  top: 100px; /* below top bar */
-  right: -400px; /* hidden by default */
-  width: 260px;
-  background: #f4f8fb;
-  border-left: 4px solid #0b5ed7;
-  padding: 20px;
-  z-index: 1200;
-  font-family: Arial, sans-serif;
-  box-shadow: -2px 0 8px rgba(0,0,0,0.1);
-  transition: right 0.3s ease;
+    position: fixed;
+    top: 100px; 
+    right: -400px; 
+    width: 260px;
+    background: #f4f8fb;
+    border-left: 4px solid #0b5ed7;
+    padding: 20px;
+    z-index: 1200;
+    font-family: Arial, sans-serif;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+    transition: right 0.3s ease;
 }
 
-/* Visible state */
-#support-sidebar.open {
-  right: 0;
-}
+#support-sidebar.open { right: 0; }
+#support-sidebar h4 { color: #0b5ed7; margin-bottom: 10px; }
+#support-sidebar p { font-size: 14px; color: #333; line-height: 1.4; margin: 4px 0; }
+#support-sidebar a { display: block; margin: 10px 0; padding: 12px 0; background: #003087; color: #fff; text-align: center; font-weight: 600; border-radius: 6px; text-decoration: none; }
+#support-sidebar a:hover { background: #001f5b; transform: translateY(-2px); transition: 0.2s ease; }
 
-#support-sidebar h4 {
-  color: #0b5ed7;
-  margin-bottom: 10px;
-}
-
-#support-sidebar p {
-  font-size: 14px;
-  color: #333;
-  line-height: 1.4;
-  margin: 4px 0;
-}
-
-#support-sidebar a {
-  display: block;
-  margin: 10px 0;
-  padding: 12px 0;
-  background: #003087;
-  color: #fff;
-  text-align: center;
-  font-weight: 600;
-  border-radius: 6px;
-  text-decoration: none;
-}
-
-#support-sidebar a:hover {
-  background: #001f5b;
-  transform: translateY(-2px);
-  transition: 0.2s ease;
-}
-
-/* Mobile: hide support card */
 @media screen and (max-width: 900px){
-  #support-sidebar { display:none; }
+    #support-sidebar { display:none; }
 }
-/* ===== Pulse animation for support button ===== */
+
 @keyframes pulse {
-  0%   { box-shadow: 0 0 0 0 rgba(11,94,215,0.4); }
-  70%  { box-shadow: 0 0 0 12px rgba(11,94,215,0); }
-  100% { box-shadow: 0 0 0 0 rgba(11,94,215,0); }
+    0%   { box-shadow: 0 0 0 0 rgba(11,94,215,0.4); }
+    70%  { box-shadow: 0 0 0 12px rgba(11,94,215,0); }
+    100% { box-shadow: 0 0 0 0 rgba(11,94,215,0); }
 }
+.support-btn.pulse { animation: pulse 2.5s infinite; }
 
-.support-btn.pulse {
-  animation: pulse 2.5s infinite;
-}
-
-/* ===== Layout ===== */
+/* ===== FIXES HERE: Layout Adjustments ===== */
 .container {
     display: flex;
-    margin-top: 120px; /* pushes layout below top bar */
-    height: calc(100vh - 100px);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
     overflow: hidden;
 }
 
-/* ===== Sidebar ===== */
+/* ===== Sidebar Position Adjustment ===== */
 #sidebar {
-    top: 120px; /* below top bar */
     width: 280px;
     background: #ffffff;
     border-right: 1px solid #d1d9e6;
@@ -221,8 +180,10 @@ body {
     transition: width 0.3s;
     overflow-y: auto;
     overflow-x: hidden;
+    padding-top: 100px; /* Leaves space below header bar */
+    box-sizing: border-box;
 }
-/* Chrome, Safari, Edge */
+
 #sidebar::-webkit-scrollbar {
     width: 0px;
     background: transparent;
@@ -234,123 +195,52 @@ body {
     box-shadow: none;
 }
 
-/* Sidebar header (title only now) */
 .sidebar-header {
     padding: 15px;
     border-bottom: 1px solid #eee;
 }
-
-.sidebar-header h2 {
-    font-size: 16px;
-    margin: 0;
-    white-space: nowrap;
-}
+.sidebar-header h2 { font-size: 16px; margin: 0; white-space: nowrap; }
 
 /* ===== Menu ===== */
-.menu {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
+.menu { list-style: none; margin: 0; padding: 0; }
+.menu li { border-bottom: 1px solid #f0f0f0; }
+.menu a { display: block; padding: 12px 18px; color: #0b1c2d; text-decoration: none; cursor: pointer; }
+.menu a:hover { background: #eef5ff; color: #000066; }
+.submenu { background: #ffffff; display: none; }
+.submenu a { padding-left: 35px; font-size: 14px; }
+.menu .arrow { display: inline-block; transition: transform 0.25s ease; }
+.menu li.open > a .arrow { transform: rotate(90deg); }
+.submenu a:hover { background: #eef5ff; color: #000066; }
+.menu li.open .submenu { display: block; }
+.menu a.active { background: #eef5ff; color: #000066; font-weight: 600; }
 
-.menu li {
-    border-bottom: 1px solid #f0f0f0;
-}
-
-.menu a {
-    display: block;
-    padding: 12px 18px;
-    color: #0b1c2d;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.menu a:hover {
-    background: #eef5ff;
-    color: #000066;
-}
-
-/* ===== Submenu ===== */
-.submenu {
-    background: #ffffff;
-    display: none;
-}
-
-.submenu a {
-    padding-left: 35px;
-    font-size: 14px;
-}
-/* Arrow indicator */
-.menu .arrow {
-    display: inline-block;
-    transition: transform 0.25s ease;
-}
-
-/* When submenu is open, rotate arrow down */
-.menu li.open > a .arrow {
-    transform: rotate(90deg);
-}
-
-.submenu a:hover {
-    background: #eef5ff;
-    color: #000066;
-}
-.menu li.open .submenu {
-    display: block;
-}
-.menu a.active {
-    background: #eef5ff;
-    color: #000066;
-    font-weight: 600;
-}
-/* ===== Content ===== */
+/* ===== Content Area Flex Refactoring ===== */
 .content {
     flex: 1;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column; /* Organizes inner main text vs footer vertically */
+    height: 100%;
     background: #ffffff;
+    box-sizing: border-box;
 }
 
-.content-header {
-    background: #ffffff;
-    padding: 15px 20px;
-    border-bottom: 1px solid #ddd;
+/* The true inner-scrolling window pane */
+.scrollable-body {
+    flex: 1;
+    overflow-y: auto;
+    padding-top: 100px; /* Starts content text below header visually */
+    box-sizing: border-box;
 }
 
 #display-card {
     padding: 20px;
 }
 
-/* Markdown styling */
-#display-card img {
-    max-width: 100%;
-    height: auto;
-}
+#display-card img { max-width: 100%; height: auto; }
 
-
-/* ===== Code Pad (Markdown) ===== */
-
+/* ===== Code Pad Styling ===== */
 #display-card pre {
     background: #dee4ec;
-    color: #060606;
-    padding: 12px;
-    border-radius: 4px;
-    overflow-x: auto;
-}
-#display-card code {
-    background: #dee4ec;
-    padding: 2px 4px;
-    border-radius: 3px;
-}
-#display-card pre::before {
-    content: "Code";
-    display: block;
-    font-size: 12px;
-    color: #9fb3c8;
-    margin-bottom: 6px;
-}
-
-#display-card pre {
-    background: #dee4ec;          /* editor-style background */
     color: #060606;
     padding: 16px;
     border-radius: 6px;
@@ -360,8 +250,6 @@ body {
     line-height: 1.5;
     box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
 }
-
-/* Inline code */
 #display-card code {
     background: #e9eef5;
     color: #0b1c2d;
@@ -370,16 +258,16 @@ body {
     font-family: Consolas, Monaco, "Courier New", monospace;
     font-size: 0.95em;
 }
-
-/* Ensure block code doesn't double-style */
-#display-card pre code {
-    background: none;
-    padding: 0;
-    color: inherit;
+#display-card pre::before {
+    content: "Code";
+    display: block;
+    font-size: 12px;
+    color: #9fb3c8;
+    margin-bottom: 6px;
 }
+#display-card pre code { background: none; padding: 0; color: inherit; }
 
-
-/* ===== Footer ===== */
+/* ===== Fixed Static Footer ===== */
 .footer {
     height: 40px;
     background: #ffffff;
@@ -389,398 +277,141 @@ body {
     justify-content: center;
     font-size: 13px;
     color: #555;
+    width: 100%;
+    flex-shrink: 0; /* Prevents text scale crushing */
 }
-
-/* Adjust layout height to account for footer */
-.container {
-    height: calc(100vh - 100px - 40px);
-}
-
-    
 </style>
-
 </head>
 
 <body>
 
-<!-- ===== Top Bar ===== -->
 <div class="topbar">
     <span class="menu-btn" onclick="toggleSidebar()">☰</span>
-
-    <!-- Logo + Title -->
     <a href="cyber_security_analytics.html" class="topbar-brand">
-        <img
-            src="https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/main/images/cyber_Threat_Analytics_and_Insight_logo.png"
-            alt="Cyber Threat Analytics Logo"
-        />
+        <img src="https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/main/images/cyber_Threat_Analytics_and_Insight_logo.png" alt="Cyber Threat Analytics Logo"/>
         <span>Cyber Threat Analytics & Insight</span>
     </a>
-
-       <!-- GitHub Button (FIRST on the right) -->
-    <a class="github-btn"
-       href="https://github.com/atsuvovor/CyberThreat_Insight/tree/main"
-       target="_blank"
-       title="Open Cyber Attack Insight Dashboard">
-        📂 GitHub Repo
-    </a>
-    
-    <!-- Power BI Button (second on the right) -->
-    <a class="powerbi-btn"
-       href="https://atsuvovor.github.io/power_bi_projects/cyber_attack_insight_dashboard.html"
-       target="_blank"
-       title="Open Cyber Attack Insight Dashboard">
-        📊 Power BI Dashboard
-    </a>
-
-    <!-- Support Button (RIGHTMOST) -->
-    <span class="support-btn"
-          title="Support Cyber Threat Insight"
-          onclick="toggleSupport()">
-        💙☕
-    </span>
+    <a class="github-btn" href="https://github.com/atsuvovor/CyberThreat_Insight/tree/main" target="_blank" title="Open Cyber Attack Insight Dashboard">📂 GitHub Repo</a>    
+    <a class="powerbi-btn" href="https://atsuvovor.github.io/power_bi_projects/cyber_attack_insight_dashboard.html" target="_blank" title="Open Cyber Attack Insight Dashboard">📊 Power BI Dashboard</a>
+    <span class="support-btn" title="Support Cyber Threat Insight" onclick="toggleSupport()">💙☕</span>
 </div>
 
-
-
- <div class="container">
-
-    <!-- ===== Sidebar ===== -->
+<div class="container">
     <div id="sidebar">
          <div class="sidebar-header" style="text-align:center;">
             <h2>Modules</h2>
         </div>
-
         <ul class="menu">
+            <li><a class="active" onclick="loadDocumentation('https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/README.md', this)">🏠 Main Page</a></li>
+            <li><a onclick="loadDocumentation('https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/datagen/README.md', this)">Data Generator</a></li>
+            <li><a onclick="loadDocumentation('https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/explanatory_data_analysis/README.md', this)">Explanatory Data Analysis</a></li>
+            <li><a onclick="loadDocumentation('https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/feature_engineering/README.md', this)">Feature Engineering</a></li>
             <li>
-                <a class="active"
-                   onclick="loadDocumentation(
-                       'https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/README.md',
-                       this
-                   )">
-                    🏠 Main Page
-                </a>
-            </li>
-
-            <li>
-                <a onclick="loadDocumentation(
-                    'https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/datagen/README.md',
-                    this
-                )">
-                    Data Generator
-                </a>
-            </li>
-
-            <li>
-                <a onclick="loadDocumentation(
-                    'https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/explanatory_data_analysis/README.md',
-                    this
-                )">
-                    Explanatory Data Analysis
-                </a>
-            </li>
-
-            <li>
-                <a onclick="loadDocumentation(
-                    'https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/feature_engineering/README.md',
-                    this
-                )">
-                    Feature Engineering
-                </a>
-            </li>
-
-            <li>
-                <a onclick="this.parentElement.classList.toggle('open')">
-                    Model Development <span class="arrow">▸</span>
-                </a>
+                <a onclick="this.parentElement.classList.toggle('open')">Model Development <span class="arrow">▸</span></a>
                 <ul class="submenu">
-                    <li>
-                        <a onclick="loadDocumentation(
-                            'https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/model_dev/README.md',
-                            this
-                        )">
-                            Model Overview
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a onclick="loadDocumentation(
-                            'https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/model_dev/lagacy_best_model_dev/README.md',
-                            this
-                        )">
-                            Baseline Multi-Classifier
-                        </a>
-                    </li>
-                    <li>
-                        <a onclick="loadDocumentation(
-                            'https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/model_dev/lagacy_best_model_dev_improved/README.md',
-                            this
-                        )">
-                            Hybrid ML Approach
-                        </a>
-                    </li>
-                    <li>
-                        <a onclick="loadDocumentation(
-                            'https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/model_dev/stacked_model/README.md',
-                            this
-                        )">
-                            Stacked Supervised Model
-                        </a>
-                    </li>
+                    <li><a onclick="loadDocumentation('https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/model_dev/README.md', this)">Model Overview</a></li>
+                    <li><a onclick="loadDocumentation('https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/model_dev/lagacy_best_model_dev/README.md', this)">Baseline Multi-Classifier</a></li>
+                    <li><a onclick="loadDocumentation('https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/model_dev/lagacy_best_model_dev_improved/README.md', this)">Hybrid ML Approach</a></li>
+                    <li><a onclick="loadDocumentation('https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/model_dev/stacked_model/README.md', this)">Stacked Supervised Model</a></li>
                 </ul>
             </li>
-
-            <li>
-                <a onclick="loadDocumentation(
-                    'https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/model_inference/README.md',
-                    this
-                )">
-                    Model Inference Simulation
-                </a>
-            </li>
-
-            <li>
-                <a onclick="loadDocumentation(
-                    'https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/production/README.md',
-                    this
-                )">
-                    Production Simulation
-                </a>
-            </li>
-
-            <li>
-                <a onclick="loadDocumentation(
-                    'https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/cyber_attack_insight/README.md',
-                    this
-                )">
-                    Attack Analytics Simulation
-                </a>
-            </li>
-
+            <li><a onclick="loadDocumentation('https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/model_inference/README.md', this)">Model Inference Simulation</a></li>
+            <li><a onclick="loadDocumentation('https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/production/README.md', this)">Production Simulation</a></li>
+            <li><a onclick="loadDocumentation('https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/cyber_attack_insight/README.md', this)">Attack Analytics Simulation</a></li>
         </ul>
     </div>
 
-    <!-- ===== Content ===== -->
     <div class="content">
-        <div id="display-card">
-            <p style="text-align:center; color:#555;">
-                Select a module from the menu to load documentation.
-            </p>
+        <div class="scrollable-body">
+            <div id="display-card">
+                <p style="text-align:center; color:#555;">Select a module from the menu to load documentation.</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            © <span id="year"></span> Atsu Vovor · Cyber Security Analytics. All rights reserved.
         </div>
     </div>
-
 </div>
 
-<!-- ===== Support Cyber Threat Insight Card (Compact) ===== -->
 <div id="support-sidebar">
   <h4>💙 Support Cyber Threat Insight</h4>
-
-  <p>
-    An open-source, innovation-driven cybersecurity analytics project focused on
-    <strong>rare, high-impact cyber threat scenarios</strong>.
-  </p>
-
-  <p>
-    Using a <strong>Rare Events Analytics Simulator</strong>, the platform generates and evaluates
-    low-frequency anomalies and stress-based attacks that are difficult to capture in real-world data.
-  </p>
-
-  <p>
-    Your support helps advance research, improve simulations, and strengthen real-world cyber defense readiness.
-  </p>
-
+  <p>An open-source, innovation-driven cybersecurity analytics project focused on <strong>rare, high-impact cyber threat scenarios</strong>.</p>
+  <p>Using a <strong>Rare Events Analytics Simulator</strong>, the platform generates and evaluates low-frequency anomalies and stress-based attacks.</p>
+  <p>Your support helps advance research, improve simulations, and strengthen readiness.</p>
   <a href="https://www.paypal.me/atsuvovor" target="_blank">PayPal (International)</a>
-  <a href="mailto:atsu.vovor@bell.net?subject=CyberThreat%20Insight%20Support">
-    Interac e-Transfer (Canada)
-  </a>
-
-  <p style="font-size:12px; color:#555; margin-top:10px;">
-    Secure • No platform fees • Auto-deposit enabled
-  </p>
+  <a href="mailto:atsu.vovor@bell.net?subject=CyberThreat%20Insight%20Support">Interac e-Transfer (Canada)</a>
+  <p style="font-size:12px; color:#555; margin-top:10px;">Secure • No platform fees • Auto-deposit enabled</p>
 </div>
 
-
-
 <script>
-
-/* Toggle support card */
-    
 const supportSidebar = document.getElementById("support-sidebar");
 const supportBtn = document.querySelector(".support-btn");
 
-
-function trackSupportClick() {
-    if (window.plausible) {
-        plausible("Support Click");
-    }
-}
+function trackSupportClick() { if (window.plausible) { plausible("Support Click"); } }
 
 function toggleSupport(forceClose = false) {
-    if (forceClose) {
-        supportSidebar.classList.remove("open");
-        return;
-    }
+    if (forceClose) { supportSidebar.classList.remove("open"); return; }
     supportSidebar.classList.toggle("open");
-
-    // Analytics tracking
     trackSupportClick();
     supportBtn.classList.remove("pulse");
-
 }
 
-/* ESC key closes support card */
-document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-        toggleSupport(true);
-    }
-});
-
-/* Click outside closes support card */
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") toggleSupport(true); });
 document.addEventListener("click", (e) => {
-    if (
-        supportSidebar.classList.contains("open") &&
-        !supportSidebar.contains(e.target) &&
-        !supportBtn.contains(e.target)
-    ) {
+    if (supportSidebar.classList.contains("open") && !supportSidebar.contains(e.target) && !supportBtn.contains(e.target)) {
         toggleSupport(true);
     }
 });
 
-function toggleSidebar() {
-    document.getElementById("sidebar").classList.toggle("collapsed");
-}
+function toggleSidebar() { document.getElementById("sidebar").classList.toggle("collapsed"); }
 
-
-// Configure Marked.js safely (CSP-safe)
-marked.setOptions({
-    gfm: true,          // GitHub Flavored Markdown
-    breaks: true,       // line breaks
-    headerIds: true,
-    smartLists: true,
-    smartypants: false,
-    mangle: false,      // prevents email obfuscation
-    // Disallow raw HTML → prevents eval() internally
-    sanitizer: null,
-    renderer: new marked.Renderer()
-});
+marked.setOptions({ gfm: true, breaks: true, headerIds: true, smartLists: true, smartypants: false, mangle: false, sanitizer: null, renderer: new marked.Renderer() });
 
 async function loadDocumentation(url, el = null) {
-
     let mdText = await (await fetch(url)).text();
+    const BASE_IMG = "https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/main/images/";
 
-    const BASE_IMG =
-        "https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/main/images/";
-
-    /* -------------------------------------------------
-       Fix malformed closing </p tags
-    ------------------------------------------------- */
     mdText = mdText.replace(/<\/p\s*(?=<)/gi, "</p>");
+    mdText = mdText.replace(/https:\/\/github\.com\/([^\/]+)\/([^\/]+)\/blob\/([^\/]+)\/images\/([^"'\s]+)/gi, (_, user, repo, branch, file) => `https://raw.githubusercontent.com/${user}/${repo}/${branch}/images/${file}`);
+    mdText = mdText.replace(/src=["']https:\/\/github\.com\/([^"']+)\/blob\/([^"']+)["']/gi, 'src="https://raw.githubusercontent.com/$1/$2"');
+    mdText = mdText.replace(/!\[(.*?)\]\((images\/[^)]+)\)/g, (_, alt, relPath) => `![${alt}](${BASE_IMG}${relPath.replace("images/", "")})`);
+    mdText = mdText.replace(/<img\s+([^>]*?)src=["'](images\/[^"']+)["']([^>]*)>/gi, (match, pre, path, post) => {
+        const newSrc = BASE_IMG + path.replace("images/", "");
+        post = post.replace(/width=["'][^"']+["']/gi, '').replace(/height=["'][^"']+["']/gi, '');
+        if (!/style=/i.test(post)) { post += ' style="max-width:100%; height:auto;"'; }
+        return `<img ${pre}src="${newSrc}"${post}>`;
+    });
 
-    /* -------------------------------------------------
-       Convert GitHub blob URLs → raw URLs
-    ------------------------------------------------- */
-    mdText = mdText.replace(
-       /https:\/\/github\.com\/([^\/]+)\/([^\/]+)\/blob\/([^\/]+)\/images\/([^"'\s]+)/gi,
-       (_, user, repo, branch, file) =>
-        `https://raw.githubusercontent.com/${user}/${repo}/${branch}/images/${file}`
-    );
+    // Updated element target to the sub-scroll wrapper
+    const scrollContainer = document.querySelector(".scrollable-body");
+    document.getElementById("display-card").innerHTML = `${marked.parse(mdText)}`;
 
-     /* -------------------------------------------------
-          Force any GitHub image to raw
-     ------------------------------------------------- */
-    mdText = mdText.replace(
-       /src=["']https:\/\/github\.com\/([^"']+)\/blob\/([^"']+)["']/gi,
-       'src="https://raw.githubusercontent.com/$1/$2"'
-    );
+    // FORCE SCROLL TO TOP OF THE ELEMENT VIEWPORT
+    scrollContainer.scrollTop = 0;
 
-    /* -------------------------------------------------
-       Markdown images: ![alt](images/file.png)
-    ------------------------------------------------- */
-    mdText = mdText.replace(
-        /!\[(.*?)\]\((images\/[^)]+)\)/g,
-        (_, alt, relPath) =>
-            `![${alt}](${BASE_IMG}${relPath.replace("images/", "")})`
-    );
+    if (window.MathJax) { MathJax.typesetPromise(); }
 
-    /* -------------------------------------------------
-       HTML <img src="images/file.png">
-    ------------------------------------------------- */
-    mdText = mdText.replace(
-        /<img\s+([^>]*?)src=["'](images\/[^"']+)["']([^>]*)>/gi,
-        (match, pre, path, post) => {
-            const newSrc = BASE_IMG + path.replace("images/", "");
-
-            // Remove fixed dimensions
-            post = post
-                .replace(/width=["'][^"']+["']/gi, '')
-                .replace(/height=["'][^"']+["']/gi, '');
-
-            // Ensure responsive images
-            if (!/style=/i.test(post)) {
-                post += ' style="max-width:100%; height:auto;"';
-            }
-
-            return `<img ${pre}src="${newSrc}"${post}>`;
-        }
-    );
-
-    /* -------------------------------------------------
-       Render Markdown (CSP-safe)
-    ------------------------------------------------- */
-    document.getElementById("display-card").innerHTML = `
-      <div style="padding:10px; max-width:1100px; margin:auto;">
-          ${marked.parse(mdText)}
-      </div>
-    `;
-
-    /* Render LaTeX math (MathJax) */
-    if (window.MathJax) {
-        MathJax.typesetPromise();
-    }
-
-    /* -------------------------------------------------
-       Active menu highlight
-    ------------------------------------------------- */
-    document.querySelectorAll(".menu a").forEach(a =>
-        a.classList.remove("active")
-    );
+    document.querySelectorAll(".menu a").forEach(a => a.classList.remove("active"));
     if (el) el.classList.add("active");
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Set current year
     const yearSpan = document.getElementById("year");
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
-    }
+    if (yearSpan) { yearSpan.textContent = new Date().getFullYear(); }
 
-    // Default landing page
     const mainLink = document.querySelector(".menu a");
-    loadDocumentation(
-        "https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/README.md",
-        mainLink
-    );
+    loadDocumentation("https://raw.githubusercontent.com/atsuvovor/CyberThreat_Insight/refs/heads/main/README.md", mainLink);
 
-    // Show support sidebar after 2.5s
     if (!sessionStorage.getItem("supportShown")) {
         setTimeout(() => {
             supportSidebar.classList.add("open");
             sessionStorage.setItem("supportShown", "true");
         }, 2500);
     }
-
-    // Add pulse effect
     supportBtn.classList.add("pulse");
 });
-
-
-
 </script>
 
-<!-- ===== Footer ===== -->
-<div class="footer">
-    © <span id="year"></span> Atsu Vovor · Cyber Security Analytics. All rights reserved.
-</div>
-
 </body>
-
 </html>
